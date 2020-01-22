@@ -9,6 +9,14 @@
 czso allows programmatic access to the open data provided by
     the Czech Statistical Office (CZSO)
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/petrbouchal/czso}
+  \item Report bugs at \url{https://github.com/petrbouchal/czso/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Petr Bouchal \email{pbouchal@gmail.com}
 
