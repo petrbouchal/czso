@@ -47,14 +47,27 @@ remotes::install_github("petrbouchal/czso")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Imagine you are looking for a dataset whose title refers to wages (mzda/mzdy):
 
 ```{r example}
 library(czso)
 
-get_catalogue(title_regex = "mzd[ay]")
+get_catalogue(title_filter = "mzd[ay]")
 get_table("110080")
 ```
+
+Alternatively, you could store the whole CZSO catalogue in an object and filter yourself. This is especially useful if you expect to need multiple tries.
+
+```{r example-alt}
+library(dplyr, warn.conflicts = F)
+library(stringr, warn.conflicts = F)
+catalogue <- get_catalogue()
+
+catalogue %>% 
+  filter(str_detect(title, "mzda"))
+```
+
+The latter allows you to search through the list - or simply look through it - without the overhead of reusing the `get_dataset()` function which downloads and transforms the underlying data.
 
 ## Credit and notes
 

@@ -49,35 +49,22 @@ remotes::install_github("petrbouchal/czso")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Imagine you are looking for a dataset whose title refers to wages
+(mzda/mzdy):
 
 ``` r
 library(czso)
 
-get_catalogue(title_regex = "mzd[ay]")
-#> Observations: 299,512
-#> Variables: 11
-#> chr [11]: datová_sada, název, popis, poskytovatel_IRI, poskytovatel, klíčová_slova, prosto...
-#> 
-#> Call `spec()` for a copy-pastable column specification
-#> Specify the column types with `col_types` to quiet this message
-#> # A tibble: 2 x 8
-#>   czso_id title description dataset keywords topic update_frequency
-#>   <chr>   <chr> <chr>       <chr>   <chr>    <chr> <chr>           
-#> 1 110080  Prům… Datová sad… https:… Mzda     <NA>  roční           
-#> 2 110079  Zamě… Datová sad… https:… zaměstn… <NA>  čtvrtletní      
-#> # … with 1 more variable: spatial_coverage <chr>
+get_catalogue(title_filter = "mzd[ay]")
+#> Reading full list of all datasets on data.gov.cz...
+#> Filtering...
+#> # A tibble: 2 x 9
+#>   czso_id provider title description dataset topic update_frequency
+#>   <chr>   <chr>    <chr> <chr>       <chr>   <chr> <chr>           
+#> 1 110080  Český s… Prům… Datová sad… https:… <NA>  roční           
+#> 2 110079  Český s… Zamě… Datová sad… https:… <NA>  čtvrtletní      
+#> # … with 2 more variables: spatial_coverage <chr>, keywords <chr>
 get_table("110080")
-#> [1] "/var/folders/c8/pj33jytj233g8vr0tw4b2h7m0000gn/T//Rtmpq8t1uU/czso/110080/ds_110080.csv"
-#> Registered S3 methods overwritten by 'readr':
-#>   method           from 
-#>   format.col_spec  vroom
-#>   print.col_spec   vroom
-#>   print.collector  vroom
-#>   print.date_names vroom
-#>   print.locale     vroom
-#>   str.col_spec     vroom
-#> Warning: The following named parsers don't match the column names: ctvrtleti
 #> # A tibble: 630 x 14
 #>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
 #>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
@@ -95,6 +82,30 @@ get_table("110080")
 #> #   uzemi_kod <chr>, STAPRO_TXT <chr>, uzemi_txt <chr>, SPKVANTIL_txt <chr>,
 #> #   POHLAVI_txt <chr>
 ```
+
+Alternatively, you could store the whole CZSO catalogue in an object and
+filter yourself. This is especially useful if you expect to need
+multiple tries.
+
+``` r
+library(dplyr, warn.conflicts = F)
+library(stringr, warn.conflicts = F)
+catalogue <- get_catalogue()
+#> Reading full list of all datasets on data.gov.cz...
+#> Filtering...
+
+catalogue %>% 
+  filter(str_detect(title, "mzda"))
+#> # A tibble: 1 x 9
+#>   czso_id provider title description dataset topic update_frequency
+#>   <chr>   <chr>    <chr> <chr>       <chr>   <chr> <chr>           
+#> 1 110080  Český s… Prům… Datová sad… https:… <NA>  roční           
+#> # … with 2 more variables: spatial_coverage <chr>, keywords <chr>
+```
+
+The latter allows you to search through the list - or simply look
+through it - without the overhead of reusing the `get_dataset()`
+function which downloads and transforms the underlying data.
 
 ## Credit and notes
 
