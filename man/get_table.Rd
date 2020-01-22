@@ -2,21 +2,34 @@
 % Please edit documentation in R/core.R
 \name{get_table}
 \alias{get_table}
-\title{FUNCTION_TITLE}
+\title{Retrieve and read dataset from CZSO}
 \usage{
 get_table(dataset_id, resource_num = 1)
 }
 \arguments{
-\item{dataset_id}{DESCRIPTION.}
+\item{dataset_id}{a character. Found in the czso_id column of data frame returned by \code{get_catalogue()}.}
 
-\item{resource_num}{DESCRIPTION.}
+\item{resource_num}{integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.}
 }
 \value{
 RETURN_DESCRIPTION
 }
 \description{
-FUNCTION_DESCRIPTION
+Downloads and reads dataset identified by \code{dataset_id}. Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.
+}
+\details{
+\subsection{Nota bene}{
+
+Do not use this for harvesting datasets from CZSO en masse.
+}
 }
 \examples{
-# ADD_EXAMPLES_HERE
+\dontrun{
+get_table("110080")
 }
+}
+\seealso{
+Other Core workflow: 
+\code{\link{get_catalogue}()}
+}
+\concept{Core workflow}

@@ -50,4 +50,8 @@ get_catalogue(provider == "Ministerstvo vnitra")
 get_catalogue(provider_filter == "[Mm]inisterstvo")
 }
 }
+\seealso{
+Other Core workflow: 
+\code{\link{get_table}()}
+}
 \concept{Core workflow}

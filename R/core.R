@@ -105,17 +105,24 @@ get_resource_pointer <- function(dataset_id, resource_num = 1) {
   return(rsrc)
 }
 
-#' FUNCTION_TITLE
+#' Retrieve and read dataset from CZSO
 #'
-#' FUNCTION_DESCRIPTION
+#' Downloads and reads dataset identified by `dataset_id`. Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.
 #'
-#' @param dataset_id DESCRIPTION.
-#' @param resource_num DESCRIPTION.
+#' ## Nota bene
+#'
+#' Do not use this for harvesting datasets from CZSO en masse.
+#'
+#' @param dataset_id a character. Found in the czso_id column of data frame returned by `get_catalogue()`.
+#' @param resource_num integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.
 #'
 #' @return RETURN_DESCRIPTION
 #' @export
+#' @family Core workflow
 #' @examples
-#' # ADD_EXAMPLES_HERE
+#' \dontrun{
+#' get_table("110080")
+#' }
 get_table <- function(dataset_id, resource_num = 1) {
   ptr <- get_resource_pointer(dataset_id)
   url <- ptr$url
@@ -127,7 +134,7 @@ get_table <- function(dataset_id, resource_num = 1) {
   dfile <- paste0(td, "ds_", dataset_id, ".", ext)
   utils::download.file(url, destfile = dfile, headers = ua_header)
 
-  print(dfile)
+  # print(dfile)
 
   if(type == "text/csv") {
     action <- "read"
@@ -141,28 +148,27 @@ get_table <- function(dataset_id, resource_num = 1) {
     } else {
       dfile <- flist[1]
       action <- "listone"
-      }
+    }
   } else {
     action <- "listone"
   }
   switch (action,
-    read = {
-      dt <- readr::read_csv(dfile, col_types = readr::cols(.default = "c",
-                                                           rok = "i",
-                                                           ctvrtleti = "i",
-                                                           hodnota = "d"))
-      rtrn <- dt
-      },
-    listone = {
-      message(paste0("Unable to read this kind of file automatically. It is saved in ", dfile, "."))
-      rtrn <- dfile
-    },
-    listmore = {
-      message(paste0("Multiple files in archive. They are saved in ", td))
-      print(flist)
-      rtrn <- flist
+          read = {
+            dt <- suppressWarnings(suppressMessages(readr::read_csv(dfile, col_types = readr::cols(.default = "c",
+                                                                 rok = "i",
+                                                                 ctvrtleti = "i",
+                                                                 hodnota = "d"))))
+            rtrn <- dt
+          },
+          listone = {
+            message(paste0("Unable to read this kind of file (",  type, ") automatically. It is saved in ", dfile, "."))
+            rtrn <- dfile
+          },
+          listmore = {
+            message(paste0("Multiple files in archive. They are saved in ", td))
+            rtrn <- flist
 
-    }
+          }
   )
   return(rtrn)
 }
