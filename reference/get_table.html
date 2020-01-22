@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FUNCTION_TITLE — get_table • czso</title>
+<title>Retrieve and read dataset from CZSO — get_table • czso</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="FUNCTION_TITLE — get_table" />
-<meta property="og:description" content="FUNCTION_DESCRIPTION" />
+<meta property="og:title" content="Retrieve and read dataset from CZSO — get_table" />
+<meta property="og:description" content="Downloads and reads dataset identified by dataset_id. Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -108,13 +108,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>FUNCTION_TITLE</h1>
+    <h1>Retrieve and read dataset from CZSO</h1>
     <small class="dont-index">Source: <a href='https://github.com/petrbouchal/czso/blob/master/R/core.R'><code>R/core.R</code></a></small>
     <div class="hidden name"><code>get_table.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>FUNCTION_DESCRIPTION</p>
+    <p>Downloads and reads dataset identified by <code>dataset_id</code>. Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_table</span>(<span class='no'>dataset_id</span>, <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
@@ -124,27 +124,42 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset_id</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>a character. Found in the czso_id column of data frame returned by <code><a href='get_catalogue.html'>get_catalogue()</a></code>.</p></td>
     </tr>
     <tr>
       <th>resource_num</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>RETURN_DESCRIPTION</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    
+<h3>Nota bene</h3>
+
+
+<p>Do not use this for harvesting datasets from CZSO en masse.</p>
+
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Core workflow: 
+<code><a href='get_catalogue.html'>get_catalogue</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># ADD_EXAMPLES_HERE
-</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>get_table</span>(<span class='st'>"110080"</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -36,7 +36,8 @@
 
 
 <meta property="og:title" content="Get catalogue of open CZSO datasets — get_catalogue" />
-<meta property="og:description" content="FUNCTION_DESCRIPTION" />
+<meta property="og:description" content="Downloads and processes a list of all registered Czech open data datasets,
+returning (by default) those accessible through get_table() from the CZSO." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -114,13 +115,16 @@
     </div>
 
     <div class="ref-description">
-    <p>FUNCTION_DESCRIPTION</p>
+    <p>Downloads and processes a list of all registered Czech open data datasets,
+returning (by default) those accessible through get_table() from the CZSO.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_catalogue</span>(
   <span class='kw'>provider</span> <span class='kw'>=</span> <span class='st'>"\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad"</span>,
-  <span class='kw'>title_regex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>description_regex</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>title_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>description_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>keyword_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>provider_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -128,31 +132,58 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>provider</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>character, can be of length &gt; 1. Provider to select for. Defaults to (the Czech name of) CZSO. Must be exact match. If set to NULL, returns full list of all datasets.</p></td>
     </tr>
     <tr>
-      <th>title_regex</th>
-      <td><p>DESCRIPTION.</p></td>
+      <th>title_filter</th>
+      <td><p>character, text to use for filtering the set by title. Case sensitive. Can be a regular expression.</p></td>
     </tr>
     <tr>
-      <th>description_regex</th>
-      <td><p>DESCRIPTION.</p></td>
+      <th>description_filter</th>
+      <td><p>character, text to use for filtering the set by description. Case sensitive.  Can be a regular expression.</p></td>
+    </tr>
+    <tr>
+      <th>keyword_filter</th>
+      <td><p>character, text to use for filtering the set by keyword. Case sensitive.  Can be a regular expression.</p></td>
+    </tr>
+    <tr>
+      <th>provider_filter</th>
+      <td><p>character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>RETURN_DESCRIPTION</p>
+    <p>a data frame. If <code>provider</code> param is left to default, contains a column called czso_id, which can be used as dataset_id parameter in get_table().</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>If <code>provider</code> is NULL, returns the whole list, without CZSO-specific identifier
+usable in <code><a href='get_table.html'>get_table()</a></code>.</p>
+<p>If <code>provider</code> is left unset, returns data frame listing CZSO's datasets, with a
+<code>czso_id</code> column usable in <code>get_table</code>.</p>
+<p>Other values of <code>provider</code> must be exact matches. Use <code>provider_filter</code> for text/regex matching.</p>
+<p>All <code>*_filter</code> arguments are case sensitive and can be regular expressions.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Core workflow: 
+<code><a href='get_table.html'>get_table</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># ADD_EXAMPLES_HERE
-</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>get_catalogue</span>()
+<span class='fu'>get_catalogue</span>(<span class='kw'>NULL</span>)
+<span class='fu'>get_catalogue</span>(<span class='no'>title_filter</span> <span class='kw'>==</span> <span class='st'>"[Mm]zd[ay]"</span>)
+<span class='fu'>get_catalogue</span>(<span class='no'>provider</span> <span class='kw'>==</span> <span class='st'>"Ministerstvo vnitra"</span>)
+<span class='fu'>get_catalogue</span>(<span class='no'>provider_filter</span> <span class='kw'>==</span> <span class='st'>"[Mm]inisterstvo"</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -93,57 +93,68 @@
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<p>Imagine you are looking for a dataset whose title refers to wages (mzda/mzdy):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(czso)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="reference/get_catalogue.html">get_catalogue</a></span>(<span class="dt">title_regex =</span> <span class="st">"mzd[ay]"</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; Observations: 299,512</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Variables: 11</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; chr [11]: datová_sada, název, popis, poskytovatel_IRI, poskytovatel, klíčová_slova, prosto...</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; Call `spec()` for a copy-pastable column specification</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; Specify the column types with `col_types` to quiet this message</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; # A tibble: 2 x 8</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;   czso_id title description dataset keywords topic update_frequency</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;           </span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; 1 110080  Prům… Datová sad… https:… Mzda     &lt;NA&gt;  roční           </span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 2 110079  Zamě… Datová sad… https:… zaměstn… &lt;NA&gt;  čtvrtletní      </span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; # … with 1 more variable: spatial_coverage &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="kw"><a href="reference/get_table.html">get_table</a></span>(<span class="st">"110080"</span>)</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; [1] "/var/folders/c8/pj33jytj233g8vr0tw4b2h7m0000gn/T//Rtmpq8t1uU/czso/110080/ds_110080.csv"</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; Registered S3 methods overwritten by 'readr':</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt;   method           from </span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt;   format.col_spec  vroom</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;   print.col_spec   vroom</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;   print.collector  vroom</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt;   print.date_names vroom</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt;   print.locale     vroom</span></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt;   str.col_spec     vroom</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; Warning: The following named parsers don't match the column names: ctvrtleti</span></a>
-<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt; # A tibble: 630 x 14</span></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span></a>
-<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt;  1 7366…   21554 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt;  2 7366…   20378 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-32" data-line-number="32"><span class="co">#&gt;  3 7366…   22447 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-33" data-line-number="33"><span class="co">#&gt;  4 7366…   20266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-34" data-line-number="34"><span class="co">#&gt;  5 7366…   27162 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="co">#&gt;  6 7366…   19183 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-36" data-line-number="36"><span class="co">#&gt;  7 7366…   21782 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-37" data-line-number="37"><span class="co">#&gt;  8 7366…   21383 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-38" data-line-number="38"><span class="co">#&gt;  9 7366…   20527 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-39" data-line-number="39"><span class="co">#&gt; 10 7366…   20153 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb3-40" data-line-number="40"><span class="co">#&gt; # … with 620 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb3-42" data-line-number="42"><span class="co">#&gt; #   POHLAVI_txt &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="reference/get_catalogue.html">get_catalogue</a></span>(<span class="dt">title_filter =</span> <span class="st">"mzd[ay]"</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; Reading full list of all datasets on data.gov.cz...</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Filtering...</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; # A tibble: 2 x 9</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;   czso_id provider title description dataset topic update_frequency</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;           </span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 1 110080  Český s… Prům… Datová sad… https:… &lt;NA&gt;  roční           </span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 2 110079  Český s… Zamě… Datová sad… https:… &lt;NA&gt;  čtvrtletní      </span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; # … with 2 more variables: spatial_coverage &lt;chr&gt;, keywords &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="kw"><a href="reference/get_table.html">get_table</a></span>(<span class="st">"110080"</span>)</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; # A tibble: 630 x 14</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  1 7366…   21554 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  2 7366…   20378 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;  3 7366…   22447 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt;  4 7366…   20266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt;  5 7366…   27162 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;  6 7366…   19183 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;  7 7366…   21782 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt;  8 7366…   21383 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt;  9 7366…   20527 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; 10 7366…   20153 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; # … with 620 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt; #   POHLAVI_txt &lt;chr&gt;</span></a></code></pre></div>
+<p>Alternatively, you could store the whole CZSO catalogue in an object and filter yourself. This is especially useful if you expect to need multiple tries.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr, <span class="dt">warn.conflicts =</span> F)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr, <span class="dt">warn.conflicts =</span> F)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">catalogue &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_catalogue.html">get_catalogue</a></span>()</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Reading full list of all datasets on data.gov.cz...</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; Filtering...</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">catalogue <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span>(title, <span class="st">"mzda"</span>))</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; # A tibble: 1 x 9</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;   czso_id provider title description dataset topic update_frequency</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;           </span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 1 110080  Český s… Prům… Datová sad… https:… &lt;NA&gt;  roční           </span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; # … with 2 more variables: spatial_coverage &lt;chr&gt;, keywords &lt;chr&gt;</span></a></code></pre></div>
+<p>The latter allows you to search through the list - or simply look through it - without the overhead of reusing the <code>get_dataset()</code> function which downloads and transforms the underlying data.</p>
+</div>
+<div id="credit-and-notes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#credit-and-notes" class="anchor"></a>Credit and notes</h2>
+<ul>
+<li>not created or endorsed by the Czech Statistical Office, though they, as well as <a href="https://data.gov.cz/">the open data team at the Ministry of Interior</a> deserve credit for getting the data out there.</li>
+<li>the package relies on the data.gov.cz catalogue of open data and on the CZSO’s local catalogue</li>
+<li>NB: The robots.txt at the domain hosting the CZSO’s catalogue prohibits robots from accessing it; while this may be an inappropriate/erroneous setting for what is in essence a data API, this package tries to honor the spirit of that setting by only accessing the API once per <code><a href="reference/get_table.html">get_table()</a></code> call, relying on a different system for <code><a href="reference/get_catalogue.html">get_catalogue()</a></code>. Hence, <em>do not use this package for harvesting large numbers of datasets from the CZSO.</em>
+</li>
+</ul>
 </div>
 <div id="see-also" class="section level2">
 <h2 class="hasAnchor">
 <a href="#see-also" class="anchor"></a>See also</h2>
 <p>This package takes inspiration from</p>
 <ul>
-<li>eurostat</li>
-<li>OECD</li>
+<li><a href="https://github.com/rOpenGov/eurostat/">eurostat</a></li>
+<li><a href="https://github.com/expersso/OECD">OECD</a></li>
 </ul>
 <p>which are very useful in their own right - much recommended.</p>
 </div>
