@@ -41,8 +41,8 @@ get_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00f
     provider_uni <- stringi::stri_unescape_unicode(provider)
   else provider_uni <- NULL
   message("Reading full list of all datasets on data.gov.cz...")
-  dslist0 <- vroom::vroom("https://data.gov.cz/soubor/datov%C3%A9-sady.csv",
-                          col_types = readr::cols(.default = "c")) %>%
+  dslist0 <- suppressWarnings(suppressMessages(vroom::vroom("https://data.gov.cz/soubor/datov%C3%A9-sady.csv",
+                          col_types = readr::cols(.default = "c")))) %>%
     dplyr::rename_all(~stringi::stri_trans_general(., "latin-ascii")) %>%
     dplyr::select(provider = poskytovatel,
                   title = nazev, description = popis, dataset = datova_sada,
