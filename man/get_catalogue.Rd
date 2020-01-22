@@ -6,23 +6,48 @@
 \usage{
 get_catalogue(
   provider = "\\\\u010cesk\\\\u00fd statistick\\\\u00fd \\\\u00fa\\\\u0159ad",
-  title_regex = NULL,
-  description_regex = NULL
+  title_filter = NULL,
+  description_filter = NULL,
+  keyword_filter = NULL,
+  provider_filter = NULL
 )
 }
 \arguments{
-\item{provider}{DESCRIPTION.}
+\item{provider}{character, can be of length > 1. Provider to select for. Defaults to (the Czech name of) CZSO. Must be exact match. If set to NULL, returns full list of all datasets.}
 
-\item{title_regex}{DESCRIPTION.}
+\item{title_filter}{character, text to use for filtering the set by title. Case sensitive. Can be a regular expression.}
 
-\item{description_regex}{DESCRIPTION.}
+\item{description_filter}{character, text to use for filtering the set by description. Case sensitive.  Can be a regular expression.}
+
+\item{keyword_filter}{character, text to use for filtering the set by keyword. Case sensitive.  Can be a regular expression.}
+
+\item{provider_filter}{character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.}
 }
 \value{
-RETURN_DESCRIPTION
+a data frame. If \code{provider} param is left to default, contains a column called czso_id, which can be used as dataset_id parameter in get_table().
 }
 \description{
-FUNCTION_DESCRIPTION
+Downloads and processes a list of all registered Czech open data datasets,
+returning (by default) those accessible through get_table() from the CZSO.
+}
+\details{
+If \code{provider} is NULL, returns the whole list, without CZSO-specific identifier
+usable in \code{get_table()}.
+
+If \code{provider} is left unset, returns data frame listing CZSO's datasets, with a
+\code{czso_id} column usable in \code{get_table}.
+
+Other values of \code{provider} must be exact matches. Use \code{provider_filter} for text/regex matching.
+
+All \verb{*_filter} arguments are case sensitive and can be regular expressions.
 }
 \examples{
-# ADD_EXAMPLES_HERE
+\dontrun{
+get_catalogue()
+get_catalogue(NULL)
+get_catalogue(title_filter == "[Mm]zd[ay]")
+get_catalogue(provider == "Ministerstvo vnitra")
+get_catalogue(provider_filter == "[Mm]inisterstvo")
 }
+}
+\concept{Core workflow}

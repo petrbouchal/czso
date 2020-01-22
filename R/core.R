@@ -1,32 +1,88 @@
 
 #' Get catalogue of open CZSO datasets
 #'
-#' FUNCTION_DESCRIPTION
+#' Downloads and processes a list of all registered Czech open data datasets,
+#' returning (by default) those accessible through get_table() from the CZSO.
 #'
-#' @param provider DESCRIPTION.
-#' @param title_regex DESCRIPTION.
-#' @param description_regex DESCRIPTION.
+#' If `provider` is NULL, returns the whole list, without CZSO-specific identifier
+#' usable in `get_table()`.
 #'
-#' @return RETURN_DESCRIPTION
+#' If `provider` is left unset, returns data frame listing CZSO's datasets, with a
+#' `czso_id` column usable in `get_table`.
+#'
+#' Other values of `provider` must be exact matches. Use `provider_filter` for text/regex matching.
+#'
+#' All `*_filter` arguments are case sensitive and can be regular expressions.
+#'
+#' @param provider character, can be of length > 1. Provider to select for. Defaults to (the Czech name of) CZSO. Must be exact match. If set to NULL, returns full list of all datasets.
+#' @param title_filter character, text to use for filtering the set by title. Case sensitive. Can be a regular expression.
+#' @param description_filter character, text to use for filtering the set by description. Case sensitive.  Can be a regular expression.
+#' @param keyword_filter character, text to use for filtering the set by keyword. Case sensitive.  Can be a regular expression.
+#' @param provider_filter character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.
+#'
+#' @return a data frame. If `provider` param is left to default, contains a column called czso_id, which can be used as dataset_id parameter in get_table().
 #' @export
+#' @family Core workflow
 #' @examples
-#' # ADD_EXAMPLES_HERE
-get_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad", title_regex = NULL,
-                          description_regex = NULL) {
-  dslist <- vroom::vroom("https://data.gov.cz/soubor/datov%C3%A9-sady.csv") %>%
-    dplyr::filter(poskytovatel %in% provider) %>%
+#' \dontrun{
+#' get_catalogue()
+#' get_catalogue(NULL)
+#' get_catalogue(title_filter == "[Mm]zd[ay]")
+#' get_catalogue(provider == "Ministerstvo vnitra")
+#' get_catalogue(provider_filter == "[Mm]inisterstvo")
+#' }
+get_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad",
+                          title_filter = NULL,
+                          description_filter = NULL,
+                          keyword_filter = NULL,
+                          provider_filter = NULL)
+  {
+  if(!is.null(provider))
+    provider_uni <- stringi::stri_unescape_unicode(provider)
+  else provider_uni <- NULL
+  message("Reading full list of all datasets on data.gov.cz...")
+  dslist0 <- vroom::vroom("https://data.gov.cz/soubor/datov%C3%A9-sady.csv",
+                          col_types = readr::cols(.default = "c")) %>%
     dplyr::rename_all(~stringi::stri_trans_general(., "latin-ascii")) %>%
-    dplyr::distinct(datova_sada, .keep_all = T) %>%
-    dplyr::select(title = nazev, description = popis, dataset = datova_sada,
-                  keywords = klicova_slova, topic = tema, update_frequency = periodicita_aktualizace, spatial_coverage = prostorove_pokryti) %>%
-    dplyr::mutate(czso_id = stringr::str_extract(dataset, "(?<=package_show-id-).*$")) %>%
-    dplyr::select(czso_id, dplyr::everything())
-
-  if(!is.null(title_regex)) {
-    dslist <- dplyr::filter(dslist, stringr::str_detect(title, title_regex))
+    dplyr::select(provider = poskytovatel,
+                  title = nazev, description = popis, dataset = datova_sada,
+                  keywords0 = klicova_slova, topic = tema,
+                  update_frequency = periodicita_aktualizace,
+                  spatial_coverage = prostorove_pokryti)
+  if(is.null(provider)) {
+    dslist <- dslist0 %>%
+      dplyr::group_by(dataset) %>%
+      dplyr::mutate(keywords = stringr::str_c(keywords0, collapse = "; ")) %>%
+      dplyr::ungroup() %>%
+      dplyr::select(-keywords0) %>%
+      dplyr::distinct()
+  } else {
+    message("Filtering...")
+    dslist <- dslist0 %>%
+      dplyr::filter(.$provider %in% provider_uni) %>%
+      dplyr::group_by(dataset) %>%
+      dplyr::mutate(keywords = stringr::str_c(keywords0, collapse = "; ")) %>%
+      dplyr::ungroup() %>%
+      dplyr::select(-keywords0) %>%
+      dplyr::distinct()
+    if(provider == "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad") {
+      dslist <- dslist %>%
+        dplyr::mutate(czso_id = stringr::str_extract(dataset, "(?<=package_show-id-).*$")) %>%
+        dplyr::select(czso_id, -provider, dplyr::everything())
+    }
   }
-  if(!is.null(description_regex)) {
-    dslist <- dplyr::filter(dslist, stringr::str_detect(description, description_regex))
+
+  if(!is.null(title_filter)) {
+    dslist <- dplyr::filter(dslist, stringr::str_detect(title, title_filter))
+  }
+  if(!is.null(description_filter)) {
+    dslist <- dplyr::filter(dslist, stringr::str_detect(description, description_filter))
+  }
+  if(!is.null(keyword_filter)) {
+    dslist <- dplyr::filter(dslist, stringr::str_detect(keyword_filter, description_filter))
+  }
+  if(!is.null(provider_filter)) {
+    dslist <- dplyr::filter(dslist, stringr::str_detect(provider, description_filter))
   }
 
   return(dslist)
