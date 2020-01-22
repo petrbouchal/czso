@@ -56,12 +56,18 @@ get_catalogue(title_regex = "mzd[ay]")
 get_table("110080")
 ```
 
+## Credit and notes
+
+- not created or endorsed by the Czech Statistical Office, though they, as well as [the open data team at the Ministry of Interior](https://data.gov.cz/) deserve credit for getting the data out there.
+- the package relies on the data.gov.cz catalogue of open data and on the CZSO's local catalogue
+- NB: The robots.txt at the domain hosting the CZSO's catalogue prohibits robots from accessing it; while this may be an inappropriate/erroneous setting for what is in essence a data API, this package tries to honor the spirit of that setting by only accessing the API once per `get_table()` call, relying on a different system for `get_catalogue()`. Hence, *do not use this package for harvesting large numbers of datasets from the CZSO.*
+
 ## See also
 
 This package takes inspiration from 
 
-- eurostat
-- OECD
+- [eurostat](https://github.com/rOpenGov/eurostat/)
+- [OECD](https://github.com/expersso/OECD)
 
 which are very useful in their own right - much recommended.
 
