@@ -4,12 +4,14 @@
 #' FUNCTION_DESCRIPTION
 #'
 #' @param provider DESCRIPTION.
+#' @param title_regex DESCRIPTION.
+#' @param description_regex DESCRIPTION.
 #'
 #' @return RETURN_DESCRIPTION
 #' @export
 #' @examples
 #' # ADD_EXAMPLES_HERE
-get_catalogue <- function(provider = "Český statistický úřad", title_regex = NULL,
+get_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad", title_regex = NULL,
                           description_regex = NULL) {
   dslist <- vroom::vroom("https://data.gov.cz/soubor/datov%C3%A9-sady.csv") %>%
     dplyr::filter(poskytovatel %in% provider) %>%

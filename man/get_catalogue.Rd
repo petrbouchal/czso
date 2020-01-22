@@ -5,13 +5,17 @@
 \title{Get catalogue of open CZSO datasets}
 \usage{
 get_catalogue(
-  provider = "<U+010C>esk<U+00FD> statistick<U+00FD> <U+00FA><U+0159>ad",
+  provider = "\\\\u010cesk\\\\u00fd statistick\\\\u00fd \\\\u00fa\\\\u0159ad",
   title_regex = NULL,
   description_regex = NULL
 )
 }
 \arguments{
 \item{provider}{DESCRIPTION.}
+
+\item{title_regex}{DESCRIPTION.}
+
+\item{description_regex}{DESCRIPTION.}
 }
 \value{
 RETURN_DESCRIPTION
