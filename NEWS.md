@@ -1,3 +1,5 @@
+# czso (development version)
+
 # czso 0.1.0
 
 * first version with functioning core workflow
