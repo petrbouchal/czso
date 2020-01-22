@@ -69,7 +69,7 @@ get_table <- function(dataset_id, resource_num = 1) {
   dir.create(td, recursive = T, showWarnings = F)
 
   dfile <- paste0(td, "ds_", dataset_id, ".", ext)
-  download.file(url, destfile = dfile)
+  utils::download.file(url, destfile = dfile, headers = ua_header)
 
   print(dfile)
 
