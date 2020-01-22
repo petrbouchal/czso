@@ -9,6 +9,8 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/czso)](https://CRAN.R-project.org/package=czso)
+[![Travis build
+status](https://travis-ci.org/petrbouchal/czso.svg?branch=master)](https://travis-ci.org/petrbouchal/czso)
 <!-- badges: end -->
 
 The goal of czso is to provide direct, programmatic hassle-free access
@@ -66,7 +68,7 @@ get_catalogue(title_regex = "mzd[ay]")
 #> 2 110079  Zamě… Datová sad… https:… zaměstn… <NA>  čtvrtletní      
 #> # … with 1 more variable: spatial_coverage <chr>
 get_table("110080")
-#> [1] "/var/folders/c8/pj33jytj233g8vr0tw4b2h7m0000gn/T//Rtmpudrr94/czso/110080/ds_110080.csv"
+#> [1] "/var/folders/c8/pj33jytj233g8vr0tw4b2h7m0000gn/T//Rtmpq8t1uU/czso/110080/ds_110080.csv"
 #> Registered S3 methods overwritten by 'readr':
 #>   method           from 
 #>   format.col_spec  vroom
