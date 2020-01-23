@@ -139,9 +139,9 @@ get_table <- function(dataset_id, resource_num = 1) {
   if(type == "text/csv") {
     action <- "read"
   } else if(type == "application/zip") {
-    utils::unzip(dfile)
-    flist <- list.files(td)
-    if(length(flist) == 1 & tools::file_ext(flist[1] == "csv")) {
+    utils::unzip(dfile, exdir = td)
+    flist <- list.files(td, pattern = "(CSV|csv)$")
+    if((length(flist) == 1) & (tools::file_ext(flist[1]) %in% c("CSV", "csv"))) {
       action <- "read"
     } else if (length < 1) {
       action <- "listmore"
