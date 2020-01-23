@@ -21,13 +21,13 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.org/petrbouchal/czso.svg?branch=master)](https://travis-ci.org/petrbouchal/czso)
 <!-- badges: end -->
 
-The goal of czso is to provide direct, programmatic hassle-free access to open data provided by the Czech Statistical Office (CZSO).
+The goal of czso is to provide direct, programmatic, hassle-free access from R to open data provided by the Czech Statistical Office (CZSO).
 
 This is done by
 
 1. **providing direct access from R to the catalogue of open CZSO datasets**, eliminating the hassle from data discovery. Normally this is done done through [the CZSO's product catalogue](https://www.czso.cz/csu/czso/otevrena-data-v-katalogu-produktu-csu) which is unfortunately a bit clunky, or [data.gov.cz](https://data.gov.cz), which is not a natural starting point for many.
 
-2. **providing a function to load a specific dataset to R** directly from the CZSO's datastore, eliminating the need to copy a URL, unzip etc.
+2. **providing a function to load a specific dataset to R** directly from the CZSO's datastore, eliminating the friction of copying a URL, downloading, unzipping etc.
 
 Additionally, the package provides metadata on datasets.
 
@@ -52,7 +52,13 @@ Imagine you are looking for a dataset whose title refers to wages (mzda/mzdy):
 ```{r example}
 library(czso)
 
+# first, retrieve the list of available CZSO datasets, filtering for mzda/mzdy
 get_catalogue(title_filter = "mzd[ay]")
+```
+
+We can see the `czso_id` for the required dataset - now use it to get the dataset:
+
+```{r example-cont}
 get_table("110080")
 ```
 
@@ -77,7 +83,7 @@ The latter allows you to search through the list - or simply look through it - w
 
 ## See also
 
-This package takes inspiration from 
+This package takes inspiration from the packages
 
 - [eurostat](https://github.com/rOpenGov/eurostat/)
 - [OECD](https://github.com/expersso/OECD)

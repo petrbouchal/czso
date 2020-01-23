@@ -13,8 +13,8 @@ status](https://www.r-pkg.org/badges/version/czso)](https://CRAN.R-project.org/p
 status](https://travis-ci.org/petrbouchal/czso.svg?branch=master)](https://travis-ci.org/petrbouchal/czso)
 <!-- badges: end -->
 
-The goal of czso is to provide direct, programmatic hassle-free access
-to open data provided by the Czech Statistical Office (CZSO).
+The goal of czso is to provide direct, programmatic, hassle-free access
+from R to open data provided by the Czech Statistical Office (CZSO).
 
 This is done by
 
@@ -27,8 +27,8 @@ This is done by
     point for many.
 
 2.  **providing a function to load a specific dataset to R** directly
-    from the CZSO’s datastore, eliminating the need to copy a URL, unzip
-    etc.
+    from the CZSO’s datastore, eliminating the friction of copying a
+    URL, downloading, unzipping etc.
 
 Additionally, the package provides metadata on datasets.
 
@@ -55,6 +55,7 @@ Imagine you are looking for a dataset whose title refers to wages
 ``` r
 library(czso)
 
+# first, retrieve the list of available CZSO datasets, filtering for mzda/mzdy
 get_catalogue(title_filter = "mzd[ay]")
 #> Reading full list of all datasets on data.gov.cz...
 #> Filtering...
@@ -64,6 +65,12 @@ get_catalogue(title_filter = "mzd[ay]")
 #> 1 110080  Český s… Prům… Datová sad… https:… <NA>  roční           
 #> 2 110079  Český s… Zamě… Datová sad… https:… <NA>  čtvrtletní      
 #> # … with 2 more variables: spatial_coverage <chr>, keywords <chr>
+```
+
+We can see the `czso_id` for the required dataset - now use it to get
+the dataset:
+
+``` r
 get_table("110080")
 #> # A tibble: 630 x 14
 #>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
@@ -125,7 +132,7 @@ function which downloads and transforms the underlying data.
 
 ## See also
 
-This package takes inspiration from
+This package takes inspiration from the packages
 
   - [eurostat](https://github.com/rOpenGov/eurostat/)
   - [OECD](https://github.com/expersso/OECD)
