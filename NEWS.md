@@ -1,4 +1,6 @@
-# czso (development version)
+# czso 0.1.1
+
+* fixed error when loading zipped files in `get_table()`
 
 # czso 0.1.0
 
