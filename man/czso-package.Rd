@@ -7,7 +7,7 @@
 \title{czso: Use Open Data from the Czech Statistical Office in R}
 \description{
 czso allows programmatic access to the open data provided by
-    the Czech Statistical Office (CZSO)
+    the Czech Statistical Office (CZSO).
 }
 \seealso{
 Useful links:
