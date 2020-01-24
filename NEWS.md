@@ -1,3 +1,5 @@
+# czso (development version)
+
 # czso 0.1.2
 
 * add per-session caching to `get_catalogue()` and `get_table()`, incl. new `force_redownload` parameter
