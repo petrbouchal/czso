@@ -70,7 +70,7 @@ returning (by default) those accessible through get_table() from the CZSO." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.9000</span>
       </span>
     </div>
 
@@ -124,7 +124,8 @@ returning (by default) those accessible through get_table() from the CZSO.</p>
   <span class='kw'>title_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>description_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>keyword_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>provider_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>provider_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -149,6 +150,10 @@ returning (by default) those accessible through get_table() from the CZSO.</p>
     <tr>
       <th>provider_filter</th>
       <td><p>character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.</p></td>
+    </tr>
+    <tr>
+      <th>force_redownload</th>
+      <td><p>integer. Whether to redownload data source file even if already cached. Defaults to FALSE.</p></td>
     </tr>
     </table>
 
