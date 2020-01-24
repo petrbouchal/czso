@@ -9,7 +9,8 @@ get_catalogue(
   title_filter = NULL,
   description_filter = NULL,
   keyword_filter = NULL,
-  provider_filter = NULL
+  provider_filter = NULL,
+  force_redownload = F
 )
 }
 \arguments{

@@ -1,3 +1,7 @@
+# czso 0.1.2
+
+* add per-session caching to `get_catalogue()` and `get_table()`, incl. new `force_redownload` parameter
+
 # czso 0.1.1
 
 * fixed error when loading zipped files in `get_table()`

@@ -35,13 +35,22 @@ get_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00f
                           title_filter = NULL,
                           description_filter = NULL,
                           keyword_filter = NULL,
-                          provider_filter = NULL)
+                          provider_filter = NULL,
+                          force_redownload = F)
   {
   if(!is.null(provider))
     provider_uni <- stringi::stri_unescape_unicode(provider)
   else provider_uni <- NULL
-  message("Reading full list of all datasets on data.gov.cz...")
-  dslist0 <- suppressWarnings(suppressMessages(vroom::vroom("https://data.gov.cz/soubor/datov%C3%A9-sady.csv",
+  td <- paste(tempdir(), "czso", sep = "/")
+  dir.create(td, showWarnings = F, recursive = T)
+  tf <- paste0(td, "/", "dataset_list.csv")
+  if(file.exists(tf) & !force_redownload) {
+    message(stringr::str_glue("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed."))
+  } else {
+    utils::download.file("https://data.gov.cz/soubor/datov%C3%A9-sady.csv", tf, headers = c('User-Agent' = ua_header))
+  }
+  message("Reading full list of all datasets available on data.gov.cz...")
+  dslist0 <- suppressWarnings(suppressMessages(vroom::vroom(tf,
                           col_types = readr::cols(.default = "c")))) %>%
     dplyr::rename_all(~stringi::stri_trans_general(., "latin-ascii")) %>%
     dplyr::select(provider = poskytovatel,
@@ -123,16 +132,19 @@ get_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' \dontrun{
 #' get_table("110080")
 #' }
-get_table <- function(dataset_id, resource_num = 1) {
+get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
   ptr <- get_resource_pointer(dataset_id)
   url <- ptr$url
   type <- ptr$format
   ext <- tools::file_ext(url)
-  td <- paste0(tempdir(), "/czso/", dataset_id, "/")
-  dir.create(td, recursive = T, showWarnings = F)
-
-  dfile <- paste0(td, "ds_", dataset_id, ".", ext)
-  utils::download.file(url, destfile = dfile, headers = ua_header)
+  td <- paste(tempdir(), "czso", dataset_id, sep = "/")
+  dir.create(td, showWarnings = F, recursive = T)
+  dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
+  if(file.exists(dfile) & !force_redownload) {
+    message(stringr::str_glue("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed."))
+  } else {
+    utils::download.file(url, dfile, headers = c('User-Agent' = ua_header))
+  }
 
   # print(dfile)
 
