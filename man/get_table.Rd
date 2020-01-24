@@ -10,6 +10,8 @@ get_table(dataset_id, resource_num = 1, force_redownload = F)
 \item{dataset_id}{a character. Found in the czso_id column of data frame returned by \code{get_catalogue()}.}
 
 \item{resource_num}{integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.}
+
+\item{force_redownload}{integer. Whether to redownload data source file even if already cached. Defaults to FALSE.}
 }
 \value{
 RETURN_DESCRIPTION

@@ -19,7 +19,7 @@
 #' @param description_filter character, text to use for filtering the set by description. Case sensitive.  Can be a regular expression.
 #' @param keyword_filter character, text to use for filtering the set by keyword. Case sensitive.  Can be a regular expression.
 #' @param provider_filter character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.
-#'
+#' @param force_redownload integer. Whether to redownload data source file even if already cached. Defaults to FALSE.
 #' @return a data frame. If `provider` param is left to default, contains a column called czso_id, which can be used as dataset_id parameter in get_table().
 #' @export
 #' @family Core workflow
@@ -124,6 +124,7 @@ get_resource_pointer <- function(dataset_id, resource_num = 1) {
 #'
 #' @param dataset_id a character. Found in the czso_id column of data frame returned by `get_catalogue()`.
 #' @param resource_num integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.
+#' @param force_redownload integer. Whether to redownload data source file even if already cached. Defaults to FALSE.
 #'
 #' @return RETURN_DESCRIPTION
 #' @export

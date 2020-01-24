@@ -23,6 +23,8 @@ get_catalogue(
 \item{keyword_filter}{character, text to use for filtering the set by keyword. Case sensitive.  Can be a regular expression.}
 
 \item{provider_filter}{character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.}
+
+\item{force_redownload}{integer. Whether to redownload data source file even if already cached. Defaults to FALSE.}
 }
 \value{
 a data frame. If \code{provider} param is left to default, contains a column called czso_id, which can be used as dataset_id parameter in get_table().
