@@ -25,13 +25,13 @@
 #' @family Core workflow
 #' @examples
 #' \dontrun{
-#' get_catalogue()
-#' get_catalogue(NULL)
-#' get_catalogue(title_filter == "[Mm]zd[ay]")
-#' get_catalogue(provider == "Ministerstvo vnitra")
-#' get_catalogue(provider_filter == "[Mm]inisterstvo")
+#' get_czso_catalogue()
+#' get_czso_catalogue(NULL)
+#' get_czso_catalogue(title_filter == "[Mm]zd[ay]")
+#' get_czso_catalogue(provider == "Ministerstvo vnitra")
+#' get_czso_catalogue(provider_filter == "[Mm]inisterstvo")
 #' }
-get_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad",
+get_czso_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad",
                           title_filter = NULL,
                           description_filter = NULL,
                           keyword_filter = NULL,
@@ -97,19 +97,44 @@ get_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00f
   return(dslist)
 }
 
-get_dataset_metadata <- function(dataset_id) {
+#' Deprecated: Retrieve and read dataset from CZSO
+#'
+#' Deprecated, use `get_czso_catalogue()` instead.
+#'
+#' @inheritParams get_czso_catalogue
+#'
+#' @return a tibble
+#' @examples
+#' # see `get_czso_catalogue()`
+#' @export
+get_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad",
+                          title_filter = NULL,
+                          description_filter = NULL,
+                          keyword_filter = NULL,
+                          provider_filter = NULL,
+                          force_redownload = F) {
+  .Deprecated("get_czso_catalogue")
+  get_czso_catalogue(provider = provider,
+                 title_filter = title_filter,
+                 description_filter = description_filter,
+                 keyword_filter = keyword_filter,
+                 provider_filter = provider_filter,
+                 force_redownload = force_redownload)
+}
+
+get_czso_dataset_metadata <- function(dataset_id) {
   url <- paste0("https://vdb.czso.cz/pll/eweb/package_show?id=", dataset_id)
   mtdt <- jsonlite::fromJSON(url)
   return(mtdt)
 }
 
-get_resources <- function(dataset_id) {
-  mtdt <- get_dataset_metadata(dataset_id)
+get_czso_resources <- function(dataset_id) {
+  mtdt <- get_czso_dataset_metadata(dataset_id)
   return(mtdt$result$resources)
 }
 
-get_resource_pointer <- function(dataset_id, resource_num = 1) {
-  rsrc <- get_resources(dataset_id)[resource_num,] %>%
+get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
+  rsrc <- get_czso_resources(dataset_id)[resource_num,] %>%
     dplyr::select(url, format, meta_link = describedBy, meta_format = describedByType)
   return(rsrc)
 }
@@ -126,15 +151,15 @@ get_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' @param resource_num integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.
 #' @param force_redownload integer. Whether to redownload data source file even if already cached. Defaults to FALSE.
 #'
-#' @return RETURN_DESCRIPTION
+#' @return a tibble
 #' @export
 #' @family Core workflow
 #' @examples
 #' \dontrun{
-#' get_table("110080")
+#' get_czso_table("110080")
 #' }
-get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
-  ptr <- get_resource_pointer(dataset_id)
+get_czso_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
+  ptr <- get_czso_resource_pointer(dataset_id)
   url <- ptr$url
   type <- ptr$format
   ext <- tools::file_ext(url)
@@ -186,13 +211,31 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
   return(rtrn)
 }
 
-get_table_schema <- function(dataset_id, resource_num = 1) {
-  ptr <- get_resource_pointer(dataset_id)[, resource_num]
+
+#' Deprecated: Retrieve and read dataset from CZSO
+#'
+#' Deprecated, use `get_czso_table()` instead.
+#'
+#' @inheritParams get_czso_table
+#'
+#' @return a tibble
+#' @examples
+#' # see `get_czso_table()`
+#' @export
+get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
+  .Deprecated("get_czso_table")
+  get_czso_table(dataset_id = dataset_id,
+                 resource_num = resource_num,
+                 force_redownload = force_redownload)
+}
+
+get_czso_table_schema <- function(dataset_id, resource_num = 1) {
+  ptr <- get_czso_resource_pointer(dataset_id)[, resource_num]
   url <- ptr$url
   type <- ptr$type
 
 }
 
-get_table_doc <- function(dataset_id, resource_num = 1) {
+get_czso_table_doc <- function(dataset_id, resource_num = 1) {
 
 }

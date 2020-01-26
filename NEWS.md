@@ -1,5 +1,9 @@
 # czso (development version)
 
+## Deprecated functions
+
+* both exported functions are renamed to `get_czso_catalogue()` and `get_czso_table()` to avoid clashes with other packages; original functions are soft-deprecated and will be removed in future versions.
+
 # czso 0.1.2
 
 * add per-session caching to `get_catalogue()` and `get_table()`, incl. new `force_redownload` parameter

@@ -53,13 +53,13 @@ Imagine you are looking for a dataset whose title refers to wages (mzda/mzdy):
 library(czso)
 
 # first, retrieve the list of available CZSO datasets, filtering for mzda/mzdy
-get_catalogue(title_filter = "mzd[ay]")
+get_czso_catalogue(title_filter = "mzd[ay]")
 ```
 
 We can see the `czso_id` for the required dataset - now use it to get the dataset:
 
 ```{r example-cont}
-get_table("110080")
+get_czso_table("110080")
 ```
 
 Alternatively, you could store the whole CZSO catalogue in an object and filter yourself. This is especially useful if you expect to need multiple tries.
@@ -67,7 +67,7 @@ Alternatively, you could store the whole CZSO catalogue in an object and filter 
 ```{r example-alt}
 library(dplyr, warn.conflicts = F)
 library(stringr, warn.conflicts = F)
-catalogue <- get_catalogue()
+catalogue <- get_czso_catalogue()
 
 catalogue %>% 
   filter(str_detect(title, "mzda"))

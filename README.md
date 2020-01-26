@@ -56,22 +56,20 @@ Imagine you are looking for a dataset whose title refers to wages
 library(czso)
 
 # first, retrieve the list of available CZSO datasets, filtering for mzda/mzdy
-get_catalogue(title_filter = "mzd[ay]")
-#> Reading full list of all datasets on data.gov.cz...
+get_czso_catalogue(title_filter = "mzd[ay]")
+#> Reading full list of all datasets available on data.gov.cz...
 #> Filtering...
-#> # A tibble: 2 x 9
-#>   czso_id provider title description dataset topic update_frequency
-#>   <chr>   <chr>    <chr> <chr>       <chr>   <chr> <chr>           
-#> 1 110080  Český s… Prům… Datová sad… https:… <NA>  roční           
-#> 2 110079  Český s… Zamě… Datová sad… https:… <NA>  čtvrtletní      
-#> # … with 2 more variables: spatial_coverage <chr>, keywords <chr>
+#> # A tibble: 0 x 9
+#> # … with 9 variables: czso_id <chr>, provider <chr>, title <chr>,
+#> #   description <chr>, dataset <chr>, topic <chr>, update_frequency <chr>,
+#> #   spatial_coverage <chr>, keywords <chr>
 ```
 
 We can see the `czso_id` for the required dataset - now use it to get
 the dataset:
 
 ``` r
-get_table("110080")
+get_czso_table("110080")
 #> # A tibble: 630 x 14
 #>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
 #>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
@@ -97,17 +95,17 @@ multiple tries.
 ``` r
 library(dplyr, warn.conflicts = F)
 library(stringr, warn.conflicts = F)
-catalogue <- get_catalogue()
-#> Reading full list of all datasets on data.gov.cz...
+catalogue <- get_czso_catalogue()
+#> File already in /var/folders/c8/pj33jytj233g8vr0tw4b2h7m0000gn/T//RtmpypkVs8/czso, not downloading. Set `force_redownload` to TRUE if needed.
+#> Reading full list of all datasets available on data.gov.cz...
 #> Filtering...
 
 catalogue %>% 
   filter(str_detect(title, "mzda"))
-#> # A tibble: 1 x 9
-#>   czso_id provider title description dataset topic update_frequency
-#>   <chr>   <chr>    <chr> <chr>       <chr>   <chr> <chr>           
-#> 1 110080  Český s… Prům… Datová sad… https:… <NA>  roční           
-#> # … with 2 more variables: spatial_coverage <chr>, keywords <chr>
+#> # A tibble: 0 x 9
+#> # … with 9 variables: czso_id <chr>, provider <chr>, title <chr>,
+#> #   description <chr>, dataset <chr>, topic <chr>, update_frequency <chr>,
+#> #   spatial_coverage <chr>, keywords <chr>
 ```
 
 The latter allows you to search through the list - or simply look

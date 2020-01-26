@@ -2,7 +2,7 @@
 % Please edit documentation in R/core.R
 \name{get_table}
 \alias{get_table}
-\title{Retrieve and read dataset from CZSO}
+\title{Deprecated: Retrieve and read dataset from CZSO}
 \usage{
 get_table(dataset_id, resource_num = 1, force_redownload = F)
 }
@@ -14,24 +14,11 @@ get_table(dataset_id, resource_num = 1, force_redownload = F)
 \item{force_redownload}{integer. Whether to redownload data source file even if already cached. Defaults to FALSE.}
 }
 \value{
-RETURN_DESCRIPTION
+a tibble
 }
 \description{
-Downloads and reads dataset identified by \code{dataset_id}. Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.
-}
-\details{
-\subsection{Nota bene}{
-
-Do not use this for harvesting datasets from CZSO en masse.
-}
+Deprecated, use \code{get_czso_table()} instead.
 }
 \examples{
-\dontrun{
-get_table("110080")
+# see `get_czso_table()`
 }
-}
-\seealso{
-Other Core workflow: 
-\code{\link{get_catalogue}()}
-}
-\concept{Core workflow}

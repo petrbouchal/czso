@@ -2,7 +2,7 @@
 % Please edit documentation in R/core.R
 \name{get_catalogue}
 \alias{get_catalogue}
-\title{Get catalogue of open CZSO datasets}
+\title{Deprecated: Retrieve and read dataset from CZSO}
 \usage{
 get_catalogue(
   provider = "\\\\u010cesk\\\\u00fd statistick\\\\u00fd \\\\u00fa\\\\u0159ad",
@@ -27,34 +27,11 @@ get_catalogue(
 \item{force_redownload}{integer. Whether to redownload data source file even if already cached. Defaults to FALSE.}
 }
 \value{
-a data frame. If \code{provider} param is left to default, contains a column called czso_id, which can be used as dataset_id parameter in get_table().
+a tibble
 }
 \description{
-Downloads and processes a list of all registered Czech open data datasets,
-returning (by default) those accessible through get_table() from the CZSO.
-}
-\details{
-If \code{provider} is NULL, returns the whole list, without CZSO-specific identifier
-usable in \code{get_table()}.
-
-If \code{provider} is left unset, returns data frame listing CZSO's datasets, with a
-\code{czso_id} column usable in \code{get_table}.
-
-Other values of \code{provider} must be exact matches. Use \code{provider_filter} for text/regex matching.
-
-All \verb{*_filter} arguments are case sensitive and can be regular expressions.
+Deprecated, use \code{get_czso_catalogue()} instead.
 }
 \examples{
-\dontrun{
-get_catalogue()
-get_catalogue(NULL)
-get_catalogue(title_filter == "[Mm]zd[ay]")
-get_catalogue(provider == "Ministerstvo vnitra")
-get_catalogue(provider_filter == "[Mm]inisterstvo")
+# see `get_czso_catalogue()`
 }
-}
-\seealso{
-Other Core workflow: 
-\code{\link{get_table}()}
-}
-\concept{Core workflow}

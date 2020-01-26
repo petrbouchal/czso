@@ -2,5 +2,7 @@
 
 export("%>%")
 export(get_catalogue)
+export(get_czso_catalogue)
+export(get_czso_table)
 export(get_table)
 importFrom(magrittr,"%>%")
