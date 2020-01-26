@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get catalogue of open CZSO datasets — get_catalogue • czso</title>
+<title>Deprecated: Retrieve and read dataset from CZSO — get_catalogue • czso</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -35,9 +42,9 @@
 
 
 
-<meta property="og:title" content="Get catalogue of open CZSO datasets — get_catalogue" />
-<meta property="og:description" content="Downloads and processes a list of all registered Czech open data datasets,
-returning (by default) those accessible through get_table() from the CZSO." />
+<meta property="og:title" content="Deprecated: Retrieve and read dataset from CZSO — get_catalogue" />
+<meta property="og:description" content="Deprecated, use get_czso_catalogue() instead." />
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,14 +116,13 @@ returning (by default) those accessible through get_table() from the CZSO." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get catalogue of open CZSO datasets</h1>
+    <h1>Deprecated: Retrieve and read dataset from CZSO</h1>
     <small class="dont-index">Source: <a href='https://github.com/petrbouchal/czso/blob/master/R/core.R'><code>R/core.R</code></a></small>
     <div class="hidden name"><code>get_catalogue.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Downloads and processes a list of all registered Czech open data datasets,
-returning (by default) those accessible through get_table() from the CZSO.</p>
+    <p>Deprecated, use <code><a href='get_czso_catalogue.html'>get_czso_catalogue()</a></code> instead.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_catalogue</span>(
@@ -159,36 +165,17 @@ returning (by default) those accessible through get_table() from the CZSO.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data frame. If <code>provider</code> param is left to default, contains a column called czso_id, which can be used as dataset_id parameter in get_table().</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>If <code>provider</code> is NULL, returns the whole list, without CZSO-specific identifier
-usable in <code><a href='get_table.html'>get_table()</a></code>.</p>
-<p>If <code>provider</code> is left unset, returns data frame listing CZSO's datasets, with a
-<code>czso_id</code> column usable in <code>get_table</code>.</p>
-<p>Other values of <code>provider</code> must be exact matches. Use <code>provider_filter</code> for text/regex matching.</p>
-<p>All <code>*_filter</code> arguments are case sensitive and can be regular expressions.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Core workflow: 
-<code><a href='get_table.html'>get_table</a>()</code></p></div>
+    <p>a tibble</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_catalogue</span>()
-<span class='fu'>get_catalogue</span>(<span class='kw'>NULL</span>)
-<span class='fu'>get_catalogue</span>(<span class='no'>title_filter</span> <span class='kw'>==</span> <span class='st'>"[Mm]zd[ay]"</span>)
-<span class='fu'>get_catalogue</span>(<span class='no'>provider</span> <span class='kw'>==</span> <span class='st'>"Ministerstvo vnitra"</span>)
-<span class='fu'>get_catalogue</span>(<span class='no'>provider_filter</span> <span class='kw'>==</span> <span class='st'>"[Mm]inisterstvo"</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'># see `get_czso_catalogue()`
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

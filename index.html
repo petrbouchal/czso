@@ -6,13 +6,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Use Open Data from the Czech Statistical Office in R • czso</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Use Open Data from the Czech Statistical Office in R">
-<meta property="og:description" content="czso allows programmatic access to the open data provided by
-    the Czech Statistical Office (CZSO).">
+<meta property="og:description" content="Get programmatic access to the open data provided by the
+    Czech Statistical Office (CZSO).">
+<meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -72,7 +79,8 @@
   <div class="contents col-md-9">
 <div id="czso" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#czso" class="anchor"></a>czso</h1></div>
+<a href="#czso" class="anchor"></a>czso <img src="reference/figures/logo.png" align="right" height="138">
+</h1></div>
 <!-- badges: start -->
 
 <p>The goal of czso is to provide direct, programmatic, hassle-free access from R to open data provided by the Czech Statistical Office (CZSO).</p>
@@ -97,17 +105,15 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(czso)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># first, retrieve the list of available CZSO datasets, filtering for mzda/mzdy</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="reference/get_catalogue.html">get_catalogue</a></span>(<span class="dt">title_filter =</span> <span class="st">"mzd[ay]"</span>)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Reading full list of all datasets on data.gov.cz...</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="reference/get_czso_catalogue.html">get_czso_catalogue</a></span>(<span class="dt">title_filter =</span> <span class="st">"mzd[ay]"</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Reading full list of all datasets available on data.gov.cz...</span></a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; Filtering...</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; # A tibble: 2 x 9</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;   czso_id provider title description dataset topic update_frequency</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;           </span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 1 110080  Český s… Prům… Datová sad… https:… &lt;NA&gt;  roční           </span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 2 110079  Český s… Zamě… Datová sad… https:… &lt;NA&gt;  čtvrtletní      </span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; # … with 2 more variables: spatial_coverage &lt;chr&gt;, keywords &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; # A tibble: 0 x 9</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; # … with 9 variables: czso_id &lt;chr&gt;, provider &lt;chr&gt;, title &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; #   description &lt;chr&gt;, dataset &lt;chr&gt;, topic &lt;chr&gt;, update_frequency &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; #   spatial_coverage &lt;chr&gt;, keywords &lt;chr&gt;</span></a></code></pre></div>
 <p>We can see the <code>czso_id</code> for the required dataset - now use it to get the dataset:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/get_table.html">get_table</a></span>(<span class="st">"110080"</span>)</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/get_czso_table.html">get_czso_table</a></span>(<span class="st">"110080"</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 630 x 14</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span></a>
@@ -127,17 +133,17 @@
 <p>Alternatively, you could store the whole CZSO catalogue in an object and filter yourself. This is especially useful if you expect to need multiple tries.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr, <span class="dt">warn.conflicts =</span> F)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr, <span class="dt">warn.conflicts =</span> F)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">catalogue &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_catalogue.html">get_catalogue</a></span>()</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; Reading full list of all datasets on data.gov.cz...</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; Filtering...</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">catalogue <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span>(title, <span class="st">"mzda"</span>))</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; # A tibble: 1 x 9</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;   czso_id provider title description dataset topic update_frequency</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;           </span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 1 110080  Český s… Prům… Datová sad… https:… &lt;NA&gt;  roční           </span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; # … with 2 more variables: spatial_coverage &lt;chr&gt;, keywords &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-3" data-line-number="3">catalogue &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_czso_catalogue.html">get_czso_catalogue</a></span>()</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; File already in /var/folders/c8/pj33jytj233g8vr0tw4b2h7m0000gn/T//RtmpypkVs8/czso, not downloading. Set `force_redownload` to TRUE if needed.</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; Reading full list of all datasets available on data.gov.cz...</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Filtering...</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">catalogue <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span>(title, <span class="st">"mzda"</span>))</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; # A tibble: 0 x 9</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; # … with 9 variables: czso_id &lt;chr&gt;, provider &lt;chr&gt;, title &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; #   description &lt;chr&gt;, dataset &lt;chr&gt;, topic &lt;chr&gt;, update_frequency &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; #   spatial_coverage &lt;chr&gt;, keywords &lt;chr&gt;</span></a></code></pre></div>
 <p>The latter allows you to search through the list - or simply look through it - without the overhead of reusing the <code>get_dataset()</code> function which downloads and transforms the underlying data.</p>
 </div>
 <div id="credit-and-notes" class="section level2">

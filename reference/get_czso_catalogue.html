@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Deprecated: Retrieve and read dataset from CZSO — get_table • czso</title>
+<title>Get catalogue of open CZSO datasets — get_czso_catalogue • czso</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,9 @@
 
 
 
-<meta property="og:title" content="Deprecated: Retrieve and read dataset from CZSO — get_table" />
-<meta property="og:description" content="Deprecated, use get_czso_table() instead." />
+<meta property="og:title" content="Get catalogue of open CZSO datasets — get_czso_catalogue" />
+<meta property="og:description" content="Downloads and processes a list of all registered Czech open data datasets,
+returning (by default) those accessible through get_table() from the CZSO." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,27 +117,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Deprecated: Retrieve and read dataset from CZSO</h1>
+    <h1>Get catalogue of open CZSO datasets</h1>
     <small class="dont-index">Source: <a href='https://github.com/petrbouchal/czso/blob/master/R/core.R'><code>R/core.R</code></a></small>
-    <div class="hidden name"><code>get_table.Rd</code></div>
+    <div class="hidden name"><code>get_czso_catalogue.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Deprecated, use <code><a href='get_czso_table.html'>get_czso_table()</a></code> instead.</p>
+    <p>Downloads and processes a list of all registered Czech open data datasets,
+returning (by default) those accessible through get_table() from the CZSO.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_table</span>(<span class='no'>dataset_id</span>, <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>)</pre>
+    <pre class="usage"><span class='fu'>get_czso_catalogue</span>(
+  <span class='kw'>provider</span> <span class='kw'>=</span> <span class='st'>"\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad"</span>,
+  <span class='kw'>title_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>description_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>keyword_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>provider_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dataset_id</th>
-      <td><p>a character. Found in the czso_id column of data frame returned by <code><a href='get_catalogue.html'>get_catalogue()</a></code>.</p></td>
+      <th>provider</th>
+      <td><p>character, can be of length &gt; 1. Provider to select for. Defaults to (the Czech name of) CZSO. Must be exact match. If set to NULL, returns full list of all datasets.</p></td>
     </tr>
     <tr>
-      <th>resource_num</th>
-      <td><p>integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.</p></td>
+      <th>title_filter</th>
+      <td><p>character, text to use for filtering the set by title. Case sensitive. Can be a regular expression.</p></td>
+    </tr>
+    <tr>
+      <th>description_filter</th>
+      <td><p>character, text to use for filtering the set by description. Case sensitive.  Can be a regular expression.</p></td>
+    </tr>
+    <tr>
+      <th>keyword_filter</th>
+      <td><p>character, text to use for filtering the set by keyword. Case sensitive.  Can be a regular expression.</p></td>
+    </tr>
+    <tr>
+      <th>provider_filter</th>
+      <td><p>character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.</p></td>
     </tr>
     <tr>
       <th>force_redownload</th>
@@ -146,17 +167,36 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble</p>
+    <p>a data frame. If <code>provider</code> param is left to default, contains a column called czso_id, which can be used as dataset_id parameter in get_table().</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>If <code>provider</code> is NULL, returns the whole list, without CZSO-specific identifier
+usable in <code><a href='get_table.html'>get_table()</a></code>.</p>
+<p>If <code>provider</code> is left unset, returns data frame listing CZSO's datasets, with a
+<code>czso_id</code> column usable in <code>get_table</code>.</p>
+<p>Other values of <code>provider</code> must be exact matches. Use <code>provider_filter</code> for text/regex matching.</p>
+<p>All <code>*_filter</code> arguments are case sensitive and can be regular expressions.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Core workflow: 
+<code><a href='get_czso_table.html'>get_czso_table</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># see `get_czso_table()`
-</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>get_czso_catalogue</span>()
+<span class='fu'>get_czso_catalogue</span>(<span class='kw'>NULL</span>)
+<span class='fu'>get_czso_catalogue</span>(<span class='kw'>title_filter</span> <span class='kw'>=</span> <span class='st'>"[Mm]zd[ay]"</span>)
+<span class='fu'>get_czso_catalogue</span>(<span class='kw'>provider</span> <span class='kw'>=</span> <span class='st'>"Ministerstvo vnitra"</span>)
+<span class='fu'>get_czso_catalogue</span>(<span class='kw'>provider_filter</span> <span class='kw'>=</span> <span class='st'>"[Mm]inisterstvo"</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
