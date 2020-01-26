@@ -48,9 +48,9 @@ All \verb{*_filter} arguments are case sensitive and can be regular expressions.
 \dontrun{
 get_czso_catalogue()
 get_czso_catalogue(NULL)
-get_czso_catalogue(title_filter == "[Mm]zd[ay]")
-get_czso_catalogue(provider == "Ministerstvo vnitra")
-get_czso_catalogue(provider_filter == "[Mm]inisterstvo")
+get_czso_catalogue(title_filter = "[Mm]zd[ay]")
+get_czso_catalogue(provider = "Ministerstvo vnitra")
+get_czso_catalogue(provider_filter = "[Mm]inisterstvo")
 }
 }
 \seealso{

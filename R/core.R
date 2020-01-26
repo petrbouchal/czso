@@ -27,9 +27,9 @@
 #' \dontrun{
 #' get_czso_catalogue()
 #' get_czso_catalogue(NULL)
-#' get_czso_catalogue(title_filter == "[Mm]zd[ay]")
-#' get_czso_catalogue(provider == "Ministerstvo vnitra")
-#' get_czso_catalogue(provider_filter == "[Mm]inisterstvo")
+#' get_czso_catalogue(title_filter = "[Mm]zd[ay]")
+#' get_czso_catalogue(provider = "Ministerstvo vnitra")
+#' get_czso_catalogue(provider_filter = "[Mm]inisterstvo")
 #' }
 get_czso_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad",
                           title_filter = NULL,
