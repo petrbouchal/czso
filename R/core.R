@@ -47,7 +47,7 @@ get_czso_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \
   if(file.exists(tf) & !force_redownload) {
     message(stringr::str_glue("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed."))
   } else {
-    utils::download.file("https://data.gov.cz/soubor/datov%C3%A9-sady.csv", tf, headers = c('User-Agent' = ua_header))
+    utils::download.file("https://data.gov.cz/soubor/datov%C3%A9-sady.csv", tf, headers = ua_header)
   }
   message("Reading full list of all datasets available on data.gov.cz...")
   dslist0 <- suppressWarnings(suppressMessages(vroom::vroom(tf,
@@ -169,7 +169,7 @@ get_czso_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
   if(file.exists(dfile) & !force_redownload) {
     message(stringr::str_glue("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed."))
   } else {
-    utils::download.file(url, dfile, headers = c('User-Agent' = ua_header))
+    utils::download.file(url, dfile, headers = ua_header)
   }
 
   # print(dfile)
