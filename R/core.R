@@ -50,7 +50,7 @@ get_czso_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \
     utils::download.file("https://data.gov.cz/soubor/datov%C3%A9-sady.csv", tf, headers = ua_header)
   }
   message("Reading full list of all datasets available on data.gov.cz...")
-  dslist0 <- suppressWarnings(suppressMessages(vroom::vroom(tf,
+  dslist0 <- suppressWarnings(suppressMessages(vroom::vroom(tf, num_threads = 1,
                           col_types = readr::cols(.default = "c")))) %>%
     dplyr::rename_all(~stringi::stri_trans_general(., "latin-ascii")) %>%
     dplyr::select(provider = poskytovatel,
