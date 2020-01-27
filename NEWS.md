@@ -1,5 +1,7 @@
 # czso (development version)
 
+* relaxed stringi version requirement to make Win build work
+
 # czso 0.1.3
 
 ## Deprecated functions
