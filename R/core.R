@@ -196,6 +196,7 @@ get_czso_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
           read = {
             dt <- suppressWarnings(suppressMessages(readr::read_csv(dfile, col_types = readr::cols(.default = "c",
                                                                  rok = "i",
+                                                                 casref_do = "T",
                                                                  ctvrtleti = "i",
                                                                  hodnota = "d"))))
             rtrn <- dt
