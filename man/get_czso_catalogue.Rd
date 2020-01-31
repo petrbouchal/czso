@@ -43,6 +43,8 @@ If \code{provider} is left unset, returns data frame listing CZSO's datasets, wi
 Other values of \code{provider} must be exact matches. Use \code{provider_filter} for text/regex matching.
 
 All \verb{*_filter} arguments are case sensitive and can be regular expressions.
+
+Original data: https://data.gov.cz/soubor/datov\%C3\%A9-sady.csv
 }
 \examples{
 \dontrun{

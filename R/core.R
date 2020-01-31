@@ -14,6 +14,8 @@
 #'
 #' All `*_filter` arguments are case sensitive and can be regular expressions.
 #'
+#' Original data: https://data.gov.cz/soubor/datov%C3%A9-sady.csv
+#'
 #' @param provider character, can be of length > 1. Provider to select for. Defaults to (the Czech name of) CZSO. Must be exact match. If set to NULL, returns full list of all datasets.
 #' @param title_filter character, text to use for filtering the set by title. Case sensitive. Can be a regular expression.
 #' @param description_filter character, text to use for filtering the set by description. Case sensitive.  Can be a regular expression.
