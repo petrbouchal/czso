@@ -10,6 +10,9 @@ addons:
     packages:
       - libmagick++-dev
       - libudunits2-dev
+      - libgdal-dev
+      - libgeos-dev
+      - libproj-dev
 
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 
