@@ -1,9 +1,25 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
-cache: packages
+
+addons:
+  apt:
+    update: true
+    sources:
+      - sourceline: 'ppa:opencpu/imagemagick'
+    packages:
+      - libmagick++-dev
 
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+
+cache:
+  directories:
+  - $HOME/.local/share/renv
+  - $TRAVIS_BUILD_DIR/renv/library
+
+install:
+  - Rscript -e "renv::restore()"
+
 deploy:
   provider: script
   script: Rscript -e 'pkgdown::deploy_site_github()'
