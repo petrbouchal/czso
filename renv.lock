@@ -118,10 +118,10 @@
     },
     "callr": {
       "Package": "callr",
-      "Version": "3.4.0",
+      "Version": "3.3.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f73f76ba9c2c23cbe3a7657f7411ddc4"
+      "Hash": "b3c10a6b94482a227ba11e245c194884"
     },
     "cellranger": {
       "Package": "cellranger",
