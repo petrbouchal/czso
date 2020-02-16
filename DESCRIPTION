@@ -6,13 +6,14 @@ Authors@R:
            family = "Bouchal",
            role = c("aut", "cre"),
            email = "pbouchal@gmail.com")
-Description: Get programmatic access to the open data provided
-    by the Czech Statistical Office (CZSO).
+Description: Get programmatic access to the open data provided by the
+    Czech Statistical Office (CZSO).
 License: MIT + file LICENSE
 URL: https://github.com/petrbouchal/czso
 BugReports: https://github.com/petrbouchal/czso/issues
 Imports: 
     dplyr (>= 0.8.3),
+    httr (>= 1.4.1),
     jsonlite (>= 1.6),
     lifecycle,
     magrittr,
