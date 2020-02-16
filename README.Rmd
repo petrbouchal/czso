@@ -90,3 +90,9 @@ This package takes inspiration from the packages
 
 which are very useful in their own right - much recommended.
 
+For Czech geospatial data, see [CzechData](https://github.com/JanCaha/CzechData/) by [JanCaha](https://github.com/JanCaha/).
+
+For Czech fiscal data, see [statnipokladna](https://github.com/petrbouchal/statnipokladna).
+
+For access to some of Prague's open geospatial data in R, see [pragr](https://github.com/petrbouchal/pragr).
+

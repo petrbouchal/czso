@@ -59,10 +59,12 @@ library(czso)
 get_czso_catalogue(title_filter = "mzd[ay]")
 #> Reading full list of all datasets available on data.gov.cz...
 #> Filtering...
-#> # A tibble: 0 x 9
-#> # … with 9 variables: czso_id <chr>, provider <chr>, title <chr>,
-#> #   description <chr>, dataset <chr>, topic <chr>, update_frequency <chr>,
-#> #   spatial_coverage <chr>, keywords <chr>
+#> # A tibble: 2 x 9
+#>   czso_id provider title description dataset topic update_frequency
+#>   <chr>   <chr>    <chr> <chr>       <chr>   <chr> <chr>           
+#> 1 110079  Český s… Zamě… Datová sad… https:… <NA>  čtvrtletní      
+#> 2 110080  Český s… Prům… Datová sad… https:… <NA>  roční           
+#> # … with 2 more variables: spatial_coverage <chr>, keywords <chr>
 ```
 
 We can see the `czso_id` for the required dataset - now use it to get
@@ -102,10 +104,11 @@ catalogue <- get_czso_catalogue()
 
 catalogue %>% 
   filter(str_detect(title, "mzda"))
-#> # A tibble: 0 x 9
-#> # … with 9 variables: czso_id <chr>, provider <chr>, title <chr>,
-#> #   description <chr>, dataset <chr>, topic <chr>, update_frequency <chr>,
-#> #   spatial_coverage <chr>, keywords <chr>
+#> # A tibble: 1 x 9
+#>   czso_id provider title description dataset topic update_frequency
+#>   <chr>   <chr>    <chr> <chr>       <chr>   <chr> <chr>           
+#> 1 110080  Český s… Prům… Datová sad… https:… <NA>  roční           
+#> # … with 2 more variables: spatial_coverage <chr>, keywords <chr>
 ```
 
 The latter allows you to search through the list - or simply look
@@ -136,3 +139,13 @@ This package takes inspiration from the packages
   - [OECD](https://github.com/expersso/OECD)
 
 which are very useful in their own right - much recommended.
+
+For Czech geospatial data, see
+[CzechData](https://github.com/JanCaha/CzechData/) by
+[JanCaha](https://github.com/JanCaha/).
+
+For Czech fiscal data, see
+[statnipokladna](https://github.com/petrbouchal/statnipokladna).
+
+For access to some of Prague’s open geospatial data in R, see
+[pragr](https://github.com/petrbouchal/pragr).
