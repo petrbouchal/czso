@@ -21,6 +21,7 @@ Imports:
     stringi (>= 1.4.4),
     stringr (>= 1.4.0),
     tools (>= 3.6.0),
+    usethis (>= 1.5.1.9000),
     utils (>= 3.6.0),
     vroom (>= 1.0.2)
 RdMacros: 
