@@ -1,2 +1,10 @@
 destination: docs
 url: https://petrbouchal.github.io/czso
+template:
+  params:
+    ganalytics: UA-156460113-4
+reference:
+- title: Core workflow
+  desc:  Functions for executing the core workflow.
+  contents:
+  - has_concept("Core workflow")
