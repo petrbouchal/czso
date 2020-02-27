@@ -36,7 +36,7 @@ get_czso_catalogue_s <- function() {
        OPTIONAL {{ ?dataset_iri dcterms:modified ?modified .}}
        OPTIONAL {{ ?dataset_iri dcat:keyword ?keywords_all .}}
        OPTIONAL {{ ?dataset_iri dcterms:accrualPeriodicity ?periodicity .}}
-       OPTIONAL {{ ?dataset_iri <https://data.gov.cz/slovník/nkod/accrualPeriodicity> ?periodicity_abb .}}
+       OPTIONAL {{ ?dataset_iri <https://data.gov.cz/slovn\\u00edk/nkod/accrualPeriodicity> ?periodicity_abb .}}
 
        ?publisher foaf:name ?provider .
 
