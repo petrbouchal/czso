@@ -51,7 +51,7 @@ get_czso_catalogue_s <- function() {
        FILTER(lang(?keywords_all) = \"cs\")
        FILTER(lang(?title) = \"cs\")
      }}
-  }}")
+  }}") %>% stringi::stri_unescape_unicode()
 
   params = list(`default-graph-uri` = "",
                 query = sparqlquery_datasets_byczso,
