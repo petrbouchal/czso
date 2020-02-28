@@ -74,7 +74,7 @@ get_czso_catalogue <- function() {
                 timeout = 30000,
                 debug = "on",
                 run = "Run Query")
-  usethis::ui_info("Downloading")
+  usethis::ui_info("Reading data from data.gov.cz")
   cat_rslt <- httr::GET(sparql_url, query = params,
                         # accept("application/sparql-results+json"),
                         httr::user_agent(ua_string),
@@ -83,13 +83,13 @@ get_czso_catalogue <- function() {
 
   # print(params$query)
 
-  usethis::ui_info("Reading data")
   if(httr::status_code(cat_rslt) > 200) {
     print(httr::http_status(cat_rslt))
     rslt <- httr::content(cat_rslt, as = "text")
   } else
     rslt <- cat_rslt %>% httr::content(as = "text")
   rslt <- readr::read_csv(rslt, col_types = readr::cols(modified = "T"))
+  usethis::ui_done("Done downloading and reading data")
   usethis::ui_info("Transforming data")
   rslt <- dplyr::group_by(rslt, dataset_iri) %>%
     dplyr::mutate(keywords = stringr::str_c(keywords_all, collapse = "; ")) %>%
@@ -173,7 +173,7 @@ get_czso_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
   dir.create(td, showWarnings = F, recursive = T)
   dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
   if(file.exists(dfile) & !force_redownload) {
-    message(stringr::str_glue("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed."))
+    usethis::ui_info("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed.")
   } else {
     utils::download.file(url, dfile, headers = ua_header)
   }
