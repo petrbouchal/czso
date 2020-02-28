@@ -14,12 +14,15 @@ get_czso_table(dataset_id, force_redownload = F, resource_num = 1)
 \item{resource_num}{integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.}
 }
 \value{
-a tibble
+a tibble, or vector of file paths if file is not CSV or if there are multiple
 }
 \description{
-Downloads and reads dataset identified by \code{dataset_id}. Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.
+Downloads and reads dataset identified by \code{dataset_id}.
+Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.
+Converts types of columns where known, e.g. value columns to numeric.
 }
 \details{
+The schema of the dataset is not yet used, so some columns may be mistyped and are by default returned as character vectors.
 \subsection{Nota bene}{
 
 Do not use this for harvesting datasets from CZSO en masse.

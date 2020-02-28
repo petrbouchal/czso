@@ -147,7 +147,11 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 
 #' Retrieve and read dataset from CZSO
 #'
-#' Downloads and reads dataset identified by `dataset_id`. Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.
+#' Downloads and reads dataset identified by `dataset_id`.
+#' Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.
+#' Converts types of columns where known, e.g. value columns to numeric.
+#'
+#' The schema of the dataset is not yet used, so some columns may be mistyped and are by default returned as character vectors.
 #'
 #' ## Nota bene
 #'
@@ -157,7 +161,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' @param resource_num integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.
 #' @param force_redownload integer. Whether to redownload data source file even if already cached. Defaults to FALSE.
 #'
-#' @return a tibble
+#' @return a tibble, or vector of file paths if file is not CSV or if there are multiple
 #' @export
 #' @family Core workflow
 #' @examples
