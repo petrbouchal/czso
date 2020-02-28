@@ -1,3 +1,8 @@
+# czso (development version)
+
+* improvements to documentation
+* added code of conduct and contributing guide
+
 # czso 0.2.0
 
 ## New features
