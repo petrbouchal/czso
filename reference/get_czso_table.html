@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -135,7 +135,7 @@
     <p>Downloads and reads dataset identified by <code>dataset_id</code>. Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_czso_table</span>(<span class='no'>dataset_id</span>, <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>)</pre>
+    <pre class="usage"><span class='fu'>get_czso_table</span>(<span class='no'>dataset_id</span>, <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,12 +145,12 @@
       <td><p>a character. Found in the czso_id column of data frame returned by <code><a href='get_catalogue.html'>get_catalogue()</a></code>.</p></td>
     </tr>
     <tr>
-      <th>resource_num</th>
-      <td><p>integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.</p></td>
-    </tr>
-    <tr>
       <th>force_redownload</th>
       <td><p>integer. Whether to redownload data source file even if already cached. Defaults to FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>resource_num</th>
+      <td><p>integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.</p></td>
     </tr>
     </table>
 

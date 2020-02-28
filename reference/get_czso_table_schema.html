@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe operator — %&gt;% • czso</title>
+<title>Get CZSO table schema — get_czso_table_schema • czso</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Pipe operator — %&gt;%" />
-<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
+<meta property="og:title" content="Get CZSO table schema — get_czso_table_schema" />
+<meta property="og:description" content="Retrieves and parses the schema for the table identified by dataset_id and resource_num." />
 <meta property="og:image" content="https://petrbouchal.github.io/czso/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -126,23 +126,65 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pipe operator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/petrbouchal/czso/blob/master/R/utils-pipe.R'><code>R/utils-pipe.R</code></a></small>
-    <div class="hidden name"><code>pipe.Rd</code></div>
+    <h1>Get CZSO table schema</h1>
+    <small class="dont-index">Source: <a href='https://github.com/petrbouchal/czso/blob/master/R/core.R'><code>R/core.R</code></a></small>
+    <div class="hidden name"><code>get_czso_table_schema.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See <code>magrittr::%&gt;%</code> for details.</p>
+    <p>Retrieves and parses the schema for the table identified by dataset_id and resource_num.</p>
     </div>
 
-    <pre class="usage"><span class='no'>lhs</span> <span class='kw'>%&gt;%</span> <span class='no'>rhs</span></pre>
+    <pre class="usage"><span class='fu'>get_czso_table_schema</span>(<span class='no'>dataset_id</span>, <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>dataset_id</th>
+      <td><p>Dataset ID</p></td>
+    </tr>
+    <tr>
+      <th>resource_num</th>
+      <td><p>Resource number, typically 1 in CZSO (the default)</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>a tibble with a description of the columns in the table.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Additional tools: 
+<code><a href='get_czso_dataset_doc.html'>get_czso_dataset_doc</a>()</code>,
+<code><a href='get_czso_dataset_metadata.html'>get_czso_dataset_metadata</a>()</code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>get_czso_table_schema</span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; # A tibble: 14 x 5
+#&gt;    name       titles     `dc:description`                      required datatype
+#&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;                                 &lt;lgl&gt;    &lt;chr&gt;   
+#&gt;  1 idhod      idhod      "unikátní identifikátor údaje Veřejn… TRUE     string  
+#&gt;  2 hodnota    hodnota    "zjištěná hodnota"                    TRUE     number  
+#&gt;  3 stapro_kod stapro_kod "kód statistické proměnné ze systému… TRUE     string  
+#&gt;  4 spkvantil… spkvantil… "kód číselníku pro kvantil"           TRUE     string  
+#&gt;  5 spkvantil… spkvantil… "kód položky z číselníku pro kvantil" TRUE     string  
+#&gt;  6 pohlavi_c… pohlavi_c… "kód číselníku pro pohlaví"           TRUE     string  
+#&gt;  7 pohlavi_k… pohlavi_k… "kód položky číselníku pro pohlaví"   TRUE     string  
+#&gt;  8 rok        rok        "rok referenčního období ve formátu … TRUE     number  
+#&gt;  9 uzemi_cis  uzemi_cis  "kód číselníku pro referenční území " TRUE     string  
+#&gt; 10 uzemi_kod  uzemi_kod  "kód položky číselníku pro referenčn… TRUE     string  
+#&gt; 11 uzemi_txt  uzemi_txt  "text položky z číselníku pro refere… TRUE     string  
+#&gt; 12 stapro_txt stapro_txt "text statistické proměnné"           TRUE     string  
+#&gt; 13 spkvantil… spkvantil… "text položky číselníku pro kvantil"  TRUE     string  
+#&gt; 14 pohlavi_t… pohlavi_t… "text položky číselníku pro pohlaví"  TRUE     string  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

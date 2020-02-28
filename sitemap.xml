@@ -13,7 +13,16 @@
     <loc>https://petrbouchal.github.io/czso/reference/get_czso_catalogue.html</loc>
   </url>
   <url>
+    <loc>https://petrbouchal.github.io/czso/reference/get_czso_dataset_doc.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/get_czso_dataset_metadata.html</loc>
+  </url>
+  <url>
     <loc>https://petrbouchal.github.io/czso/reference/get_czso_table.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/get_czso_table_schema.html</loc>
   </url>
   <url>
     <loc>https://petrbouchal.github.io/czso/reference/get_table.html</loc>
