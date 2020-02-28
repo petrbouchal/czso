@@ -114,6 +114,19 @@ get_catalogue <- function() {
   get_czso_catalogue()
 }
 
+
+#' Get dataset metadata
+#'
+#' Get metadata from CZSO API, which can be somewhat more detailed/readable than
+#' what is provided in the dataset's entry in the output of `get_czso_dataset()`.
+#'
+#' @param dataset_id Dataset ID
+#'
+#' @return a list
+#' @examples
+#' get_czso_dataset_metadata("110080")
+#' @export
+#' @family Additional tools
 get_czso_dataset_metadata <- function(dataset_id) {
   url <- paste0("https://vdb.czso.cz/pll/eweb/package_show?id=", dataset_id)
   mtdt_c <- httr::GET(url,
@@ -125,7 +138,7 @@ get_czso_dataset_metadata <- function(dataset_id) {
 
 get_czso_resources <- function(dataset_id) {
   mtdt <- get_czso_dataset_metadata(dataset_id)
-  return(mtdt$result$resources)
+  return(mtdt$resources)
 }
 
 get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
