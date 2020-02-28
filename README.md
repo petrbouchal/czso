@@ -49,25 +49,34 @@ remotes::install_github("petrbouchal/czso")
 
 ## Example
 
-Imagine you are looking for a dataset whose title refers to wages
+Say you are looking for a dataset whose title refers to wages
 (mzda/mzdy):
+
+First, retrieve the list of available CZSO datasets:
 
 ``` r
 library(czso)
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(stringr))
 
-# first, retrieve the list of available CZSO datasets, filtering for mzda/mzdy
-get_czso_catalogue(title_filter = "mzd[ay]")
-#> Reading full list of all datasets available on data.gov.cz...
-#> Filtering...
-#> # A tibble: 2 x 9
-#>   czso_id provider title description dataset topic update_frequency
-#>   <chr>   <chr>    <chr> <chr>       <chr>   <chr> <chr>           
-#> 1 110079  Český s… Zamě… Datová sad… https:… <NA>  čtvrtletní      
-#> 2 110080  Český s… Prům… Datová sad… https:… <NA>  roční           
-#> # … with 2 more variables: spatial_coverage <chr>, keywords <chr>
+catalogue <- get_czso_catalogue()
+#> ℹ Downloading
+#> ℹ Reading data
+#> ℹ Transforming data
 ```
 
-We can see the `czso_id` for the required dataset - now use it to get
+``` r
+catalogue %>% 
+  filter(str_detect(title, "[Mm]zd[ay]")) %>% 
+  select(dataset_id, title, description)
+#> # A tibble: 2 x 3
+#>   dataset_id title                       description                            
+#>   <chr>      <chr>                       <chr>                                  
+#> 1 110080     Průměrná hrubá měsíční mzd… Datová sada obsahuje časovou řadu prům…
+#> 2 110079     Zaměstnanci a průměrné hru… Datová sada obsahuje časovou řadu počt…
+```
+
+We can see the `dataset_id` for the required dataset - now use it to get
 the dataset:
 
 ``` r
@@ -89,31 +98,6 @@ get_czso_table("110080")
 #> #   uzemi_kod <chr>, STAPRO_TXT <chr>, uzemi_txt <chr>, SPKVANTIL_txt <chr>,
 #> #   POHLAVI_txt <chr>
 ```
-
-Alternatively, you could store the whole CZSO catalogue in an object and
-filter yourself. This is especially useful if you expect to need
-multiple tries.
-
-``` r
-library(dplyr, warn.conflicts = F)
-library(stringr, warn.conflicts = F)
-catalogue <- get_czso_catalogue()
-#> File already in /var/folders/c8/pj33jytj233g8vr0tw4b2h7m0000gn/T//RtmpypkVs8/czso, not downloading. Set `force_redownload` to TRUE if needed.
-#> Reading full list of all datasets available on data.gov.cz...
-#> Filtering...
-
-catalogue %>% 
-  filter(str_detect(title, "mzda"))
-#> # A tibble: 1 x 9
-#>   czso_id provider title description dataset topic update_frequency
-#>   <chr>   <chr>    <chr> <chr>       <chr>   <chr> <chr>           
-#> 1 110080  Český s… Prům… Datová sad… https:… <NA>  roční           
-#> # … with 2 more variables: spatial_coverage <chr>, keywords <chr>
-```
-
-The latter allows you to search through the list - or simply look
-through it - without the overhead of reusing the `get_dataset()`
-function which downloads and transforms the underlying data.
 
 ## Credit and notes
 
