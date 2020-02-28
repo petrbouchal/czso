@@ -103,8 +103,6 @@ get_czso_catalogue <- function() {
 #'
 #' Deprecated, use `get_czso_catalogue()` instead.
 #'
-#' @inheritParams get_czso_catalogue
-#'
 #' @return a tibble
 #' @examples
 #' # see `get_czso_catalogue()`
@@ -166,7 +164,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' \dontrun{
 #' get_czso_table("110080")
 #' }
-get_czso_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
+get_czso_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
   ptr <- get_czso_resource_pointer(dataset_id)
   url <- ptr$url
   type <- ptr$format

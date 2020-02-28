@@ -4,14 +4,14 @@
 \alias{get_czso_table}
 \title{Retrieve and read dataset from CZSO}
 \usage{
-get_czso_table(dataset_id, resource_num = 1, force_redownload = F)
+get_czso_table(dataset_id, force_redownload = F, resource_num = 1)
 }
 \arguments{
 \item{dataset_id}{a character. Found in the czso_id column of data frame returned by \code{get_catalogue()}.}
 
-\item{resource_num}{integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.}
-
 \item{force_redownload}{integer. Whether to redownload data source file even if already cached. Defaults to FALSE.}
+
+\item{resource_num}{integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.}
 }
 \value{
 a tibble

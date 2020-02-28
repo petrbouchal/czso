@@ -8,3 +8,7 @@ reference:
   desc:  Functions for executing the core workflow.
   contents:
   - has_concept("Core workflow")
+- title: Additional tools
+  desc:  Functions for retrieving documentation and metadata.
+  contents:
+  - has_concept("Additional tools")
