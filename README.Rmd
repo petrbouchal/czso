@@ -93,5 +93,7 @@ For Czech geospatial data, see [CzechData](https://github.com/JanCaha/CzechData/
 
 For Czech fiscal data, see [statnipokladna](https://github.com/petrbouchal/statnipokladna).
 
+For various transparency disclosures, see [Hlídač státu](https://hlidacstatu.cz).
+
 For access to some of Prague's open geospatial data in R, see [pragr](https://github.com/petrbouchal/pragr).
 
