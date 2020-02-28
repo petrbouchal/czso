@@ -1,5 +1,8 @@
 # czso 0.1.5
 
+## New features
+
+* new `get_dataset_doc()` function for accessing documentation
 ## Improvements
 
 * get_czso_catalogue() is now much faster as it uses the open data catalogue's API instead of donwloading a huge CSV list of all datasets. It is less flexible as it does not allow direct filtering.

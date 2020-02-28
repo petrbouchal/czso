@@ -228,13 +228,66 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
                  force_redownload = force_redownload)
 }
 
-get_czso_table_schema <- function(dataset_id, resource_num = 1) {
-  ptr <- get_czso_resource_pointer(dataset_id)[, resource_num]
-  url <- ptr$url
-  type <- ptr$type
 
+#' Get CZSO table schema
+#'
+#' Retrieves and parses the schema for the table identified by dataset_id and resource_num.
+#'
+#' @param dataset_id Dataset ID
+#' @param resource_num Resource number, typically 1 in CZSO (the default)
+#'
+#' @return a tibble with a description of the columns in the table.
+#' @examples
+#' get_czso_table_schema("110080")
+#' @export
+#' @family Additional tools
+get_czso_table_schema <- function(dataset_id, resource_num = 1) {
+  urls <- get_czso_resource_pointer(dataset_id, resource_num)
+  schema_url <- urls$meta_link
+  schema_type <- urls$meta_format
+  if(schema_type == "application/json") {
+    suppressMessages(suppressWarnings(schema_result <- httr::GET(schema_url, httr::user_agent(ua_string)) %>%
+      httr::content(as = "text")))
+    ds <- suppressMessages(suppressWarnings(jsonlite::fromJSON(schema_result)[["tableSchema"]][["columns"]]))
+    rslt <- tibble::as_tibble(ds)
+  } else {
+    usethis::ui_warn("Cannot parse this type of file type. You can get it yourself from {schema_url}")
+    rslt <- schema_url
+  }
+  return(rslt)
 }
 
-get_czso_table_doc <- function(dataset_id, resource_num = 1) {
 
+#' Get documentation for CZSO dataset
+#'
+#' Retrieves the URL/downloads the file containing the documentation of the dataset, in the required format.
+#'
+#' @param dataset_id Dataset ID
+#' @param action Whether to `return` URL (the default), `download` the file, or `open` the URL in the default web browser.
+#' @param destfile Where to save the file. Only used if if `action = download`.
+#' @param format What file format to access: `html` (the default), `pdf`, or `word`.
+#'
+#' @return if `action = download`, the path to the downloaded file; file URL otherwise.
+#' @examples
+#' get_czso_dataset_doc("110080")
+#' @export
+#' @family Additional tools
+get_czso_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
+  metadata <- get_czso_dataset_metadata(dataset_id)
+  frmt <- match.arg(format)
+  url_orig <- metadata$schema
+  doc_url <- switch (frmt,
+    html = url_orig,
+    word = stringr::str_replace(url_orig, "\\.html?", ".docx"),
+    pdf = stringr::str_replace(url_orig, "\\.html?", ".pdf")
+  )
+  act <- match.arg(action)
+  if(is.null(destfile)) {dest <- basename(doc_url)} else {dest <- destfile}
+  switch(act,
+         open = {
+           usethis::ui_done("Opening {doc_url} in browser")
+           utils::browseURL(doc_url)},
+         download = {utils::download.file(doc_url, destfile = dest, headers = ua_header, quiet = T)
+           usethis::ui_done("Downloaded {doc_url} to {dest}")})
+  if(act == "download") rslt <- dest else rslt <- doc_url
 }
