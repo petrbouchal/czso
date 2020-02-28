@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://petrbouchal.github.io/czso/index.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/czso-package.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/get_catalogue.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/get_czso_catalogue.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/get_czso_table.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/get_table.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/pipe.html</loc>
+  </url>
+</urlset>
