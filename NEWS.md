@@ -1,3 +1,5 @@
+# czso (development version)
+
 # czso 0.1.4
 
 * relaxed stringi version requirement to make Win build work
