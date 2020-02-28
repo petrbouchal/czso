@@ -28,6 +28,7 @@ titles <- nn %>% map(1) %>%
 dist <- GET(nn[[9]][[1]]$`http://www.w3.org/ns/dcat#distribution`[[1]]$value, accept_json()) %>%
   content()
 
+<<<<<<< HEAD
 GET("https://data.gov.cz/api/v1/resource/distribution?iri=https://data.gov.cz/zdroj/datov%C3%A9-sady/http---vdb.czso.cz-pll-eweb-package_show-id-110080/distribuce/ca24b1ef468d717e0d8f14fa366e1a12",
     accept_json()) %>%
   content() %>%
@@ -59,6 +60,8 @@ ddd %>%
   pluck(1) %>%
   map_df(~pluck(.x, 1, "value")) %>%
   purrr::set_names(str_extract, "[:alnum:]*$")
+=======
+>>>>>>> master
 
 
 

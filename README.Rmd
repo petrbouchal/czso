@@ -47,39 +47,38 @@ remotes::install_github("petrbouchal/czso")
 
 ## Example
 
-Imagine you are looking for a dataset whose title refers to wages (mzda/mzdy):
+Say you are looking for a dataset whose title refers to wages (mzda/mzdy):
 
-```{r example}
+First, retrieve the list of available CZSO datasets:
+
+```{r example-catalogue}
 library(czso)
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(stringr))
 
-# first, retrieve the list of available CZSO datasets, filtering for mzda/mzdy
-get_czso_catalogue(title_filter = "mzd[ay]")
+catalogue <- get_czso_catalogue()
 ```
 
-We can see the `czso_id` for the required dataset - now use it to get the dataset:
+```{r example-filter}
+catalogue %>% 
+  filter(str_detect(title, "[Mm]zd[ay]")) %>% 
+  select(dataset_id, title, description)
+```
+
+
+We can see the `dataset_id` for the required dataset - now use it to get the dataset:
 
 ```{r example-cont}
 get_czso_table("110080")
 ```
-
-Alternatively, you could store the whole CZSO catalogue in an object and filter yourself. This is especially useful if you expect to need multiple tries.
-
-```{r example-alt}
-library(dplyr, warn.conflicts = F)
-library(stringr, warn.conflicts = F)
-catalogue <- get_czso_catalogue()
-
-catalogue %>% 
-  filter(str_detect(title, "mzda"))
-```
-
-The latter allows you to search through the list - or simply look through it - without the overhead of reusing the `get_dataset()` function which downloads and transforms the underlying data.
 
 ## Credit and notes
 
 - not created or endorsed by the Czech Statistical Office, though they, as well as [the open data team at the Ministry of Interior](https://data.gov.cz/) deserve credit for getting the data out there.
 - the package relies on the data.gov.cz catalogue of open data and on the CZSO's local catalogue
 - NB: The robots.txt at the domain hosting the CZSO's catalogue prohibits robots from accessing it; while this may be an inappropriate/erroneous setting for what is in essence a data API, this package tries to honor the spirit of that setting by only accessing the API once per `get_table()` call, relying on a different system for `get_catalogue()`. Hence, *do not use this package for harvesting large numbers of datasets from the CZSO.*
+
+Thanks to @jakubklimek and @martinnecasky for [helping me figure out](https://github.com/opendata-mvcr/nkod/issues/19) the [SPARQL endpoint](https://data.gov.cz/sparql) on the Czech National Open Data Catalogue.
 
 ## See also
 
@@ -93,6 +92,8 @@ which are very useful in their own right - much recommended.
 For Czech geospatial data, see [CzechData](https://github.com/JanCaha/CzechData/) by [JanCaha](https://github.com/JanCaha/).
 
 For Czech fiscal data, see [statnipokladna](https://github.com/petrbouchal/statnipokladna).
+
+For various transparency disclosures, see [Hlídač státu](https://hlidacstatu.cz).
 
 For access to some of Prague's open geospatial data in R, see [pragr](https://github.com/petrbouchal/pragr).
 

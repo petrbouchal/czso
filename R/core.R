@@ -1,102 +1,101 @@
 
 #' Get catalogue of open CZSO datasets
 #'
-#' Downloads and processes a list of all registered Czech open data datasets,
-#' returning (by default) those accessible through get_table() from the CZSO.
+#' Retrieves a list of all CZSO's open datasets available from the Czech Open data catalogue.
 #'
-#' If `provider` is NULL, returns the whole list, without CZSO-specific identifier
-#' usable in `get_table()`.
+#' Use the dataset_id column as an argument to `get_czso_table()`.
 #'
-#' If `provider` is left unset, returns data frame listing CZSO's datasets, with a
-#' `czso_id` column usable in `get_table`.
-#'
-#' Other values of `provider` must be exact matches. Use `provider_filter` for text/regex matching.
-#'
-#' All `*_filter` arguments are case sensitive and can be regular expressions.
-#'
-#' Original data: https://data.gov.cz/soubor/datov%C3%A9-sady.csv
-#'
-#' @param provider character, can be of length > 1. Provider to select for. Defaults to (the Czech name of) CZSO. Must be exact match. If set to NULL, returns full list of all datasets.
-#' @param title_filter character, text to use for filtering the set by title. Case sensitive. Can be a regular expression.
-#' @param description_filter character, text to use for filtering the set by description. Case sensitive.  Can be a regular expression.
-#' @param keyword_filter character, text to use for filtering the set by keyword. Case sensitive.  Can be a regular expression.
-#' @param provider_filter character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.
-#' @param force_redownload integer. Whether to redownload data source file even if already cached. Defaults to FALSE.
-#' @return a data frame. If `provider` param is left to default, contains a column called czso_id, which can be used as dataset_id parameter in get_table().
+#' @return a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
 #' @export
 #' @family Core workflow
 #' @examples
 #' \dontrun{
 #' get_czso_catalogue()
-#' get_czso_catalogue(NULL)
-#' get_czso_catalogue(title_filter = "[Mm]zd[ay]")
-#' get_czso_catalogue(provider = "Ministerstvo vnitra")
-#' get_czso_catalogue(provider_filter = "[Mm]inisterstvo")
 #' }
-get_czso_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad",
-                          title_filter = NULL,
-                          description_filter = NULL,
-                          keyword_filter = NULL,
-                          provider_filter = NULL,
-                          force_redownload = F)
-  {
-  if(!is.null(provider))
-    provider_uni <- stringi::stri_unescape_unicode(provider)
-  else provider_uni <- NULL
-  td <- paste(tempdir(), "czso", sep = "/")
-  dir.create(td, showWarnings = F, recursive = T)
-  tf <- paste0(td, "/", "dataset_list.csv")
-  if(file.exists(tf) & !force_redownload) {
-    message(stringr::str_glue("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed."))
-  } else {
-    utils::download.file("https://data.gov.cz/soubor/datov%C3%A9-sady.csv", tf, headers = ua_header)
-  }
-  message("Reading full list of all datasets available on data.gov.cz...")
-  dslist0 <- suppressWarnings(suppressMessages(vroom::vroom(tf, num_threads = 1,
-                          col_types = readr::cols(.default = "c")))) %>%
-    dplyr::rename_all(~stringi::stri_trans_general(., "latin-ascii")) %>%
-    dplyr::select(provider = poskytovatel,
-                  title = nazev, description = popis, dataset = datova_sada,
-                  keywords0 = klicova_slova, topic = tema,
-                  update_frequency = periodicita_aktualizace,
-                  spatial_coverage = prostorove_pokryti)
-  if(is.null(provider)) {
-    dslist <- dslist0 %>%
-      dplyr::group_by(dataset) %>%
-      dplyr::mutate(keywords = stringr::str_c(keywords0, collapse = "; ")) %>%
-      dplyr::ungroup() %>%
-      dplyr::select(-keywords0) %>%
-      dplyr::distinct()
-  } else {
-    message("Filtering...")
-    dslist <- dslist0 %>%
-      dplyr::filter(.$provider %in% provider_uni) %>%
-      dplyr::group_by(dataset) %>%
-      dplyr::mutate(keywords = stringr::str_c(keywords0, collapse = "; ")) %>%
-      dplyr::ungroup() %>%
-      dplyr::select(-keywords0) %>%
-      dplyr::distinct()
-    if(provider == "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad") {
-      dslist <- dslist %>%
-        dplyr::mutate(czso_id = stringr::str_extract(dataset, "(?<=package_show-id-).*$")) %>%
-        dplyr::select(czso_id, -provider, dplyr::everything())
-    }
-  }
+get_czso_catalogue <- function() {
 
-  if(!is.null(title_filter)) {
-    dslist <- dplyr::filter(dslist, stringr::str_detect(title, title_filter))
-  }
-  if(!is.null(description_filter)) {
-    dslist <- dplyr::filter(dslist, stringr::str_detect(description, description_filter))
-  }
-  if(!is.null(keyword_filter)) {
-    dslist <- dplyr::filter(dslist, stringr::str_detect(keyword_filter, description_filter))
-  }
-  if(!is.null(provider_filter)) {
-    dslist <- dplyr::filter(dslist, stringr::str_detect(provider, description_filter))
-  }
+  sparql_url <- "https://data.gov.cz/sparql"
 
-  return(dslist)
+  sparqlquery_datasets_byczso <- stringr::str_glue(
+    "PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+   PREFIX dcterms: <http://purl.org/dc/terms/>
+   PREFIX dcat: <http://www.w3.org/ns/dcat#>
+   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+   SELECT ?dataset_iri
+   ?dataset_id
+   ?title
+   ?provider
+   ?description
+   ?spatial
+   ?temporal
+   ?modified
+   ?page
+   ?periodicity
+   ?periodicity_abb
+   ?start
+   ?end
+   ?keywords_all
+   WHERE {{
+     GRAPH ?g {{
+       ?dataset_iri a dcat:Dataset .
+       ?dataset_iri dcterms:publisher ?publisher .
+       ?dataset_iri dcterms:title ?title .
+       ?dataset_iri dcterms:description ?description .
+       OPTIONAL {{ ?dataset_iri dcterms:identifier ?dataset_id .}}
+       OPTIONAL {{ ?dataset_iri dcterms:spatial ?spatial .}}
+       OPTIONAL {{ ?dataset_iri foaf:page ?page.}}
+       OPTIONAL {{ ?dataset_iri dcterms:temporal ?temporal .}}
+       OPTIONAL {{ ?dataset_iri dcterms:modified ?modified .}}
+       OPTIONAL {{ ?dataset_iri dcat:keyword ?keywords_all .}}
+       OPTIONAL {{ ?dataset_iri dcterms:accrualPeriodicity ?periodicity .}}
+       OPTIONAL {{ ?dataset_iri <https://data.gov.cz/slovn\\u00edk/nkod/accrualPeriodicity> ?periodicity_abb .}}
+
+       ?publisher foaf:name ?provider .
+
+       OPTIONAL {{ ?temporal schema:startDate ?start .}}
+       OPTIONAL {{ ?temporal schema:endDate ?end .}}
+
+       VALUES ?publisher {{
+         <https://data.gov.cz/zdroj/ovm/00025593> # IRI pro CZSO
+         # <https://data.gov.cz/zdroj/ovm/00064581> # IRI pro Prahu
+       }}
+       FILTER(lang(?provider) = \"cs\")
+       FILTER(lang(?keywords_all) = \"cs\")
+       FILTER(lang(?title) = \"cs\")
+     }}
+  }}") %>% stringi::stri_unescape_unicode()
+
+  params = list(`default-graph-uri` = "",
+                query = sparqlquery_datasets_byczso,
+                # format = "application/sparql-results+json",
+                format = "text/csv",
+                timeout = 30000,
+                debug = "on",
+                run = "Run Query")
+  usethis::ui_info("Downloading")
+  cat_rslt <- httr::GET(sparql_url, query = params,
+                        # accept("application/sparql-results+json"),
+                        httr::add_headers(c("Accept-Charset" = "utf-8")),
+                        httr::accept("text/csv;charset=UTF-8"))
+
+  # print(params$query)
+
+  usethis::ui_info("Reading data")
+  if(httr::status_code(cat_rslt) > 200) {
+    print(httr::http_status(cat_rslt))
+    rslt <- httr::content(cat_rslt, as = "text")
+  } else
+    rslt <- cat_rslt %>% httr::content(as = "text")
+  rslt <- readr::read_csv(rslt, col_types = readr::cols(modified = "T"))
+  usethis::ui_info("Transforming data")
+  rslt <- dplyr::group_by(rslt, dataset_iri) %>%
+    dplyr::mutate(keywords = stringr::str_c(keywords_all, collapse = "; ")) %>%
+    dplyr::ungroup() %>%
+    dplyr::select(-keywords_all) %>%
+    dplyr::distinct()
+  return(rslt)
 }
 
 #' Deprecated: Retrieve and read dataset from CZSO
@@ -109,19 +108,9 @@ get_czso_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \
 #' @examples
 #' # see `get_czso_catalogue()`
 #' @export
-get_catalogue <- function(provider = "\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad",
-                          title_filter = NULL,
-                          description_filter = NULL,
-                          keyword_filter = NULL,
-                          provider_filter = NULL,
-                          force_redownload = F) {
+get_catalogue <- function() {
   .Deprecated("get_czso_catalogue")
-  get_czso_catalogue(provider = provider,
-                 title_filter = title_filter,
-                 description_filter = description_filter,
-                 keyword_filter = keyword_filter,
-                 provider_filter = provider_filter,
-                 force_redownload = force_redownload)
+  get_czso_catalogue()
 }
 
 get_czso_dataset_metadata <- function(dataset_id) {
@@ -194,11 +183,14 @@ get_czso_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
   }
   switch (action,
           read = {
+            guessed_enc <- readr::guess_encoding(dfile)[[1,1]]
+            if(guessed_enc == "windows-1252") guessed_enc <- "windows-1250"
             dt <- suppressWarnings(suppressMessages(readr::read_csv(dfile, col_types = readr::cols(.default = "c",
-                                                                 rok = "i",
-                                                                 casref_do = "T",
-                                                                 ctvrtleti = "i",
-                                                                 hodnota = "d"))))
+                                                                                                   rok = "i",
+                                                                                                   casref_do = "T",
+                                                                                                   ctvrtleti = "i",
+                                                                                                   hodnota = "d"),
+                                                                 locale = readr::locale(encoding = guessed_enc))))
             rtrn <- dt
           },
           listone = {

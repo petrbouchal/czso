@@ -1,3 +1,10 @@
+# czso 0.1.5
+
+## Improvements
+
+* get_czso_catalogue() is now much faster as it uses the open data catalogue's API instead of donwloading a huge CSV list of all datasets. It is less flexible as it does not allow direct filtering.
+* handle encoding of some older datasets, which may not be UTF-8
+
 # czso 0.1.4
 
 * relaxed stringi version requirement to make Win build work

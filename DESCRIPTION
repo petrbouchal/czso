@@ -1,18 +1,19 @@
 Package: czso
 Title: Use Open Data from the Czech Statistical Office in R
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: 
     person(given = "Petr",
            family = "Bouchal",
            role = c("aut", "cre"),
            email = "pbouchal@gmail.com")
-Description: Get programmatic access to the open data provided
-    by the Czech Statistical Office (CZSO).
+Description: Get programmatic access to the open data provided by the
+    Czech Statistical Office (CZSO).
 License: MIT + file LICENSE
 URL: https://github.com/petrbouchal/czso
 BugReports: https://github.com/petrbouchal/czso/issues
 Imports: 
     dplyr (>= 0.8.3),
+    httr (>= 1.4.1),
     jsonlite (>= 1.6),
     lifecycle,
     magrittr,
@@ -20,6 +21,7 @@ Imports:
     stringi (>= 1.4.4),
     stringr (>= 1.4.0),
     tools (>= 3.6.0),
+    usethis (>= 1.5.1),
     utils (>= 3.6.0),
     vroom (>= 1.0.2)
 RdMacros: 

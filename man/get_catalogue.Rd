@@ -4,27 +4,7 @@
 \alias{get_catalogue}
 \title{Deprecated: Retrieve and read dataset from CZSO}
 \usage{
-get_catalogue(
-  provider = "\\\\u010cesk\\\\u00fd statistick\\\\u00fd \\\\u00fa\\\\u0159ad",
-  title_filter = NULL,
-  description_filter = NULL,
-  keyword_filter = NULL,
-  provider_filter = NULL,
-  force_redownload = F
-)
-}
-\arguments{
-\item{provider}{character, can be of length > 1. Provider to select for. Defaults to (the Czech name of) CZSO. Must be exact match. If set to NULL, returns full list of all datasets.}
-
-\item{title_filter}{character, text to use for filtering the set by title. Case sensitive. Can be a regular expression.}
-
-\item{description_filter}{character, text to use for filtering the set by description. Case sensitive.  Can be a regular expression.}
-
-\item{keyword_filter}{character, text to use for filtering the set by keyword. Case sensitive.  Can be a regular expression.}
-
-\item{provider_filter}{character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.}
-
-\item{force_redownload}{integer. Whether to redownload data source file even if already cached. Defaults to FALSE.}
+get_catalogue()
 }
 \value{
 a tibble
