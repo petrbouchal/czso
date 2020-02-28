@@ -59,6 +59,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156460113-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156460113-4');
+</script>
+
 
   </head>
 
@@ -76,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -129,17 +139,11 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-core-workflow" class="hasAnchor"><a href="#section-core-workflow" class="anchor"></a>Core workflow</h2>
+          <p class="section-desc"><p>Functions for executing the core workflow.</p></p>
         </th>
       </tr>
       <tr>
-        
-        <td>
-          <p><code><a href="get_catalogue.html">get_catalogue()</a></code> </p>
-        </td>
-        <td><p>Deprecated: Retrieve and read dataset from CZSO</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="get_czso_catalogue.html">get_czso_catalogue()</a></code> </p>
@@ -151,12 +155,6 @@
           <p><code><a href="get_czso_table.html">get_czso_table()</a></code> </p>
         </td>
         <td><p>Retrieve and read dataset from CZSO</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_table.html">get_table()</a></code> </p>
-        </td>
-        <td><p>Deprecated: Retrieve and read dataset from CZSO</p></td>
       </tr>
     </tbody>
     </table>
@@ -165,7 +163,7 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-core-workflow">Core workflow</a></li>
     </ul>
   </div>
 </div>

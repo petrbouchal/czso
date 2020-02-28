@@ -60,6 +60,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156460113-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156460113-4');
+</script>
+
 
   </head>
 
@@ -77,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -125,43 +135,8 @@
     <p>Deprecated, use <code><a href='get_czso_catalogue.html'>get_czso_catalogue()</a></code> instead.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_catalogue</span>(
-  <span class='kw'>provider</span> <span class='kw'>=</span> <span class='st'>"\\u010cesk\\u00fd statistick\\u00fd \\u00fa\\u0159ad"</span>,
-  <span class='kw'>title_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>description_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>keyword_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>provider_filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_catalogue</span>()</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>provider</th>
-      <td><p>character, can be of length &gt; 1. Provider to select for. Defaults to (the Czech name of) CZSO. Must be exact match. If set to NULL, returns full list of all datasets.</p></td>
-    </tr>
-    <tr>
-      <th>title_filter</th>
-      <td><p>character, text to use for filtering the set by title. Case sensitive. Can be a regular expression.</p></td>
-    </tr>
-    <tr>
-      <th>description_filter</th>
-      <td><p>character, text to use for filtering the set by description. Case sensitive.  Can be a regular expression.</p></td>
-    </tr>
-    <tr>
-      <th>keyword_filter</th>
-      <td><p>character, text to use for filtering the set by keyword. Case sensitive.  Can be a regular expression.</p></td>
-    </tr>
-    <tr>
-      <th>provider_filter</th>
-      <td><p>character, text to use for filtering the set by provider Case sensitive.  Can be a regular expression.</p></td>
-    </tr>
-    <tr>
-      <th>force_redownload</th>
-      <td><p>integer. Whether to redownload data source file even if already cached. Defaults to FALSE.</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -174,7 +149,6 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
