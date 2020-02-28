@@ -161,10 +161,23 @@ dataset and appends new data to it over time.
     different system for `get_catalogue()`. Hence, *do not use this
     package for harvesting large numbers of datasets from the CZSO.*
 
+### Acknowledgments
+
 Thanks to @jakubklimek and @martinnecasky for [helping me figure
 out](https://github.com/opendata-mvcr/nkod/issues/19) the [SPARQL
 endpoint](https://data.gov.cz/sparql) on the Czech National Open Data
 Catalogue.
+
+### The logo
+
+An homage to the CZSO’s work in releasing its data in an open format,
+something that is not necessarily in its DNA.
+
+It alludes to the shades of the country reflected in the tabular data
+provided, By intersersing the comma symbo; into the name of the package,
+it refers to both integration between statistics and open data and the
+slight disruption that the world of statistics undergoes when that
+integration happens.
 
 ## See also
 
