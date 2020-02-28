@@ -59,18 +59,37 @@ suppressPackageStartupMessages(library(stringr))
 catalogue <- get_czso_catalogue()
 ```
 
+Now search for your terms of interest in the dataset titles:
+
 ```{r example-filter}
 catalogue %>% 
   filter(str_detect(title, "[Mm]zd[ay]")) %>% 
   select(dataset_id, title, description)
 ```
 
+You could also search in descriptions or keywords which are also retrieved into the catalogue.
 
 We can see the `dataset_id` for the required dataset - now use it to get the dataset:
 
 ```{r example-cont}
 get_czso_table("110080")
 ```
+
+You can retrieve the schema for the dataset:
+
+```{r example-schema}
+get_czso_table_schema("110080")
+```
+
+and download the documentation in PDF:
+
+```{r example-doc}
+get_czso_dataset_doc("110080", action = "download", format = "pdf")
+```
+
+### A note about "tables" and "datasets"
+
+In the parlance of the official open data catalogue, a `dataset` can have multiple distributions (typically multiple formats of the same data). These are called resources in the internals, and manifest as tables in this package. Some metainformation is the property of a table (the documentation), while other - the schema - is the property of a table. Hence the function names in this package. This is to keep things organised even if the CZSO almost always provides only one table per dataset and appends new data to it over time.
 
 ## Credit and notes
 

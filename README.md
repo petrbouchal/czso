@@ -60,10 +60,12 @@ suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
 
 catalogue <- get_czso_catalogue()
-#> ℹ Downloading
-#> ℹ Reading data
+#> ℹ Reading data from data.gov.cz
+#> ✔ Done downloading and reading data
 #> ℹ Transforming data
 ```
+
+Now search for your terms of interest in the dataset titles:
 
 ``` r
 catalogue %>% 
@@ -75,6 +77,9 @@ catalogue %>%
 #> 1 110080     Průměrná hrubá měsíční mzd… Datová sada obsahuje časovou řadu prům…
 #> 2 110079     Zaměstnanci a průměrné hru… Datová sada obsahuje časovou řadu počt…
 ```
+
+You could also search in descriptions or keywords which are also
+retrieved into the catalogue.
 
 We can see the `dataset_id` for the required dataset - now use it to get
 the dataset:
@@ -98,6 +103,47 @@ get_czso_table("110080")
 #> #   uzemi_kod <chr>, STAPRO_TXT <chr>, uzemi_txt <chr>, SPKVANTIL_txt <chr>,
 #> #   POHLAVI_txt <chr>
 ```
+
+You can retrieve the schema for the dataset:
+
+``` r
+get_czso_table_schema("110080")
+#> # A tibble: 14 x 5
+#>    name       titles     `dc:description`                      required datatype
+#>    <chr>      <chr>      <chr>                                 <lgl>    <chr>   
+#>  1 idhod      idhod      "unikátní identifikátor údaje Veřejn… TRUE     string  
+#>  2 hodnota    hodnota    "zjištěná hodnota"                    TRUE     number  
+#>  3 stapro_kod stapro_kod "kód statistické proměnné ze systému… TRUE     string  
+#>  4 spkvantil… spkvantil… "kód číselníku pro kvantil"           TRUE     string  
+#>  5 spkvantil… spkvantil… "kód položky z číselníku pro kvantil" TRUE     string  
+#>  6 pohlavi_c… pohlavi_c… "kód číselníku pro pohlaví"           TRUE     string  
+#>  7 pohlavi_k… pohlavi_k… "kód položky číselníku pro pohlaví"   TRUE     string  
+#>  8 rok        rok        "rok referenčního období ve formátu … TRUE     number  
+#>  9 uzemi_cis  uzemi_cis  "kód číselníku pro referenční území " TRUE     string  
+#> 10 uzemi_kod  uzemi_kod  "kód položky číselníku pro referenčn… TRUE     string  
+#> 11 uzemi_txt  uzemi_txt  "text položky z číselníku pro refere… TRUE     string  
+#> 12 stapro_txt stapro_txt "text statistické proměnné"           TRUE     string  
+#> 13 spkvantil… spkvantil… "text položky číselníku pro kvantil"  TRUE     string  
+#> 14 pohlavi_t… pohlavi_t… "text položky číselníku pro pohlaví"  TRUE     string
+```
+
+and download the documentation in PDF:
+
+``` r
+get_czso_dataset_doc("110080", action = "download", format = "pdf")
+#> ✔ Downloaded https://www.czso.cz/documents/62353418/109720808/110080-19dds.pdf to 110080-19dds.pdf
+```
+
+### A note about “tables” and “datasets”
+
+In the parlance of the official open data catalogue, a `dataset` can
+have multiple distributions (typically multiple formats of the same
+data). These are called resources in the internals, and manifest as
+tables in this package. Some metainformation is the property of a table
+(the documentation), while other - the schema - is the property of a
+table. Hence the function names in this package. This is to keep things
+organised even if the CZSO almost always provides only one table per
+dataset and appends new data to it over time.
 
 ## Credit and notes
 
