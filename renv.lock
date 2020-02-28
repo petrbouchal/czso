@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "3.6.0",
+    "Version": "3.6.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -158,6 +158,13 @@
       "Repository": "CRAN",
       "Hash": "08cf4045c149a0f0eaf405324c7495bd"
     },
+    "clisymbols": {
+      "Package": "clisymbols",
+      "Version": "1.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "96c01552bfd5661b9bbdefbc762f4bcd"
+    },
     "colorspace": {
       "Package": "colorspace",
       "Version": "1.4-1",
@@ -306,6 +313,20 @@
       "RemoteSha": "d05e437eb3cd8dd52a4aeed8298a6efba23c1d1f",
       "Hash": "93bf157d44cfd990a33b36e78c0317cb"
     },
+    "gh": {
+      "Package": "gh",
+      "Version": "1.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4da58d15239da30de8c7de088250d3be"
+    },
+    "git2r": {
+      "Package": "git2r",
+      "Version": "0.26.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "135db4dbc94ed18f629ff8843a8064b7"
+    },
     "glue": {
       "Package": "glue",
       "Version": "1.3.1.9000",
@@ -373,6 +394,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "7146fea4685b4252ebf478978c75f597"
+    },
+    "ini": {
+      "Package": "ini",
+      "Version": "0.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "6154ec2223172bce8162d4153cda21f7"
     },
     "isoband": {
       "Package": "isoband",
@@ -827,6 +855,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "35c5245622df501b51263b565d18c053"
+    },
+    "usethis": {
+      "Package": "usethis",
+      "Version": "1.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "30ee6fa315a020d5db6f28adbb7fea83"
     },
     "utf8": {
       "Package": "utf8",
