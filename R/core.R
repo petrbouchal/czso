@@ -194,6 +194,8 @@ get_czso_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
   }
   switch (action,
           read = {
+            guessed_enc <- readr::guess_encoding(dfile)[[1,1]]
+            if(guessed_enc == "windows-1252") guessed_enc <- "windows-1250"
             dt <- suppressWarnings(suppressMessages(readr::read_csv(dfile, col_types = readr::cols(.default = "c",
                                                                                                    rok = "i",
                                                                                                    casref_do = "T",
