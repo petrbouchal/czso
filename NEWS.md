@@ -3,6 +3,7 @@
 ## New features
 
 * new `get_dataset_doc()` function for accessing documentation
+* new `get_table_schema()` function for retrieving table schema
 * exported `get_dataset_metadata()` function for accessing detailed metadata
 
 ## Improvements
