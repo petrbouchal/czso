@@ -116,3 +116,9 @@ For various transparency disclosures, see [Hlídač státu](https://hlidacstatu.
 
 For access to some of Prague's open geospatial data in R, see [pragr](https://github.com/petrbouchal/pragr).
 
+## Contributing / code of conduct
+
+Please note that the 'czso' project is released with a
+  [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+  By contributing to this project, you agree to abide by its terms.
+
