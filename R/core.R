@@ -77,6 +77,7 @@ get_czso_catalogue <- function() {
   usethis::ui_info("Downloading")
   cat_rslt <- httr::GET(sparql_url, query = params,
                         # accept("application/sparql-results+json"),
+                        httr::user_agent(ua_string),
                         httr::add_headers(c("Accept-Charset" = "utf-8")),
                         httr::accept("text/csv;charset=UTF-8"))
 
@@ -115,7 +116,10 @@ get_catalogue <- function() {
 
 get_czso_dataset_metadata <- function(dataset_id) {
   url <- paste0("https://vdb.czso.cz/pll/eweb/package_show?id=", dataset_id)
-  mtdt <- jsonlite::fromJSON(url)
+  mtdt_c <- httr::GET(url,
+            httr::user_agent(ua_string)) %>%
+    httr::content(as = "text")
+  mtdt <- jsonlite::fromJSON(mtdt_c)[["result"]]
   return(mtdt)
 }
 
