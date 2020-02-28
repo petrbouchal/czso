@@ -1,10 +1,12 @@
-# czso 0.1.5
+# czso 0.2.0
 
 ## New features
 
 * new `get_dataset_doc()` function for accessing documentation
 * new `get_table_schema()` function for retrieving table schema
 * exported `get_dataset_metadata()` function for accessing detailed metadata
+
+# czso 0.1.5
 
 ## Improvements
 
