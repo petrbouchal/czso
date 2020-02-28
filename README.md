@@ -115,6 +115,11 @@ get_czso_table("110080")
     different system for `get_catalogue()`. Hence, *do not use this
     package for harvesting large numbers of datasets from the CZSO.*
 
+Thanks to @jakubklimek and @martinnecasky for [helping me figure
+out](https://github.com/opendata-mvcr/nkod/issues/19) the [SPARQL
+endpoint](https://data.gov.cz/sparql) on the Czech National Open Data
+Catalogue.
+
 ## See also
 
 This package takes inspiration from the packages
