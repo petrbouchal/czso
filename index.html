@@ -17,8 +17,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Use Open Data from the Czech Statistical Office in R">
-<meta property="og:description" content="Get programmatic access to the open data provided
-    by the Czech Statistical Office (CZSO).">
+<meta property="og:description" content="Get programmatic access to the open data provided by the
+    Czech Statistical Office (CZSO).">
 <meta property="og:image" content="https://petrbouchal.github.io/czso/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -182,7 +182,17 @@
 <li>NB: The robots.txt at the domain hosting the CZSO’s catalogue prohibits robots from accessing it; while this may be an inappropriate/erroneous setting for what is in essence a data API, this package tries to honor the spirit of that setting by only accessing the API once per <code><a href="reference/get_table.html">get_table()</a></code> call, relying on a different system for <code><a href="reference/get_catalogue.html">get_catalogue()</a></code>. Hence, <em>do not use this package for harvesting large numbers of datasets from the CZSO.</em>
 </li>
 </ul>
+<div id="acknowledgments" class="section level3">
+<h3 class="hasAnchor">
+<a href="#acknowledgments" class="anchor"></a>Acknowledgments</h3>
 <p>Thanks to @jakubklimek and @martinnecasky for <a href="https://github.com/opendata-mvcr/nkod/issues/19">helping me figure out</a> the <a href="https://data.gov.cz/sparql">SPARQL endpoint</a> on the Czech National Open Data Catalogue.</p>
+</div>
+<div id="the-logo" class="section level3">
+<h3 class="hasAnchor">
+<a href="#the-logo" class="anchor"></a>The logo</h3>
+<p>An homage to the CZSO’s work in releasing its data in an open format, something that is not necessarily in its DNA.</p>
+<p>It alludes to the shades of the country reflected in the tabular data provided, By intersersing the comma symbo; into the name of the package, it refers to both integration between statistics and open data and the slight disruption that the world of statistics undergoes when that integration happens.</p>
+</div>
 </div>
 <div id="see-also" class="section level2">
 <h2 class="hasAnchor">
