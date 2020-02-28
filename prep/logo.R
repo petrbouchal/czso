@@ -13,6 +13,11 @@ cz <- ne_countries(scale = "medium", returnclass = "sf") %>%
   select()
 plot(cz, max.plot = 1)
 
+cz_multi <- cz %>%
+  mutate(a = 3) %>%
+  expand_grid(row = 1:3, col = 1:4) %>%
+  sf::st_as_sf()
+
 # https://pkgdown.r-lib.org/reference/build_favicon.html
 # https://pkgdown.r-lib.org/reference/build_home.html
 # https://www.ddrive.no/post/making-hex-and-twittercard-with-bunny-and-magick/
@@ -24,24 +29,32 @@ hex_canvas
 icon <- fontawesome::fa("table")
 write_lines(icon, "x.svg")
 icon <- image_read_svg("x.svg", width = 400) %>%
-  image_colorize(100, "white")
+  image_colorize(100, "red")
 icon
 
 ggplot() +
   geom_sf(data = cz, colour = NA, fill = '#0054a8') +
   theme_void()
+ggplot() +
+  geom_sf(data = cz_multi, colour = NA, aes(fill = col, alpha = row)) +
+  facet_grid(row ~ col) +
+  theme_void() +
+  scale_fill_gradientn(colours = c("#c30011", "#0054a8"), guide = "none") +
+  scale_alpha_continuous(guide = "none", range = c(0.5, 1)) +
+  theme(strip.text = element_blank())
 ggsave("prep/cz_for_hex.png", width = 12, height = 10, units = "cm",
        bg = "transparent")
 
 cz_for_hex <- image_read("prep/cz_for_hex.png")
 cz_for_hex
 img_hex <- hex_canvas %>%
-  bunny::image_compose(cz_for_hex, gravity = "north", offset = "+0+220") %>%
-  bunny::image_compose(icon, gravity = "north", offset = "+0+650") %>%
-  image_annotate("czso", size = 400, gravity = "south", location = "+0+320",
+  bunny::image_compose(cz_for_hex, gravity = "north", offset = "+0+590") %>%
+  # bunny::image_compose(icon, gravity = "north", offset = "+0+650") %>%
+  image_annotate("c,z,s,o", size = 500, gravity = "north", location = "+0+300",
                  font = "Tahoma", color = "#c30011") %>%
   bunny::image_compose(hex_border, gravity = "center", operator = "Over")
 img_hex
+
 
 img_hex %>%
   image_convert("png") %>%
