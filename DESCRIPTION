@@ -5,7 +5,8 @@ Authors@R:
     person(given = "Petr",
            family = "Bouchal",
            role = c("aut", "cre"),
-           email = "pbouchal@gmail.com")
+           email = "pbouchal@gmail.com",
+           comment = c(ORCID = "0000-0002-0471-716X"))
 Description: Get programmatic access to the open data provided by the
     Czech Statistical Office (CZSO).
 License: MIT + file LICENSE
