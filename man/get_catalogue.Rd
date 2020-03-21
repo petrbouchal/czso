@@ -2,7 +2,7 @@
 % Please edit documentation in R/core.R
 \name{get_catalogue}
 \alias{get_catalogue}
-\title{Deprecated: Retrieve and read dataset from CZSO}
+\title{Deprecated: use \code{czso_get_catalogue()} instead}
 \usage{
 get_catalogue()
 }
@@ -10,8 +10,8 @@ get_catalogue()
 a tibble
 }
 \description{
-Deprecated, use \code{get_czso_catalogue()} instead.
+\lifecycle{soft-deprecated}
 }
 \examples{
-# see `get_czso_catalogue()`
+# see `czso_get_catalogue()`
 }

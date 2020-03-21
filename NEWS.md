@@ -1,5 +1,11 @@
 # czso (development version)
 
+## New function names and deprecations
+
+* all user-facing functions are now `czso_*` to avoid conflicts and aid discovery via auto-complete. Original functions are soft-deprecated.
+
+## Improvements
+
 * improvements to documentation
 * added code of conduct and contributing guide
 

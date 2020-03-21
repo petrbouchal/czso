@@ -8,8 +8,8 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Get programmatic access to the open data provided
-    by the Czech Statistical Office (CZSO).
+Get programmatic access to the open data provided by the
+    Czech Statistical Office (CZSO).
 }
 \seealso{
 Useful links:
@@ -20,7 +20,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Petr Bouchal \email{pbouchal@gmail.com}
+\strong{Maintainer}: Petr Bouchal \email{pbouchal@gmail.com} (\href{https://orcid.org/0000-0002-0471-716X}{ORCID})
 
 }
 \keyword{internal}

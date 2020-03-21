@@ -2,26 +2,16 @@
 % Please edit documentation in R/core.R
 \name{get_czso_catalogue}
 \alias{get_czso_catalogue}
-\title{Get catalogue of open CZSO datasets}
+\title{Deprecated, use \code{czso_get_catalogue()} instead.}
 \usage{
 get_czso_catalogue()
 }
 \value{
-a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
+a tibble
 }
 \description{
-Retrieves a list of all CZSO's open datasets available from the Czech Open data catalogue.
-}
-\details{
-Use the dataset_id column as an argument to \code{get_czso_table()}.
+\lifecycle{soft-deprecated}
 }
 \examples{
-\dontrun{
-get_czso_catalogue()
+# see `czso_get_catalogue()`
 }
-}
-\seealso{
-Other Core workflow: 
-\code{\link{get_czso_table}()}
-}
-\concept{Core workflow}

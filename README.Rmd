@@ -56,7 +56,7 @@ library(czso)
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
 
-catalogue <- get_czso_catalogue()
+catalogue <- czso_get_catalogue()
 ```
 
 Now search for your terms of interest in the dataset titles:
@@ -72,19 +72,19 @@ You could also search in descriptions or keywords which are also retrieved into 
 We can see the `dataset_id` for the required dataset - now use it to get the dataset:
 
 ```{r example-cont}
-get_czso_table("110080")
+czso_get_table("110080")
 ```
 
 You can retrieve the schema for the dataset:
 
 ```{r example-schema}
-get_czso_table_schema("110080")
+czso_get_table_schema("110080")
 ```
 
 and download the documentation in PDF:
 
 ```{r example-doc}
-get_czso_dataset_doc("110080", action = "download", format = "pdf")
+czso_get_dataset_doc("110080", action = "download", format = "pdf")
 ```
 
 ### A note about "tables" and "datasets"
@@ -95,7 +95,7 @@ In the parlance of the official open data catalogue, a `dataset` can have multip
 
 - not created or endorsed by the Czech Statistical Office, though they, as well as [the open data team at the Ministry of Interior](https://data.gov.cz/) deserve credit for getting the data out there.
 - the package relies on the data.gov.cz catalogue of open data and on the CZSO's local catalogue
-- NB: The robots.txt at the domain hosting the CZSO's catalogue prohibits robots from accessing it; while this may be an inappropriate/erroneous setting for what is in essence a data API, this package tries to honor the spirit of that setting by only accessing the API once per `get_table()` call, relying on a different system for `get_catalogue()`. Hence, *do not use this package for harvesting large numbers of datasets from the CZSO.*
+- NB: The robots.txt at the domain hosting the CZSO's catalogue prohibits robots from accessing it; while this may be an inappropriate/erroneous setting for what is in essence a data API, this package tries to honor the spirit of that setting by only accessing the API once per `czso_get_table()` call, relying on a different system for `czso_get_catalogue()`. Hence, *do not use this package for harvesting large numbers of datasets from the CZSO.*
 
 ### Acknowledgments
 

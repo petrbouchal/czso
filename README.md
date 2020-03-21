@@ -59,7 +59,7 @@ library(czso)
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
 
-catalogue <- get_czso_catalogue()
+catalogue <- czso_get_catalogue()
 #> ℹ Reading data from data.gov.cz
 #> ✔ Done downloading and reading data
 #> ℹ Transforming data
@@ -85,7 +85,7 @@ We can see the `dataset_id` for the required dataset - now use it to get
 the dataset:
 
 ``` r
-get_czso_table("110080")
+czso_get_table("110080")
 #> # A tibble: 630 x 14
 #>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
 #>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
@@ -107,7 +107,7 @@ get_czso_table("110080")
 You can retrieve the schema for the dataset:
 
 ``` r
-get_czso_table_schema("110080")
+czso_get_table_schema("110080")
 #> # A tibble: 14 x 5
 #>    name       titles     `dc:description`                      required datatype
 #>    <chr>      <chr>      <chr>                                 <lgl>    <chr>   
@@ -130,7 +130,7 @@ get_czso_table_schema("110080")
 and download the documentation in PDF:
 
 ``` r
-get_czso_dataset_doc("110080", action = "download", format = "pdf")
+czso_get_dataset_doc("110080", action = "download", format = "pdf")
 #> ✔ Downloaded https://www.czso.cz/documents/62353418/109720808/110080-19dds.pdf to 110080-19dds.pdf
 ```
 
@@ -157,8 +157,8 @@ dataset and appends new data to it over time.
     prohibits robots from accessing it; while this may be an
     inappropriate/erroneous setting for what is in essence a data API,
     this package tries to honor the spirit of that setting by only
-    accessing the API once per `get_table()` call, relying on a
-    different system for `get_catalogue()`. Hence, *do not use this
+    accessing the API once per `czso_get_table()` call, relying on a
+    different system for `czso_get_catalogue()`. Hence, *do not use this
     package for harvesting large numbers of datasets from the CZSO.*
 
 ### Acknowledgments

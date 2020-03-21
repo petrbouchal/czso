@@ -2,7 +2,7 @@
 % Please edit documentation in R/core.R
 \name{get_table}
 \alias{get_table}
-\title{Deprecated: Retrieve and read dataset from CZSO}
+\title{Deprecated: use \code{czso_get_table()} instead.}
 \usage{
 get_table(dataset_id, resource_num = 1, force_redownload = F)
 }
@@ -17,8 +17,14 @@ get_table(dataset_id, resource_num = 1, force_redownload = F)
 a tibble
 }
 \description{
-Deprecated, use \code{get_czso_table()} instead.
+\lifecycle{soft-deprecated}.
 }
 \examples{
-# see `get_czso_table()`
+# see `czso_get_table()`
 }
+\seealso{
+Other Core workflow: 
+\code{\link{czso_get_catalogue}()},
+\code{\link{czso_get_table}()}
+}
+\concept{Core workflow}

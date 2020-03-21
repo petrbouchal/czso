@@ -12,7 +12,7 @@
 #' \dontrun{
 #' get_czso_catalogue()
 #' }
-get_czso_catalogue <- function() {
+czso_get_catalogue <- function() {
 
   sparql_url <- "https://data.gov.cz/sparql"
 
@@ -99,33 +99,46 @@ get_czso_catalogue <- function() {
   return(rslt)
 }
 
-#' Deprecated: Retrieve and read dataset from CZSO
+#' Deprecated: use `czso_get_catalogue()` instead
 #'
-#' Deprecated, use `get_czso_catalogue()` instead.
+#' \lifecycle{soft-deprecated}
 #'
 #' @return a tibble
 #' @examples
-#' # see `get_czso_catalogue()`
+#' # see `czso_get_catalogue()`
 #' @export
 get_catalogue <- function() {
-  .Deprecated("get_czso_catalogue")
-  get_czso_catalogue()
+  lifecycle::deprecate_soft("0.2.0", "get_catalogue()", "czso_get_catalogue()")
+  czso_get_catalogue()
+}
+
+#' Deprecated, use `czso_get_catalogue()` instead.
+#'
+#' \lifecycle{soft-deprecated}
+#'
+#' @return a tibble
+#' @examples
+#' # see `czso_get_catalogue()`
+#' @export
+get_czso_catalogue <- function() {
+  lifecycle::deprecate_soft("0.2.1", "get_czso_catalogue()", "czso_get_catalogue()")
+  czso_get_catalogue()
 }
 
 
 #' Get dataset metadata
 #'
 #' Get metadata from CZSO API, which can be somewhat more detailed/readable than
-#' what is provided in the dataset's entry in the output of `get_czso_dataset()`.
+#' what is provided in the dataset's entry in the output of `czso_get_dataset()`.
 #'
 #' @param dataset_id Dataset ID
 #'
 #' @return a list
 #' @examples
-#' get_czso_dataset_metadata("110080")
+#' czso_get_dataset_metadata("110080")
 #' @export
 #' @family Additional tools
-get_czso_dataset_metadata <- function(dataset_id) {
+czso_get_dataset_metadata <- function(dataset_id) {
   url <- paste0("https://vdb.czso.cz/pll/eweb/package_show?id=", dataset_id)
   mtdt_c <- httr::GET(url,
             httr::user_agent(ua_string)) %>%
@@ -134,6 +147,20 @@ get_czso_dataset_metadata <- function(dataset_id) {
   return(mtdt)
 }
 
+#' Deprecated, use `czso_get_catalogue()` instead.
+#'
+#' \lifecycle{soft-deprecated}
+#'
+#' @inheritParams czso_get_dataset_metadata
+#'
+#' @return a list
+#' @export
+#' @family Additional tools
+get_czso_dataset_metadata <- function(dataset_id) {
+  lifecycle::deprecate_soft("0.2.1", "get_czso_dataset_metadata()",
+                            "czso_get_dataset_metadata()")
+  czso_get_dataset_metadata(dataset_id = dataset_id)
+}
 get_czso_resources <- function(dataset_id) {
   mtdt <- get_czso_dataset_metadata(dataset_id)
   return(mtdt$resources)
@@ -153,9 +180,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #'
 #' The schema of the dataset is not yet used, so some columns may be mistyped and are by default returned as character vectors.
 #'
-#' ## Nota bene
-#'
-#' Do not use this for harvesting datasets from CZSO en masse.
+#' @note Do not use this for harvesting datasets from CZSO en masse.
 #'
 #' @param dataset_id a character. Found in the czso_id column of data frame returned by `get_catalogue()`.
 #' @param resource_num integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.
@@ -168,7 +193,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' \dontrun{
 #' get_czso_table("110080")
 #' }
-get_czso_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
+czso_get_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
   ptr <- get_czso_resource_pointer(dataset_id)
   url <- ptr$url
   type <- ptr$format
@@ -226,19 +251,20 @@ get_czso_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
 }
 
 
-#' Deprecated: Retrieve and read dataset from CZSO
+#' Deprecated: use `czso_get_table()` instead.
 #'
-#' Deprecated, use `get_czso_table()` instead.
+#' \lifecycle{soft-deprecated}.
 #'
-#' @inheritParams get_czso_table
+#' @inheritParams czso_get_table
 #'
 #' @return a tibble
+#' @family Core workflow
 #' @examples
-#' # see `get_czso_table()`
+#' # see `czso_get_table()`
 #' @export
 get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
-  .Deprecated("get_czso_table")
-  get_czso_table(dataset_id = dataset_id,
+  lifecycle::deprecate_soft("0.2.0", "get_catalogue()", "czso_get_catalogue()")
+  czso_get_table(dataset_id = dataset_id,
                  resource_num = resource_num,
                  force_redownload = force_redownload)
 }
@@ -256,7 +282,7 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
 #' get_czso_table_schema("110080")
 #' @export
 #' @family Additional tools
-get_czso_table_schema <- function(dataset_id, resource_num = 1) {
+czso_get_table_schema <- function(dataset_id, resource_num = 1) {
   urls <- get_czso_resource_pointer(dataset_id, resource_num)
   schema_url <- urls$meta_link
   schema_type <- urls$meta_format
@@ -270,6 +296,21 @@ get_czso_table_schema <- function(dataset_id, resource_num = 1) {
     rslt <- schema_url
   }
   return(rslt)
+}
+
+#' Deprecated: use `czso_get_table_schema()` instead
+#'
+#' \lifecycle{soft-deprecated}
+#'
+#' @inheritParams czso_get_table_schema
+#'
+#' @return a list
+#' @export
+#' @family Additional tools
+get_czso_table_schema <- function(dataset_id, resource_num) {
+  lifecycle::deprecate_soft("0.2.1", "get_czso_table_schema()",
+                            "czso_get_table_schema()")
+  czso_get_table_schema(dataset_id = dataset_id, resource_num = resource_num)
 }
 
 
@@ -287,7 +328,7 @@ get_czso_table_schema <- function(dataset_id, resource_num = 1) {
 #' get_czso_dataset_doc("110080")
 #' @export
 #' @family Additional tools
-get_czso_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
+czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
   metadata <- get_czso_dataset_metadata(dataset_id)
   frmt <- match.arg(format)
   url_orig <- metadata$schema
@@ -305,4 +346,19 @@ get_czso_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
          download = {utils::download.file(doc_url, destfile = dest, headers = ua_header, quiet = T)
            usethis::ui_done("Downloaded {doc_url} to {dest}")})
   if(act == "download") rslt <- dest else rslt <- doc_url
+}
+
+#' Deprecated: use `czso_get_dataset_doc()` instead
+#'
+#' \lifecycle{soft-deprecated}
+#'
+#' @inheritParams czso_get_dataset_doc
+#'
+#' @return a list
+#' @export
+#' @family Additional tools
+get_czso_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
+  lifecycle::deprecate_soft("0.2.1", "get_czso_dataset_doc()",
+                            "czso_get_dataset_doc()")
+  czso_get_dataset_doc(dataset_id = dataset_id, action = action, destfile = destfile, format = format)
 }
