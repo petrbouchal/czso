@@ -47,6 +47,10 @@ or the latest version with:
 remotes::install_github("petrbouchal/czso")
 ```
 
+I also keep binaries in a `drat` repo, which you can access by
+
+    install.packages("czso", repos = "https://petrbouchal.github.io/drat")
+
 ## Example
 
 Say you are looking for a dataset whose title refers to wages
