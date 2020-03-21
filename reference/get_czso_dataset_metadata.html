@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get dataset metadata — get_czso_dataset_metadata • czso</title>
+<title>Deprecated, use <code>czso_get_catalogue()</code> instead. — get_czso_dataset_metadata • czso</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,9 +42,8 @@
 
 
 
-<meta property="og:title" content="Get dataset metadata — get_czso_dataset_metadata" />
-<meta property="og:description" content="Get metadata from CZSO API, which can be somewhat more detailed/readable than
-what is provided in the dataset's entry in the output of get_czso_dataset()." />
+<meta property="og:title" content="Deprecated, use <code>czso_get_catalogue()</code> instead. — get_czso_dataset_metadata" />
+<meta property="og:description" content="" />
 <meta property="og:image" content="https://petrbouchal.github.io/czso/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -88,7 +87,7 @@ what is provided in the dataset's entry in the output of get_czso_dataset()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -127,14 +126,13 @@ what is provided in the dataset's entry in the output of get_czso_dataset()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get dataset metadata</h1>
+    <h1>Deprecated, use <code>czso_get_catalogue()</code> instead.</h1>
     <small class="dont-index">Source: <a href='https://github.com/petrbouchal/czso/blob/master/R/core.R'><code>R/core.R</code></a></small>
     <div class="hidden name"><code>get_czso_dataset_metadata.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get metadata from CZSO API, which can be somewhat more detailed/readable than
-what is provided in the dataset's entry in the output of <code>get_czso_dataset()</code>.</p>
+    <p><img src='figures/lifecycle-soft-deprecated.svg' alt='Soft-deprecated lifecycle' /></p>
     </div>
 
     <pre class="usage"><span class='fu'>get_czso_dataset_metadata</span>(<span class='no'>dataset_id</span>)</pre>
@@ -154,70 +152,12 @@ what is provided in the dataset's entry in the output of <code>get_czso_dataset(
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Additional tools: 
+<code><a href='czso_get_dataset_doc.html'>czso_get_dataset_doc</a>()</code>,
+<code><a href='czso_get_dataset_metadata.html'>czso_get_dataset_metadata</a>()</code>,
+<code><a href='czso_get_table_schema.html'>czso_get_table_schema</a>()</code>,
 <code><a href='get_czso_dataset_doc.html'>get_czso_dataset_doc</a>()</code>,
 <code><a href='get_czso_table_schema.html'>get_czso_table_schema</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_czso_dataset_metadata</span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; $name
-#&gt; [1] "110080"
-#&gt; 
-#&gt; $title
-#&gt; [1] "Průměrná hrubá měsíční mzda a medián mezd v krajích"
-#&gt; 
-#&gt; $notes
-#&gt; [1] "Datová sada obsahuje časovou řadu průměrných měsíčních mezd a mediánu mezd v krajích České republiky od roku 2011 včetně údajů podle pohlaví."
-#&gt; 
-#&gt; $frequency
-#&gt; [1] "R/P1Y"
-#&gt; 
-#&gt; $ruian_type
-#&gt; [1] "ST"
-#&gt; 
-#&gt; $ruian_code
-#&gt; [1] "1"
-#&gt; 
-#&gt; $publisher_uri
-#&gt; [1] "https://www.czso.cz"
-#&gt; 
-#&gt; $publisher_name
-#&gt; [1] "Český statistický úřad"
-#&gt; 
-#&gt; $maintainer_email
-#&gt; [1] "vdb@czso.cz"
-#&gt; 
-#&gt; $maintainer
-#&gt; [1] "Český statistický úřad"
-#&gt; 
-#&gt; $schema
-#&gt; [1] "https://www.czso.cz/documents/62353418/109720808/110080-19dds.htm"
-#&gt; 
-#&gt; $temporal_start
-#&gt; [1] "2011-01-01"
-#&gt; 
-#&gt; $temporal_end
-#&gt; [1] "2018-12-31"
-#&gt; 
-#&gt; $tags
-#&gt;          display_name                name
-#&gt; 1                Mzda                Mzda
-#&gt; 2       průměrná mzda       průměrná mzda
-#&gt; 3         medián mezd         medián mezd
-#&gt; 4 hrubá měsíční mzda. hrubá měsíční mzda.
-#&gt; 
-#&gt; $resources
-#&gt;                                                                        url
-#&gt; 1 https://www.czso.cz/documents/62353418/109720808/110080-19data053119.csv
-#&gt;     format                                                 license_link
-#&gt; 1 text/csv https://portal.gov.cz/portal/ostatni/volny-pristup-k-ds.html
-#&gt;                name
-#&gt; 1 Data do roku 2018
-#&gt;                                                                                                                                     description
-#&gt; 1 Datová sada obsahuje časovou řadu průměrných měsíčních mezd a mediánu mezd v krajích České republiky od roku 2011 včetně údajů podle pohlaví.
-#&gt;                                                                   describedBy
-#&gt; 1 https://www.czso.cz/documents/62353418/109720808/110080-19schema053119.json
-#&gt;    describedByType temporal_start temporal_end
-#&gt; 1 application/json     2011-01-01   2018-12-31
-#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -225,7 +165,6 @@ what is provided in the dataset's entry in the output of <code>get_czso_dataset(
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

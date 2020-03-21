@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Deprecated: Retrieve and read dataset from CZSO — get_table • czso</title>
+<title>Deprecated: use <code>czso_get_table()</code> instead. — get_table • czso</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,9 @@
 
 
 
-<meta property="og:title" content="Deprecated: Retrieve and read dataset from CZSO — get_table" />
-<meta property="og:description" content="Deprecated, use get_czso_table() instead." />
+<meta property="og:title" content="Deprecated: use <code>czso_get_table()</code> instead. — get_table" />
+<meta property="og:description" content="
+." />
 <meta property="og:image" content="https://petrbouchal.github.io/czso/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -87,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -126,13 +127,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Deprecated: Retrieve and read dataset from CZSO</h1>
+    <h1>Deprecated: use <code>czso_get_table()</code> instead.</h1>
     <small class="dont-index">Source: <a href='https://github.com/petrbouchal/czso/blob/master/R/core.R'><code>R/core.R</code></a></small>
     <div class="hidden name"><code>get_table.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Deprecated, use <code><a href='get_czso_table.html'>get_czso_table()</a></code> instead.</p>
+    <p><img src='figures/lifecycle-soft-deprecated.svg' alt='Soft-deprecated lifecycle' />
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_table</span>(<span class='no'>dataset_id</span>, <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>)</pre>
@@ -157,9 +159,14 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a tibble</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Core workflow: 
+<code><a href='czso_get_catalogue.html'>czso_get_catalogue</a>()</code>,
+<code><a href='czso_get_table.html'>czso_get_table</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># see `get_czso_table()`
+    <pre class="examples"><div class='input'># see `czso_get_table()`
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -167,6 +174,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

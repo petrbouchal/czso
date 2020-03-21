@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • czso</title>
+<title>Get CZSO table schema — czso_get_table_schema • czso</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Get CZSO table schema — czso_get_table_schema" />
+<meta property="og:description" content="Retrieves and parses the schema for the table identified by dataset_id and resource_num." />
 <meta property="og:image" content="https://petrbouchal.github.io/czso/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -73,7 +74,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -123,99 +124,75 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Get CZSO table schema</h1>
+    <small class="dont-index">Source: <a href='https://github.com/petrbouchal/czso/blob/master/R/core.R'><code>R/core.R</code></a></small>
+    <div class="hidden name"><code>czso_get_table_schema.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Retrieves and parses the schema for the table identified by dataset_id and resource_num.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>czso_get_table_schema</span>(<span class='no'>dataset_id</span>, <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-core-workflow" class="hasAnchor"><a href="#section-core-workflow" class="anchor"></a>Core workflow</h2>
-          <p class="section-desc"><p>Functions for executing the core workflow.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="czso_get_catalogue.html">czso_get_catalogue()</a></code> </p>
-        </td>
-        <td><p>Get catalogue of open CZSO datasets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="czso_get_table.html">czso_get_table()</a></code> </p>
-        </td>
-        <td><p>Retrieve and read dataset from CZSO</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_table.html">get_table()</a></code> </p>
-        </td>
-        <td><p>Deprecated: use <code>czso_get_table()</code> instead.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-additional-tools" class="hasAnchor"><a href="#section-additional-tools" class="anchor"></a>Additional tools</h2>
-          <p class="section-desc"><p>Functions for retrieving documentation and metadata.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="czso_get_dataset_doc.html">czso_get_dataset_doc()</a></code> </p>
-        </td>
-        <td><p>Get documentation for CZSO dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="czso_get_dataset_metadata.html">czso_get_dataset_metadata()</a></code> </p>
-        </td>
-        <td><p>Get dataset metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="czso_get_table_schema.html">czso_get_table_schema()</a></code> </p>
-        </td>
-        <td><p>Get CZSO table schema</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_czso_dataset_doc.html">get_czso_dataset_doc()</a></code> </p>
-        </td>
-        <td><p>Deprecated: use <code>czso_get_dataset_doc()</code> instead</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_czso_dataset_metadata.html">get_czso_dataset_metadata()</a></code> </p>
-        </td>
-        <td><p>Deprecated, use <code>czso_get_catalogue()</code> instead.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_czso_table_schema.html">get_czso_table_schema()</a></code> </p>
-        </td>
-        <td><p>Deprecated: use <code>czso_get_table_schema()</code> instead</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>dataset_id</th>
+      <td><p>Dataset ID</p></td>
+    </tr>
+    <tr>
+      <th>resource_num</th>
+      <td><p>Resource number, typically 1 in CZSO (the default)</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a tibble with a description of the columns in the table.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Additional tools: 
+<code><a href='czso_get_dataset_doc.html'>czso_get_dataset_doc</a>()</code>,
+<code><a href='czso_get_dataset_metadata.html'>czso_get_dataset_metadata</a>()</code>,
+<code><a href='get_czso_dataset_doc.html'>get_czso_dataset_doc</a>()</code>,
+<code><a href='get_czso_dataset_metadata.html'>get_czso_dataset_metadata</a>()</code>,
+<code><a href='get_czso_table_schema.html'>get_czso_table_schema</a>()</code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='get_czso_table_schema.html'>get_czso_table_schema</a></span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `get_czso_table_schema()` is deprecated as of lifecycle 0.2.1.</span>
+#&gt; <span class='warning'>Please use `czso_get_table_schema()` instead.</span>
+#&gt; <span class='warning'>This warning is displayed once per session.</span>
+#&gt; <span class='warning'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span></div><div class='output co'>#&gt; # A tibble: 14 x 5
+#&gt;    name       titles     `dc:description`                      required datatype
+#&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;                                 &lt;lgl&gt;    &lt;chr&gt;   
+#&gt;  1 idhod      idhod      "unikátní identifikátor údaje Veřejn… TRUE     string  
+#&gt;  2 hodnota    hodnota    "zjištěná hodnota"                    TRUE     number  
+#&gt;  3 stapro_kod stapro_kod "kód statistické proměnné ze systému… TRUE     string  
+#&gt;  4 spkvantil… spkvantil… "kód číselníku pro kvantil"           TRUE     string  
+#&gt;  5 spkvantil… spkvantil… "kód položky z číselníku pro kvantil" TRUE     string  
+#&gt;  6 pohlavi_c… pohlavi_c… "kód číselníku pro pohlaví"           TRUE     string  
+#&gt;  7 pohlavi_k… pohlavi_k… "kód položky číselníku pro pohlaví"   TRUE     string  
+#&gt;  8 rok        rok        "rok referenčního období ve formátu … TRUE     number  
+#&gt;  9 uzemi_cis  uzemi_cis  "kód číselníku pro referenční území " TRUE     string  
+#&gt; 10 uzemi_kod  uzemi_kod  "kód položky číselníku pro referenčn… TRUE     string  
+#&gt; 11 uzemi_txt  uzemi_txt  "text položky z číselníku pro refere… TRUE     string  
+#&gt; 12 stapro_txt stapro_txt "text statistické proměnné"           TRUE     string  
+#&gt; 13 spkvantil… spkvantil… "text položky číselníku pro kvantil"  TRUE     string  
+#&gt; 14 pohlavi_t… pohlavi_t… "text položky číselníku pro pohlaví"  TRUE     string  </div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-core-workflow">Core workflow</a></li>
-      <li><a href="#section-additional-tools">Additional tools</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

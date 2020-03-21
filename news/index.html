@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -129,13 +129,24 @@
       <small>Source: <a href='https://github.com/petrbouchal/czso/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="czso-development-version" class="section level1">
+    <div id="czso-0-2-1" class="section level1">
 <h1 class="page-header">
-<a href="#czso-development-version" class="anchor"></a>czso (development version)</h1>
+<a href="#czso-0-2-1" class="anchor"></a>czso 0.2.1</h1>
+<div id="new-function-names-and-deprecations" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-function-names-and-deprecations" class="anchor"></a>New function names and deprecations</h2>
+<ul>
+<li>all user-facing functions are now <code>czso_*</code> to avoid conflicts and aid discovery via auto-complete. Original functions are soft-deprecated.</li>
+</ul>
+</div>
+<div id="improvements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#improvements" class="anchor"></a>Improvements</h2>
 <ul>
 <li>improvements to documentation</li>
 <li>added code of conduct and contributing guide</li>
 </ul>
+</div>
 </div>
     <div id="czso-0-2-0" class="section level1">
 <h1 class="page-header">
@@ -153,9 +164,9 @@
     <div id="czso-0-1-5" class="section level1">
 <h1 class="page-header">
 <a href="#czso-0-1-5" class="anchor"></a>czso 0.1.5</h1>
-<div id="improvements" class="section level2">
+<div id="improvements-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements" class="anchor"></a>Improvements</h2>
+<a href="#improvements-1" class="anchor"></a>Improvements</h2>
 <ul>
 <li>get_czso_catalogue() is now much faster as it uses the open data catalogue’s API instead of donwloading a huge CSV list of all datasets. It is less flexible as it does not allow direct filtering.</li>
 <li>handle encoding of some older datasets, which may not be UTF-8</li>
@@ -176,7 +187,7 @@
 <h2 class="hasAnchor">
 <a href="#deprecated-functions" class="anchor"></a>Deprecated functions</h2>
 <ul>
-<li>both exported functions are renamed to <code><a href="../reference/get_czso_catalogue.html">get_czso_catalogue()</a></code> and <code><a href="../reference/get_czso_table.html">get_czso_table()</a></code> to avoid clashes with other packages; original functions are soft-deprecated and will be removed in future versions.</li>
+<li>both exported functions are renamed to <code><a href="../reference/get_czso_catalogue.html">get_czso_catalogue()</a></code> and <code>get_czso_table()</code> to avoid clashes with other packages; original functions are soft-deprecated and will be removed in future versions.</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
@@ -222,7 +233,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#czso-development-version">development version</a></li>
+        <li><a href="#czso-0-2-1">0.2.1</a></li>
         <li><a href="#czso-0-2-0">0.2.0</a></li>
         <li><a href="#czso-0-1-5">0.1.5</a></li>
         <li><a href="#czso-0-1-4">0.1.4</a></li>

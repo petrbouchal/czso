@@ -7,6 +7,21 @@
     <loc>https://petrbouchal.github.io/czso/reference/czso-package.html</loc>
   </url>
   <url>
+    <loc>https://petrbouchal.github.io/czso/reference/czso_get_catalogue.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/czso_get_dataset_doc.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/czso_get_dataset_metadata.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/czso_get_table.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.github.io/czso/reference/czso_get_table_schema.html</loc>
+  </url>
+  <url>
     <loc>https://petrbouchal.github.io/czso/reference/get_catalogue.html</loc>
   </url>
   <url>
@@ -17,9 +32,6 @@
   </url>
   <url>
     <loc>https://petrbouchal.github.io/czso/reference/get_czso_dataset_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://petrbouchal.github.io/czso/reference/get_czso_table.html</loc>
   </url>
   <url>
     <loc>https://petrbouchal.github.io/czso/reference/get_czso_table_schema.html</loc>
