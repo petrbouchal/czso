@@ -1,4 +1,4 @@
-# czso (development version)
+# czso 0.2.1
 
 ## New function names and deprecations
 
