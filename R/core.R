@@ -91,10 +91,10 @@ czso_get_catalogue <- function() {
   rslt <- readr::read_csv(rslt, col_types = readr::cols(modified = "T"))
   usethis::ui_done("Done downloading and reading data")
   usethis::ui_info("Transforming data")
-  rslt <- dplyr::group_by(rslt, dataset_iri) %>%
-    dplyr::mutate(keywords = stringr::str_c(keywords_all, collapse = "; ")) %>%
+  rslt <- dplyr::group_by(rslt, .data$dataset_iri) %>%
+    dplyr::mutate(keywords = stringr::str_c(.data$keywords_all, collapse = "; ")) %>%
     dplyr::ungroup() %>%
-    dplyr::select(-keywords_all) %>%
+    dplyr::select(-.data$keywords_all) %>%
     dplyr::distinct()
   return(rslt)
 }
@@ -168,7 +168,7 @@ get_czso_resources <- function(dataset_id) {
 
 get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
   rsrc <- get_czso_resources(dataset_id)[resource_num,] %>%
-    dplyr::select(url, format, meta_link = describedBy, meta_format = describedByType)
+    dplyr::select(.data$url, .data$format, meta_link = .data$describedBy, meta_format = .data$describedByType)
   return(rsrc)
 }
 
