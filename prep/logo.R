@@ -52,7 +52,10 @@ img_hex <- hex_canvas %>%
   # bunny::image_compose(icon, gravity = "north", offset = "+0+650") %>%
   image_annotate("c,z,s,o", size = 500, gravity = "north", location = "+0+300",
                  font = "Tahoma", color = "#c30011") %>%
-  bunny::image_compose(hex_border, gravity = "center", operator = "Over")
+  # bunny::image_compose(hex_border, gravity = "center", operator = "Over") %>%
+  image_annotate("petrbouchal.gihub.io/czso", size = 50, gravity = "south", location = "+250+210",
+                 degrees = 330,
+                 font = "sans", color = "grey")
 img_hex
 
 
