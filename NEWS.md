@@ -2,6 +2,7 @@
 
 ## Bug fixes and minor improvements
 
+* all functions accessing CZSO data now return helpful error if the dataset cannot be found
 * fixed deprecation warnings to display correct package name
 * added helpful error message for no access to the internet
 

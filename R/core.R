@@ -146,6 +146,7 @@ czso_get_dataset_metadata <- function(dataset_id) {
             httr::user_agent(ua_string)) %>%
     httr::content(as = "text")
   mtdt <- jsonlite::fromJSON(mtdt_c)[["result"]]
+  if(is.null(mtdt)) usethis::ui_stop("No dataset found with this ID.")
   return(mtdt)
 }
 
@@ -164,7 +165,7 @@ get_czso_dataset_metadata <- function(dataset_id) {
   czso_get_dataset_metadata(dataset_id = dataset_id)
 }
 get_czso_resources <- function(dataset_id) {
-  mtdt <- get_czso_dataset_metadata(dataset_id)
+  mtdt <- czso_get_dataset_metadata(dataset_id)
   return(mtdt$resources)
 }
 
