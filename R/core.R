@@ -74,6 +74,7 @@ czso_get_catalogue <- function() {
                 timeout = 30000,
                 debug = "on",
                 run = "Run Query")
+  if(!curl::has_internet()) usethis::ui_stop(c("No internet connection. Cannot continue. Retry when connected."))
   usethis::ui_info("Reading data from data.gov.cz")
   cat_rslt <- httr::GET(sparql_url, query = params,
                         # accept("application/sparql-results+json"),
@@ -139,6 +140,7 @@ get_czso_catalogue <- function() {
 #' @export
 #' @family Additional tools
 czso_get_dataset_metadata <- function(dataset_id) {
+  if(!curl::has_internet()) usethis::ui_stop(c("No internet connection. Cannot continue. Retry when connected."))
   url <- paste0("https://vdb.czso.cz/pll/eweb/package_show?id=", dataset_id)
   mtdt_c <- httr::GET(url,
             httr::user_agent(ua_string)) %>%

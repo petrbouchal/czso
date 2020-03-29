@@ -3,6 +3,8 @@
 ## Bug fixes and minor improvements
 
 * fixed deprecation warnings to display correct package name
+* added helpful error message for no access to the internet
+
 ## Prepare for CRAN
 
 * fixed dplyr-related CHECK NOTE

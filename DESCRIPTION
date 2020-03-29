@@ -13,6 +13,7 @@ License: MIT + file LICENSE
 URL: https://github.com/petrbouchal/czso
 BugReports: https://github.com/petrbouchal/czso/issues
 Imports: 
+    curl (>= 4.3),
     dplyr (>= 0.8.3),
     httr (>= 1.4.1),
     jsonlite (>= 1.6),
