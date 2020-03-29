@@ -1,5 +1,13 @@
 # czso (development version)
 
+## Bug fixes and minor improvements
+
+* fixed deprecation warnings to display correct package name
+## Prepare for CRAN
+
+* fixed dplyr-related CHECK NOTE
+* updated LICENSE for CRAN
+
 # czso 0.2.1
 
 ## New function names and deprecations
