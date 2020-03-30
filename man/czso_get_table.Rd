@@ -28,9 +28,7 @@ The schema of the dataset is not yet used, so some columns may be mistyped and a
 Do not use this for harvesting datasets from CZSO en masse.
 }
 \examples{
-\dontrun{
 get_czso_table("110080")
-}
 }
 \seealso{
 Other Core workflow: 

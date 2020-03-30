@@ -9,9 +9,7 @@
 #' @export
 #' @family Core workflow
 #' @examples
-#' \dontrun{
-#' get_czso_catalogue()
-#' }
+#' czso_get_catalogue()
 czso_get_catalogue <- function() {
 
   sparql_url <- "https://data.gov.cz/sparql"
@@ -190,12 +188,10 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' @param force_redownload integer. Whether to redownload data source file even if already cached. Defaults to FALSE.
 #'
 #' @return a tibble, or vector of file paths if file is not CSV or if there are multiple
-#' @export
 #' @family Core workflow
 #' @examples
-#' \dontrun{
 #' get_czso_table("110080")
-#' }
+#' @export
 czso_get_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
   ptr <- get_czso_resource_pointer(dataset_id)
   url <- ptr$url
@@ -328,7 +324,7 @@ get_czso_table_schema <- function(dataset_id, resource_num) {
 #'
 #' @return if `action = download`, the path to the downloaded file; file URL otherwise.
 #' @examples
-#' get_czso_dataset_doc("110080")
+#' czso_get_dataset_doc("110080")
 #' @export
 #' @family Additional tools
 czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {

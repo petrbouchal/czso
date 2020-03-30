@@ -27,7 +27,7 @@ if \code{action = download}, the path to the downloaded file; file URL otherwise
 Retrieves the URL/downloads the file containing the documentation of the dataset, in the required format.
 }
 \examples{
-get_czso_dataset_doc("110080")
+czso_get_dataset_doc("110080")
 }
 \seealso{
 Other Additional tools: 
