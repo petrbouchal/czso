@@ -1,5 +1,9 @@
 # czso (development version)
 
+## Prep for CRAN
+
+* add cran-comments.md
+
 ## Bug fixes and minor improvements
 
 * all functions accessing CZSO data now return helpful error if the dataset cannot be found
