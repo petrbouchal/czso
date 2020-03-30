@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -95,7 +95,7 @@
 <li><p><strong>providing direct access from R to the catalogue of open CZSO datasets</strong>, eliminating the hassle from data discovery. Normally this is done done through <a href="https://www.czso.cz/csu/czso/otevrena-data-v-katalogu-produktu-csu">the CZSO’s product catalogue</a> which is unfortunately a bit clunky, or <a href="https://data.gov.cz">data.gov.cz</a>, which is not a natural starting point for many.</p></li>
 <li><p><strong>providing a function to load a specific dataset to R</strong> directly from the CZSO’s datastore, eliminating the friction of copying a URL, downloading, unzipping etc.</p></li>
 </ol>
-<p>Additionally, the package provides metadata on datasets.</p>
+<p>Additionally, the package provides access to metadata on datasets.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -131,20 +131,20 @@
 <p>You could also search in descriptions or keywords which are also retrieved into the catalogue.</p>
 <p>We can see the <code>dataset_id</code> for the required dataset - now use it to get the dataset:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="reference/czso_get_table.html">czso_get_table</a></span>(<span class="st">"110080"</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; # A tibble: 630 x 14</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; # A tibble: 720 x 14</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;  1 7366…   21554 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;  2 7366…   20378 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;  3 7366…   22447 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  4 7366…   20266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;  5 7366…   27162 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;  6 7366…   19183 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;  7 7366…   21782 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  8 7366…   21383 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;  9 7366…   20527 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 10 7366…   20153 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; # … with 620 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;  2 7459…   29026 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;  3 7459…   22729 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  4 7459…   22266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;  5 7459…   23955 5958       7636          Q5            102         1          </span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;  6 7459…   20271 5958       7636          Q5            102         2          </span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;  7 7459…   26033 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  8 7459…   28873 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;  9 7459…   22496 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; # … with 710 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; #   POHLAVI_txt &lt;chr&gt;</span></a></code></pre></div>
 <p>You can retrieve the schema for the dataset:</p>
@@ -175,6 +175,12 @@
 <p>In the parlance of the official open data catalogue, a <code>dataset</code> can have multiple distributions (typically multiple formats of the same data). These are called resources in the internals, and manifest as tables in this package. Some metainformation is the property of a dataset (the documentation), while other - the schema - is the property of a table. Hence the function names in this package. This is to keep things organised even if the CZSO almost always provides only one table per dataset and appends new data to it over time.</p>
 </div>
 </div>
+<div id="data-sources" class="section level2">
+<h2 class="hasAnchor">
+<a href="#data-sources" class="anchor"></a>Data sources</h2>
+<p>The catalogue is drawn from <a href="https://data.gov.cz" class="uri">https://data.gov.cz</a> through the <a href="https://data.gov.cz/sparql">SPARQL endpoint</a>.</p>
+<p>The data and specific metadata is then accessed via the <code>package_show</code> endpoint of the CZSO API at (example) <a href="https://vdb.czso.cz/pll/eweb/package_show?id=290038r19" class="uri">https://vdb.czso.cz/pll/eweb/package_show?id=290038r19</a>.</p>
+</div>
 <div id="credit-and-notes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#credit-and-notes" class="anchor"></a>Credit and notes</h2>
@@ -193,7 +199,7 @@
 <h3 class="hasAnchor">
 <a href="#the-logo" class="anchor"></a>The logo</h3>
 <p>An homage to the CZSO’s work in releasing its data in an open format, something that is not necessarily in its DNA.</p>
-<p>It alludes to the shades of the country reflected in the tabular data provided, By intersersing the comma symbo; into the name of the package, it refers to both integration between statistics and open data and the slight disruption that the world of statistics undergoes when that integration happens.</p>
+<p>It alludes to the shades of the country reflected in the tabular data provided, By interspersing the comma symbol into the name of the package, it refers to both integration between statistics and open data and the slight disruption that the world of statistics undergoes when that integration happens.</p>
 </div>
 </div>
 <div id="see-also" class="section level2">
@@ -213,7 +219,7 @@
 <div id="contributing-code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing-code-of-conduct" class="anchor"></a>Contributing / code of conduct</h2>
-<p>Please note that the ‘czso’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the ‘czso’ project is released with a <a href="https://petrbouchal.github.io/czso/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
