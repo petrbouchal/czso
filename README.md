@@ -30,7 +30,7 @@ This is done by
     from the CZSO’s datastore, eliminating the friction of copying a
     URL, downloading, unzipping etc.
 
-Additionally, the package provides metadata on datasets.
+Additionally, the package provides access to metadata on datasets.
 
 ## Installation
 
@@ -149,6 +149,14 @@ of a table. Hence the function names in this package. This is to keep
 things organised even if the CZSO almost always provides only one table
 per dataset and appends new data to it over time.
 
+## Data sources
+
+The catalogue is drawn from <https://data.gov.cz> through the [SPARQL
+endpoint](https://data.gov.cz/sparql).
+
+The data and specific metadata is then accessed via the `package_show`
+endpoint of the CZSO API at <https://vdb.czso.cz/pll/eweb/>.
+
 ## Credit and notes
 
   - not created or endorsed by the Czech Statistical Office, though
@@ -178,10 +186,10 @@ An homage to the CZSO’s work in releasing its data in an open format,
 something that is not necessarily in its DNA.
 
 It alludes to the shades of the country reflected in the tabular data
-provided, By intersersing the comma symbo; into the name of the package,
-it refers to both integration between statistics and open data and the
-slight disruption that the world of statistics undergoes when that
-integration happens.
+provided, By interspersing the comma symbol into the name of the
+package, it refers to both integration between statistics and open data
+and the slight disruption that the world of statistics undergoes when
+that integration happens.
 
 ## See also
 

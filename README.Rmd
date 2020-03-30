@@ -25,11 +25,11 @@ The goal of czso is to provide direct, programmatic, hassle-free access from R t
 
 This is done by
 
-1. **providing direct access from R to the catalogue of open CZSO datasets**, eliminating the hassle from data discovery. Normally this is done done through [the CZSO's product catalogue](https://www.czso.cz/csu/czso/otevrena-data-v-katalogu-produktu-csu) which is unfortunately a bit clunky, or [data.gov.cz](https://data.gov.cz), which is not a natural starting point for many.
+1. **providing direct access from R to the catalogue of open CZSO datasets**, eliminating the hassle from data discovery. Normally this is done done through [the CZSO's product catalogue](https://www.czso.cz/csu/czso/otevrena-data-v-katalogu-produktu-csu) which is unfortunately a bit clunky, or [data.gov.cz](https://data.gov.cz), which is not a natural starting point for many. 
 
 2. **providing a function to load a specific dataset to R** directly from the CZSO's datastore, eliminating the friction of copying a URL, downloading, unzipping etc.
 
-Additionally, the package provides metadata on datasets.
+Additionally, the package provides access to metadata on datasets.
 
 ## Installation
 
@@ -98,6 +98,12 @@ czso_get_dataset_doc("110080", action = "download", format = "pdf")
 
 In the parlance of the official open data catalogue, a `dataset` can have multiple distributions (typically multiple formats of the same data). These are called resources in the internals, and manifest as tables in this package. Some metainformation is the property of a dataset (the documentation), while other - the schema - is the property of a table. Hence the function names in this package. This is to keep things organised even if the CZSO almost always provides only one table per dataset and appends new data to it over time.
 
+## Data sources
+
+The catalogue is drawn from https://data.gov.cz through the [SPARQL endpoint](https://data.gov.cz/sparql).
+
+The data and specific metadata is then accessed via the `package_show` endpoint of the CZSO API at https://vdb.czso.cz/pll/eweb/.
+
 ## Credit and notes
 
 - not created or endorsed by the Czech Statistical Office, though they, as well as [the open data team at the Ministry of Interior](https://data.gov.cz/) deserve credit for getting the data out there.
@@ -112,7 +118,7 @@ Thanks to @jakubklimek and @martinnecasky for [helping me figure out](https://gi
 
 An homage to the CZSO's work in releasing its data in an open format, something that is not necessarily in its DNA.
 
-It alludes to the shades of the country reflected in the tabular data provided, By intersersing the comma symbo; into the name of the package, it refers to both integration between statistics and open data and the slight disruption that the world of statistics undergoes when that integration happens.
+It alludes to the shades of the country reflected in the tabular data provided, By interspersing the comma symbol into the name of the package, it refers to both integration between statistics and open data and the slight disruption that the world of statistics undergoes when that integration happens.
 
 ## See also
 
