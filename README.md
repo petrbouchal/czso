@@ -155,7 +155,8 @@ The catalogue is drawn from <https://data.gov.cz> through the [SPARQL
 endpoint](https://data.gov.cz/sparql).
 
 The data and specific metadata is then accessed via the `package_show`
-endpoint of the CZSO API at <https://vdb.czso.cz/pll/eweb/>.
+endpoint of the CZSO API at (example)
+<https://vdb.czso.cz/pll/eweb/package_show?id=290038r19>.
 
 ## Credit and notes
 
