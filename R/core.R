@@ -190,7 +190,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' @return a tibble, or vector of file paths if file is not CSV or if there are multiple
 #' @family Core workflow
 #' @examples
-#' get_czso_table("110080")
+#' czso_get_table("110080")
 #' @export
 czso_get_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
   ptr <- get_czso_resource_pointer(dataset_id)
