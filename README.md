@@ -216,5 +216,5 @@ For access to some of Prague’s open geospatial data in R, see
 ## Contributing / code of conduct
 
 Please note that the ‘czso’ project is released with a [Contributor Code
-of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you
-agree to abide by its terms.
+of Conduct](https://petrbouchal.github.io/czso/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.
