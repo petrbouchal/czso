@@ -109,7 +109,7 @@ czso_get_catalogue <- function() {
 #' # see `czso_get_catalogue()`
 #' @export
 get_catalogue <- function() {
-  lifecycle::deprecate_soft("0.2.0", "get_catalogue()", "czso_get_catalogue()")
+  lifecycle::deprecate_soft("0.2.0", "czso::get_catalogue()", "czso_get_catalogue()")
   czso_get_catalogue()
 }
 
@@ -122,7 +122,7 @@ get_catalogue <- function() {
 #' # see `czso_get_catalogue()`
 #' @export
 get_czso_catalogue <- function() {
-  lifecycle::deprecate_soft("0.2.1", "get_czso_catalogue()", "czso_get_catalogue()")
+  lifecycle::deprecate_soft("0.2.1", "czso::get_czso_catalogue()", "czso_get_catalogue()")
   czso_get_catalogue()
 }
 
@@ -160,7 +160,7 @@ czso_get_dataset_metadata <- function(dataset_id) {
 #' @export
 #' @family Additional tools
 get_czso_dataset_metadata <- function(dataset_id) {
-  lifecycle::deprecate_soft("0.2.1", "get_czso_dataset_metadata()",
+  lifecycle::deprecate_soft("0.2.1", "czso::get_czso_dataset_metadata()",
                             "czso_get_dataset_metadata()")
   czso_get_dataset_metadata(dataset_id = dataset_id)
 }
@@ -266,7 +266,7 @@ czso_get_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
 #' # see `czso_get_table()`
 #' @export
 get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
-  lifecycle::deprecate_soft("0.2.0", "get_catalogue()", "czso_get_catalogue()")
+  lifecycle::deprecate_soft("0.2.0", "czso::get_catalogue()", "czso_get_catalogue()")
   czso_get_table(dataset_id = dataset_id,
                  resource_num = resource_num,
                  force_redownload = force_redownload)
@@ -311,7 +311,7 @@ czso_get_table_schema <- function(dataset_id, resource_num = 1) {
 #' @export
 #' @family Additional tools
 get_czso_table_schema <- function(dataset_id, resource_num) {
-  lifecycle::deprecate_soft("0.2.1", "get_czso_table_schema()",
+  lifecycle::deprecate_soft("0.2.1", "czso::get_czso_table_schema()",
                             "czso_get_table_schema()")
   czso_get_table_schema(dataset_id = dataset_id, resource_num = resource_num)
 }
@@ -361,7 +361,7 @@ czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
 #' @export
 #' @family Additional tools
 get_czso_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
-  lifecycle::deprecate_soft("0.2.1", "get_czso_dataset_doc()",
+  lifecycle::deprecate_soft("0.2.1", "czso::get_czso_dataset_doc()",
                             "czso_get_dataset_doc()")
   czso_get_dataset_doc(dataset_id = dataset_id, action = action, destfile = destfile, format = format)
 }
