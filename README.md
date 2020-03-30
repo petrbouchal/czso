@@ -90,20 +90,20 @@ the dataset:
 
 ``` r
 czso_get_table("110080")
-#> # A tibble: 630 x 14
+#> # A tibble: 720 x 14
 #>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
 #>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
-#>  1 7366…   21554 5958       7636          Q5            <NA>        <NA>       
-#>  2 7366…   20378 5958       7636          Q5            <NA>        <NA>       
-#>  3 7366…   22447 5958       7636          Q5            <NA>        <NA>       
-#>  4 7366…   20266 5958       7636          Q5            <NA>        <NA>       
-#>  5 7366…   27162 5958       7636          Q5            <NA>        <NA>       
-#>  6 7366…   19183 5958       7636          Q5            <NA>        <NA>       
-#>  7 7366…   21782 5958       7636          Q5            <NA>        <NA>       
-#>  8 7366…   21383 5958       7636          Q5            <NA>        <NA>       
-#>  9 7366…   20527 5958       7636          Q5            <NA>        <NA>       
-#> 10 7366…   20153 5958       7636          Q5            <NA>        <NA>       
-#> # … with 620 more rows, and 7 more variables: rok <int>, uzemi_cis <chr>,
+#>  1 7459…   26211 5958       <NA>          <NA>          <NA>        <NA>       
+#>  2 7459…   29026 5958       <NA>          <NA>          102         1          
+#>  3 7459…   22729 5958       <NA>          <NA>          102         2          
+#>  4 7459…   22266 5958       7636          Q5            <NA>        <NA>       
+#>  5 7459…   23955 5958       7636          Q5            102         1          
+#>  6 7459…   20271 5958       7636          Q5            102         2          
+#>  7 7459…   26033 5958       <NA>          <NA>          <NA>        <NA>       
+#>  8 7459…   28873 5958       <NA>          <NA>          102         1          
+#>  9 7459…   22496 5958       <NA>          <NA>          102         2          
+#> 10 7459…   21997 5958       7636          Q5            <NA>        <NA>       
+#> # … with 710 more rows, and 7 more variables: rok <int>, uzemi_cis <chr>,
 #> #   uzemi_kod <chr>, STAPRO_TXT <chr>, uzemi_txt <chr>, SPKVANTIL_txt <chr>,
 #> #   POHLAVI_txt <chr>
 ```

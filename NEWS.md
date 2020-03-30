@@ -3,17 +3,16 @@
 ## Prep for CRAN
 
 * add cran-comments.md
+* fixed dplyr-related CHECK NOTE
+* updated LICENSE for CRAN
+* update URL in README
 
 ## Bug fixes and minor improvements
 
 * all functions accessing CZSO data now return helpful error if the dataset cannot be found
 * fixed deprecation warnings to display correct package name
 * added helpful error message for no access to the internet
-
-## Prepare for CRAN
-
-* fixed dplyr-related CHECK NOTE
-* updated LICENSE for CRAN
+* spelling corrections
 
 # czso 0.2.1
 
@@ -38,7 +37,7 @@
 
 ## Improvements
 
-* get_czso_catalogue() is now much faster as it uses the open data catalogue's API instead of donwloading a huge CSV list of all datasets. It is less flexible as it does not allow direct filtering.
+* get_czso_catalogue() is now much faster as it uses the open data catalogue's API instead of downloading a huge CSV list of all datasets. It is less flexible as it does not allow direct filtering.
 * handle encoding of some older datasets, which may not be UTF-8
 
 # czso 0.1.4
