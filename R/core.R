@@ -9,7 +9,9 @@
 #' @export
 #' @family Core workflow
 #' @examples
+#' \donttest{
 #' czso_get_catalogue()
+#' }
 czso_get_catalogue <- function() {
 
   sparql_url <- "https://data.gov.cz/sparql"
@@ -135,7 +137,9 @@ get_czso_catalogue <- function() {
 #'
 #' @return a list
 #' @examples
+#' \donttest{
 #' czso_get_dataset_metadata("110080")
+#' }
 #' @export
 #' @family Additional tools
 czso_get_dataset_metadata <- function(dataset_id) {
@@ -192,15 +196,17 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' @return a tibble, or vector of file paths if file is not CSV or if there are multiple
 #' @family Core workflow
 #' @examples
+#' \donttest{
 #' czso_get_table("110080")
+#' }
 #' @export
-czso_get_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
+czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 1) {
   ptr <- get_czso_resource_pointer(dataset_id)
   url <- ptr$url
   type <- ptr$format
   ext <- tools::file_ext(url)
   td <- paste(tempdir(), "czso", dataset_id, sep = "/")
-  dir.create(td, showWarnings = F, recursive = T)
+  dir.create(td, showWarnings = FALSE, recursive = TRUE)
   dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
   if(file.exists(dfile) & !force_redownload) {
     usethis::ui_info("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed.")
@@ -263,7 +269,7 @@ czso_get_table <- function(dataset_id, force_redownload = F, resource_num = 1) {
 #' @examples
 #' # see `czso_get_table()`
 #' @export
-get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
+get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
   lifecycle::deprecate_soft("0.2.0", "czso::get_catalogue()", "czso_get_catalogue()")
   czso_get_table(dataset_id = dataset_id,
                  resource_num = resource_num,
@@ -280,7 +286,9 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
 #'
 #' @return a tibble with a description of the columns in the table.
 #' @examples
+#' \donttest{
 #' czso_get_table_schema("110080")
+#' }
 #' @export
 #' @family Additional tools
 czso_get_table_schema <- function(dataset_id, resource_num = 1) {
@@ -326,7 +334,9 @@ get_czso_table_schema <- function(dataset_id, resource_num) {
 #'
 #' @return if `action = download`, the path to the downloaded file; file URL otherwise.
 #' @examples
+#' \donttest{
 #' czso_get_dataset_doc("110080")
+#' }
 #' @export
 #' @family Additional tools
 czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
@@ -344,7 +354,7 @@ czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
          open = {
            usethis::ui_done("Opening {doc_url} in browser")
            utils::browseURL(doc_url)},
-         download = {utils::download.file(doc_url, destfile = dest, headers = ua_header, quiet = T)
+         download = {utils::download.file(doc_url, destfile = dest, headers = ua_header, quiet = TRUE)
            usethis::ui_done("Downloaded {doc_url} to {dest}")})
   if(act == "download") rslt <- dest else rslt <- doc_url
 }

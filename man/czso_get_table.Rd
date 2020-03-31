@@ -4,7 +4,7 @@
 \alias{czso_get_table}
 \title{Retrieve and read dataset from CZSO}
 \usage{
-czso_get_table(dataset_id, force_redownload = F, resource_num = 1)
+czso_get_table(dataset_id, force_redownload = FALSE, resource_num = 1)
 }
 \arguments{
 \item{dataset_id}{a character. Found in the czso_id column of data frame returned by \code{get_catalogue()}.}
@@ -28,7 +28,9 @@ The schema of the dataset is not yet used, so some columns may be mistyped and a
 Do not use this for harvesting datasets from CZSO en masse.
 }
 \examples{
+\donttest{
 czso_get_table("110080")
+}
 }
 \seealso{
 Other Core workflow: 

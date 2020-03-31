@@ -7,7 +7,7 @@ ss <- GET("https://data.gov.cz/zdroj/lok%C3%A1ln%C3%AD-katalogy/CSttstckyU/21460
 tt <- ss[[1]][[6]]
 urls <- map_chr(tt, 2)
 
-nn <- urls %>% map(~GET(.x, accept_json()) %>% content(auto_unbox = T))
+nn <- urls %>% map(~GET(.x, accept_json()) %>% content(auto_unbox = TRUE))
 names(nn[[1]][[1]])
 
 nn[[1]][[1]]$`http://www.w3.org/ns/dcat#keyword` %>%
@@ -40,7 +40,7 @@ ss <- GET("https://data.gov.cz/zdroj/lok%C3%A1ln%C3%AD-katalogy/CSttstckyU/21460
 tt <- ss[[1]][[6]]
 urls <- map_chr(tt, 2)
 
-nn <- urls[400] %>% map(~GET(.x, accept_json()) %>% content(auto_unbox = T))
+nn <- urls[400] %>% map(~GET(.x, accept_json()) %>% content(auto_unbox = TRUE))
 
 zzz <- nn %>%
   pluck(1) %>%

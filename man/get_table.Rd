@@ -4,7 +4,7 @@
 \alias{get_table}
 \title{Deprecated: use \code{czso_get_table()} instead.}
 \usage{
-get_table(dataset_id, resource_num = 1, force_redownload = F)
+get_table(dataset_id, resource_num = 1, force_redownload = FALSE)
 }
 \arguments{
 \item{dataset_id}{a character. Found in the czso_id column of data frame returned by \code{get_catalogue()}.}

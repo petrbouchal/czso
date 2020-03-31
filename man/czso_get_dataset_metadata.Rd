@@ -17,7 +17,9 @@ Get metadata from CZSO API, which can be somewhat more detailed/readable than
 what is provided in the dataset's entry in the output of \code{czso_get_dataset()}.
 }
 \examples{
+\donttest{
 czso_get_dataset_metadata("110080")
+}
 }
 \seealso{
 Other Additional tools: 

@@ -18,7 +18,9 @@ a tibble with a description of the columns in the table.
 Retrieves and parses the schema for the table identified by dataset_id and resource_num.
 }
 \examples{
+\donttest{
 czso_get_table_schema("110080")
+}
 }
 \seealso{
 Other Additional tools: 

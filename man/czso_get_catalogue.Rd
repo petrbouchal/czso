@@ -16,7 +16,9 @@ Retrieves a list of all CZSO's open datasets available from the Czech Open data 
 Use the dataset_id column as an argument to \code{get_czso_table()}.
 }
 \examples{
+\donttest{
 czso_get_catalogue()
+}
 }
 \seealso{
 Other Core workflow: 
