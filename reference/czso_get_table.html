@@ -139,7 +139,7 @@ Unzips if necessary, but only loads CSV files, otherwise returns the path to the
 Converts types of columns where known, e.g. value columns to numeric.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>czso_get_table</span>(<span class='no'>dataset_id</span>, <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>czso_get_table</span>(<span class='no'>dataset_id</span>, <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,7 +174,8 @@ Converts types of columns where known, e.g. value columns to numeric.</p>
 <code><a href='get_table.html'>get_table</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>czso_get_table</span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; # A tibble: 720 x 14
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'>czso_get_table</span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; # A tibble: 720 x 14
 #&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
 #&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      
 #&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       
@@ -189,7 +190,8 @@ Converts types of columns where known, e.g. value columns to numeric.</p>
 #&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       
 #&gt; # … with 710 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,
 #&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,
-#&gt; #   POHLAVI_txt &lt;chr&gt;</div></pre>
+#&gt; #   POHLAVI_txt &lt;chr&gt;</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

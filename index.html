@@ -99,76 +99,78 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
+<p>You can install the package from CRAN:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"czso"</span>)</a></code></pre></div>
 <p>You can install the latest release from <a href="https://github.com/petrbouchal/czso">github</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"petrbouchal/czso"</span>, <span class="dt">ref =</span> <span class="kw">github_release</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"petrbouchal/czso"</span>, <span class="dt">ref =</span> <span class="kw">github_release</span>())</a></code></pre></div>
 <p>or the latest version with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"petrbouchal/czso"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"petrbouchal/czso"</span>)</a></code></pre></div>
 <p>I also keep binaries in a <code>drat</code> repo, which you can access by</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"czso"</span>, <span class="dt">repos =</span> <span class="st">"https://petrbouchal.github.io/drat"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"czso"</span>, <span class="dt">repos =</span> <span class="st">"https://petrbouchal.github.io/drat"</span>)</a></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>Say you are looking for a dataset whose title refers to wages (mzda/mzdy):</p>
 <p>First, retrieve the list of available CZSO datasets:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(czso)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr))</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr))</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">catalogue &lt;-<span class="st"> </span><span class="kw"><a href="reference/czso_get_catalogue.html">czso_get_catalogue</a></span>()</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; ℹ Reading data from data.gov.cz</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; ✔ Done downloading and reading data</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; ℹ Transforming data</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(czso)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr))</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr))</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">catalogue &lt;-<span class="st"> </span><span class="kw"><a href="reference/czso_get_catalogue.html">czso_get_catalogue</a></span>()</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; ℹ Reading data from data.gov.cz</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; ✔ Done downloading and reading data</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; ℹ Transforming data</span></a></code></pre></div>
 <p>Now search for your terms of interest in the dataset titles:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">catalogue <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span>(title, <span class="st">"[Mm]zd[ay]"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(dataset_id, title, description)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; # A tibble: 2 x 3</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   dataset_id title                       description                            </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                       &lt;chr&gt;                                  </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 1 110080     Průměrná hrubá měsíční mzd… Datová sada obsahuje časovou řadu prům…</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 2 110079     Zaměstnanci a průměrné hru… Datová sada obsahuje časovou řadu počt…</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">catalogue <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span>(title, <span class="st">"[Mm]zd[ay]"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(dataset_id, title, description)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; # A tibble: 2 x 3</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   dataset_id title                       description                            </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                       &lt;chr&gt;                                  </span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 1 110080     Průměrná hrubá měsíční mzd… Datová sada obsahuje časovou řadu prům…</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 2 110079     Zaměstnanci a průměrné hru… Datová sada obsahuje časovou řadu počt…</span></a></code></pre></div>
 <p>You could also search in descriptions or keywords which are also retrieved into the catalogue.</p>
 <p>We can see the <code>dataset_id</code> for the required dataset - now use it to get the dataset:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="reference/czso_get_table.html">czso_get_table</a></span>(<span class="st">"110080"</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; # A tibble: 720 x 14</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;  2 7459…   29026 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;  3 7459…   22729 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  4 7459…   22266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;  5 7459…   23955 5958       7636          Q5            102         1          </span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;  6 7459…   20271 5958       7636          Q5            102         2          </span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;  7 7459…   26033 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  8 7459…   28873 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;  9 7459…   22496 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; # … with 710 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; #   POHLAVI_txt &lt;chr&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="reference/czso_get_table.html">czso_get_table</a></span>(<span class="st">"110080"</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; # A tibble: 720 x 14</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;  2 7459…   29026 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;  3 7459…   22729 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;  4 7459…   22266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;  5 7459…   23955 5958       7636          Q5            102         1          </span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;  6 7459…   20271 5958       7636          Q5            102         2          </span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;  7 7459…   26033 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  8 7459…   28873 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;  9 7459…   22496 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt; # … with 710 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt; #   POHLAVI_txt &lt;chr&gt;</span></a></code></pre></div>
 <p>You can retrieve the schema for the dataset:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="reference/czso_get_table_schema.html">czso_get_table_schema</a></span>(<span class="st">"110080"</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; # A tibble: 14 x 5</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;    name       titles     `dc:description`                      required datatype</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;                                 &lt;lgl&gt;    &lt;chr&gt;   </span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;  1 idhod      idhod      "unikátní identifikátor údaje Veřejn… TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;  2 hodnota    hodnota    "zjištěná hodnota"                    TRUE     number  </span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;  3 stapro_kod stapro_kod "kód statistické proměnné ze systému… TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;  4 spkvantil… spkvantil… "kód číselníku pro kvantil"           TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;  5 spkvantil… spkvantil… "kód položky z číselníku pro kvantil" TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;  6 pohlavi_c… pohlavi_c… "kód číselníku pro pohlaví"           TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;  7 pohlavi_k… pohlavi_k… "kód položky číselníku pro pohlaví"   TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  8 rok        rok        "rok referenčního období ve formátu … TRUE     number  </span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;  9 uzemi_cis  uzemi_cis  "kód číselníku pro referenční území " TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; 10 uzemi_kod  uzemi_kod  "kód položky číselníku pro referenčn… TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt; 11 uzemi_txt  uzemi_txt  "text položky z číselníku pro refere… TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt; 12 stapro_txt stapro_txt "text statistické proměnné"           TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt; 13 spkvantil… spkvantil… "text položky číselníku pro kvantil"  TRUE     string  </span></a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co">#&gt; 14 pohlavi_t… pohlavi_t… "text položky číselníku pro pohlaví"  TRUE     string</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="reference/czso_get_table_schema.html">czso_get_table_schema</a></span>(<span class="st">"110080"</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; # A tibble: 14 x 5</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;    name       titles     `dc:description`                      required datatype</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;                                 &lt;lgl&gt;    &lt;chr&gt;   </span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt;  1 idhod      idhod      "unikátní identifikátor údaje Veřejn… TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;  2 hodnota    hodnota    "zjištěná hodnota"                    TRUE     number  </span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt;  3 stapro_kod stapro_kod "kód statistické proměnné ze systému… TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt;  4 spkvantil… spkvantil… "kód číselníku pro kvantil"           TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt;  5 spkvantil… spkvantil… "kód položky z číselníku pro kvantil" TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt;  6 pohlavi_c… pohlavi_c… "kód číselníku pro pohlaví"           TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;  7 pohlavi_k… pohlavi_k… "kód položky číselníku pro pohlaví"   TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt;  8 rok        rok        "rok referenčního období ve formátu … TRUE     number  </span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt;  9 uzemi_cis  uzemi_cis  "kód číselníku pro referenční území " TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; 10 uzemi_kod  uzemi_kod  "kód položky číselníku pro referenčn… TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; 11 uzemi_txt  uzemi_txt  "text položky z číselníku pro refere… TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; 12 stapro_txt stapro_txt "text statistické proměnné"           TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; 13 spkvantil… spkvantil… "text položky číselníku pro kvantil"  TRUE     string  </span></a>
+<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; 14 pohlavi_t… pohlavi_t… "text položky číselníku pro pohlaví"  TRUE     string</span></a></code></pre></div>
 <p>and download the documentation in PDF:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="reference/czso_get_dataset_doc.html">czso_get_dataset_doc</a></span>(<span class="st">"110080"</span>, <span class="dt">action =</span> <span class="st">"download"</span>, <span class="dt">format =</span> <span class="st">"pdf"</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; ✔ Downloaded https://www.czso.cz/documents/62353418/109720808/110080-19dds.pdf to 110080-19dds.pdf</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="reference/czso_get_dataset_doc.html">czso_get_dataset_doc</a></span>(<span class="st">"110080"</span>, <span class="dt">action =</span> <span class="st">"download"</span>, <span class="dt">format =</span> <span class="st">"pdf"</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; ✔ Downloaded https://www.czso.cz/documents/62353418/109720808/110080-19dds.pdf to 110080-19dds.pdf</span></a></code></pre></div>
 <div id="a-note-about-tables-and-datasets" class="section level3">
 <h3 class="hasAnchor">
 <a href="#a-note-about-tables-and-datasets" class="anchor"></a>A note about “tables” and “datasets”</h3>
