@@ -280,7 +280,7 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = F) {
 #'
 #' @return a tibble with a description of the columns in the table.
 #' @examples
-#' get_czso_table_schema("110080")
+#' czso_get_table_schema("110080")
 #' @export
 #' @family Additional tools
 czso_get_table_schema <- function(dataset_id, resource_num = 1) {
