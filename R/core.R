@@ -78,7 +78,8 @@ czso_get_catalogue <- function() {
                         # accept("application/sparql-results+json"),
                         httr::user_agent(ua_string),
                         httr::add_headers(c("Accept-Charset" = "utf-8")),
-                        httr::accept("text/csv;charset=UTF-8"))
+                        httr::accept("text/csv;charset=UTF-8")) %>%
+    httr::stop_for_status()
 
   # print(params$query)
 
@@ -141,7 +142,8 @@ czso_get_dataset_metadata <- function(dataset_id) {
   if(!curl::has_internet()) usethis::ui_stop(c("No internet connection. Cannot continue. Retry when connected."))
   url <- paste0("https://vdb.czso.cz/pll/eweb/package_show?id=", dataset_id)
   mtdt_c <- httr::GET(url,
-            httr::user_agent(ua_string)) %>%
+                      httr::user_agent(ua_string)) %>%
+    httr::stop_for_status() %>%
     httr::content(as = "text")
   mtdt <- jsonlite::fromJSON(mtdt_c)[["result"]]
   if(is.null(mtdt)) usethis::ui_stop("No dataset found with this ID.")

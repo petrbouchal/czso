@@ -13,6 +13,7 @@
 * fixed deprecation warnings to display correct package name
 * added helpful error message for no access to the internet
 * spelling corrections
+* better error output when CZSO server returns error
 
 # czso 0.2.1
 
