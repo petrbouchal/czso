@@ -34,6 +34,12 @@ Additionally, the package provides access to metadata on datasets.
 
 ## Installation
 
+You can install the package from CRAN:
+
+``` r
+install.packages("czso")
+```
+
 You can install the latest release from
 [github](https://github.com/petrbouchal/czso) with:
 
