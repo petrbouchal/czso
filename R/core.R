@@ -449,6 +449,7 @@ czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
          download = {utils::download.file(doc_url, destfile = dest, headers = ua_header, quiet = TRUE)
            usethis::ui_done("Downloaded {doc_url} to {dest}")})
   if(act == "download") rslt <- dest else rslt <- doc_url
+  if(act == "return") rslt else invisible(rslt)
 }
 
 #' Deprecated: use `czso_get_dataset_doc()` instead

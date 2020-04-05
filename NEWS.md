@@ -9,6 +9,7 @@
 
 * `czso_get_table_schema()` now throws error for non-JSON schema and includes URL in error message
 * `czso_get_table()` now writes files it cannot read with the right extension
+* `czso_get_dataset_doc()` returns URL only invisibly if `action` is `"open"`
 
 # czso 0.2.2
 
