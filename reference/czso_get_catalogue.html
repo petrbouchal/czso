@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
 
@@ -140,7 +140,17 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.</p>
+    <p>a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
+The columns are fairly well described by their names, except:</p><ul>
+<li><p>some columns contain IRIs instead of human readable text; still you can deduce the content from the IRI.</p></li>
+<li><p>the <code>spatial</code> columns contains an IRI ending in the pattern unit_type/unit_code.
+The unit_type denotes what unit the data covers (scope/domain not granularity) and the second identifies the unit covered.
+The unit_type will usually be <code>"stat"</code> for "state" and the unit_code will be 1.
+The unit_type can also be <code>"KR"</code> for region or <code>"OB"</code> for municipality, or <code>"OK"</code> for district.
+In that case, the unit_code will be a code of that unit.</p></li>
+<li><p><code>page</code> points to the documentation, i.e. methodology notes for the dataset.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Use the dataset_id column as an argument to <code>get_czso_table()</code>.</p>

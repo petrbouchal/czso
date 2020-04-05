@@ -89,7 +89,7 @@ Converts types of columns where known, e.g. value columns to numeric." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
 
@@ -160,10 +160,59 @@ Converts types of columns where known, e.g. value columns to numeric.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble, or vector of file paths if file is not CSV or if there are multiple</p>
+    <p>a tibble, or vector of file paths if file is not CSV or if
+there are multiple files in the dataset.
+See Details on the columns contained in the tibble</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The schema of the dataset is not yet used, so some columns may be mistyped and are by default returned as character vectors.</p>
+    
+<h3>Structure of the output tibble</h3>
+
+
+<p>CZSO provides its open data as tidy data, so each row only contains one value
+in the <code>hodnota</code> column and the remaining columns give details on how
+that value is defined. See "Included columns" below on how these work.</p>
+
+<h3>Data types</h3>
+
+
+<p>The schema of the dataset is not yet used, so some columns may be mistyped and are by default returned as character vectors.</p>
+
+<h3>Included columns</h3>
+
+
+<p>The range of columns present in the output vary from one dataset to another,
+so the package does not attempt to provide English-language names for
+the known subset, as that would result in a jumble of Czenglish.</p>
+<p>Instead, here is a guide to some of the common column names you will encounter:</p><ul>
+<li><p><code>idhod</code>: a unique ID of the value in the CZSO databse. This does not allow
+you to link to any other (meta)data as far as I know, but it does provide unique
+identification should you need it.</p></li>
+<li><p><code>hodnota</code>: the value.</p></li>
+<li><p><code>stapro_kod</code>: code of the statistic/indicator/variable as listed.
+in the SMS UKAZ register (https://www.czso.cz/csu/czso/statistical-variables-indicators);
+this one has Czech-English documentation - access this by clicking the UK flag top right.</p></li>
+<li><p><code>rok</code> denotes year as YYYY.</p></li>
+<li><p><code>ctvrtleti</code> denotes quarter if available.</p></li>
+</ul>
+
+<p>Other metadata will come in the form <code>{variable}_[txt|cis|kod]</code>. The <code>_txt</code>
+column holds the Czech text name for the category. The <code>_cis</code> column holds the
+ID of the codelist (register) you need to decode the code in <code>_kod</code>.
+The English codelists are at http://apl.czso.cz/iSMS/en/cislist.jsp,
+Czech ones at http://apl.czso.cz/iSMS/cs/cislist.jsp.
+You can find the Czech-language codelists in the catalogue retrieved with
+<code><a href='czso_get_catalogue.html'>czso_get_catalogue()</a></code>; the English ones can also be retrieved from
+the link above using a permalink URL.</p>
+<p>Units are denoted in a separate column.</p>
+<p>A helper on common breakdowns with their associated columns:</p><ul>
+<li><p><code>uzemi</code>: territory</p></li>
+<li><p><code>vek</code>: age</p></li>
+<li><p><code>pohlavi</code>: gender</p></li>
+</ul>
+
+<p><code>NA</code>s in "breakdown" columns (e.g. gender or age) denote the total.</p>
+
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Do not use this for harvesting datasets from CZSO en masse.</p>

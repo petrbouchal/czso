@@ -88,7 +88,7 @@ what is provided in the dataset's entry in the output of czso_get_dataset()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
 
@@ -150,7 +150,24 @@ what is provided in the dataset's entry in the output of <code>czso_get_dataset(
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list</p>
+    <p>a list with elements named in English, where the names are mostly self-explanatory.
+So are the contents where these are dates; title, description, notes and tags only exist in Czech as far as I know.
+Some fields merit explanation:</p><ul>
+<li><p><code>resources</code>: a list of files available to download in this dataset</p></li>
+<li><p><code>frequency</code>: see https://project-open-data.cio.gov/iso8601_guidance/ for a key</p></li>
+<li><p><code>ruian_type</code>: what type of spatial unit the data covers (spatial domain/extent/scope, not granularity).
+<code>ST</code> means "state" (this is almost always the case), <code>"KR"</code> means region (kraj),
+<code>"OK"</code> district (okres), <code>"OB"</code> municipality (obec);
+<code>"RS"</code> cohesion region (region soudržnosti, larger than region)</p></li>
+<li><p><code>ruian_code</code>: the code of the unit the data covers as per the RUIAN taxonomy</p></li>
+<li><p><code>schema</code> points to documentation while <code>describedBy</code> points to the technical schema in JSON or XML.</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>As far as I can tell there is no way to get the metadata in English, though
+some key datasets, such as codelists, do have English-languge documentation.
+See <code><a href='czso_get_table.html'>czso_get_table()</a></code> for how to access English-language codelists (registers).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Additional tools: 
@@ -229,6 +246,7 @@ what is provided in the dataset's entry in the output of <code>czso_get_dataset(
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

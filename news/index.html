@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
 
@@ -129,6 +129,31 @@
       <small>Source: <a href='https://github.com/petrbouchal/czso/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="czso-0-2-3" class="section level1">
+<h1 class="page-header">
+<a href="#czso-0-2-3" class="anchor"></a>czso 0.2.3</h1>
+<div id="fixes-responding-to-cran-feedback" class="section level2">
+<h2 class="hasAnchor">
+<a href="#fixes-responding-to-cran-feedback" class="anchor"></a>Fixes responding to CRAN feedback</h2>
+<ul>
+<li>Description field of DESCRIPTION now contains a link to the data provider</li>
+<li>documentation in all functions now provide more detail on what the functions return</li>
+</ul>
+</div>
+<div id="other-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-changes" class="anchor"></a>Other changes</h2>
+<ul>
+<li>
+<code><a href="../reference/czso_get_table_schema.html">czso_get_table_schema()</a></code> now throws error for non-JSON schema and includes URL in error message</li>
+<li>
+<code><a href="../reference/czso_get_table.html">czso_get_table()</a></code> now writes files it cannot read with the right extension</li>
+<li>
+<code><a href="../reference/czso_get_dataset_doc.html">czso_get_dataset_doc()</a></code> returns URL only invisibly if <code>action</code> is <code>"open"</code>
+</li>
+</ul>
+</div>
+</div>
     <div id="czso-0-2-2" class="section level1">
 <h1 class="page-header">
 <a href="#czso-0-2-2" class="anchor"></a>czso 0.2.2</h1>
@@ -258,6 +283,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#czso-0-2-3">0.2.3</a></li>
         <li><a href="#czso-0-2-2">0.2.2</a></li>
         <li><a href="#czso-0-2-1">0.2.1</a></li>
         <li><a href="#czso-0-2-0">0.2.0</a></li>
