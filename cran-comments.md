@@ -5,7 +5,9 @@
 * added link to data provider in Description field of DESCRIPTION
 * expanded documentation for all functions, with better explanations of what the functions return
 
-## This is a new submission
+## Other changes
+
+* `czso_get_table_schema()` now throws error for non-JSON schema and includes URL in error message
 
 ## Test environments
 

@@ -380,13 +380,15 @@ czso_get_table_schema <- function(dataset_id, resource_num = 1) {
   urls <- get_czso_resource_pointer(dataset_id, resource_num)
   schema_url <- urls$meta_link
   schema_type <- urls$meta_format
-  if(schema_type == "application/json") {
+  is_json <- schema_type == "application/json"
+  if(is_json) {
     suppressMessages(suppressWarnings(schema_result <- httr::GET(schema_url, httr::user_agent(ua_string)) %>%
       httr::content(as = "text")))
     ds <- suppressMessages(suppressWarnings(jsonlite::fromJSON(schema_result)[["tableSchema"]][["columns"]]))
     rslt <- tibble::as_tibble(ds)
   } else {
-    usethis::ui_warn("Cannot parse this type of file type. You can get it yourself from {schema_url}")
+    usethis::ui_stop("Cannot parse this type of file type.
+                     You can get it yourself from {usethis::ui_path(schema_url)}.")
     rslt <- schema_url
   }
   return(rslt)
