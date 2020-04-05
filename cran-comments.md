@@ -16,7 +16,7 @@
 * local R installation on MacOS, R 3.6.3
 * ubuntu 16.04 (on travis-ci and r-hub), R 3.6.3
 * fedora-clang (devel on r-hub)
-* win-builder (devel)
+* windows (devel on win-builder and r-hub)
 
 ## R CMD check results
 
