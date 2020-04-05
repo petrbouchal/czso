@@ -14,7 +14,9 @@ czso_get_table(dataset_id, force_redownload = FALSE, resource_num = 1)
 \item{resource_num}{integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.}
 }
 \value{
-a tibble, or vector of file paths if file is not CSV or if there are multiple
+a tibble, or vector of file paths if file is not CSV or if
+there are multiple files in the dataset.
+See Details on the columns contained in the tibble
 }
 \description{
 Downloads and reads dataset identified by \code{dataset_id}.
@@ -22,7 +24,57 @@ Unzips if necessary, but only loads CSV files, otherwise returns the path to the
 Converts types of columns where known, e.g. value columns to numeric.
 }
 \details{
+\subsection{Structure of the output tibble}{
+
+CZSO provides its open data as tidy data, so each row only contains one value
+in the \code{hodnota} column and the remaining columns give details on how
+that value is defined. See "Included columns" below on how these work.
+}
+
+\subsection{Data types}{
+
 The schema of the dataset is not yet used, so some columns may be mistyped and are by default returned as character vectors.
+}
+
+\subsection{Included columns}{
+
+The range of columns present in the output vary from one dataset to another,
+so the package does not attempt to provide English-language names for
+the known subset, as that would result in a jumble of Czenglish.
+
+Instead, here is a guide to some of the common column names you will encounter:
+\itemize{
+\item \code{idhod}: a unique ID of the value in the CZSO databse. This does not allow
+you to link to any other (meta)data as far as I know, but it does provide unique
+identification should you need it.
+\item \code{hodnota}: the value.
+\item \code{stapro_kod}: code of the statistic/indicator/variable as listed.
+in the SMS UKAZ register (https://www.czso.cz/csu/czso/statistical-variables-indicators);
+this one has Czech-English documentation - access this by clicking the UK flag top right.
+\item \code{rok} denotes year as YYYY.
+\item \code{ctvrtleti} denotes quarter if available.
+}
+
+Other metadata will come in the form \verb{\{variable\}_[txt|cis|kod]}. The \verb{_txt}
+column holds the Czech text name for the category. The \verb{_cis} column holds the
+ID of the codelist (register) you need to decode the code in \verb{_kod}.
+The English codelists are at http://apl.czso.cz/iSMS/en/cislist.jsp,
+Czech ones at http://apl.czso.cz/iSMS/cs/cislist.jsp.
+You can find the Czech-language codelists in the catalogue retrieved with
+\code{czso_get_catalogue()}; the English ones can also be retrieved from
+the link above using a permalink URL.
+
+Units are denoted in a separate column.
+
+A helper on common breakdowns with their associated columns:
+\itemize{
+\item \code{uzemi}: territory
+\item \code{vek}: age
+\item \code{pohlavi}: gender
+}
+
+\code{NA}s in "breakdown" columns (e.g. gender or age) denote the total.
+}
 }
 \note{
 Do not use this for harvesting datasets from CZSO en masse.

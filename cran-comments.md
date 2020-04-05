@@ -3,6 +3,7 @@
 ## Corrections made
 
 * added link to data provider in Description field of DESCRIPTION
+* expanded documentation for all functions, with better explanations of what the functions return
 
 ## This is a new submission
 

@@ -8,6 +8,16 @@ czso_get_catalogue()
 }
 \value{
 a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
+The columns are fairly well described by their names, except:
+\itemize{
+\item some columns contain IRIs instead of human readable text; still you can deduce the content from the IRI.
+\item the \code{spatial} columns contains an IRI ending in the pattern {unit_type}/{unit_code}.
+The unit_type denotes what unit the data covers (scope/domain not granularity) and the second identifies the unit covered.
+The unit_type will usually be \code{"stat"} for "state" and the unit_code will be 1.
+The unit_type can also be \code{"KR"} for region or \code{"OB"} for municipality, or \code{"OK"} for district.
+In that case, the unit_code will be a code of that unit.
+\item \code{page} points to the documentation, i.e. methodology notes for the dataset.
+}
 }
 \description{
 Retrieves a list of all CZSO's open datasets available from the Czech Open data catalogue.

@@ -26,6 +26,11 @@ if \code{action = download}, the path to the downloaded file; file URL otherwise
 \description{
 Retrieves the URL/downloads the file containing the documentation of the dataset, in the required format.
 }
+\details{
+The document to which this functions provides access contains methodological
+background on the specified dataset and is identified by the \code{schema} field
+in the list returned by \code{czso_get_dataset_metadata()}.
+}
 \examples{
 \donttest{
 czso_get_dataset_doc("110080")

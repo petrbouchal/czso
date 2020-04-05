@@ -12,10 +12,21 @@ czso_get_table_schema(dataset_id, resource_num = 1)
 \item{resource_num}{Resource number, typically 1 in CZSO (the default)}
 }
 \value{
-a tibble with a description of the columns in the table.
+a tibble with a description of the table columns, with the following items:
+\itemize{
+\item \code{name}: the column name.
+\item \code{titles}: usually the duplicate of \code{name}
+\item \code{dc:description}: a Czech-language description of the column
+\item \code{required}: whether the column is required
+\item \code{datatatype}: the data type of the column; either "number" or "string"
+}
 }
 \description{
 Retrieves and parses the schema for the table identified by dataset_id and resource_num.
+}
+\details{
+Currently only handles JSON schema files for CSV files.
+If the schema is a different format, an error is returned pointing the user to the URL of the file.
 }
 \examples{
 \donttest{

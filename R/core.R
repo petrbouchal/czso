@@ -6,6 +6,16 @@
 #' Use the dataset_id column as an argument to `get_czso_table()`.
 #'
 #' @return a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
+#' The columns are fairly well described by their names, except:
+#'
+#' - some columns contain IRIs instead of human readable text; still you can deduce the content from the IRI.
+#' - the `spatial` columns contains an IRI ending in the pattern {unit_type}/{unit_code}.
+#' The unit_type denotes what unit the data covers (scope/domain not granularity) and the second identifies the unit covered.
+#' The unit_type will usually be `"stat"` for "state" and the unit_code will be 1.
+#' The unit_type can also be `"KR"` for region or `"OB"` for municipality, or `"OK"` for district.
+#' In that case, the unit_code will be a code of that unit.
+#' - `page` points to the documentation, i.e. methodology notes for the dataset.
+#'
 #' @export
 #' @family Core workflow
 #' @examples
@@ -133,9 +143,26 @@ get_czso_catalogue <- function() {
 #' Get metadata from CZSO API, which can be somewhat more detailed/readable than
 #' what is provided in the dataset's entry in the output of `czso_get_dataset()`.
 #'
+#' As far as I can tell there is no way to get the metadata in English, though
+#' some key datasets, such as codelists, do have English-languge documentation.
+#' See `czso_get_table()` for how to access English-language codelists (registers).
+#'
 #' @param dataset_id Dataset ID
 #'
-#' @return a list
+#' @return a list with elements named in English, where the names are mostly self-explanatory.
+#' So are the contents where these are dates; title, description, notes and tags only exist in Czech as far as I know.
+#' Some fields merit explanation:
+#'
+#' - `resources`: a list of files available to download in this dataset
+#' - `frequency`: see https://project-open-data.cio.gov/iso8601_guidance/ for a key
+#' - `ruian_type`: what type of spatial unit the data covers (spatial domain/extent/scope, not granularity).
+#' `ST` means "state" (this is almost always the case), `"KR"` means region (kraj),
+#' `"OK"` district (okres), `"OB"` municipality (obec);
+#' `"RS"` cohesion region (region soudržnosti, larger than region)
+#' - `ruian_code`: the code of the unit the data covers as per the RUIAN taxonomy
+#' - `schema` points to documentation while `describedBy` points to the technical schema in JSON or XML.
+#'
+#'
 #' @examples
 #' \donttest{
 #' czso_get_dataset_metadata("110080")
@@ -185,7 +212,54 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' Unzips if necessary, but only loads CSV files, otherwise returns the path to the downloaded file.
 #' Converts types of columns where known, e.g. value columns to numeric.
 #'
+#' ## Structure of the output tibble
+#'
+#' CZSO provides its open data as tidy data, so each row only contains one value
+#' in the `hodnota` column and the remaining columns give details on how
+#' that value is defined. See "Included columns" below on how these work.
+#'
+#'
+#'
+#' ## Data types
+#'
 #' The schema of the dataset is not yet used, so some columns may be mistyped and are by default returned as character vectors.
+#'
+#' ## Included columns
+#'
+#' The range of columns present in the output vary from one dataset to another,
+#' so the package does not attempt to provide English-language names for
+#' the known subset, as that would result in a jumble of Czenglish.
+#'
+#' Instead, here is a guide to some of the common column names you will encounter:
+#'
+#' - `idhod`: a unique ID of the value in the CZSO databse. This does not allow
+#' you to link to any other (meta)data as far as I know, but it does provide unique
+#' identification should you need it.
+#' - `hodnota`: the value.
+#' - `stapro_kod`: code of the statistic/indicator/variable as listed.
+#' in the SMS UKAZ register (https://www.czso.cz/csu/czso/statistical-variables-indicators);
+#' this one has Czech-English documentation - access this by clicking the UK flag top right.
+#' - `rok` denotes year as YYYY.
+#' - `ctvrtleti` denotes quarter if available.
+#'
+#' Other metadata will come in the form `{variable}_[txt|cis|kod]`. The `_txt`
+#' column holds the Czech text name for the category. The `_cis` column holds the
+#' ID of the codelist (register) you need to decode the code in `_kod`.
+#' The English codelists are at http://apl.czso.cz/iSMS/en/cislist.jsp,
+#' Czech ones at http://apl.czso.cz/iSMS/cs/cislist.jsp.
+#' You can find the Czech-language codelists in the catalogue retrieved with
+#'  `czso_get_catalogue()`; the English ones can also be retrieved from
+#'  the link above using a permalink URL.
+#'
+#'  Units are denoted in a separate column.
+#'
+#'  A helper on common breakdowns with their associated columns:
+#'
+#'  - `uzemi`: territory
+#'  - `vek`: age
+#'  - `pohlavi`: gender
+#'
+#' `NA`s in "breakdown" columns (e.g. gender or age) denote the total.
 #'
 #' @note Do not use this for harvesting datasets from CZSO en masse.
 #'
@@ -193,7 +267,9 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' @param resource_num integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.
 #' @param force_redownload integer. Whether to redownload data source file even if already cached. Defaults to FALSE.
 #'
-#' @return a tibble, or vector of file paths if file is not CSV or if there are multiple
+#' @return a tibble, or vector of file paths if file is not CSV or if
+#' there are multiple files in the dataset.
+#' See Details on the columns contained in the tibble
 #' @family Core workflow
 #' @examples
 #' \donttest{
@@ -281,10 +357,19 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
 #'
 #' Retrieves and parses the schema for the table identified by dataset_id and resource_num.
 #'
+#' Currently only handles JSON schema files for CSV files.
+#' If the schema is a different format, an error is returned pointing the user to the URL of the file.
+#'
 #' @param dataset_id Dataset ID
 #' @param resource_num Resource number, typically 1 in CZSO (the default)
 #'
-#' @return a tibble with a description of the columns in the table.
+#' @return a tibble with a description of the table columns, with the following items:
+#' - `name`: the column name.
+#' - `titles`: usually the duplicate of `name`
+#' - `dc:description`: a Czech-language description of the column
+#' - `required`: whether the column is required
+#' - `datatatype`: the data type of the column; either "number" or "string"
+#'
 #' @examples
 #' \donttest{
 #' czso_get_table_schema("110080")
@@ -326,6 +411,10 @@ get_czso_table_schema <- function(dataset_id, resource_num) {
 #' Get documentation for CZSO dataset
 #'
 #' Retrieves the URL/downloads the file containing the documentation of the dataset, in the required format.
+#'
+#' The document to which this functions provides access contains methodological
+#' background on the specified dataset and is identified by the `schema` field
+#' in the list returned by `czso_get_dataset_metadata()`.
 #'
 #' @param dataset_id Dataset ID
 #' @param action Whether to `return` URL (the default), `download` the file, or `open` the URL in the default web browser.

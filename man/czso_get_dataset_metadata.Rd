@@ -10,11 +10,28 @@ czso_get_dataset_metadata(dataset_id)
 \item{dataset_id}{Dataset ID}
 }
 \value{
-a list
+a list with elements named in English, where the names are mostly self-explanatory.
+So are the contents where these are dates; title, description, notes and tags only exist in Czech as far as I know.
+Some fields merit explanation:
+\itemize{
+\item \code{resources}: a list of files available to download in this dataset
+\item \code{frequency}: see https://project-open-data.cio.gov/iso8601_guidance/ for a key
+\item \code{ruian_type}: what type of spatial unit the data covers (spatial domain/extent/scope, not granularity).
+\code{ST} means "state" (this is almost always the case), \code{"KR"} means region (kraj),
+\code{"OK"} district (okres), \code{"OB"} municipality (obec);
+\code{"RS"} cohesion region (region soudržnosti, larger than region)
+\item \code{ruian_code}: the code of the unit the data covers as per the RUIAN taxonomy
+\item \code{schema} points to documentation while \code{describedBy} points to the technical schema in JSON or XML.
+}
 }
 \description{
 Get metadata from CZSO API, which can be somewhat more detailed/readable than
 what is provided in the dataset's entry in the output of \code{czso_get_dataset()}.
+}
+\details{
+As far as I can tell there is no way to get the metadata in English, though
+some key datasets, such as codelists, do have English-languge documentation.
+See \code{czso_get_table()} for how to access English-language codelists (registers).
 }
 \examples{
 \donttest{
