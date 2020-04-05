@@ -8,6 +8,7 @@
 ## Other changes
 
 * `czso_get_table_schema()` now throws error for non-JSON schema and includes URL in error message
+* `czso_get_table()` now writes files it cannot read with the right extension
 
 # czso 0.2.2
 

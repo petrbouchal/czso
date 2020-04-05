@@ -8,6 +8,7 @@
 ## Other changes
 
 * `czso_get_table_schema()` now throws error for non-JSON schema and includes URL in error message
+* minor error fixed in `czso_get_table()` to ensure unread files are written with the right extension
 
 ## Test environments
 

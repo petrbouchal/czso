@@ -281,6 +281,7 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   url <- ptr$url
   type <- ptr$format
   ext <- tools::file_ext(url)
+  if(ext == "") ext <- stringr::str_extract(type, "(?<=\\/).*$")
   td <- paste(tempdir(), "czso", dataset_id, sep = "/")
   dir.create(td, showWarnings = FALSE, recursive = TRUE)
   dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
