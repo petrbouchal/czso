@@ -1,5 +1,9 @@
 # czso (development version)
 
+## Fixes responding to CRAN feedback
+
+* Description field of DESCRIPTION now contains a link to the data provider
+
 # czso 0.2.2
 
 ## Prep for CRAN

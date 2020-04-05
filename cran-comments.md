@@ -1,3 +1,9 @@
+# Resubmission
+
+## Corrections made
+
+* added link to data provider in Description field of DESCRIPTION
+
 ## This is a new submission
 
 ## Test environments

@@ -8,7 +8,7 @@ Authors@R:
            email = "pbouchal@gmail.com",
            comment = c(ORCID = "0000-0002-0471-716X"))
 Description: Get programmatic access to the open data provided by the
-    Czech Statistical Office (CZSO).
+    Czech Statistical Office (CZSO, <https://czso.cz>).
 License: MIT + file LICENSE
 URL: https://github.com/petrbouchal/czso
 BugReports: https://github.com/petrbouchal/czso/issues
