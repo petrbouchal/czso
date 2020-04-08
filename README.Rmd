@@ -16,6 +16,9 @@ knitr::opts_chunk$set(
 # czso <img src='man/figures/logo.png' align="right" height="138" />
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/czso)](https://CRAN.R-project.org/package=czso)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/czso)](https://CRAN.R-project.org/package=czso)
+[![CRAN monthly downloads](https://cranlogs.r-pkg.org/badges/last-month/czso)](https://CRAN.R-project.org/package=czso)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN status](https://www.r-pkg.org/badges/version/czso)](https://CRAN.R-project.org/package=czso)
 [![Travis build status](https://travis-ci.org/petrbouchal/czso.svg?branch=master)](https://travis-ci.org/petrbouchal/czso)
@@ -33,7 +36,14 @@ Additionally, the package provides access to metadata on datasets.
 
 ## Installation
 
-You can install the latest release from [github](https://github.com/petrbouchal/czso) with:
+You can install the package from CRAN:
+
+``` r
+install.packages("czso")
+```
+
+
+You can install the latest in-development release from [github](https://github.com/petrbouchal/czso) with:
 
 ``` r
 remotes::install_github("petrbouchal/czso", ref = github_release())
