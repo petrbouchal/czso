@@ -13,8 +13,6 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/czso)](https://CRAN.R-p
 downloads](https://cranlogs.r-pkg.org/badges/last-month/czso)](https://CRAN.R-project.org/package=czso)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/czso)](https://CRAN.R-project.org/package=czso)
 [![Travis build
 status](https://travis-ci.org/petrbouchal/czso.svg?branch=master)](https://travis-ci.org/petrbouchal/czso)
 <!-- badges: end -->
