@@ -288,7 +288,7 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   if(file.exists(dfile) & !force_redownload) {
     usethis::ui_info("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed.")
   } else {
-    utils::download.file(url, dfile, headers = ua_header)
+    curl::curl_download(url, dfile)
   }
 
   # print(dfile)
@@ -311,8 +311,10 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   }
   switch (action,
           read = {
-            guessed_enc <- readr::guess_encoding(dfile)[[1,1]]
-            if(guessed_enc == "windows-1252") guessed_enc <- "windows-1250"
+            guessed_enc <- readr::guess_encoding(dfile)
+            guessed_enc <- ifelse(length(guessed_enc$encoding) == 0 || guessed_enc$encoding == "windows-1252",
+                                  "windows-1250", # a sensible default, considering...
+                                  guessed_enc$encoding[1])
             dt <- suppressWarnings(suppressMessages(readr::read_csv(dfile, col_types = readr::cols(.default = "c",
                                                                                                    rok = "i",
                                                                                                    casref_do = "T",
