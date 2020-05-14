@@ -27,6 +27,8 @@ Imports:
     tools (>= 3.6.0),
     usethis (>= 1.5.1),
     utils (>= 3.6.0)
+Suggests: 
+    testthat
 RdMacros: 
     lifecycle
 Encoding: UTF-8
