@@ -277,7 +277,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' }
 #' @export
 czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 1) {
-  ptr <- get_czso_resource_pointer(dataset_id)
+  ptr <- get_czso_resource_pointer(dataset_id, resource_num = resource_num)
   url <- ptr$url
   type <- ptr$format
   ext <- tools::file_ext(url)
