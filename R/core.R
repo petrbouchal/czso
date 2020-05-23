@@ -288,7 +288,9 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   if(file.exists(dfile) & !force_redownload) {
     usethis::ui_info("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed.")
   } else {
-    curl::curl_download(url, dfile)
+    curl_handle <- curl::new_handle() %>%
+      curl::handle_setheaders(.list = ua_header)
+    curl::curl_download(url, dfile, handle = curl_handle)
   }
 
   # print(dfile)
