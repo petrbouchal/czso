@@ -90,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3.9000</span>
       </span>
     </div>
 
@@ -165,9 +165,7 @@ In that case, the unit_code will be a code of that unit.</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'>czso_get_catalogue</span>()</div><div class='output co'>#&gt; ℹ Reading data from data.gov.cz
-#&gt; ✔ Done downloading and reading data
-#&gt; ℹ Transforming data</div><div class='output co'>#&gt; # A tibble: 602 x 14
+<span class='fu'>czso_get_catalogue</span>()</div><div class='output co'>#&gt; <span class='message'>ℹ Reading data from data.gov.cz</span></div><div class='output co'>#&gt; <span class='message'>✔ Done downloading and reading data</span></div><div class='output co'>#&gt; <span class='message'>ℹ Transforming data</span></div><div class='output co'>#&gt; # A tibble: 606 x 14
 #&gt;    dataset_iri dataset_id title provider description spatial temporal
 #&gt;    &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   
 #&gt;  1 https://da… 060003     Vyba… Český s… Datová sad… https:… https:/…
@@ -180,10 +178,9 @@ In that case, the unit_code will be a code of that unit.</p></li>
 #&gt;  8 https://da… cis202     Číse… Český s… Druh lesní… https:… https:/…
 #&gt;  9 https://da… cis7605    Číse… Český s… Specifikac… https:… https:/…
 #&gt; 10 https://da… cis206     Číse… Český s… Příčina na… https:… https:/…
-#&gt; # … with 592 more rows, and 7 more variables: modified &lt;dttm&gt;, page &lt;chr&gt;,
+#&gt; # … with 596 more rows, and 7 more variables: modified &lt;dttm&gt;, page &lt;chr&gt;,
 #&gt; #   periodicity &lt;chr&gt;, periodicity_abb &lt;chr&gt;, start &lt;date&gt;, end &lt;date&gt;,
-#&gt; #   keywords &lt;chr&gt;</div><div class='input'># }
-</div></pre>
+#&gt; #   keywords &lt;chr&gt;</div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -199,7 +196,7 @@ In that case, the unit_code will be a code of that unit.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
