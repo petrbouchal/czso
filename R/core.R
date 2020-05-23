@@ -312,7 +312,7 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   switch (action,
           read = {
             guessed_enc <- readr::guess_encoding(dfile)
-            guessed_enc <- ifelse(length(guessed_enc$encoding) == 0 || guessed_enc$encoding == "windows-1252",
+            guessed_enc <- ifelse(length(guessed_enc$encoding) == 0 || guessed_enc$encoding[[1]] == "windows-1252",
                                   "windows-1250", # a sensible default, considering...
                                   guessed_enc$encoding[1])
             dt <- suppressWarnings(suppressMessages(readr::read_csv(dfile, col_types = readr::cols(.default = "c",
