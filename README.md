@@ -15,6 +15,8 @@ downloads](https://cranlogs.r-pkg.org/badges/last-month/czso)](https://CRAN.R-pr
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis build
 status](https://travis-ci.org/petrbouchal/czso.svg?branch=master)](https://travis-ci.org/petrbouchal/czso)
+[![R build
+status](https://github.com/petrbouchal/czso/workflows/R-CMD-check/badge.svg)](https://github.com/petrbouchal/czso/actions)
 <!-- badges: end -->
 
 The goal of czso is to provide direct, programmatic, hassle-free access
@@ -75,7 +77,7 @@ suppressPackageStartupMessages(library(stringr))
 
 catalogue <- czso_get_catalogue()
 #> ℹ Reading data from data.gov.cz
-#> ✔ Done downloading and reading data
+#> ✓ Done downloading and reading data
 #> ℹ Transforming data
 ```
 
@@ -86,10 +88,10 @@ catalogue %>%
   filter(str_detect(title, "[Mm]zd[ay]")) %>% 
   select(dataset_id, title, description)
 #> # A tibble: 2 x 3
-#>   dataset_id title                       description                            
-#>   <chr>      <chr>                       <chr>                                  
-#> 1 110080     Průměrná hrubá měsíční mzd… Datová sada obsahuje časovou řadu prům…
-#> 2 110079     Zaměstnanci a průměrné hru… Datová sada obsahuje časovou řadu počt…
+#>   dataset_id title                           description                                            
+#>   <chr>      <chr>                           <chr>                                                  
+#> 1 110080     Průměrná hrubá měsíční mzda a … Datová sada obsahuje časovou řadu průměrných měsíčních…
+#> 2 110079     Zaměstnanci a průměrné hrubé m… Datová sada obsahuje časovou řadu počtu zaměstnanců a …
 ```
 
 You could also search in descriptions or keywords which are also
@@ -101,21 +103,20 @@ the dataset:
 ``` r
 czso_get_table("110080")
 #> # A tibble: 720 x 14
-#>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
-#>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
-#>  1 7459…   26211 5958       <NA>          <NA>          <NA>        <NA>       
-#>  2 7459…   29026 5958       <NA>          <NA>          102         1          
-#>  3 7459…   22729 5958       <NA>          <NA>          102         2          
-#>  4 7459…   22266 5958       7636          Q5            <NA>        <NA>       
-#>  5 7459…   23955 5958       7636          Q5            102         1          
-#>  6 7459…   20271 5958       7636          Q5            102         2          
-#>  7 7459…   26033 5958       <NA>          <NA>          <NA>        <NA>       
-#>  8 7459…   28873 5958       <NA>          <NA>          102         1          
-#>  9 7459…   22496 5958       <NA>          <NA>          102         2          
-#> 10 7459…   21997 5958       7636          Q5            <NA>        <NA>       
-#> # … with 710 more rows, and 7 more variables: rok <int>, uzemi_cis <chr>,
-#> #   uzemi_kod <chr>, STAPRO_TXT <chr>, uzemi_txt <chr>, SPKVANTIL_txt <chr>,
-#> #   POHLAVI_txt <chr>
+#>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod   rok uzemi_cis
+#>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>       <int> <chr>    
+#>  1 7459…   26211 5958       <NA>          <NA>          <NA>        <NA>         2013 97       
+#>  2 7459…   29026 5958       <NA>          <NA>          102         1            2013 97       
+#>  3 7459…   22729 5958       <NA>          <NA>          102         2            2013 97       
+#>  4 7459…   22266 5958       7636          Q5            <NA>        <NA>         2013 97       
+#>  5 7459…   23955 5958       7636          Q5            102         1            2013 97       
+#>  6 7459…   20271 5958       7636          Q5            102         2            2013 97       
+#>  7 7459…   26033 5958       <NA>          <NA>          <NA>        <NA>         2012 97       
+#>  8 7459…   28873 5958       <NA>          <NA>          102         1            2012 97       
+#>  9 7459…   22496 5958       <NA>          <NA>          102         2            2012 97       
+#> 10 7459…   21997 5958       7636          Q5            <NA>        <NA>         2012 97       
+#> # … with 710 more rows, and 5 more variables: uzemi_kod <chr>, STAPRO_TXT <chr>, uzemi_txt <chr>,
+#> #   SPKVANTIL_txt <chr>, POHLAVI_txt <chr>
 ```
 
 You can retrieve the schema for the dataset:
@@ -123,29 +124,29 @@ You can retrieve the schema for the dataset:
 ``` r
 czso_get_table_schema("110080")
 #> # A tibble: 14 x 5
-#>    name       titles     `dc:description`                      required datatype
-#>    <chr>      <chr>      <chr>                                 <lgl>    <chr>   
-#>  1 idhod      idhod      "unikátní identifikátor údaje Veřejn… TRUE     string  
-#>  2 hodnota    hodnota    "zjištěná hodnota"                    TRUE     number  
-#>  3 stapro_kod stapro_kod "kód statistické proměnné ze systému… TRUE     string  
-#>  4 spkvantil… spkvantil… "kód číselníku pro kvantil"           TRUE     string  
-#>  5 spkvantil… spkvantil… "kód položky z číselníku pro kvantil" TRUE     string  
-#>  6 pohlavi_c… pohlavi_c… "kód číselníku pro pohlaví"           TRUE     string  
-#>  7 pohlavi_k… pohlavi_k… "kód položky číselníku pro pohlaví"   TRUE     string  
-#>  8 rok        rok        "rok referenčního období ve formátu … TRUE     number  
-#>  9 uzemi_cis  uzemi_cis  "kód číselníku pro referenční území " TRUE     string  
-#> 10 uzemi_kod  uzemi_kod  "kód položky číselníku pro referenčn… TRUE     string  
-#> 11 uzemi_txt  uzemi_txt  "text položky z číselníku pro refere… TRUE     string  
-#> 12 stapro_txt stapro_txt "text statistické proměnné"           TRUE     string  
-#> 13 spkvantil… spkvantil… "text položky číselníku pro kvantil"  TRUE     string  
-#> 14 pohlavi_t… pohlavi_t… "text položky číselníku pro pohlaví"  TRUE     string
+#>    name          titles        `dc:description`                                    required datatype
+#>    <chr>         <chr>         <chr>                                               <lgl>    <chr>   
+#>  1 idhod         idhod         "unikátní identifikátor údaje Veřejné databáze ČSÚ" TRUE     string  
+#>  2 hodnota       hodnota       "zjištěná hodnota"                                  TRUE     number  
+#>  3 stapro_kod    stapro_kod    "kód statistické proměnné ze systému SMS UKAZ"      TRUE     string  
+#>  4 spkvantil_cis spkvantil_cis "kód číselníku pro kvantil"                         TRUE     string  
+#>  5 spkvantil_kod spkvantil_kod "kód položky z číselníku pro kvantil"               TRUE     string  
+#>  6 pohlavi_cis   pohlavi_cis   "kód číselníku pro pohlaví"                         TRUE     string  
+#>  7 pohlavi_kod   pohlavi_kod   "kód položky číselníku pro pohlaví"                 TRUE     string  
+#>  8 rok           rok           "rok referenčního období ve formátu RRRR"           TRUE     number  
+#>  9 uzemi_cis     uzemi_cis     "kód číselníku pro referenční území "               TRUE     string  
+#> 10 uzemi_kod     uzemi_kod     "kód položky číselníku pro referenční území"        TRUE     string  
+#> 11 uzemi_txt     uzemi_txt     "text položky z číselníku pro referenční území"     TRUE     string  
+#> 12 stapro_txt    stapro_txt    "text statistické proměnné"                         TRUE     string  
+#> 13 spkvantil_txt spkvantil_txt "text položky číselníku pro kvantil"                TRUE     string  
+#> 14 pohlavi_txt   pohlavi_txt   "text položky číselníku pro pohlaví"                TRUE     string
 ```
 
 and download the documentation in PDF:
 
 ``` r
 czso_get_dataset_doc("110080", action = "download", format = "pdf")
-#> ✔ Downloaded https://www.czso.cz/documents/62353418/109720808/110080-19dds.pdf to 110080-19dds.pdf
+#> ✓ Downloaded https://www.czso.cz/documents/62353418/109720808/110080-19dds.pdf to 110080-19dds.pdf
 ```
 
 ### A note about “tables” and “datasets”
