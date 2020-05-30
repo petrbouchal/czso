@@ -1,8 +1,19 @@
+home:
+  title: An R package for using data from the Czech Statisical Office
+  description: Discover, retrieve and use open data from the Czech Statisical Office.
+
 destination: docs
 url: https://petrbouchal.github.io/czso
 template:
   params:
     ganalytics: UA-156460113-4
+  opengraph:
+    image:
+      src: man/figures/card.png
+      alt: "czso: R package for using Czech Statistical Office data"
+    twitter:
+      creator: "@petrbouchal"
+      card: summary_large_image
 reference:
 - title: Core workflow
   desc:  Functions for executing the core workflow.
