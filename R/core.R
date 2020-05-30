@@ -291,8 +291,10 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' The English codelists are at http://apl.czso.cz/iSMS/en/cislist.jsp,
 #' Czech ones at http://apl.czso.cz/iSMS/cs/cislist.jsp.
 #' You can find the Czech-language codelists in the catalogue retrieved with
-#'  `czso_get_catalogue()`; the English ones can also be retrieved from
+#'  `czso_get_catalogue()`, where their IDs begin with `"cis"` followed by the number; the English ones can also be retrieved from
 #'  the link above using a permalink URL.
+#'
+#'  More conveniently, you can use the `czso_get_codelist()` function to retrieve the codelist.
 #'
 #'  Units are denoted in a separate column.
 #'
@@ -320,6 +322,12 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' }
 #' @export
 czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 1) {
+
+  if(stringr::str_detect(dataset_id, "^cis")) {
+    usethis::ui_info("The dataset you are fetching seems to be a codelist.")
+    usethis::ui_todo("Use {ui_code(x = stringr::str_glue('czso_get_codelist(\"{dataset_id}\")'))} to load it using a dedicated function.")
+  }
+
   ptr <- get_czso_resource_pointer(dataset_id, resource_num = resource_num)
   url <- ptr$url
   type <- ptr$format
@@ -361,7 +369,7 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
           },
           listmore = {
             usethis::ui_info(c("Multiple files in archive.",
-                              "They are saved in {usethis::ui_path(dfile)}"))
+                               "They are saved in {usethis::ui_path(dfile)}"))
             rtrn <- flist
             invi <- T
 
@@ -387,6 +395,112 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
   czso_get_table(dataset_id = dataset_id,
                  resource_num = resource_num,
                  force_redownload = force_redownload)
+}
+
+#' Get CZSO codelist (registry)
+#'
+#' Downloads codelist (registry table) and returns it in a tibble.
+#' Codelists are canonical lists of entities, their names and IDs. See Details.
+#' Codelists are included in catalogue which can be retrieved using `czso_get_catalogue()`.
+#' Their IDs start with `"cis"` followed by a two- to three-digit number.
+#'
+#' ## Codelists
+#'
+#' Codelists are canonical registries of entities:
+#' things, statistical areas and aggregates, concepts, categorisations.
+#' A codelist typically contains IDs and names of all the entities fitting into
+#' a certain category.
+#'
+#' The most commonly used codelists are geographical, e.g. lists of regions or
+#' municipalities.
+#'
+#' In the world of the CZSO, each codelist has a numeric ID of two to four digits.
+#' You can pass this number to the function (even as a string), or you can pass the dataset ID found
+#' in the catalogue; the latter will have the form of e.g. `"cisNN"`.
+#'
+#' ### Relationships between codelists
+#'
+#' The CZSO data store also holds tables describing relations betwen codelists.
+#' This is especially useful for spatial hierarchies (which towns belong to which region), or for converting
+#'  between categorisations (e.g. two different sets of IDs for regions.)
+#'
+#' You can pass a vector of two IDs (numeric or character) and if the relational
+#' table for these two exists, it will be returned. (If it does not work,
+#' try flipping them around). The equivalent dataset ID, as found in the catalogue,
+#' is `"cisXXvazYY"`.
+#'
+#' ## Columns in output
+#'
+#' For single-codelist files, see below for the most commonly included columns.
+#' For relational tables, you will see each column twice, each time with a suffix of 1 or 2.
+#'
+#' - AKRCIS: codelist abbreviation
+#' - KODCIS: codelist ID
+#' - CHODNOTA: entity ID
+#' - TEXT: entity name
+#' - ZKRTEXT: entity name abbreviated
+#' - ADMPLOD: valid from
+#' - ADMNEPO: invalid after
+#' - KOD_RUIAN: for geographical entites, RUIAN code (different master registry run by the geodesists)
+#' - CZNUTS: for geographical entities, NUTS code
+#'
+#' @param codelist_id character or numeric of length 1 or 2; ID of codelist to download. See Details.
+#' @param language language, either "cs" (the default) or "en", which is available for some codelists.
+#' @param resource_num integer, order of resource.
+#' @param force_redownload whether to download even if a cached local file is available.
+#'
+#' @return a tibble. All columns except dates kept as character.
+#' See Details for the columns.
+#' @examples
+#' \donttest{
+#' czso_get_codelist("cis100")
+#'
+#' # equivalent
+#' czso_get_codelist(100)
+#'
+#' # get a table of relations between two codelists
+#' czso_get_codelist(c(100, 43))
+#'
+#' # equivalent
+#' czso_get_codelist("cis100vaz43")
+#' }
+#' @export
+czso_get_codelist <- function(codelist_id,
+                              language = c("cs", "en"),
+                              resource_num = 1,
+                              force_redownload = F) {
+
+  lng <- match.arg(language)
+
+  if(length(codelist_id) == 1) {
+    if(is.numeric(codelist_id) | stringr::str_detect(codelist_id,
+                                                     "^[0-9]{2,4}$")) {
+      codelist_id <- paste0("cis", codelist_id)
+    }
+  } else if(length(codelist_id) == "2") {
+    if(is.numeric(codelist_id) | all(stringr::str_detect(codelist_id,
+                                                         "^[0-9]{2,4}$"))) {
+      codelist_id <- paste0("cis", codelist_id[1], "vaz", codelist_id[2])
+    }
+  }
+
+  if(!stringr::str_detect(codelist_id, "^cis")) {
+    usethis::ui_info(c("The value you passed to {usethis::ui_field('codelist_id')} does not seem to indicate a codelist.",
+                       "This may cause unexpected results."))
+  }
+
+  czso_meta <- get_czso_resource_pointer(codelist_id, resource_num)
+  cis_url <- czso_meta$url
+  cis_url_new <- stringr::str_replace(cis_url, "format\\=0$", "format=2&separator=,")
+  if(lng == "en") cis_url_new <- stringr::str_replace(cis_url_new, "cisjaz=203", "cisjaz=8260")
+
+  dfile <- get_dl_path(codelist_id, ext = "csv")
+
+  download_if_needed(cis_url_new, dfile, force_redownload)
+
+  dt <- read_czso_csv(dfile)
+
+  return(dt)
 }
 
 

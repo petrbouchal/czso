@@ -63,8 +63,10 @@ ID of the codelist (register) you need to decode the code in \verb{_kod}.
 The English codelists are at http://apl.czso.cz/iSMS/en/cislist.jsp,
 Czech ones at http://apl.czso.cz/iSMS/cs/cislist.jsp.
 You can find the Czech-language codelists in the catalogue retrieved with
-\code{czso_get_catalogue()}; the English ones can also be retrieved from
+\code{czso_get_catalogue()}, where their IDs begin with \code{"cis"} followed by the number; the English ones can also be retrieved from
 the link above using a permalink URL.
+
+More conveniently, you can use the \code{czso_get_codelist()} function to retrieve the codelist.
 
 Units are denoted in a separate column.
 

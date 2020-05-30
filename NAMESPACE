@@ -2,6 +2,7 @@
 
 export("%>%")
 export(czso_get_catalogue)
+export(czso_get_codelist)
 export(czso_get_dataset_doc)
 export(czso_get_dataset_metadata)
 export(czso_get_table)
