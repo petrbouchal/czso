@@ -280,6 +280,8 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' - `stapro_kod`: code of the statistic/indicator/variable as listed.
 #' in the SMS UKAZ register (https://www.czso.cz/csu/czso/statistical-variables-indicators);
 #' this one has Czech-English documentation - access this by clicking the UK flag top right.
+#' You can also get a data table with the definitions, if you search for `"statistické proměnné"` in
+#' the `title` field of the catalogue. Last I checked, the ID of this table was `"990124-17"`.
 #' - `rok` denotes year as YYYY.
 #' - `ctvrtleti` denotes quarter if available.
 #'
