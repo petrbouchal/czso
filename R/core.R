@@ -349,18 +349,23 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   switch (action,
           read = {
             rtrn <- read_czso_csv(dfile)
+            invi <- F
           },
           listone = {
-            message(paste0("Unable to read this kind of file (",  type, ") automatically. It is saved in ", dfile, "."))
+            usethis::ui_info(c("Unable to read this kind of file ({type}) automatically.",
+                               "It is saved in {usethis::ui_path(dfile)}."))
             rtrn <- dfile
+            invi <- T
           },
           listmore = {
-            message(paste0("Multiple files in archive. They are saved in ", td))
+            usethis::ui_info(c("Multiple files in archive.",
+                              "They are saved in {usethis::ui_path(dfile)}"))
             rtrn <- flist
+            invi <- T
 
           }
   )
-  return(rtrn)
+  if(invi) invisible(rtrn) else return(rtrn)
 }
 
 
@@ -477,10 +482,10 @@ czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
   if(is.null(destfile)) {dest <- basename(doc_url)} else {dest <- destfile}
   switch(act,
          open = {
-           usethis::ui_done("Opening {doc_url} in browser")
+           usethis::ui_done("Opening {usethis::ui_path(doc_url)} in browser")
            utils::browseURL(doc_url)},
          download = {utils::download.file(doc_url, destfile = dest, headers = ua_header, quiet = TRUE)
-           usethis::ui_done("Downloaded {doc_url} to {dest}")})
+           usethis::ui_done("Downloaded {usethis::ui_path(doc_url)} to {usethis::ui_path(dest)}")})
   if(act == "download") rslt <- dest else rslt <- doc_url
   if(act == "return") rslt else invisible(rslt)
 }
