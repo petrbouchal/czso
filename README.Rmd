@@ -20,7 +20,6 @@ knitr::opts_chunk$set(
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/czso)](https://CRAN.R-project.org/package=czso)
 [![CRAN monthly downloads](https://cranlogs.r-pkg.org/badges/last-month/czso)](https://CRAN.R-project.org/package=czso)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![Travis build status](https://travis-ci.org/petrbouchal/czso.svg?branch=master)](https://travis-ci.org/petrbouchal/czso)
 [![R build status](https://github.com/petrbouchal/czso/workflows/R-CMD-check/badge.svg)](https://github.com/petrbouchal/czso/actions)
 <!-- badges: end -->
 
@@ -32,7 +31,7 @@ This is done by
 
 2. **providing a function to load a specific dataset to R** directly from the CZSO's datastore, eliminating the friction of copying a URL, downloading, unzipping etc.
 
-Additionally, the package provides access to metadata on datasets.
+Additionally, the package provides access to metadata on datasets and to codelists (číselníky) as a special case of datasets listed in the catalogue.
 
 ## Installation
 
@@ -103,6 +102,15 @@ and download the documentation in PDF:
 ```{r example-doc}
 czso_get_dataset_doc("110080", action = "download", format = "pdf")
 ```
+
+If you are interested in linking this data to different data, you might need the NUTS codes for regions. Seeing that the lines with regional breakdown list `uzemi_cis` as `"100"`, you can get that codelist (číselník):
+
+```{r example-codelist}
+czso_get_codelist(100)
+```
+
+You would then need to do a bit of manual work to join this codelist onto the data.
+
 
 ### A note about "tables" and "datasets"
 
