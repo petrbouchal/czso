@@ -10,7 +10,7 @@ get_catalogue()
 a tibble
 }
 \description{
-\lifecycle{soft-deprecated}
+\lifecycle{deprecated}
 }
 \examples{
 # see `czso_get_catalogue()`

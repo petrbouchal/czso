@@ -13,7 +13,7 @@ get_czso_dataset_metadata(dataset_id)
 a list
 }
 \description{
-\lifecycle{soft-deprecated}
+\lifecycle{deprecated}
 }
 \seealso{
 Other Additional tools: 

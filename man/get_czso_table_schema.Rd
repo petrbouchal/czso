@@ -15,7 +15,7 @@ get_czso_table_schema(dataset_id, resource_num)
 a list
 }
 \description{
-\lifecycle{soft-deprecated}
+\lifecycle{deprecated}
 }
 \seealso{
 Other Additional tools: 

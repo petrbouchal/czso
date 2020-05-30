@@ -24,7 +24,7 @@ get_czso_dataset_doc(
 a list
 }
 \description{
-\lifecycle{soft-deprecated}
+\lifecycle{deprecated}
 }
 \seealso{
 Other Additional tools: 

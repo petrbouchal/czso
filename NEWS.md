@@ -9,6 +9,10 @@
 * improved UI: more informative and better formatted messages, hints and reminders about common mishaps
 * documentation added in `czso_get_table()` on where to get definitions of indicators and variables used by CZSO.
 
+## Deprecations of functions with old names
+
+* functions named `get_czso_*` are now deprecated and will emit a warning if used. Use `czso_*()` instead.
+
 # czso 0.2.3
 
 ## Fixes responding to CRAN feedback
