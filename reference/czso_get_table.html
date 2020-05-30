@@ -184,7 +184,7 @@ that value is defined. See "Included columns" below on how these work.</p>
 <h3>Included columns</h3>
 
 
-<p>The range of columns present in the output vary from one dataset to another,
+<p>The range of columns present in the output varies from one dataset to another,
 so the package does not attempt to provide English-language names for
 the known subset, as that would result in a jumble of Czenglish.</p>
 <p>Instead, here is a guide to some of the common column names you will encounter:</p><ul>
@@ -194,7 +194,9 @@ identification should you need it.</p></li>
 <li><p><code>hodnota</code>: the value.</p></li>
 <li><p><code>stapro_kod</code>: code of the statistic/indicator/variable as listed.
 in the SMS UKAZ register (https://www.czso.cz/csu/czso/statistical-variables-indicators);
-this one has Czech-English documentation - access this by clicking the UK flag top right.</p></li>
+this one has Czech-English documentation - access this by clicking the UK flag top right.
+You can also get a data table with the definitions, if you search for <code>"statistické proměnné"</code> in
+the <code>title</code> field of the catalogue. Last I checked, the ID of this table was <code>"990124-17"</code>.</p></li>
 <li><p><code>rok</code> denotes year as YYYY.</p></li>
 <li><p><code>ctvrtleti</code> denotes quarter if available.</p></li>
 </ul>
@@ -205,8 +207,9 @@ ID of the codelist (register) you need to decode the code in <code>_kod</code>.
 The English codelists are at http://apl.czso.cz/iSMS/en/cislist.jsp,
 Czech ones at http://apl.czso.cz/iSMS/cs/cislist.jsp.
 You can find the Czech-language codelists in the catalogue retrieved with
-<code><a href='czso_get_catalogue.html'>czso_get_catalogue()</a></code>; the English ones can also be retrieved from
+<code><a href='czso_get_catalogue.html'>czso_get_catalogue()</a></code>, where their IDs begin with <code>"cis"</code> followed by the number; the English ones can also be retrieved from
 the link above using a permalink URL.</p>
+<p>More conveniently, you can use the <code><a href='czso_get_codelist.html'>czso_get_codelist()</a></code> function to retrieve the codelist.</p>
 <p>Units are denoted in a separate column.</p>
 <p>A helper on common breakdowns with their associated columns:</p><ul>
 <li><p><code>uzemi</code>: territory</p></li>
@@ -227,22 +230,7 @@ the link above using a permalink URL.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'>czso_get_table</span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; # A tibble: 720 x 14
-#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
-#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      
-#&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       
-#&gt;  2 7459…   29026 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          
-#&gt;  3 7459…   22729 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          
-#&gt;  4 7459…   22266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       
-#&gt;  5 7459…   23955 5958       7636          Q5            102         1          
-#&gt;  6 7459…   20271 5958       7636          Q5            102         2          
-#&gt;  7 7459…   26033 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       
-#&gt;  8 7459…   28873 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          
-#&gt;  9 7459…   22496 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          
-#&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       
-#&gt; # … with 710 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,
-#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,
-#&gt; #   POHLAVI_txt &lt;chr&gt;</div><div class='input'><span class='co'># }</span></div></pre>
+<span class='fu'>czso_get_table</span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in curl::curl_download(url, dfile, handle = curl_handle): Failed to open file 110080/czso/https://www.czso.cz/documents/62353418/109720808/110080-19data053119.csv/ds_https://www.czso.cz/documents/62353418/109720808/110080-19data053119.csv.csv.curltmp.</span></div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
