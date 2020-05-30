@@ -334,7 +334,7 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) ext <- stringr::str_extract(type, "(?<=\\/).*$")
 
-  dfile <- get_dl_path(url, dataset_id, ext)
+  dfile <- get_dl_path(dataset_id, tempdir(), ext)
 
   download_if_needed(url, dfile, force_redownload)
 
@@ -494,7 +494,7 @@ czso_get_codelist <- function(codelist_id,
   cis_url_new <- stringr::str_replace(cis_url, "format\\=0$", "format=2&separator=,")
   if(lng == "en") cis_url_new <- stringr::str_replace(cis_url_new, "cisjaz=203", "cisjaz=8260")
 
-  dfile <- get_dl_path(codelist_id, ext = "csv")
+  dfile <- get_dl_path(codelist_id, tempdir(), ext = "csv")
 
   download_if_needed(cis_url_new, dfile, force_redownload)
 
