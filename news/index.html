@@ -136,6 +136,21 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#czso-development-version" class="anchor"></a>czso (development version)<small> Unreleased </small>
 </h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>codelists (číselníky) can now be retrieved with <code><a href="../reference/czso_get_codelist.html">czso_get_codelist()</a></code>. This includes hierarchies between codelist items, and English versions where available</li>
+</ul>
+</div>
+<div id="improvements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#improvements" class="anchor"></a>Improvements</h2>
+<ul>
+<li>improved UI: more informative and better formatted messages, hints and reminders about common mishaps</li>
+<li>documentation added in <code><a href="../reference/czso_get_table.html">czso_get_table()</a></code> on where to get definitions of indicators and variables used by CZSO.</li>
+</ul>
+</div>
 </div>
     <div id="czso-023" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.3">
@@ -200,9 +215,9 @@
 <li>all user-facing functions are now <code>czso_*</code> to avoid conflicts and aid discovery via auto-complete. Original functions are soft-deprecated.</li>
 </ul>
 </div>
-<div id="improvements" class="section level2">
+<div id="improvements-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements" class="anchor"></a>Improvements</h2>
+<a href="#improvements-1" class="anchor"></a>Improvements</h2>
 <ul>
 <li>improvements to documentation</li>
 <li>added code of conduct and contributing guide</li>
@@ -213,9 +228,9 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#czso-020" class="anchor"></a>czso 0.2.0<small> Unreleased </small>
 </h1>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li>new <code>get_dataset_doc()</code> function for accessing documentation</li>
 <li>new <code>get_table_schema()</code> function for retrieving table schema</li>
@@ -227,9 +242,9 @@
 <h1 class="page-header" data-toc-text="0.1.5">
 <a href="#czso-015" class="anchor"></a>czso 0.1.5<small> Unreleased </small>
 </h1>
-<div id="improvements-1" class="section level2">
+<div id="improvements-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements-1" class="anchor"></a>Improvements</h2>
+<a href="#improvements-2" class="anchor"></a>Improvements</h2>
 <ul>
 <li>get_czso_catalogue() is now much faster as it uses the open data catalogue’s API instead of downloading a huge CSV list of all datasets. It is less flexible as it does not allow direct filtering.</li>
 <li>handle encoding of some older datasets, which may not be UTF-8</li>

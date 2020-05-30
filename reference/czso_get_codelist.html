@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get CZSO codelist (registry) — czso_get_codelist • czso</title>
+<title>Get CZSO codelist (registry / číselník) — czso_get_codelist • czso</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Get CZSO codelist (registry) — czso_get_codelist" />
+<meta property="og:title" content="Get CZSO codelist (registry / číselník) — czso_get_codelist" />
 <meta property="og:description" content="Downloads codelist (registry table) and returns it in a tibble.
 Codelists are canonical lists of entities, their names and IDs. See Details.
 Codelists are included in catalogue which can be retrieved using czso_get_catalogue().
@@ -132,7 +132,7 @@ Their IDs start with &quot;cis&quot; followed by a two- to three-digit number." 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get CZSO codelist (registry)</h1>
+    <h1>Get CZSO codelist (registry / číselník)</h1>
     <small class="dont-index">Source: <a href='https://github.com/petrbouchal/czso/blob/master/R/core.R'><code>R/core.R</code></a></small>
     <div class="hidden name"><code>czso_get_codelist.Rd</code></div>
     </div>
@@ -243,7 +243,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 
 #&gt; # … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</div><div class='input'>
 <span class='co'># equivalent</span>
-<span class='fu'>czso_get_codelist</span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpRlf4Ke/czso/cis100/', not downloading.</span>
+<span class='fu'>czso_get_codelist</span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpKDzBBg/czso/cis100/', not downloading.</span>
 #&gt; <span class='message'>  Set `force_redownload = TRUE` if needed.</span></div><div class='output co'>#&gt; # A tibble: 15 x 11
 #&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; 
@@ -279,7 +279,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 10 CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513148    Poln…
 #&gt; # … with 6,248 more rows</div><div class='input'>
 <span class='co'># equivalent</span>
-<span class='fu'>czso_get_codelist</span>(<span class='st'>"cis100vaz43"</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpRlf4Ke/czso/cis100vaz43/', not downloading.</span>
+<span class='fu'>czso_get_codelist</span>(<span class='st'>"cis100vaz43"</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpKDzBBg/czso/cis100vaz43/', not downloading.</span>
 #&gt; <span class='message'>  Set `force_redownload = TRUE` if needed.</span></div><div class='output co'>#&gt; # A tibble: 6,258 x 10
 #&gt;    KODJAZ TYPVAZ AKRCIS1 KODCIS1 CHODNOTA1 TEXT1 AKRCIS2 KODCIS2 CHODNOTA2 TEXT2
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;
