@@ -2,7 +2,7 @@
 % Please edit documentation in R/core.R
 \name{czso_get_codelist}
 \alias{czso_get_codelist}
-\title{Get CZSO codelist (registry)}
+\title{Get CZSO codelist (registry / číselník)}
 \usage{
 czso_get_codelist(
   codelist_id,

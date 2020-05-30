@@ -397,7 +397,7 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
                  force_redownload = force_redownload)
 }
 
-#' Get CZSO codelist (registry)
+#' Get CZSO codelist (registry / číselník)
 #'
 #' Downloads codelist (registry table) and returns it in a tibble.
 #' Codelists are canonical lists of entities, their names and IDs. See Details.

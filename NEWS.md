@@ -1,5 +1,14 @@
 # czso (development version)
 
+## New features
+
+* codelists (číselníky) can now be retrieved with `czso_get_codelist()`. This includes hierarchies between codelist items, and English versions where available
+
+## Improvements
+
+* improved UI: more informative and better formatted messages, hints and reminders about common mishaps
+* documentation added in `czso_get_table()` on where to get definitions of indicators and variables used by CZSO.
+
 # czso 0.2.3
 
 ## Fixes responding to CRAN feedback
