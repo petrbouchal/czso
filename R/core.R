@@ -267,7 +267,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #'
 #' ## Included columns
 #'
-#' The range of columns present in the output vary from one dataset to another,
+#' The range of columns present in the output varies from one dataset to another,
 #' so the package does not attempt to provide English-language names for
 #' the known subset, as that would result in a jumble of Czenglish.
 #'

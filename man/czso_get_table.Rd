@@ -38,7 +38,7 @@ The schema of the dataset is not yet used, so some columns may be mistyped and a
 
 \subsection{Included columns}{
 
-The range of columns present in the output vary from one dataset to another,
+The range of columns present in the output varies from one dataset to another,
 so the package does not attempt to provide English-language names for
 the known subset, as that would result in a jumble of Czenglish.
 
