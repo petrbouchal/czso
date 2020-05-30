@@ -47,7 +47,11 @@
 
 
 <meta property="og:title" content="Changelog" />
-<meta property="og:image" content="https://petrbouchal.github.io/czso/logo.png" />
+<meta property="og:image" content="https://petrbouchal.github.io/czso/reference/figures/card.png" />
+<meta property="og:image:alt" content="czso: R package for using Czech Statistical Office data" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@petrbouchal" />
+<meta name="twitter:site" content="@petrbouchal" />
 
 
 
@@ -149,6 +153,13 @@
 <ul>
 <li>improved UI: more informative and better formatted messages, hints and reminders about common mishaps</li>
 <li>documentation added in <code><a href="../reference/czso_get_table.html">czso_get_table()</a></code> on where to get definitions of indicators and variables used by CZSO.</li>
+</ul>
+</div>
+<div id="deprecations-of-functions-with-old-names" class="section level2">
+<h2 class="hasAnchor">
+<a href="#deprecations-of-functions-with-old-names" class="anchor"></a>Deprecations of functions with old names</h2>
+<ul>
+<li>functions named <code>get_czso_*</code> are now deprecated and will emit a warning if used. Use <code>czso_*()</code> instead.</li>
 </ul>
 </div>
 </div>

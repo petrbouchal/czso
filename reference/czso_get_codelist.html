@@ -51,7 +51,11 @@
 Codelists are canonical lists of entities, their names and IDs. See Details.
 Codelists are included in catalogue which can be retrieved using czso_get_catalogue().
 Their IDs start with &quot;cis&quot; followed by a two- to three-digit number." />
-<meta property="og:image" content="https://petrbouchal.github.io/czso/logo.png" />
+<meta property="og:image" content="https://petrbouchal.github.io/czso/reference/figures/card.png" />
+<meta property="og:image:alt" content="czso: R package for using Czech Statistical Office data" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@petrbouchal" />
+<meta name="twitter:site" content="@petrbouchal" />
 
 
 
@@ -243,7 +247,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 
 #&gt; # … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</div><div class='input'>
 <span class='co'># equivalent</span>
-<span class='fu'>czso_get_codelist</span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpKDzBBg/czso/cis100/', not downloading.</span>
+<span class='fu'>czso_get_codelist</span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpBlpjvU/czso/cis100/', not downloading.</span>
 #&gt; <span class='message'>  Set `force_redownload = TRUE` if needed.</span></div><div class='output co'>#&gt; # A tibble: 15 x 11
 #&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; 
@@ -279,7 +283,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 10 CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513148    Poln…
 #&gt; # … with 6,248 more rows</div><div class='input'>
 <span class='co'># equivalent</span>
-<span class='fu'>czso_get_codelist</span>(<span class='st'>"cis100vaz43"</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpKDzBBg/czso/cis100vaz43/', not downloading.</span>
+<span class='fu'>czso_get_codelist</span>(<span class='st'>"cis100vaz43"</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpBlpjvU/czso/cis100vaz43/', not downloading.</span>
 #&gt; <span class='message'>  Set `force_redownload = TRUE` if needed.</span></div><div class='output co'>#&gt; # A tibble: 6,258 x 10
 #&gt;    KODJAZ TYPVAZ AKRCIS1 KODCIS1 CHODNOTA1 TEXT1 AKRCIS2 KODCIS2 CHODNOTA2 TEXT2
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;
