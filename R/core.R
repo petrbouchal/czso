@@ -200,6 +200,42 @@ get_czso_resources <- function(dataset_id) {
   return(mtdt$resources)
 }
 
+
+# Internal utilities ------------------------------------------------------
+
+read_czso_csv <- function(dfile) {
+  guessed_enc <- readr::guess_encoding(dfile)
+  guessed_enc <- ifelse(length(guessed_enc$encoding) == 0 || guessed_enc$encoding[[1]] == "windows-1252",
+                        "windows-1250", # a sensible default, considering...
+                        guessed_enc$encoding[1])
+  dt <- suppressWarnings(suppressMessages(readr::read_csv(dfile, col_types = readr::cols(.default = "c",
+                                                                                         rok = "i",
+                                                                                         ADMPLOD = readr::col_date("%d.%m.%Y"),
+                                                                                         ADMNEPO = readr::col_date("%d.%m.%Y"),
+                                                                                         casref_do = "T",
+                                                                                         ctvrtleti = "i",
+                                                                                         hodnota = "d"),
+                                                          locale = readr::locale(encoding = guessed_enc))))
+}
+
+download_if_needed <- function(url, dfile, force_redownload) {
+  if(file.exists(dfile) & !force_redownload) {
+    usethis::ui_info(c("File already in {usethis::ui_path(dirname(dfile))}, not downloading.",
+                       "Set {usethis::ui_code('force_redownload = TRUE')} if needed."))
+  } else {
+    curl_handle <- curl::new_handle() %>%
+      curl::handle_setheaders(.list = ua_header)
+    curl::curl_download(url, dfile, handle = curl_handle)
+  }
+}
+
+get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
+  td <- file.path(dir, "czso", dataset_id)
+  dir.create(td, showWarnings = FALSE, recursive = TRUE)
+  dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
+  return(dfile)
+}
+
 get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
   rsrc <- get_czso_resources(dataset_id)[resource_num,] %>%
     dplyr::select(.data$url, .data$format, meta_link = .data$describedBy, meta_format = .data$describedByType)
@@ -287,24 +323,18 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   type <- ptr$format
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) ext <- stringr::str_extract(type, "(?<=\\/).*$")
-  td <- paste(tempdir(), "czso", dataset_id, sep = "/")
-  dir.create(td, showWarnings = FALSE, recursive = TRUE)
-  dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
-  if(file.exists(dfile) & !force_redownload) {
-    usethis::ui_info("File already in {td}, not downloading. Set `force_redownload` to TRUE if needed.")
-  } else {
-    curl_handle <- curl::new_handle() %>%
-      curl::handle_setheaders(.list = ua_header)
-    curl::curl_download(url, dfile, handle = curl_handle)
-  }
+
+  dfile <- get_dl_path(url, dataset_id, ext)
+
+  download_if_needed(url, dfile, force_redownload)
 
   # print(dfile)
 
   if(type == "text/csv") {
     action <- "read"
   } else if(type == "application/zip") {
-    utils::unzip(dfile, exdir = td)
-    flist <- list.files(td, pattern = "(CSV|csv)$")
+    utils::unzip(dfile, exdir = dirname(dfile))
+    flist <- list.files(dirname(dfile), pattern = "(CSV|csv)$")
     if((length(flist) == 1) & (tools::file_ext(flist[1]) %in% c("CSV", "csv"))) {
       action <- "read"
     } else if (length < 1) {
@@ -318,17 +348,7 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   }
   switch (action,
           read = {
-            guessed_enc <- readr::guess_encoding(dfile)
-            guessed_enc <- ifelse(length(guessed_enc$encoding) == 0 || guessed_enc$encoding[[1]] == "windows-1252",
-                                  "windows-1250", # a sensible default, considering...
-                                  guessed_enc$encoding[1])
-            dt <- suppressWarnings(suppressMessages(readr::read_csv(dfile, col_types = readr::cols(.default = "c",
-                                                                                                   rok = "i",
-                                                                                                   casref_do = "T",
-                                                                                                   ctvrtleti = "i",
-                                                                                                   hodnota = "d"),
-                                                                 locale = readr::locale(encoding = guessed_enc))))
-            rtrn <- dt
+            rtrn <- read_czso_csv(dfile)
           },
           listone = {
             message(paste0("Unable to read this kind of file (",  type, ") automatically. It is saved in ", dfile, "."))
@@ -479,3 +499,5 @@ get_czso_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
                             "czso_get_dataset_doc()")
   czso_get_dataset_doc(dataset_id = dataset_id, action = action, destfile = destfile, format = format)
 }
+
+
