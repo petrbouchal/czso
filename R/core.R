@@ -206,6 +206,11 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
   return(rsrc)
 }
 
+
+# Key workflow ------------------------------------------------------------
+
+
+
 #' Retrieve and read dataset from CZSO
 #'
 #' Downloads and reads dataset identified by `dataset_id`.
@@ -356,6 +361,10 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
                  resource_num = resource_num,
                  force_redownload = force_redownload)
 }
+
+
+# Utilities ---------------------------------------------------------------
+
 
 
 #' Get CZSO table schema
