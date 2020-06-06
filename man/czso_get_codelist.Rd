@@ -7,7 +7,7 @@
 czso_get_codelist(
   codelist_id,
   language = c("cs", "en"),
-  resource_num = 1,
+  resource_num = NULL,
   force_redownload = F
 )
 }
@@ -16,7 +16,7 @@ czso_get_codelist(
 
 \item{language}{language, either "cs" (the default) or "en", which is available for some codelists.}
 
-\item{resource_num}{integer, order of resource.}
+\item{resource_num}{integer, order of resource. Only override if you need a different format.}
 
 \item{force_redownload}{whether to download even if a cached local file is available.}
 }

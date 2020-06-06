@@ -446,7 +446,7 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
 #'
 #' @param codelist_id character or numeric of length 1 or 2; ID of codelist to download. See Details.
 #' @param language language, either "cs" (the default) or "en", which is available for some codelists.
-#' @param resource_num integer, order of resource.
+#' @param resource_num integer, order of resource. Only override if you need a different format.
 #' @param force_redownload whether to download even if a cached local file is available.
 #'
 #' @return a tibble. All columns except dates kept as character.
@@ -467,10 +467,12 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
 #' @export
 czso_get_codelist <- function(codelist_id,
                               language = c("cs", "en"),
-                              resource_num = 1,
+                              resource_num = NULL,
                               force_redownload = F) {
 
   lng <- match.arg(language)
+
+  stopifnot(length(codelist_id) <= 2)
 
   if(length(codelist_id) == 1) {
     if(is.numeric(codelist_id) | stringr::str_detect(codelist_id,
@@ -489,14 +491,28 @@ czso_get_codelist <- function(codelist_id,
                        "This may cause unexpected results."))
   }
 
-  czso_meta <- get_czso_resource_pointer(codelist_id, resource_num)
-  cis_url <- czso_meta$url
-  cis_url_new <- stringr::str_replace(cis_url, "format\\=0$", "format=2&separator=,")
-  if(lng == "en") cis_url_new <- stringr::str_replace(cis_url_new, "cisjaz=203", "cisjaz=8260")
+  cis_meta <- get_czso_resources(codelist_id)
 
-  dfile <- get_dl_path(codelist_id, tempdir(), ext = "csv")
+  cis_url <- cis_meta[cis_meta$format == "text/csv", "url"]
 
-  download_if_needed(cis_url_new, dfile, force_redownload)
+  if(length(cis_url) < 1) {
+    # usethis::ui_stop(c("No CSV distribution for this codelist found.",
+    #                    "You can download the codelist in the format provided using {ui_code(x = stringr::str_glue('czso_get_table(\"{codelist_id}\")'))} and read it in manually.",
+    #                    "Use {ui_code(x = stringr::str_glue('czso_get_dataset_metadata(\"{codelist_id}\")'))} to see which formats are available."))
+
+    if(is.null(resource_num)) resource_num <- 1
+
+    usethis::ui_info("No documented CSV distribution found for this codelist. Using workaround.")
+
+    cis_url <- get_czso_resource_pointer(codelist_id, 1)[["url"]]
+    cis_url <- stringr::str_replace(cis_url, "format\\=0$", "format=2&separator=,")
+  }
+
+  if(lng == "en") cis_url <- stringr::str_replace(cis_url, "cisjaz=203", "cisjaz=8260")
+
+  dfile <- get_dl_path(codelist_id, tempdir(), "csv")
+
+  download_if_needed(cis_url, dfile, force_redownload)
 
   dt <- read_czso_csv(dfile)
 
