@@ -477,7 +477,7 @@ czso_get_codelist <- function(codelist_id,
                                                      "^[0-9]{2,4}$")) {
       codelist_id <- paste0("cis", codelist_id)
     }
-  } else if(length(codelist_id) == "2") {
+  } else if(length(codelist_id) == 2) {
     if(is.numeric(codelist_id) | all(stringr::str_detect(codelist_id,
                                                          "^[0-9]{2,4}$"))) {
       codelist_id <- paste0("cis", codelist_id[1], "vaz", codelist_id[2])
