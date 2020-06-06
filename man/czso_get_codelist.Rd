@@ -44,10 +44,10 @@ municipalities.
 In the world of the CZSO, each codelist has a numeric ID of two to four digits.
 You can pass this number to the function (even as a string), or you can pass the dataset ID found
 in the catalogue; the latter will have the form of e.g. \code{"cisNN"}.
-\subsection{Relationships between codelists}{
+\subsection{Relationships between codelists ("vazba mezi číselníky")}{
 
 The CZSO data store also holds tables describing relations betwen codelists.
-This is especially useful for spatial hierarchies (which towns belong to which region), or for converting
+This is especially useful for spatial hierarchies (e.g. which towns belong to which region), or for converting
 between categorisations (e.g. two different sets of IDs for regions.)
 
 You can pass a vector of two IDs (numeric or character) and if the relational
