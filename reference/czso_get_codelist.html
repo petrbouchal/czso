@@ -45,6 +45,8 @@
 
 
 
+  
+  <script src="../extra.js"></script>
 
 <meta property="og:title" content="Get CZSO codelist (registry / číselník) — czso_get_codelist" />
 <meta property="og:description" content="Downloads codelist (registry table) and returns it in a tibble.
@@ -144,15 +146,15 @@ Their IDs start with &quot;cis&quot; followed by a two- to three-digit number." 
     <div class="ref-description">
     <p>Downloads codelist (registry table) and returns it in a tibble.
 Codelists are canonical lists of entities, their names and IDs. See Details.
-Codelists are included in catalogue which can be retrieved using <code><a href='czso_get_catalogue.html'>czso_get_catalogue()</a></code>.
+Codelists are included in catalogue which can be retrieved using <code><a href='https://rdrr.io/pkg/czso/man/czso_get_catalogue.html'>czso_get_catalogue()</a></code>.
 Their IDs start with <code>"cis"</code> followed by a two- to three-digit number.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>czso_get_codelist</span>(
-  <span class='no'>codelist_id</span>,
-  <span class='kw'>language</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cs"</span>, <span class='st'>"en"</span>),
-  <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(
+  <span class='kw'>codelist_id</span>,
+  language = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cs"</span>, <span class='st'>"en"</span>),
+  resource_num = <span class='kw'>NULL</span>,
+  force_redownload = <span class='kw'>F</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -168,7 +170,7 @@ Their IDs start with <code>"cis"</code> followed by a two- to three-digit number
     </tr>
     <tr>
       <th>resource_num</th>
-      <td><p>integer, order of resource.</p></td>
+      <td><p>integer, order of resource. Only override if you need a different format.</p></td>
     </tr>
     <tr>
       <th>force_redownload</th>
@@ -194,11 +196,11 @@ a certain category.</p>
 municipalities.</p>
 <p>In the world of the CZSO, each codelist has a numeric ID of two to four digits.
 You can pass this number to the function (even as a string), or you can pass the dataset ID found
-in the catalogue; the latter will have the form of e.g. <code>"cisNN"</code>.</p><h3>Relationships between codelists</h3>
+in the catalogue; the latter will have the form of e.g. <code>"cisNN"</code>.</p><h3>Relationships between codelists ("vazba mezi číselníky")</h3>
 
 
 <p>The CZSO data store also holds tables describing relations betwen codelists.
-This is especially useful for spatial hierarchies (which towns belong to which region), or for converting
+This is especially useful for spatial hierarchies (e.g. which towns belong to which region), or for converting
 between categorisations (e.g. two different sets of IDs for regions.)</p>
 <p>You can pass a vector of two IDs (numeric or character) and if the relational
 table for these two exists, it will be returned. (If it does not work,
@@ -227,7 +229,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'>czso_get_codelist</span>(<span class='st'>"cis100"</span>)</div><div class='output co'>#&gt; # A tibble: 15 x 11
+<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(<span class='st'>"cis100"</span>)</div><div class='output co'>#&gt; # A tibble: 15 x 11
 #&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; 
 #&gt;  1 CS     KRAJ_… 100    3000     Extra-… Extr… 2004-05-01 9999-09-09 CZZZZ 
@@ -247,7 +249,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 
 #&gt; # … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</div><div class='input'>
 <span class='co'># equivalent</span>
-<span class='fu'>czso_get_codelist</span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpztDyuC/czso/cis100/', not downloading.</span>
+<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp8n66Hz/czso/cis100/', not downloading.</span>
 #&gt; <span class='message'>  Set `force_redownload = TRUE` if needed.</span></div><div class='output co'>#&gt; # A tibble: 15 x 11
 #&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; 
@@ -268,7 +270,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 
 #&gt; # … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</div><div class='input'>
 <span class='co'># get a table of relations between two codelists</span>
-<span class='fu'>czso_get_codelist</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>100</span>, <span class='fl'>43</span>))</div><div class='output co'>#&gt; # A tibble: 6,258 x 10
+<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>100</span>, <span class='fl'>43</span>))</div><div class='output co'>#&gt; <span class='message'>ℹ No documented CSV distribution found for this codelist. Using workaround.</span></div><div class='output co'>#&gt; # A tibble: 6,258 x 10
 #&gt;    KODJAZ TYPVAZ AKRCIS1 KODCIS1 CHODNOTA1 TEXT1 AKRCIS2 KODCIS2 CHODNOTA2 TEXT2
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;
 #&gt;  1 CS     Odvoz… KRAJ_N… 100     3018      Hlav… CISOB   43      554782    Praha
@@ -283,7 +285,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 10 CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513148    Poln…
 #&gt; # … with 6,248 more rows</div><div class='input'>
 <span class='co'># equivalent</span>
-<span class='fu'>czso_get_codelist</span>(<span class='st'>"cis100vaz43"</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpztDyuC/czso/cis100vaz43/', not downloading.</span>
+<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(<span class='st'>"cis100vaz43"</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ No documented CSV distribution found for this codelist. Using workaround.</span></div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp8n66Hz/czso/cis100vaz43/', not downloading.</span>
 #&gt; <span class='message'>  Set `force_redownload = TRUE` if needed.</span></div><div class='output co'>#&gt; # A tibble: 6,258 x 10
 #&gt;    KODJAZ TYPVAZ AKRCIS1 KODCIS1 CHODNOTA1 TEXT1 AKRCIS2 KODCIS2 CHODNOTA2 TEXT2
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;

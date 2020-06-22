@@ -45,6 +45,8 @@
 
 
 
+  
+  <script src="../extra.js"></script>
 
 <meta property="og:title" content="Get catalogue of open CZSO datasets — czso_get_catalogue" />
 <meta property="og:description" content="Retrieves a list of all CZSO's open datasets available from the Czech Open data catalogue." />
@@ -142,7 +144,7 @@
     <p>Retrieves a list of all CZSO's open datasets available from the Czech Open data catalogue.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>czso_get_catalogue</span>()</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_catalogue.html'>czso_get_catalogue</a></span>()</pre>
 
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -164,12 +166,12 @@ In that case, the unit_code will be a code of that unit.</p></li>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Core workflow: 
-<code><a href='czso_get_table.html'>czso_get_table</a>()</code>,
-<code><a href='get_table.html'>get_table</a>()</code></p></div>
+<code><a href='https://rdrr.io/pkg/czso/man/czso_get_table.html'>czso_get_table</a>()</code>,
+<code><a href='https://rdrr.io/pkg/czso/man/get_table.html'>get_table</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'>czso_get_catalogue</span>()</div><div class='output co'>#&gt; <span class='message'>ℹ Reading data from data.gov.cz</span></div><div class='output co'>#&gt; <span class='message'>✔ Done downloading and reading data</span></div><div class='output co'>#&gt; <span class='message'>ℹ Transforming data</span></div><div class='output co'>#&gt; # A tibble: 606 x 14
+<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_catalogue.html'>czso_get_catalogue</a></span>()</div><div class='output co'>#&gt; <span class='message'>ℹ Reading data from data.gov.cz</span></div><div class='output co'>#&gt; <span class='message'>✔ Done downloading and reading data</span></div><div class='output co'>#&gt; <span class='message'>ℹ Transforming data</span></div><div class='output co'>#&gt; # A tibble: 610 x 14
 #&gt;    dataset_iri dataset_id title provider description spatial temporal
 #&gt;    &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   
 #&gt;  1 https://da… 060003     Vyba… Český s… Datová sad… https:… https:/…
@@ -182,7 +184,7 @@ In that case, the unit_code will be a code of that unit.</p></li>
 #&gt;  8 https://da… cis202     Číse… Český s… Druh lesní… https:… https:/…
 #&gt;  9 https://da… cis7605    Číse… Český s… Specifikac… https:… https:/…
 #&gt; 10 https://da… cis206     Číse… Český s… Příčina na… https:… https:/…
-#&gt; # … with 596 more rows, and 7 more variables: modified &lt;dttm&gt;, page &lt;chr&gt;,
+#&gt; # … with 600 more rows, and 7 more variables: modified &lt;dttm&gt;, page &lt;chr&gt;,
 #&gt; #   periodicity &lt;chr&gt;, periodicity_abb &lt;chr&gt;, start &lt;date&gt;, end &lt;date&gt;,
 #&gt; #   keywords &lt;chr&gt;</div><div class='input'><span class='co'># }</span></div></pre>
   </div>

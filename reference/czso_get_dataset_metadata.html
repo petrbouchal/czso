@@ -45,6 +45,8 @@
 
 
 
+  
+  <script src="../extra.js"></script>
 
 <meta property="og:title" content="Get dataset metadata — czso_get_dataset_metadata" />
 <meta property="og:description" content="Get metadata from CZSO API, which can be somewhat more detailed/readable than
@@ -144,7 +146,7 @@ what is provided in the dataset's entry in the output of czso_get_dataset()." />
 what is provided in the dataset's entry in the output of <code>czso_get_dataset()</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>czso_get_dataset_metadata</span>(<span class='no'>dataset_id</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_dataset_metadata.html'>czso_get_dataset_metadata</a></span>(<span class='kw'>dataset_id</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,19 +176,19 @@ Some fields merit explanation:</p><ul>
 
     <p>As far as I can tell there is no way to get the metadata in English, though
 some key datasets, such as codelists, do have English-languge documentation.
-See <code><a href='czso_get_table.html'>czso_get_table()</a></code> for how to access English-language codelists (registers).</p>
+See <code><a href='https://rdrr.io/pkg/czso/man/czso_get_table.html'>czso_get_table()</a></code> for how to access English-language codelists (registers).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Additional tools: 
-<code><a href='czso_get_dataset_doc.html'>czso_get_dataset_doc</a>()</code>,
-<code><a href='czso_get_table_schema.html'>czso_get_table_schema</a>()</code>,
-<code><a href='get_czso_dataset_doc.html'>get_czso_dataset_doc</a>()</code>,
-<code><a href='get_czso_dataset_metadata.html'>get_czso_dataset_metadata</a>()</code>,
-<code><a href='get_czso_table_schema.html'>get_czso_table_schema</a>()</code></p></div>
+<code><a href='https://rdrr.io/pkg/czso/man/czso_get_dataset_doc.html'>czso_get_dataset_doc</a>()</code>,
+<code><a href='https://rdrr.io/pkg/czso/man/czso_get_table_schema.html'>czso_get_table_schema</a>()</code>,
+<code><a href='https://rdrr.io/pkg/czso/man/get_czso_dataset_doc.html'>get_czso_dataset_doc</a>()</code>,
+<code><a href='https://rdrr.io/pkg/czso/man/get_czso_dataset_metadata.html'>get_czso_dataset_metadata</a>()</code>,
+<code><a href='https://rdrr.io/pkg/czso/man/get_czso_table_schema.html'>get_czso_table_schema</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'>czso_get_dataset_metadata</span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; $name
+<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_dataset_metadata.html'>czso_get_dataset_metadata</a></span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; $name
 #&gt; [1] "110080"
 #&gt; 
 #&gt; $title
@@ -223,7 +225,7 @@ See <code><a href='czso_get_table.html'>czso_get_table()</a></code> for how to a
 #&gt; [1] "2011-01-01"
 #&gt; 
 #&gt; $temporal_end
-#&gt; [1] "2018-12-31"
+#&gt; [1] "2019-12-31"
 #&gt; 
 #&gt; $tags
 #&gt;          display_name                name
@@ -234,17 +236,17 @@ See <code><a href='czso_get_table.html'>czso_get_table()</a></code> for how to a
 #&gt; 
 #&gt; $resources
 #&gt;                                                                        url
-#&gt; 1 https://www.czso.cz/documents/62353418/109720808/110080-19data053119.csv
+#&gt; 1 https://www.czso.cz/documents/62353418/123503145/110080-20data060120.csv
 #&gt;     format                                                 license_link
 #&gt; 1 text/csv https://portal.gov.cz/portal/ostatni/volny-pristup-k-ds.html
 #&gt;                name
-#&gt; 1 Data do roku 2018
+#&gt; 1 Data do roku 2019
 #&gt;                                                                                                                                     description
 #&gt; 1 Datová sada obsahuje časovou řadu průměrných měsíčních mezd a mediánu mezd v krajích České republiky od roku 2011 včetně údajů podle pohlaví.
 #&gt;                                                                   describedBy
-#&gt; 1 https://www.czso.cz/documents/62353418/109720808/110080-19schema053119.json
+#&gt; 1 https://www.czso.cz/documents/62353418/123503145/110080-20schema060120.json
 #&gt;    describedByType temporal_start temporal_end
-#&gt; 1 application/json     2011-01-01   2018-12-31
+#&gt; 1 application/json     2011-01-01   2019-12-31
 #&gt; </div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
