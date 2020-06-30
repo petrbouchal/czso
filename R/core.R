@@ -602,7 +602,7 @@ get_czso_table_schema <- function(dataset_id, resource_num) {
 #' @export
 #' @family Additional tools
 czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
-  metadata <- get_czso_dataset_metadata(dataset_id)
+  metadata <- czso_get_dataset_metadata(dataset_id)
   frmt <- match.arg(format)
   url_orig <- metadata$schema
   doc_url <- switch (frmt,
