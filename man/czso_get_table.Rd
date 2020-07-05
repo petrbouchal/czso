@@ -4,10 +4,18 @@
 \alias{czso_get_table}
 \title{Retrieve and read dataset from CZSO}
 \usage{
-czso_get_table(dataset_id, force_redownload = FALSE, resource_num = 1)
+czso_get_table(
+  dataset_id,
+  dest_dir = NULL,
+  force_redownload = FALSE,
+  resource_num = 1
+)
 }
 \arguments{
 \item{dataset_id}{a character. Found in the czso_id column of data frame returned by \code{get_catalogue()}.}
+
+\item{dest_dir}{character. Directory in which downloaded files will be stored.
+If left unset, will use the \code{czso.dest_dir} option if the option is set, and \code{tempdir()} otherwise. Will be created if it does not exist.}
 
 \item{force_redownload}{integer. Whether to redownload data source file even if already cached. Defaults to FALSE.}
 

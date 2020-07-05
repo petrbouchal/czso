@@ -7,6 +7,7 @@
 czso_get_codelist(
   codelist_id,
   language = c("cs", "en"),
+  dest_dir = NULL,
   resource_num = NULL,
   force_redownload = F
 )
@@ -15,6 +16,9 @@ czso_get_codelist(
 \item{codelist_id}{character or numeric of length 1 or 2; ID of codelist to download. See Details.}
 
 \item{language}{language, either "cs" (the default) or "en", which is available for some codelists.}
+
+\item{dest_dir}{character. Directory in which downloaded files will be stored.
+If left unset, will use the \code{czso.dest_dir} option if the option is set, and \code{tempdir()} otherwise. Will be created if it does not exist.}
 
 \item{resource_num}{integer, order of resource. Only override if you need a different format.}
 
