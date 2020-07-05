@@ -4,6 +4,8 @@ home:
 
 destination: docs
 url: https://petrbouchal.github.io/czso
+development:
+  mode: auto
 template:
   params:
     ganalytics: UA-156460113-4
