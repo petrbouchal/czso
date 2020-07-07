@@ -230,7 +230,7 @@ download_if_needed <- function(url, dfile, force_redownload) {
 }
 
 get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
-  td <- file.path(dir, "czso", dataset_id)
+  td <- file.path(dir, dataset_id)
   dir.create(td, showWarnings = FALSE, recursive = TRUE)
   dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
   return(dfile)
@@ -309,6 +309,8 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' @note Do not use this for harvesting datasets from CZSO en masse.
 #'
 #' @param dataset_id a character. Found in the czso_id column of data frame returned by `get_catalogue()`.
+#' @param dest_dir character. Directory in which downloaded files will be stored.
+#' If left unset, will use the `czso.dest_dir` option if the option is set, and `tempdir()` otherwise. Will be created if it does not exist.
 #' @param resource_num integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.
 #' @param force_redownload integer. Whether to redownload data source file even if already cached. Defaults to FALSE.
 #'
@@ -321,7 +323,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' czso_get_table("110080")
 #' }
 #' @export
-czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 1) {
+czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE, resource_num = 1) {
 
   if(stringr::str_detect(dataset_id, "^cis")) {
     usethis::ui_info("The dataset you are fetching seems to be a codelist.")
@@ -334,7 +336,10 @@ czso_get_table <- function(dataset_id, force_redownload = FALSE, resource_num = 
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) ext <- stringr::str_extract(type, "(?<=\\/).*$")
 
-  dfile <- get_dl_path(dataset_id, tempdir(), ext)
+  if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
+                                              default = tempdir())
+
+  dfile <- get_dl_path(dataset_id, dest_dir, ext)
 
   download_if_needed(url, dfile, force_redownload)
 
@@ -446,6 +451,8 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
 #'
 #' @param codelist_id character or numeric of length 1 or 2; ID of codelist to download. See Details.
 #' @param language language, either "cs" (the default) or "en", which is available for some codelists.
+#' @param dest_dir character. Directory in which downloaded files will be stored.
+#' If left unset, will use the `czso.dest_dir` option if the option is set, and `tempdir()` otherwise. Will be created if it does not exist.
 #' @param resource_num integer, order of resource. Only override if you need a different format.
 #' @param force_redownload whether to download even if a cached local file is available.
 #'
@@ -467,6 +474,7 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
 #' @export
 czso_get_codelist <- function(codelist_id,
                               language = c("cs", "en"),
+                              dest_dir = NULL,
                               resource_num = NULL,
                               force_redownload = F) {
 
@@ -510,7 +518,9 @@ czso_get_codelist <- function(codelist_id,
 
   if(lng == "en") cis_url <- stringr::str_replace(cis_url, "cisjaz=203", "cisjaz=8260")
 
-  dfile <- get_dl_path(codelist_id, tempdir(), "csv")
+  if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
+                                              default = tempdir())
+  dfile <- get_dl_path(codelist_id, dest_dir, "csv")
 
   download_if_needed(cis_url, dfile, force_redownload)
 

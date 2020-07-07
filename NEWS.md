@@ -6,6 +6,7 @@
 
 ## Improvements
 
+* new `dest_dir` parameter in `czso_get_[table|codelist]()` allows you to store downloaded data files in a custom location. This location can be set at script or user (.Rprofile) level by setting the `czso.dest_dir` option.
 * improved UI: more informative and better formatted messages, hints and reminders about common mishaps
 * documentation added in `czso_get_table()` on where to get definitions of indicators and variables used by CZSO.
 
