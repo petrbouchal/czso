@@ -212,7 +212,12 @@ read_czso_csv <- function(dfile) {
                                                                                          rok = "i",
                                                                                          ADMPLOD = readr::col_date("%d.%m.%Y"),
                                                                                          ADMNEPO = readr::col_date("%d.%m.%Y"),
+                                                                                         casref_od = "T",
                                                                                          casref_do = "T",
+                                                                                         obdobiod = "T",
+                                                                                         obdobido = "T",
+                                                                                         bazobdobiod = "T",
+                                                                                         bazobdobido = "T",
                                                                                          ctvrtleti = "i",
                                                                                          hodnota = "d"),
                                                           locale = readr::locale(encoding = guessed_enc))))
