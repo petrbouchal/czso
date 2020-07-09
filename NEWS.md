@@ -13,6 +13,7 @@
 ## Bug fixes
 
 * deprecated functions no longer used internally
+* encoding guess no longer breaks on Linux (@jlacko)
 
 ## Deprecations of functions with old names
 
