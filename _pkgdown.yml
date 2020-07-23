@@ -7,8 +7,6 @@ url: https://petrbouchal.github.io/czso
 development:
   mode: auto
 template:
-  params:
-    ganalytics: UA-156460113-4
   opengraph:
     image:
       src: man/figures/card.png
