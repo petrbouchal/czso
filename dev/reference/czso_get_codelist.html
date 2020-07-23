@@ -72,16 +72,6 @@ Their IDs start with &quot;cis&quot; followed by a two- to three-digit number." 
 <![endif]-->
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156460113-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-156460113-4');
-</script>
-
 
   </head>
 
@@ -146,16 +136,16 @@ Their IDs start with &quot;cis&quot; followed by a two- to three-digit number." 
     <div class="ref-description">
     <p>Downloads codelist (registry table) and returns it in a tibble.
 Codelists are canonical lists of entities, their names and IDs. See Details.
-Codelists are included in catalogue which can be retrieved using <code><a href='https://rdrr.io/pkg/czso/man/czso_get_catalogue.html'>czso_get_catalogue()</a></code>.
+Codelists are included in catalogue which can be retrieved using <code><a href='czso_get_catalogue.html'>czso_get_catalogue()</a></code>.
 Their IDs start with <code>"cis"</code> followed by a two- to three-digit number.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(
-  <span class='kw'>codelist_id</span>,
-  language = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cs"</span>, <span class='st'>"en"</span>),
-  dest_dir = <span class='kw'>NULL</span>,
-  resource_num = <span class='kw'>NULL</span>,
-  force_redownload = <span class='kw'>F</span>
+    <pre class="usage"><span class='fu'>czso_get_codelist</span>(
+  <span class='no'>codelist_id</span>,
+  <span class='kw'>language</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cs"</span>, <span class='st'>"en"</span>),
+  <span class='kw'>dest_dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='no'>F</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -235,7 +225,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(<span class='st'>"cis100"</span>)</div><div class='output co'>#&gt; # A tibble: 15 x 11
+<span class='fu'>czso_get_codelist</span>(<span class='st'>"cis100"</span>)</div><div class='output co'>#&gt; # A tibble: 15 x 11
 #&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; 
 #&gt;  1 CS     KRAJ_… 100    3000     Extra-… Extr… 2004-05-01 9999-09-09 CZZZZ 
@@ -255,7 +245,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 
 #&gt; # … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</div><div class='input'>
 <span class='co'># equivalent</span>
-<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpyDGibq/cis100/', not downloading.</span>
+<span class='fu'>czso_get_codelist</span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpKINrO8/cis100/', not downloading.</span>
 #&gt; <span class='message'>  Set `force_redownload = TRUE` if needed.</span></div><div class='output co'>#&gt; # A tibble: 15 x 11
 #&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; 
@@ -276,7 +266,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 
 #&gt; # … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</div><div class='input'>
 <span class='co'># get a table of relations between two codelists</span>
-<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>100</span>, <span class='fl'>43</span>))</div><div class='output co'>#&gt; <span class='message'>ℹ No documented CSV distribution found for this codelist. Using workaround.</span></div><div class='output co'>#&gt; # A tibble: 6,258 x 10
+<span class='fu'>czso_get_codelist</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>100</span>, <span class='fl'>43</span>))</div><div class='output co'>#&gt; <span class='message'>ℹ No documented CSV distribution found for this codelist. Using workaround.</span></div><div class='output co'>#&gt; # A tibble: 6,258 x 10
 #&gt;    KODJAZ TYPVAZ AKRCIS1 KODCIS1 CHODNOTA1 TEXT1 AKRCIS2 KODCIS2 CHODNOTA2 TEXT2
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;
 #&gt;  1 CS     Odvoz… KRAJ_N… 100     3018      Hlav… CISOB   43      554782    Praha
@@ -291,7 +281,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; 10 CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513148    Poln…
 #&gt; # … with 6,248 more rows</div><div class='input'>
 <span class='co'># equivalent</span>
-<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist</a></span>(<span class='st'>"cis100vaz43"</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ No documented CSV distribution found for this codelist. Using workaround.</span></div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpyDGibq/cis100vaz43/', not downloading.</span>
+<span class='fu'>czso_get_codelist</span>(<span class='st'>"cis100vaz43"</span>)</div><div class='output co'>#&gt; <span class='message'>ℹ No documented CSV distribution found for this codelist. Using workaround.</span></div><div class='output co'>#&gt; <span class='message'>ℹ File already in '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpKINrO8/cis100vaz43/', not downloading.</span>
 #&gt; <span class='message'>  Set `force_redownload = TRUE` if needed.</span></div><div class='output co'>#&gt; # A tibble: 6,258 x 10
 #&gt;    KODJAZ TYPVAZ AKRCIS1 KODCIS1 CHODNOTA1 TEXT1 AKRCIS2 KODCIS2 CHODNOTA2 TEXT2
 #&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;
@@ -305,7 +295,8 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt;  8 CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513113    Malé…
 #&gt;  9 CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513130    Dola…
 #&gt; 10 CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513148    Poln…
-#&gt; # … with 6,248 more rows</div><div class='input'><span class='co'># }</span></div></pre>
+#&gt; # … with 6,248 more rows</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -321,7 +312,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

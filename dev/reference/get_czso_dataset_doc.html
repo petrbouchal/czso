@@ -69,16 +69,6 @@
 <![endif]-->
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156460113-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-156460113-4');
-</script>
-
 
   </head>
 
@@ -144,11 +134,11 @@
     <p><img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/czso/man/get_czso_dataset_doc.html'>get_czso_dataset_doc</a></span>(
-  <span class='kw'>dataset_id</span>,
-  action = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"return"</span>, <span class='st'>"open"</span>, <span class='st'>"download"</span>),
-  destfile = <span class='kw'>NULL</span>,
-  format = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"html"</span>, <span class='st'>"pdf"</span>, <span class='st'>"word"</span>)
+    <pre class="usage"><span class='fu'>get_czso_dataset_doc</span>(
+  <span class='no'>dataset_id</span>,
+  <span class='kw'>action</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"return"</span>, <span class='st'>"open"</span>, <span class='st'>"download"</span>),
+  <span class='kw'>destfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"html"</span>, <span class='st'>"pdf"</span>, <span class='st'>"word"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -178,11 +168,11 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Additional tools: 
-<code><a href='https://rdrr.io/pkg/czso/man/czso_get_dataset_doc.html'>czso_get_dataset_doc</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/czso_get_dataset_metadata.html'>czso_get_dataset_metadata</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/czso_get_table_schema.html'>czso_get_table_schema</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/get_czso_dataset_metadata.html'>get_czso_dataset_metadata</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/get_czso_table_schema.html'>get_czso_table_schema</a>()</code></p></div>
+<code><a href='czso_get_dataset_doc.html'>czso_get_dataset_doc</a>()</code>,
+<code><a href='czso_get_dataset_metadata.html'>czso_get_dataset_metadata</a>()</code>,
+<code><a href='czso_get_table_schema.html'>czso_get_table_schema</a>()</code>,
+<code><a href='get_czso_dataset_metadata.html'>get_czso_dataset_metadata</a>()</code>,
+<code><a href='get_czso_table_schema.html'>get_czso_table_schema</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -199,7 +189,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

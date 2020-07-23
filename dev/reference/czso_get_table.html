@@ -71,16 +71,6 @@ Converts types of columns where known, e.g. value columns to numeric." />
 <![endif]-->
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156460113-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-156460113-4');
-</script>
-
 
   </head>
 
@@ -148,11 +138,11 @@ Unzips if necessary, but only loads CSV files, otherwise returns the path to the
 Converts types of columns where known, e.g. value columns to numeric.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_table.html'>czso_get_table</a></span>(
-  <span class='kw'>dataset_id</span>,
-  dest_dir = <span class='kw'>NULL</span>,
-  force_redownload = <span class='fl'>FALSE</span>,
-  resource_num = <span class='fl'>1</span>
+    <pre class="usage"><span class='fu'>czso_get_table</span>(
+  <span class='no'>dataset_id</span>,
+  <span class='kw'>dest_dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -160,7 +150,7 @@ Converts types of columns where known, e.g. value columns to numeric.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset_id</th>
-      <td><p>a character. Found in the czso_id column of data frame returned by <code><a href='https://rdrr.io/pkg/czso/man/get_catalogue.html'>get_catalogue()</a></code>.</p></td>
+      <td><p>a character. Found in the czso_id column of data frame returned by <code><a href='get_catalogue.html'>get_catalogue()</a></code>.</p></td>
     </tr>
     <tr>
       <th>dest_dir</th>
@@ -223,9 +213,9 @@ ID of the codelist (register) you need to decode the code in <code>_kod</code>.
 The English codelists are at http://apl.czso.cz/iSMS/en/cislist.jsp,
 Czech ones at http://apl.czso.cz/iSMS/cs/cislist.jsp.
 You can find the Czech-language codelists in the catalogue retrieved with
-<code><a href='https://rdrr.io/pkg/czso/man/czso_get_catalogue.html'>czso_get_catalogue()</a></code>, where their IDs begin with <code>"cis"</code> followed by the number; the English ones can also be retrieved from
+<code><a href='czso_get_catalogue.html'>czso_get_catalogue()</a></code>, where their IDs begin with <code>"cis"</code> followed by the number; the English ones can also be retrieved from
 the link above using a permalink URL.</p>
-<p>More conveniently, you can use the <code><a href='https://rdrr.io/pkg/czso/man/czso_get_codelist.html'>czso_get_codelist()</a></code> function to retrieve the codelist.</p>
+<p>More conveniently, you can use the <code><a href='czso_get_codelist.html'>czso_get_codelist()</a></code> function to retrieve the codelist.</p>
 <p>Units are denoted in a separate column.</p>
 <p>A helper on common breakdowns with their associated columns:</p><ul>
 <li><p><code>uzemi</code>: territory</p></li>
@@ -241,12 +231,12 @@ the link above using a permalink URL.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Core workflow: 
-<code><a href='https://rdrr.io/pkg/czso/man/czso_get_catalogue.html'>czso_get_catalogue</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/get_table.html'>get_table</a>()</code></p></div>
+<code><a href='czso_get_catalogue.html'>czso_get_catalogue</a>()</code>,
+<code><a href='get_table.html'>get_table</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_table.html'>czso_get_table</a></span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; # A tibble: 810 x 14
+<span class='fu'>czso_get_table</span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; # A tibble: 810 x 14
 #&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
 #&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      
 #&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       
@@ -261,7 +251,8 @@ the link above using a permalink URL.</p>
 #&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       
 #&gt; # … with 800 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,
 #&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,
-#&gt; #   POHLAVI_txt &lt;chr&gt;</div><div class='input'><span class='co'># }</span></div></pre>
+#&gt; #   POHLAVI_txt &lt;chr&gt;</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -277,7 +268,7 @@ the link above using a permalink URL.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
