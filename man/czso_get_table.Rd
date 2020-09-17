@@ -22,7 +22,7 @@ If left unset, will use the \code{czso.dest_dir} option if the option is set, an
 \item{resource_num}{integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.}
 }
 \value{
-a tibble, or vector of file paths if file is not CSV or if
+a \link[tibble:tibble-package]{tibble}, or vector of file paths if file is not CSV or if
 there are multiple files in the dataset.
 See Details on the columns contained in the tibble
 }

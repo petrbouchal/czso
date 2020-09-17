@@ -319,7 +319,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' @param resource_num integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.
 #' @param force_redownload integer. Whether to redownload data source file even if already cached. Defaults to FALSE.
 #'
-#' @return a tibble, or vector of file paths if file is not CSV or if
+#' @return a [tibble][tibble::tibble-package], or vector of file paths if file is not CSV or if
 #' there are multiple files in the dataset.
 #' See Details on the columns contained in the tibble
 #' @family Core workflow
@@ -395,7 +395,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
 #'
 #' @inheritParams czso_get_table
 #'
-#' @return a tibble
+#' @return a [tibble][tibble::tibble-package]
 #' @family Core workflow
 #' @examples
 #' # see `czso_get_table()`
@@ -461,7 +461,7 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
 #' @param resource_num integer, order of resource. Only override if you need a different format.
 #' @param force_redownload whether to download even if a cached local file is available.
 #'
-#' @return a tibble. All columns except dates kept as character.
+#' @return a [tibble][tibble::tibble-package] All columns except dates kept as character.
 #' See Details for the columns.
 #' @examples
 #' \donttest{

@@ -14,7 +14,7 @@ get_table(dataset_id, resource_num = 1, force_redownload = FALSE)
 \item{force_redownload}{integer. Whether to redownload data source file even if already cached. Defaults to FALSE.}
 }
 \value{
-a tibble
+a \link[tibble:tibble-package]{tibble}
 }
 \description{
 \lifecycle{deprecated}.

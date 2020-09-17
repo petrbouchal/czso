@@ -25,7 +25,7 @@ If left unset, will use the \code{czso.dest_dir} option if the option is set, an
 \item{force_redownload}{whether to download even if a cached local file is available.}
 }
 \value{
-a tibble. All columns except dates kept as character.
+a \link[tibble:tibble-package]{tibble} All columns except dates kept as character.
 See Details for the columns.
 }
 \description{
