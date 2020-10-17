@@ -1,34 +1,20 @@
-# Resubmission
+# New minor version
 
-## Corrections made
-
-* added link to data provider in Description field of DESCRIPTION
-* expanded documentation for all functions, with better explanations of what the functions return
-
-## Other changes
-
-* `czso_get_table_schema()` now throws error for non-JSON schema and includes URL in error message
-* minor error fixed in `czso_get_table()` to ensure unread files are written with the right extension
-* `czso_get_dataset_doc()` returns URL only invisibly if `action` is `"open"`
+This version includes several minor improvement and bug fixes and two new features, one of which is an option to store data dumps downloaded from the external source in a custom directory so as to avoid redownloading them later. By default, `tempdir()` is used and the user has to actively set a parameter or option for the package to store any data outside working or temporary directories.
 
 ## Test environments
 
-* local R installation on MacOS, R 3.6.3
-* ubuntu 16.04 (on travis-ci and r-hub), R 3.6.3
+* local R installation on MacOS, R 4.0.2
+* ubuntu 16.04 (on travis-ci, r-hub and Github Actions), R 4.0.2
 * fedora-clang (devel on r-hub)
-* windows (devel on win-builder and r-hub)
+* windows (devel on win-builder and r-hub, release on Github Actions)
+* macOS (release, devel and on Github Actions)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 notes
 
-* This is a new release.
+On some remote systems, running examples triggered errors because the data provider seems to be blocking some CI/CD platforms intermittently.
 
 CRAN-type checks also produce a note on misspelled word "CZSO".
 That is the abbreviation of the statistical agency whose data the package mediates.
-
-## Identifying underlying data sources that the package provides access to
-
-Re URLs: besides the (very general) home page of the agency, there is no single user-friendly 
-URL to point to on in the Description field to identify the data source by URL.
-More detailed references to web resources are provided in README.md.
