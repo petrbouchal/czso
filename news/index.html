@@ -68,16 +68,6 @@
 <![endif]-->
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156460113-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-156460113-4');
-</script>
-
 
   </head>
 
@@ -95,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -138,23 +128,25 @@
       <small>Source: <a href='https://github.com/petrbouchal/czso/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="czso-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#czso-development-version" class="anchor"></a>czso (development version)<small> Unreleased </small>
+    <div id="czso-030" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.0">
+<a href="#czso-030" class="anchor"></a>czso 0.3.0<small> Unreleased </small>
 </h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
-<li>codelists (číselníky) can now be retrieved with <code><a href="https://rdrr.io/pkg/czso/man/czso_get_codelist.html">czso_get_codelist()</a></code>. This includes hierarchies between codelist items, and English versions where available</li>
+<li>codelists (číselníky) can now be retrieved with <code><a href="../reference/czso_get_codelist.html">czso_get_codelist()</a></code>. This includes hierarchies between codelist items, and English versions where available</li>
 </ul>
 </div>
 <div id="improvements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#improvements" class="anchor"></a>Improvements</h2>
 <ul>
+<li>new <code>dest_dir</code> parameter in <code>czso_get_[table|codelist]()</code> allows you to store downloaded data files in a custom location. This location can be set at script or user (.Rprofile) level by setting the <code>czso.dest_dir</code> option.</li>
 <li>improved UI: more informative and better formatted messages, hints and reminders about common mishaps</li>
-<li>documentation added in <code><a href="https://rdrr.io/pkg/czso/man/czso_get_table.html">czso_get_table()</a></code> on where to get definitions of indicators and variables used by CZSO.</li>
+<li>documentation added in <code><a href="../reference/czso_get_table.html">czso_get_table()</a></code> on where to get definitions of indicators and variables used by CZSO.</li>
+<li>more date-type columns are parsed and typed correctly</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
@@ -162,6 +154,7 @@
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>deprecated functions no longer used internally</li>
+<li>encoding guess no longer breaks on Linux (<a href='https://github.com/jlacko'>@jlacko</a>)</li>
 </ul>
 </div>
 <div id="deprecations-of-functions-with-old-names" class="section level2">
@@ -189,11 +182,11 @@
 <a href="#other-changes" class="anchor"></a>Other changes</h2>
 <ul>
 <li>
-<code><a href="https://rdrr.io/pkg/czso/man/czso_get_table_schema.html">czso_get_table_schema()</a></code> now throws error for non-JSON schema and includes URL in error message</li>
+<code><a href="../reference/czso_get_table_schema.html">czso_get_table_schema()</a></code> now throws error for non-JSON schema and includes URL in error message</li>
 <li>
-<code><a href="https://rdrr.io/pkg/czso/man/czso_get_table.html">czso_get_table()</a></code> now writes files it cannot read with the right extension</li>
+<code><a href="../reference/czso_get_table.html">czso_get_table()</a></code> now writes files it cannot read with the right extension</li>
 <li>
-<code><a href="https://rdrr.io/pkg/czso/man/czso_get_dataset_doc.html">czso_get_dataset_doc()</a></code> returns URL only invisibly if <code>action</code> is <code>"open"</code>
+<code><a href="../reference/czso_get_dataset_doc.html">czso_get_dataset_doc()</a></code> returns URL only invisibly if <code>action</code> is <code>"open"</code>
 </li>
 </ul>
 </div>
@@ -287,14 +280,14 @@
 <h2 class="hasAnchor">
 <a href="#deprecated-functions" class="anchor"></a>Deprecated functions</h2>
 <ul>
-<li>both exported functions are renamed to <code><a href="https://rdrr.io/pkg/czso/man/get_czso_catalogue.html">get_czso_catalogue()</a></code> and <code>get_czso_table()</code> to avoid clashes with other packages; original functions are soft-deprecated and will be removed in future versions.</li>
+<li>both exported functions are renamed to <code><a href="../reference/get_czso_catalogue.html">get_czso_catalogue()</a></code> and <code>get_czso_table()</code> to avoid clashes with other packages; original functions are soft-deprecated and will be removed in future versions.</li>
 </ul>
 </div>
 <div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>fix bug in <code><a href="https://rdrr.io/pkg/czso/man/get_czso_catalogue.html">get_czso_catalogue()</a></code> where an empty tibble was returned because the source CSV was read incorrectly (due to <code>vroom</code> handling of newlines inside fields)</li>
+<li>fix bug in <code><a href="../reference/get_czso_catalogue.html">get_czso_catalogue()</a></code> where an empty tibble was returned because the source CSV was read incorrectly (due to <code>vroom</code> handling of newlines inside fields)</li>
 </ul>
 </div>
 </div>
@@ -303,7 +296,7 @@
 <a href="#czso-012" class="anchor"></a>czso 0.1.2<small> Unreleased </small>
 </h1>
 <ul>
-<li>add per-session caching to <code><a href="https://rdrr.io/pkg/czso/man/get_catalogue.html">get_catalogue()</a></code> and <code><a href="https://rdrr.io/pkg/czso/man/get_table.html">get_table()</a></code>, incl. new <code>force_redownload</code> parameter</li>
+<li>add per-session caching to <code><a href="../reference/get_catalogue.html">get_catalogue()</a></code> and <code><a href="../reference/get_table.html">get_table()</a></code>, incl. new <code>force_redownload</code> parameter</li>
 </ul>
 </div>
     <div id="czso-011" class="section level1">
@@ -311,7 +304,7 @@
 <a href="#czso-011" class="anchor"></a>czso 0.1.1<small> Unreleased </small>
 </h1>
 <ul>
-<li>fixed error when loading zipped files in <code><a href="https://rdrr.io/pkg/czso/man/get_table.html">get_table()</a></code>
+<li>fixed error when loading zipped files in <code><a href="../reference/get_table.html">get_table()</a></code>
 </li>
 </ul>
 </div>
@@ -348,7 +341,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

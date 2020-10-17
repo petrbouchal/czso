@@ -69,16 +69,6 @@
 <![endif]-->
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156460113-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-156460113-4');
-</script>
-
 
   </head>
 
@@ -96,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -144,12 +134,12 @@
     <p>Retrieves the URL/downloads the file containing the documentation of the dataset, in the required format.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_dataset_doc.html'>czso_get_dataset_doc</a></span>(
-  <span class='kw'>dataset_id</span>,
-  action = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"return"</span>, <span class='st'>"open"</span>, <span class='st'>"download"</span>),
-  destfile = <span class='kw'>NULL</span>,
-  format = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"html"</span>, <span class='st'>"pdf"</span>, <span class='st'>"word"</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>czso_get_dataset_doc</span><span class='op'>(</span>
+  <span class='va'>dataset_id</span>,
+  action <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"return"</span>, <span class='st'>"open"</span>, <span class='st'>"download"</span><span class='op'>)</span>,
+  destfile <span class='op'>=</span> <span class='cn'>NULL</span>,
+  format <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"html"</span>, <span class='st'>"pdf"</span>, <span class='st'>"word"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,19 +169,21 @@
 
     <p>The document to which this functions provides access contains methodological
 background on the specified dataset and is identified by the <code>schema</code> field
-in the list returned by <code><a href='https://rdrr.io/pkg/czso/man/czso_get_dataset_metadata.html'>czso_get_dataset_metadata()</a></code>.</p>
+in the list returned by <code><a href='czso_get_dataset_metadata.html'>czso_get_dataset_metadata()</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Additional tools: 
-<code><a href='https://rdrr.io/pkg/czso/man/czso_get_dataset_metadata.html'>czso_get_dataset_metadata</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/czso_get_table_schema.html'>czso_get_table_schema</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/get_czso_dataset_doc.html'>get_czso_dataset_doc</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/get_czso_dataset_metadata.html'>get_czso_dataset_metadata</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/get_czso_table_schema.html'>get_czso_table_schema</a>()</code></p></div>
+<code><a href='czso_get_dataset_metadata.html'>czso_get_dataset_metadata</a>()</code>,
+<code><a href='czso_get_table_schema.html'>czso_get_table_schema</a>()</code>,
+<code><a href='get_czso_dataset_doc.html'>get_czso_dataset_doc</a>()</code>,
+<code><a href='get_czso_dataset_metadata.html'>get_czso_dataset_metadata</a>()</code>,
+<code><a href='get_czso_table_schema.html'>get_czso_table_schema</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'><a href='https://rdrr.io/pkg/czso/man/czso_get_dataset_doc.html'>czso_get_dataset_doc</a></span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; [1] "https://www.czso.cz/documents/62353418/109720808/110080-19dds.htm"</div><div class='input'><span class='co'># }</span></div></pre>
+<span class='fu'>czso_get_dataset_doc</span><span class='op'>(</span><span class='st'>"110080"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "https://www.czso.cz/documents/62353418/109720808/110080-19dds.htm"</div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -207,7 +199,7 @@ in the list returned by <code><a href='https://rdrr.io/pkg/czso/man/czso_get_dat
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

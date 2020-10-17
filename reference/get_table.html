@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Deprecated: use <code>czso_get_table()</code> instead. — get_table • czso</title>
+<title>Deprecated: use czso_get_table() instead. — get_table • czso</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,7 +48,7 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Deprecated: use <code>czso_get_table()</code> instead. — get_table" />
+<meta property="og:title" content="Deprecated: use czso_get_table() instead. — get_table" />
 <meta property="og:description" content="
 ." />
 <meta property="og:image" content="https://petrbouchal.github.io/czso/reference/figures/card.png" />
@@ -70,16 +70,6 @@
 <![endif]-->
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156460113-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-156460113-4');
-</script>
-
 
   </head>
 
@@ -97,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -146,14 +136,14 @@
 .</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/czso/man/get_table.html'>get_table</a></span>(<span class='kw'>dataset_id</span>, resource_num = <span class='fl'>1</span>, force_redownload = <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_table</span><span class='op'>(</span><span class='va'>dataset_id</span>, resource_num <span class='op'>=</span> <span class='fl'>1</span>, force_redownload <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset_id</th>
-      <td><p>a character. Found in the czso_id column of data frame returned by <code><a href='https://rdrr.io/pkg/czso/man/get_catalogue.html'>get_catalogue()</a></code>.</p></td>
+      <td><p>a character. Found in the czso_id column of data frame returned by <code><a href='get_catalogue.html'>get_catalogue()</a></code>.</p></td>
     </tr>
     <tr>
       <th>resource_num</th>
@@ -167,15 +157,16 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble</p>
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Core workflow: 
-<code><a href='https://rdrr.io/pkg/czso/man/czso_get_catalogue.html'>czso_get_catalogue</a>()</code>,
-<code><a href='https://rdrr.io/pkg/czso/man/czso_get_table.html'>czso_get_table</a>()</code></p></div>
+<code><a href='czso_get_catalogue.html'>czso_get_catalogue</a>()</code>,
+<code><a href='czso_get_table.html'>czso_get_table</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># see `czso_get_table()`</span></div></pre>
+    <pre class="examples"><div class='input'><span class='co'># see `czso_get_table()`</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -191,7 +182,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
