@@ -138,12 +138,12 @@ Unzips if necessary, but only loads CSV files, otherwise returns the path to the
 Converts types of columns where known, e.g. value columns to numeric.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>czso_get_table</span>(
-  <span class='no'>dataset_id</span>,
-  <span class='kw'>dest_dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>force_redownload</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>resource_num</span> <span class='kw'>=</span> <span class='fl'>1</span>
-)</pre>
+    <pre class="usage"><span class='fu'>czso_get_table</span><span class='op'>(</span>
+  <span class='va'>dataset_id</span>,
+  dest_dir <span class='op'>=</span> <span class='cn'>NULL</span>,
+  force_redownload <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  resource_num <span class='op'>=</span> <span class='fl'>1</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,25 +169,25 @@ If left unset, will use the <code>czso.dest_dir</code> option if the option is s
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble, or vector of file paths if file is not CSV or if
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a>, or vector of file paths if file is not CSV or if
 there are multiple files in the dataset.
 See Details on the columns contained in the tibble</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
-<h3>Structure of the output tibble</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Structure of the output tibble</h3>
 
 
 <p>CZSO provides its open data as tidy data, so each row only contains one value
 in the <code>hodnota</code> column and the remaining columns give details on how
 that value is defined. See "Included columns" below on how these work.</p>
 
-<h3>Data types</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Data types</h3>
 
 
 <p>The schema of the dataset is not yet used, so some columns may be mistyped and are by default returned as character vectors.</p>
 
-<h3>Included columns</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Included columns</h3>
 
 
 <p>The range of columns present in the output varies from one dataset to another,
@@ -236,23 +236,24 @@ the link above using a permalink URL.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'>czso_get_table</span>(<span class='st'>"110080"</span>)</div><div class='output co'>#&gt; # A tibble: 810 x 14
+<span class='fu'>czso_get_table</span><span class='op'>(</span><span class='st'>"110080"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 810 x 14</span><span>
 #&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
-#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      
-#&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       
-#&gt;  2 7459…   29026 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          
-#&gt;  3 7459…   22729 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          
-#&gt;  4 7459…   22266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       
-#&gt;  5 7459…   23955 5958       7636          Q5            102         1          
-#&gt;  6 7459…   20271 5958       7636          Q5            102         2          
-#&gt;  7 7459…   26033 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       
-#&gt;  8 7459…   28873 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          
-#&gt;  9 7459…   22496 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          
-#&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       
-#&gt; # … with 800 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,
-#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,
-#&gt; #   POHLAVI_txt &lt;chr&gt;</div><div class='input'># }
-</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
+#&gt; </span><span style='color: #555555;'> 1</span><span> 7459…   </span><span style='text-decoration: underline;'>26</span><span>211 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>         
+#&gt; </span><span style='color: #555555;'> 2</span><span> 7459…   </span><span style='text-decoration: underline;'>29</span><span>026 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            102         1          
+#&gt; </span><span style='color: #555555;'> 3</span><span> 7459…   </span><span style='text-decoration: underline;'>22</span><span>729 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            102         2          
+#&gt; </span><span style='color: #555555;'> 4</span><span> 7459…   </span><span style='text-decoration: underline;'>22</span><span>266 5958       7636          Q5            </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>         
+#&gt; </span><span style='color: #555555;'> 5</span><span> 7459…   </span><span style='text-decoration: underline;'>23</span><span>955 5958       7636          Q5            102         1          
+#&gt; </span><span style='color: #555555;'> 6</span><span> 7459…   </span><span style='text-decoration: underline;'>20</span><span>271 5958       7636          Q5            102         2          
+#&gt; </span><span style='color: #555555;'> 7</span><span> 7459…   </span><span style='text-decoration: underline;'>26</span><span>033 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>         
+#&gt; </span><span style='color: #555555;'> 8</span><span> 7459…   </span><span style='text-decoration: underline;'>28</span><span>873 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            102         1          
+#&gt; </span><span style='color: #555555;'> 9</span><span> 7459…   </span><span style='text-decoration: underline;'>22</span><span>496 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            102         2          
+#&gt; </span><span style='color: #555555;'>10</span><span> 7459…   </span><span style='text-decoration: underline;'>21</span><span>997 5958       7636          Q5            </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>         
+#&gt; </span><span style='color: #555555;'># … with 800 more rows, and 7 more variables: rok </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, uzemi_cis </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   uzemi_kod </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, STAPRO_TXT </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, uzemi_txt </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, SPKVANTIL_txt </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   POHLAVI_txt </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -268,7 +269,7 @@ the link above using a permalink URL.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
