@@ -50,7 +50,7 @@ You can pass this number to the function (even as a string), or you can pass the
 in the catalogue; the latter will have the form of e.g. \code{"cisNN"}.
 \subsection{Relationships between codelists ("vazba mezi číselníky")}{
 
-The CZSO data store also holds tables describing relations betwen codelists.
+The CZSO data store also holds tables describing relations between codelists.
 This is especially useful for spatial hierarchies (e.g. which towns belong to which region), or for converting
 between categorisations (e.g. two different sets of IDs for regions.)
 
