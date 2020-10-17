@@ -22,5 +22,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Petr Bouchal \email{pbouchal@gmail.com} (\href{https://orcid.org/0000-0002-0471-716X}{ORCID})
 
+Other contributors:
+\itemize{
+  \item Jindra Lacko [contributor]
+}
+
 }
 \keyword{internal}
