@@ -30,5 +30,5 @@ navbar:
     right: [github, pbhome]
   components:
     pbhome:
-      icon: "fab fa-asterisk fa-lg"
+      icon: "fa-asterisk fa-lg"
       href: https://petrbouchal.xyz
