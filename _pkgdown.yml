@@ -23,3 +23,12 @@ reference:
   desc:  Functions for retrieving documentation and metadata.
   contents:
   - has_concept("Additional tools")
+
+navbar:
+  structure:
+    left:  [home, intro, reference, articles, news]
+    right: [github, pbhome]
+  components:
+    pbhome:
+      icon: "fab fa-asterisk fa-lg"
+      href: https://petrbouchal.xyz
