@@ -61,7 +61,7 @@ remotes::install_github("petrbouchal/czso")
 
 I also keep binaries in a `drat` repo, which you can access by
 
-    install.packages("czso", repos = "https://petrbouchal.github.io/drat")
+    install.packages("czso", repos = "https://petrbouchal.xyz/drat")
 
 ## Example
 
@@ -102,7 +102,7 @@ the dataset:
 
 ``` r
 czso_get_table("110080")
-#> # A tibble: 720 x 14
+#> # A tibble: 810 x 14
 #>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
 #>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
 #>  1 7459…   26211 5958       <NA>          <NA>          <NA>        <NA>       
@@ -115,7 +115,7 @@ czso_get_table("110080")
 #>  8 7459…   28873 5958       <NA>          <NA>          102         1          
 #>  9 7459…   22496 5958       <NA>          <NA>          102         2          
 #> 10 7459…   21997 5958       7636          Q5            <NA>        <NA>       
-#> # … with 710 more rows, and 7 more variables: rok <int>, uzemi_cis <chr>,
+#> # … with 800 more rows, and 7 more variables: rok <int>, uzemi_cis <chr>,
 #> #   uzemi_kod <chr>, STAPRO_TXT <chr>, uzemi_txt <chr>, SPKVANTIL_txt <chr>,
 #> #   POHLAVI_txt <chr>
 ```
@@ -203,13 +203,13 @@ endpoint of the CZSO API at (example)
 
 ## Credit and notes
 
-  - not created or endorsed by the Czech Statistical Office, though
+-   not created or endorsed by the Czech Statistical Office, though
     they, as well as [the open data team at the Ministry of
     Interior](https://data.gov.cz/) deserve credit for getting the data
     out there.
-  - the package relies on the data.gov.cz catalogue of open data and on
+-   the package relies on the data.gov.cz catalogue of open data and on
     the CZSO’s local catalogue
-  - NB: The robots.txt at the domain hosting the CZSO’s catalogue
+-   NB: The robots.txt at the domain hosting the CZSO’s catalogue
     prohibits robots from accessing it; while this may be an
     inappropriate/erroneous setting for what is in essence a data API,
     this package tries to honor the spirit of that setting by only
@@ -239,8 +239,8 @@ that integration happens.
 
 This package takes inspiration from the packages
 
-  - [eurostat](https://github.com/rOpenGov/eurostat/)
-  - [OECD](https://github.com/expersso/OECD)
+-   [eurostat](https://github.com/rOpenGov/eurostat/)
+-   [OECD](https://github.com/expersso/OECD)
 
 which are very useful in their own right - much recommended.
 
@@ -252,7 +252,7 @@ For Czech fiscal data, see
 [statnipokladna](https://github.com/petrbouchal/statnipokladna).
 
 For various transparency disclosures, see [Hlídač
-státu](https://hlidacstatu.cz).
+státu](https://hlidacstatu.cz/).
 
 For access to some of Prague’s open geospatial data in R, see
 [pragr](https://github.com/petrbouchal/pragr).
@@ -260,5 +260,5 @@ For access to some of Prague’s open geospatial data in R, see
 ## Contributing / code of conduct
 
 Please note that the ‘czso’ project is released with a [Contributor Code
-of Conduct](https://petrbouchal.github.io/czso/CODE_OF_CONDUCT.html). By
+of Conduct](https://petrbouchal.xyz/czso/CODE_OF_CONDUCT.html). By
 contributing to this project, you agree to abide by its terms.

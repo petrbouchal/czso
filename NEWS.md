@@ -1,3 +1,7 @@
+# czso 0.3.1
+
+* minor README edits for CRAN resubmission 
+
 # czso 0.3.0
 
 ## New features

@@ -1,6 +1,6 @@
-# New minor version
+# Resubmission
 
-This version includes several minor improvement and bug fixes and two new features, one of which is an option to store data dumps downloaded from the external source in a custom directory so as to avoid redownloading them later. By default, `tempdir()` is used and the user has to actively set a parameter or option for the package to store any data outside working or temporary directories.
+Corrected links in README.md to avoid redirects which resulted in a NOTE.
 
 ## Test environments
 

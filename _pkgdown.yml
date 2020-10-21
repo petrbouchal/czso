@@ -3,7 +3,7 @@ home:
   description: Discover, retrieve and use open data from the Czech Statisical Office.
 
 destination: docs
-url: https://petrbouchal.github.io/czso
+url: https://petrbouchal.xyz/czso
 development:
   mode: auto
 template:
