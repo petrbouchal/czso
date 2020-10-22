@@ -1,6 +1,6 @@
-# Resubmission
+# Resubmission #2
 
-Corrected links in README.md to avoid redirects which resulted in a NOTE.
+Corrected link in README.md to avoid redirect which resulted in a NOTE.
 
 ## Test environments
 

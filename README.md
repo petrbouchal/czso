@@ -102,6 +102,8 @@ the dataset:
 
 ``` r
 czso_get_table("110080")
+#> ℹ File already in '/Users/petr/czso_data/110080/', not downloading.
+#>   Set `force_redownload = TRUE` if needed.
 #> # A tibble: 810 x 14
 #>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
 #>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
@@ -157,6 +159,8 @@ breakdown list `uzemi_cis` as `"100"`, you can get that codelist
 
 ``` r
 czso_get_codelist(100)
+#> ℹ File already in '/Users/petr/czso_data/cis100/', not downloading.
+#>   Set `force_redownload = TRUE` if needed.
 #> # A tibble: 15 x 11
 #>    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
 #>    <chr>  <chr>  <chr>  <chr>    <chr>   <chr> <date>     <date>     <chr> 
@@ -252,7 +256,7 @@ For Czech fiscal data, see
 [statnipokladna](https://github.com/petrbouchal/statnipokladna).
 
 For various transparency disclosures, see [Hlídač
-státu](https://hlidacstatu.cz/).
+státu](https://www.hlidacstatu.cz/).
 
 For access to some of Prague’s open geospatial data in R, see
 [pragr](https://github.com/petrbouchal/pragr).
