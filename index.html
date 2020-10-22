@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
       </span>
     </div>
 
@@ -142,6 +142,8 @@
 <p>We can see the <code>dataset_id</code> for the required dataset - now use it to get the dataset:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="fu"><a href="reference/czso_get_table.html">czso_get_table</a></span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span>
+<span class="co">#&gt; ℹ File already in '/Users/petr/czso_data/110080/', not downloading.</span>
+<span class="co">#&gt;   Set `force_redownload = TRUE` if needed.</span>
 <span class="co">#&gt; # A tibble: 810 x 14</span>
 <span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span>
 <span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span>
@@ -185,6 +187,8 @@
 <p>If you are interested in linking this data to different data, you might need the NUTS codes for regions. Seeing that the lines with regional breakdown list <code>uzemi_cis</code> as <code>"100"</code>, you can get that codelist (číselník):</p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
 <span class="fu"><a href="reference/czso_get_codelist.html">czso_get_codelist</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
+<span class="co">#&gt; ℹ File already in '/Users/petr/czso_data/cis100/', not downloading.</span>
+<span class="co">#&gt;   Set `force_redownload = TRUE` if needed.</span>
 <span class="co">#&gt; # A tibble: 15 x 11</span>
 <span class="co">#&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; </span>
@@ -249,7 +253,7 @@
 <p>which are very useful in their own right - much recommended.</p>
 <p>For Czech geospatial data, see <a href="https://github.com/JanCaha/CzechData/">CzechData</a> by <a href="https://github.com/JanCaha/">JanCaha</a>.</p>
 <p>For Czech fiscal data, see <a href="https://github.com/petrbouchal/statnipokladna">statnipokladna</a>.</p>
-<p>For various transparency disclosures, see <a href="https://hlidacstatu.cz/">Hlídač státu</a>.</p>
+<p>For various transparency disclosures, see <a href="https://www.hlidacstatu.cz/">Hlídač státu</a>.</p>
 <p>For access to some of Prague’s open geospatial data in R, see <a href="https://github.com/petrbouchal/pragr">pragr</a>.</p>
 </div>
 <div id="contributing--code-of-conduct" class="section level2">
