@@ -1,3 +1,7 @@
+# czso 0.3.2
+
+* minor README edit for CRAN resubmission 
+
 # czso 0.3.1
 
 * minor README edits for CRAN resubmission 
