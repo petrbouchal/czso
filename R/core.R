@@ -332,7 +332,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
 
   if(stringr::str_detect(dataset_id, "^cis")) {
     usethis::ui_info("The dataset you are fetching seems to be a codelist.")
-    usethis::ui_todo("Use {ui_code(x = stringr::str_glue('czso_get_codelist(\"{dataset_id}\")'))} to load it using a dedicated function.")
+    usethis::ui_todo("Use {usethis::ui_code(x = stringr::str_glue('czso_get_codelist(\"{dataset_id}\")'))} to load it using a dedicated function.")
   }
 
   ptr <- get_czso_resource_pointer(dataset_id, resource_num = resource_num)
