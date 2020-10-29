@@ -53,7 +53,7 @@
 Codelists are canonical lists of entities, their names and IDs. See Details.
 Codelists are included in catalogue which can be retrieved using czso_get_catalogue().
 Their IDs start with &quot;cis&quot; followed by a two- to three-digit number." />
-<meta property="og:image" content="https://petrbouchal.github.io/czso/reference/figures/card.png" />
+<meta property="og:image" content="https://petrbouchal.xyz/czso/reference/figures/card.png" />
 <meta property="og:image:alt" content="czso: R package for using Czech Statistical Office data" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@petrbouchal" />
@@ -89,7 +89,7 @@ Their IDs start with &quot;cis&quot; followed by a two- to three-digit number." 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.2.9000</span>
       </span>
     </div>
 
@@ -112,6 +112,12 @@ Their IDs start with &quot;cis&quot; followed by a two- to three-digit number." 
         <li>
   <a href="https://github.com/petrbouchal/czso/">
     <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://petrbouchal.xyz">
+    <span class="fa fa-asterisk fa-lg"></span>
      
   </a>
 </li>
@@ -195,7 +201,7 @@ You can pass this number to the function (even as a string), or you can pass the
 in the catalogue; the latter will have the form of e.g. <code>"cisNN"</code>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Relationships between codelists ("vazba mezi číselníky")</h4>
 
 
-<p>The CZSO data store also holds tables describing relations betwen codelists.
+<p>The CZSO data store also holds tables describing relations between codelists.
 This is especially useful for spatial hierarchies (e.g. which towns belong to which region), or for converting
 between categorisations (e.g. two different sets of IDs for regions.)</p>
 <p>You can pass a vector of two IDs (numeric or character) and if the relational
@@ -247,7 +253,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; </span><span style='color: #555555;'># … with 2 more variables: KOD_RUIAN </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, ZKRKRAJ </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'># equivalent</span>
 <span class='fu'>czso_get_codelist</span><span class='op'>(</span><span class='fl'>100</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> File already in </span><span style='color: #0000BB;'>'/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpNSE1Hu/cis100/'</span><span>, not downloading.</span>
+</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> File already in </span><span style='color: #0000BB;'>'/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpR8szGK/cis100/'</span><span>, not downloading.</span>
 #&gt; <span class='message'>  Set </span><span style='color: #555555;'>`force_redownload = TRUE`</span><span> if needed.</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 15 x 11</span><span>
 #&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
@@ -285,7 +291,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 #&gt; </span><span style='color: #555555;'># … with 6,248 more rows</span><span></div><div class='input'>
 <span class='co'># equivalent</span>
 <span class='fu'>czso_get_codelist</span><span class='op'>(</span><span class='st'>"cis100vaz43"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> No documented CSV distribution found for this codelist. Using workaround.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> File already in </span><span style='color: #0000BB;'>'/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpNSE1Hu/cis100vaz43/'</span><span>, not downloading.</span>
+</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> No documented CSV distribution found for this codelist. Using workaround.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> File already in </span><span style='color: #0000BB;'>'/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpR8szGK/cis100vaz43/'</span><span>, not downloading.</span>
 #&gt; <span class='message'>  Set </span><span style='color: #555555;'>`force_redownload = TRUE`</span><span> if needed.</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6,258 x 10</span><span>
 #&gt;    KODJAZ TYPVAZ AKRCIS1 KODCIS1 CHODNOTA1 TEXT1 AKRCIS2 KODCIS2 CHODNOTA2 TEXT2
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>

@@ -19,7 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><script src="extra.js"></script><meta property="og:title" content="An R package for using data from the Czech Statisical Office">
 <meta property="og:description" content="Discover, retrieve and use open data from the Czech Statisical Office.">
-<meta property="og:image" content="https://petrbouchal.github.io/czso/reference/figures/card.png">
+<meta property="og:image" content="https://petrbouchal.xyz/czso/reference/figures/card.png">
 <meta property="og:image:alt" content="czso: R package for using Czech Statistical Office data">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@petrbouchal">
@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.2.9000</span>
       </span>
     </div>
 
@@ -66,6 +66,12 @@
 <li>
   <a href="https://github.com/petrbouchal/czso/">
     <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://petrbouchal.xyz">
+    <span class="fa fa-asterisk fa-lg"></span>
      
   </a>
 </li>
@@ -107,7 +113,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/czso"</span><span class="op">)</span></pre></div>
 <p>I also keep binaries in a <code>drat</code> repo, which you can access by</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">install.packages</span>(<span class="st">"czso"</span>, <span class="dt">repos =</span> <span class="st">"https://petrbouchal.github.io/drat"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">install.packages</span>(<span class="st">"czso"</span>, <span class="dt">repos =</span> <span class="st">"https://petrbouchal.xyz/drat"</span>)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -137,7 +143,9 @@
 <p>We can see the <code>dataset_id</code> for the required dataset - now use it to get the dataset:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="fu"><a href="reference/czso_get_table.html">czso_get_table</a></span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 720 x 14</span>
+<span class="co">#&gt; ℹ File already in '/Users/petr/czso_data/110080/', not downloading.</span>
+<span class="co">#&gt;   Set `force_redownload = TRUE` if needed.</span>
+<span class="co">#&gt; # A tibble: 810 x 14</span>
 <span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span>
 <span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span>
 <span class="co">#&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span>
@@ -150,7 +158,7 @@
 <span class="co">#&gt;  8 7459…   28873 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span>
 <span class="co">#&gt;  9 7459…   22496 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span>
 <span class="co">#&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span>
-<span class="co">#&gt; # … with 710 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span>
+<span class="co">#&gt; # … with 800 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span>
 <span class="co">#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span>
 <span class="co">#&gt; #   POHLAVI_txt &lt;chr&gt;</span></pre></div>
 <p>You can retrieve the schema for the dataset:</p>
@@ -180,6 +188,8 @@
 <p>If you are interested in linking this data to different data, you might need the NUTS codes for regions. Seeing that the lines with regional breakdown list <code>uzemi_cis</code> as <code>"100"</code>, you can get that codelist (číselník):</p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
 <span class="fu"><a href="reference/czso_get_codelist.html">czso_get_codelist</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
+<span class="co">#&gt; ℹ File already in '/Users/petr/czso_data/cis100/', not downloading.</span>
+<span class="co">#&gt;   Set `force_redownload = TRUE` if needed.</span>
 <span class="co">#&gt; # A tibble: 15 x 11</span>
 <span class="co">#&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; </span>
@@ -244,13 +254,13 @@
 <p>which are very useful in their own right - much recommended.</p>
 <p>For Czech geospatial data, see <a href="https://github.com/JanCaha/CzechData/">CzechData</a> by <a href="https://github.com/JanCaha/">JanCaha</a>.</p>
 <p>For Czech fiscal data, see <a href="https://github.com/petrbouchal/statnipokladna">statnipokladna</a>.</p>
-<p>For various transparency disclosures, see <a href="https://hlidacstatu.cz">Hlídač státu</a>.</p>
+<p>For various transparency disclosures, see <a href="https://www.hlidacstatu.cz/">Hlídač státu</a>.</p>
 <p>For access to some of Prague’s open geospatial data in R, see <a href="https://github.com/petrbouchal/pragr">pragr</a>.</p>
 </div>
 <div id="contributing--code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing--code-of-conduct" class="anchor"></a>Contributing / code of conduct</h2>
-<p>Please note that the ‘czso’ project is released with a <a href="https://petrbouchal.github.io/czso/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the ‘czso’ project is released with a <a href="https://petrbouchal.xyz/czso/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
