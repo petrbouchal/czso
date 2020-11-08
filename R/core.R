@@ -401,7 +401,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
 #' # see `czso_get_table()`
 #' @export
 get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
-  lifecycle::deprecate_warn("0.2.0", "czso::get_catalogue()", "czso_get_catalogue()")
+  lifecycle::deprecate_warn("0.2.0", "czso::get_table()", "czso_get_table()")
   czso_get_table(dataset_id = dataset_id,
                  resource_num = resource_num,
                  force_redownload = force_redownload)
