@@ -13,6 +13,8 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/czso)](https://CRAN.R-p
 downloads](https://cranlogs.r-pkg.org/badges/last-month/czso)](https://CRAN.R-project.org/package=czso)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Mentioned in Awesome Official
+Statistics](https://awesome.re/mentioned-badge.svg)](http://www.awesomeofficialstatistics.org)
 [![R build
 status](https://github.com/petrbouchal/czso/workflows/R-CMD-check/badge.svg)](https://github.com/petrbouchal/czso/actions)
 <!-- badges: end -->
@@ -77,7 +79,7 @@ suppressPackageStartupMessages(library(stringr))
 
 catalogue <- czso_get_catalogue()
 #> ℹ Reading data from data.gov.cz
-#> ✓ Done downloading and reading data
+#> ✔ Done downloading and reading data
 #> ℹ Transforming data
 ```
 
@@ -149,7 +151,7 @@ and download the documentation in PDF:
 
 ``` r
 czso_get_dataset_doc("110080", action = "download", format = "pdf")
-#> ✓ Downloaded 'https:/www.czso.cz/documents/62353418/109720808/110080-19dds.pdf' to '110080-19dds.pdf'
+#> ✔ Downloaded 'https:/www.czso.cz/documents/62353418/109720808/110080-19dds.pdf' to '110080-19dds.pdf'
 ```
 
 If you are interested in linking this data to different data, you might
@@ -207,13 +209,13 @@ endpoint of the CZSO API at (example)
 
 ## Credit and notes
 
--   not created or endorsed by the Czech Statistical Office, though
+  - not created or endorsed by the Czech Statistical Office, though
     they, as well as [the open data team at the Ministry of
     Interior](https://data.gov.cz/) deserve credit for getting the data
     out there.
--   the package relies on the data.gov.cz catalogue of open data and on
+  - the package relies on the data.gov.cz catalogue of open data and on
     the CZSO’s local catalogue
--   NB: The robots.txt at the domain hosting the CZSO’s catalogue
+  - NB: The robots.txt at the domain hosting the CZSO’s catalogue
     prohibits robots from accessing it; while this may be an
     inappropriate/erroneous setting for what is in essence a data API,
     this package tries to honor the spirit of that setting by only
@@ -243,8 +245,8 @@ that integration happens.
 
 This package takes inspiration from the packages
 
--   [eurostat](https://github.com/rOpenGov/eurostat/)
--   [OECD](https://github.com/expersso/OECD)
+  - [eurostat](https://github.com/rOpenGov/eurostat/)
+  - [OECD](https://github.com/expersso/OECD)
 
 which are very useful in their own right - much recommended.
 
