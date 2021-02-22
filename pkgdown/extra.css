@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {font-family: "IBM Plex Sans", "Helvetica", Helvetica, sans-serif, sans}
+
+a {color: #00f}
+a:hover {color: #00f}
+
+.tocify {
+  border: 0px;
+  border-radius: 0px;
+}
+
+.tocify .list-group-item {
+  background-color: white;
+  color: #00f;
+}
+
+.tocify .list-group-item.active {
+  background-color: #00f;
+  color: #fff;
+}
+
+.navbar-default, .navbar-brand, .navbar-nav {
+  color: white !important;
+  background-color: #00f;
+  border-color: #00f;
+}
+
+a.navbar-link {
+  color: white !important;
+  background-color: #00f;
+  border-color: #00f;
+}
+
+.navbar-nav > li > a {
+  color: white !important;
+  background-color: #00f;
+}
+
+.navbar-nav > .active > a {
+  color: #00f !important;
+  background-color: #fff !important;
+}
+
+.dropdown-menu > .active > a {
+  background-color: #00f;
+}
+.navbar-nav > .open > a {
+  color: white !important;
+  background-color: #00f !important;
+}
+
+.icon-bar {
+    background-color: #fff !important;
+}
+
+h1, h2, h3, h4, h5 {color: #0000ff;}
+
+.bs-callout {
+    margin:20px 0;
+    padding:20px;
+    border-left:7px solid #eee
+}
+
+.bs-callout h4 {
+    margin-top:-60px;
+    margin-bottom:5px;
+    font-size:15px;
+	/*text-decoration: underline;	*/
+}
+
+.bs-callout p:last-child {
+    margin-bottom:0
+}
+
+.bs-callout code {
+    background-color:#fff;
+    border-radius:3px
+}
+
+.bs-callout pre code {
+    background-color:transparent;
+    border-radius:3px
+}
+
+.bs-callout-gray {
+	background-color:#f7f7f7;
+	border-color:#777
+}
+
+.bs-callout-gray h4 {
+	color:#777
+}
+
+.bs-callout-green {
+	background-color:#f5fbf5;
+	border-color:#5cb85c
+}
+
+.bs-callout-green h4 {
+	color:#5cb85c;
+}
+
+.bs-callout-red {
+    background-color:#fdf7f7;
+    border-color:#d9534f
+}
+
+.bs-callout-red h4 {
+    color:#d9534f
+}
+
+.bs-callout-orange {
+    background-color:#fcf8f2;
+    border-color:#f0ad4e
+}
+
+.bs-callout-orange h4 {
+    color:#f0ad4e
+}
+
+.bs-callout-blue {
+    background-color:#f0f6fb;
+    border-color:#428bca
+}
+
+.bs-callout-blue h4 {
+    color:#428bca
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+ color:#fff;
+ background-color:#00f
+}
+
+.nav-tabs>li.active>a
+.nav-tabs>li.active>a.focus
+.nav-tabs>li.active>a.hover {
+  background-color: #00f;
+  color: #fff;
+
+}
+
+.nav-tabs>li>a {
+  color: #00f;
+}
+
+.nav-tabs>li>a:hover {
+ border-color:#eee #eee #ddd
+}
