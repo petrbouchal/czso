@@ -32,3 +32,6 @@ navbar:
     pbhome:
       icon: "fa-asterisk fa-lg"
       href: https://petrbouchal.xyz
+authors:
+  Petr Bouchal:
+    href: https://petrbouchal.xyz
