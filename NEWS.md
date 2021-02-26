@@ -1,5 +1,7 @@
 # czso (development version)
 
+* update SPARQL query to reflect new version of provider's data catalogue
+
 # czso 0.3.2
 
 * minor README edit for CRAN resubmission 
