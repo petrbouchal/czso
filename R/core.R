@@ -32,7 +32,7 @@ czso_get_catalogue <- function() {
    PREFIX dcat: <http://www.w3.org/ns/dcat#>
    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
    PREFIX schema: <http://schema.org/>
-   PREFIX ovmr: <https://rpp-opendata.egon.gov.cz/odrpp/zdroj/orgán-veřejné-moci/>
+   PREFIX ovmr: <https://rpp-opendata.egon.gov.cz/odrpp/zdroj/org\\u00e1n-ve\\u0159ejn\\u00e9-moci/>
    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
