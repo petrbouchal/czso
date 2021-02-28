@@ -1,4 +1,8 @@
-# Patch version
+# Resubmission of patch version
+
+Resubmitting because CRAN automated pre-check (Flavor: r-devel-linux-x86_64-debian-gcc) flagged a URL redirect uncaught by other checks. Now fixed.
+
+## Notes on patch version submitted here:
 
 Main change: correction of embedded SPARQL query to reflect changes in the data catalogue made by the data provide.
 
