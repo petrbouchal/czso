@@ -1,4 +1,4 @@
-# czso (development version)
+# czso 0.3.4
 
 # czso 0.3.3
 
