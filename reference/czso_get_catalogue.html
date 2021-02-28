@@ -45,7 +45,7 @@
 
 
 
-  
+  <link href="../extra.css" rel="stylesheet">
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Get catalogue of open CZSO datasets — czso_get_catalogue" />
@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -108,13 +108,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/petrbouchal/czso/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://petrbouchal.xyz">
-    <span class="fa fa-asterisk fa-lg"></span>
+    <span class="fas fa-asterisk fa-lg"></span>
      
   </a>
 </li>
@@ -168,22 +168,21 @@ In that case, the unit_code will be a code of that unit.</p></li>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>czso_get_catalogue</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #BBBB00;'>ℹ</span><span> Reading data from data.gov.cz</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Done downloading and reading data</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> Transforming data</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 613 x 14</span><span>
-#&gt;    dataset_iri dataset_id title provider description spatial temporal
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
-#&gt; </span><span style='color: #555555;'> 1</span><span> https://da… 060003     Vyba… Český s… Datová sad… https:… https:/…
-#&gt; </span><span style='color: #555555;'> 2</span><span> https://da… 270229     Skli… Český s… Datová sad… https:… https:/…
-#&gt; </span><span style='color: #555555;'> 3</span><span> https://da… 110080     Prům… Český s… Datová sad… https:… https:/…
-#&gt; </span><span style='color: #555555;'> 4</span><span> https://da… 270230     Hosp… Český s… Datová sad… https:… https:/…
-#&gt; </span><span style='color: #555555;'> 5</span><span> https://da… 340130     Veli… Český s… Datová sad… https:… https:/…
-#&gt; </span><span style='color: #555555;'> 6</span><span> https://da… cis203     Číse… Český s… Druh lesní… https:… https:/…
-#&gt; </span><span style='color: #555555;'> 7</span><span> https://da… cis199     Číse… Český s… Druh činno… https:… https:/…
-#&gt; </span><span style='color: #555555;'> 8</span><span> https://da… cis202     Číse… Český s… Druh lesní… https:… https:/…
-#&gt; </span><span style='color: #555555;'> 9</span><span> https://da… cis7605    Číse… Český s… Specifikac… https:… https:/…
-#&gt; </span><span style='color: #555555;'>10</span><span> https://da… cis206     Číse… Český s… Příčina na… https:… https:/…
-#&gt; </span><span style='color: #555555;'># … with 603 more rows, and 7 more variables: modified </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span style='color: #555555;'>, page </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   periodicity </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, periodicity_abb </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, start </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>, end </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   keywords </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #BBBB00;'>ℹ</span><span> Reading data from data.gov.cz</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Done downloading and reading data</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> Transforming data</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 702 x 13</span><span>
+#&gt;    dataset_iri    dataset_id  title   provider description   spatial  temporal  
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> https://data.… cis5104     Číseln… Český s… Klasifikace … https:/… https://d…
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> https://data.… cis5653vaz… Vazba … Český s… Vazba mezi č… https:/… https://d…
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> https://data.… cis5158     Číseln… Český s… Klasifikace … https:/… https://d…
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> https://data.… kz2020CZ07… Volby … Český s… Otevřená dat… https:/… https://d…
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> https://data.… cis43vaz49  Vazba … Český s… Vazba mezi č… https:/… https://d…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> https://data.… cis6650vaz… Vazba … Český s… Vazba mezi č… https:/… https://d…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> https://data.… ps2017CZ02… Volby … Český s… </span><span style='color: #BB0000;'>NA</span><span>            https:/… https://d…
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> https://data.… kz2016CZ07… Volby … Český s… Otevřená dat… https:/… https://d…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> https://data.… ps2017CZ08… Volby … Český s… </span><span style='color: #BB0000;'>NA</span><span>            https:/… https://d…
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> https://data.… cis101vaz52 Vazba … Český s… Vazba mezi č… https:/… https://d…
+#&gt; </span><span style='color: #949494;'># … with 692 more rows, and 6 more variables: modified &lt;dttm&gt;, page &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   periodicity &lt;chr&gt;, start &lt;date&gt;, end &lt;date&gt;, keywords &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -196,7 +195,7 @@ In that case, the unit_code will be a code of that unit.</p></li>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Petr Bouchal.</p>
+  <p>Developed by <a href='https://petrbouchal.xyz'>Petr Bouchal</a>.</p>
 </div>
 
 <div class="pkgdown">
