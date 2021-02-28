@@ -1,6 +1,8 @@
 # czso 0.3.3
 
 * update SPARQL query to reflect new version of provider's data catalogue
+* fix bug in `czso_get_table()` (@jlacko)
+* add link in README to [Awesome Official statistics](https://github.com/SNStatComp/awesome-official-statistics-software) list
 
 # czso 0.3.2
 
