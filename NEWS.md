@@ -1,5 +1,7 @@
 # czso 0.3.4
 
+* minor fixes for CRAN checks
+
 # czso 0.3.3
 
 * update SPARQL query to reflect new version of provider's data catalogue
