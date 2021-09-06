@@ -39,7 +39,7 @@ czso_get_catalogue <- function() {
    SELECT ?dataset_iri
    ?dataset_id
    ?title
-   ?provider
+   # ?provider
    ?description
    ?spatial
    ?temporal
@@ -57,8 +57,7 @@ czso_get_catalogue <- function() {
        ?dataset_iri dcterms:publisher ?publisher .
        ?dataset_iri dcterms:title ?title .
        ?dataset_iri dcterms:description ?description .
-       ?dataset_iri dcterms:accrualPeriodicity ?periodicity .
-       # ?periodicity skos:prefLabel ?periodicity_abb .
+
        OPTIONAL {{ ?dataset_iri dcterms:identifier ?dataset_id .}}
        OPTIONAL {{ ?dataset_iri dcterms:spatial ?spatial .}}
        OPTIONAL {{ ?dataset_iri foaf:page ?page .}}
@@ -66,8 +65,10 @@ czso_get_catalogue <- function() {
        OPTIONAL {{ ?dataset_iri dcterms:modified ?modified .}}
        OPTIONAL {{ ?dataset_iri dcat:keyword ?keywords_all .}}
 
-       ?publisher foaf:name ?provider .
+       # ?publisher foaf:name ?provider .
 
+       OPTIONAL {{ ?dataset_iri dcterms:accrualPeriodicity ?periodicity . }}
+       OPTIONAL {{ ?periodicity skos:prefLabel ?periodicity_abb . }}
        OPTIONAL {{ ?temporal dcat:startDate ?start .}}
        OPTIONAL {{ ?temporal dcat:endDate ?end .}}
 

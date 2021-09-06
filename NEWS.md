@@ -1,5 +1,7 @@
 # czso (development version)
 
+* fix SPARQL query to return all datasets, incl. 2 that were not showing up compared to the official data catalogue web interface
+
 # czso 0.3.4
 
 * minor fixes for CRAN checks
