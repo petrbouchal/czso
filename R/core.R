@@ -42,7 +42,8 @@ czso_get_catalogue <- function() {
    # ?provider
    ?description
    ?spatial
-   ?temporal
+   ?temporal_res
+   # ?temporal
    ?modified
    ?page
    ?periodicity
@@ -68,7 +69,8 @@ czso_get_catalogue <- function() {
        # ?publisher foaf:name ?provider .
 
        OPTIONAL {{ ?dataset_iri dcterms:accrualPeriodicity ?periodicity . }}
-       OPTIONAL {{ ?periodicity skos:prefLabel ?periodicity_abb . }}
+       # OPTIONAL {{ ?periodicity ef:identifier ?periodicity_abb . }}
+       OPTIONAL {{ ?dataset_iri dcat:temporalResolution ?temporal_res . }}
        OPTIONAL {{ ?temporal dcat:startDate ?start .}}
        OPTIONAL {{ ?temporal dcat:endDate ?end .}}
 

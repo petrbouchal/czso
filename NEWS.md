@@ -1,6 +1,7 @@
 # czso (development version)
 
 * fix SPARQL query to return all datasets, incl. 2 that were not showing up compared to the official data catalogue web interface
+* return label, rather than IRI, for temporal resolution
 
 # czso 0.3.4
 
