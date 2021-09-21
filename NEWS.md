@@ -1,4 +1,4 @@
-# czso (development version)
+# czso 0.3.5
 
 NOTE: there has been an unexpected change to the National Open Data Catalogue which caused problems with the dataset IDs returned by `czso_get_catalogue()`. This release provides a temporary fix based on a patch to the API kindly provided by the Czech Statistical Office. 
 
