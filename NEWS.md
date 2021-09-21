@@ -1,7 +1,13 @@
 # czso (development version)
 
+NOTE: there has been an unexpected change to the National Open Data Catalogue which caused problems with the dataset IDs returned by `czso_get_catalogue()`. This release provides a temporary fix based on a patch to the API kindly provided by the Czech Statistical Office. 
+
+Future releases will handle the change in a more robust way once the final form of the catalogue API is determined by the CZSO.
+
+## Fixes to code that is currently not used but may be again as the dust settles:
+
 * fix SPARQL query to return all datasets, incl. 2 that were not showing up compared to the official data catalogue web interface
-* return label, rather than IRI, for temporal resolution
+* return label, rather than IRI, for temporal resolution, in the output of `czso_get_catalogue()`
 
 # czso 0.3.4
 

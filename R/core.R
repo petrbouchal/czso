@@ -3,7 +3,9 @@
 #'
 #' Retrieves a list of all CZSO's open datasets available from the Czech Open data catalogue.
 #'
-#' Use the dataset_id column as an argument to `get_czso_table()`.
+#' Pass the string in the `dataset_id` column to `get_czso_table()`. `dataset_iri`
+#' is the unique identifier of the dataset in the national catalague and also the URL
+#' containing all metadata for the dataset.
 #'
 #' @return a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
 #' The columns are fairly well described by their names, except:
@@ -24,95 +26,23 @@
 #' }
 czso_get_catalogue <- function() {
 
-  sparql_url <- "https://data.gov.cz/sparql"
+  suppressWarnings(readr::read_csv("https://vdb.czso.cz/pll/eweb/lkod_ld.seznam",
+                  col_types = readr::cols(
+                    dataset_iri = readr::col_character(),
+                    dataset_id = readr::col_character(),
+                    title = readr::col_character(),
+                    provider = readr::col_character(),
+                    description = readr::col_character(),
+                    spatial = readr::col_character(),
+                    modified = readr::col_date(format = ""),
+                    page = readr::col_character(),
+                    periodicity = readr::col_character(),
+                    start = readr::col_date(format = ""),
+                    end = readr::col_date(format = ""),
+                    keywords_all = readr::col_character()
+                  ))) %>%
+    dplyr::mutate(periodicity = dplyr::recode(periodicity, nikdy = "NEVER"))
 
-  sparqlquery_datasets_byczso <- stringr::str_glue(
-  "PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-   PREFIX dcterms: <http://purl.org/dc/terms/>
-   PREFIX dcat: <http://www.w3.org/ns/dcat#>
-   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-   PREFIX schema: <http://schema.org/>
-   PREFIX ovmr: <https://rpp-opendata.egon.gov.cz/odrpp/zdroj/org\\u00e1n-ve\\u0159ejn\\u00e9-moci/>
-   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-   SELECT ?dataset_iri
-   ?dataset_id
-   ?title
-   # ?provider
-   ?description
-   ?spatial
-   ?temporal_res
-   # ?temporal
-   ?modified
-   ?page
-   ?periodicity
-   # ?periodicity_abb
-   ?start
-   ?end
-   ?keywords_all
-   WHERE {{
-     GRAPH ?g {{
-       ?dataset_iri a dcat:Dataset .
-       ?dataset_iri dcterms:publisher ovmr:00025593 .
-       ?dataset_iri dcterms:publisher ?publisher .
-       ?dataset_iri dcterms:title ?title .
-       ?dataset_iri dcterms:description ?description .
-
-       OPTIONAL {{ ?dataset_iri dcterms:identifier ?dataset_id .}}
-       OPTIONAL {{ ?dataset_iri dcterms:spatial ?spatial .}}
-       OPTIONAL {{ ?dataset_iri foaf:page ?page .}}
-       OPTIONAL {{ ?dataset_iri dcterms:temporal ?temporal .}}
-       OPTIONAL {{ ?dataset_iri dcterms:modified ?modified .}}
-       OPTIONAL {{ ?dataset_iri dcat:keyword ?keywords_all .}}
-
-       # ?publisher foaf:name ?provider .
-
-       OPTIONAL {{ ?dataset_iri dcterms:accrualPeriodicity ?periodicity . }}
-       # OPTIONAL {{ ?periodicity ef:identifier ?periodicity_abb . }}
-       OPTIONAL {{ ?dataset_iri dcat:temporalResolution ?temporal_res . }}
-       OPTIONAL {{ ?temporal dcat:startDate ?start .}}
-       OPTIONAL {{ ?temporal dcat:endDate ?end .}}
-
-       # FILTER(lang(?provider) = \"cs\")
-       # FILTER(lang(?keywords_all) = \"cs\")
-       # FILTER(lang(?title) = \"cs\")
-       # FILTER(lang(?periodicity_abb) = \"en\")
-     }}
-  }}") %>% stringi::stri_unescape_unicode()
-
-  params = list(`default-graph-uri` = "",
-                query = sparqlquery_datasets_byczso,
-                # format = "application/sparql-results+json",
-                format = "text/csv",
-                timeout = 30000,
-                debug = "on",
-                run = "Run Query")
-  if(!curl::has_internet()) usethis::ui_stop(c("No internet connection. Cannot continue. Retry when connected."))
-  usethis::ui_info("Reading data from data.gov.cz")
-  cat_rslt <- httr::GET(sparql_url, query = params,
-                        # accept("application/sparql-results+json"),
-                        httr::user_agent(ua_string),
-                        httr::add_headers(c("Accept-Charset" = "utf-8")),
-                        httr::accept("text/csv;charset=UTF-8")) %>%
-    httr::stop_for_status()
-
-  # print(params$query)
-
-  if(httr::status_code(cat_rslt) > 200) {
-    print(httr::http_status(cat_rslt))
-    rslt <- httr::content(cat_rslt, as = "text")
-  } else
-    rslt <- cat_rslt %>% httr::content(as = "text")
-  rslt <- readr::read_csv(rslt, col_types = readr::cols(modified = "T"))
-  usethis::ui_done("Done downloading and reading data")
-  usethis::ui_info("Transforming data")
-  rslt <- dplyr::group_by(rslt, .data$dataset_iri) %>%
-    dplyr::mutate(keywords = stringr::str_c(.data$keywords_all, collapse = "; ")) %>%
-    dplyr::ungroup() %>%
-    dplyr::select(-.data$keywords_all) %>%
-    dplyr::distinct()
-  return(rslt)
 }
 
 #' Deprecated: use `czso_get_catalogue()` instead
