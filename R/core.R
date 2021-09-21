@@ -41,7 +41,7 @@ czso_get_catalogue <- function() {
                     end = readr::col_date(format = ""),
                     keywords_all = readr::col_character()
                   ))) %>%
-    dplyr::mutate(periodicity = dplyr::recode(periodicity, nikdy = "NEVER"))
+    dplyr::mutate(periodicity = dplyr::recode(.data$periodicity, nikdy = "NEVER"))
 
 }
 
