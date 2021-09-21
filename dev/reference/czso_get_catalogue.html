@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.4.9000</span>
       </span>
     </div>
 
@@ -114,7 +114,7 @@
 </li>
 <li>
   <a href="https://petrbouchal.xyz">
-    <span class="fas fa-asterisk fa-lg"></span>
+    <span class="fa fa-asterisk fa-lg"></span>
      
   </a>
 </li>
@@ -168,22 +168,22 @@ In that case, the unit_code will be a code of that unit.</p></li>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>czso_get_catalogue</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #BBBB00;'>ℹ</span><span> Reading data from data.gov.cz</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Done downloading and reading data</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> Transforming data</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 702 x 13</span><span>
-#&gt;    dataset_iri    dataset_id  title   provider description   spatial  temporal  
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> https://data.… cis5104     Číseln… Český s… Klasifikace … https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> https://data.… cis5653vaz… Vazba … Český s… Vazba mezi č… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> https://data.… cis5158     Číseln… Český s… Klasifikace … https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> https://data.… kz2020CZ07… Volby … Český s… Otevřená dat… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> https://data.… cis43vaz49  Vazba … Český s… Vazba mezi č… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> https://data.… cis6650vaz… Vazba … Český s… Vazba mezi č… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> https://data.… ps2017CZ02… Volby … Český s… </span><span style='color: #BB0000;'>NA</span><span>            https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> https://data.… kz2016CZ07… Volby … Český s… Otevřená dat… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> https://data.… ps2017CZ08… Volby … Český s… </span><span style='color: #BB0000;'>NA</span><span>            https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> https://data.… cis101vaz52 Vazba … Český s… Vazba mezi č… https:/… https://d…
-#&gt; </span><span style='color: #949494;'># … with 692 more rows, and 6 more variables: modified &lt;dttm&gt;, page &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   periodicity &lt;chr&gt;, start &lt;date&gt;, end &lt;date&gt;, keywords &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
-</div></span></pre>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #BBBB00;'>ℹ</span> Reading data from data.gov.cz</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Done downloading and reading data</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #BBBB00;'>ℹ</span> Transforming data</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 725 × 12</span>
+#&gt;    dataset_iri     dataset_id     title     description    spatial  temporal_res
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       
+#&gt; <span style='color: #BCBCBC;'> 1</span> https://data.g… https://vdb.c… Cizinci … Datová sada o… https:/… R/P1Y       
+#&gt; <span style='color: #BCBCBC;'> 2</span> https://data.g… https://vdb.c… Naděje d… Datová sada o… https:/… R/P1Y       
+#&gt; <span style='color: #BCBCBC;'> 3</span> https://data.g… https://vdb.c… Naděje d… Datová sada o… https:/… R/P1Y       
+#&gt; <span style='color: #BCBCBC;'> 4</span> https://data.g… https://vdb.c… Stavební… Datová sada o… https:/… R/P1M       
+#&gt; <span style='color: #BCBCBC;'> 5</span> https://data.g… https://vdb.c… Vybaveno… Datová sada o… https:/… R/P1Y       
+#&gt; <span style='color: #BCBCBC;'> 6</span> https://data.g… https://vdb.c… Dokončen… Datová sada o… https:/… R/P1Y       
+#&gt; <span style='color: #BCBCBC;'> 7</span> https://data.g… https://vdb.c… Pohyb ob… Datová sada o… https:/… R/P1Y       
+#&gt; <span style='color: #BCBCBC;'> 8</span> https://data.g… https://vdb.c… Statisti… Datová sada o… https:/… R/P1Y       
+#&gt; <span style='color: #BCBCBC;'> 9</span> https://data.g… https://vdb.c… Indexy s… Datová sada o… https:/… R/P1M       
+#&gt; <span style='color: #BCBCBC;'>10</span> https://data.g… https://vdb.c… Uchazeči… Datová sada o… https:/… R/P1M       
+#&gt; <span style='color: #949494;'># … with 715 more rows, and 6 more variables: modified &lt;dttm&gt;, page &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   periodicity &lt;chr&gt;, start &lt;date&gt;, end &lt;date&gt;, keywords &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

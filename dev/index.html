@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.4.9000</span>
       </span>
     </div>
 
@@ -72,7 +72,7 @@
 </li>
 <li>
   <a href="https://petrbouchal.xyz">
-    <span class="fas fa-asterisk fa-lg"></span>
+    <span class="fa fa-asterisk fa-lg"></span>
      
   </a>
 </li>
@@ -128,7 +128,7 @@
 
 <span class="va">catalogue</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/czso_get_catalogue.html">czso_get_catalogue</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; ℹ Reading data from data.gov.cz</span>
-<span class="co">#&gt; ✔ Done downloading and reading data</span>
+<span class="co">#&gt; ✓ Done downloading and reading data</span>
 <span class="co">#&gt; ℹ Transforming data</span></code></pre></div>
 <p>Now search for your terms of interest in the dataset titles:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -185,7 +185,7 @@
 <p>and download the documentation in PDF:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/czso_get_dataset_doc.html">czso_get_dataset_doc</a></span><span class="op">(</span><span class="st">"110080"</span>, action <span class="op">=</span> <span class="st">"download"</span>, format <span class="op">=</span> <span class="st">"pdf"</span><span class="op">)</span>
-<span class="co">#&gt; ✔ Downloaded 'https:/www.czso.cz/documents/62353418/109720808/110080-19dds.pdf' to '110080-19dds.pdf'</span></code></pre></div>
+<span class="co">#&gt; ✓ Downloaded 'https:/www.czso.cz/documents/62353418/109720808/110080-19dds.pdf' to '110080-19dds.pdf'</span></code></pre></div>
 <p>If you are interested in linking this data to different data, you might need the NUTS codes for regions. Seeing that the lines with regional breakdown list <code>uzemi_cis</code> as <code>"100"</code>, you can get that codelist (číselník):</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/czso_get_codelist.html">czso_get_codelist</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
@@ -307,8 +307,8 @@
 <li><a href="https://CRAN.R-project.org/package=czso"><img src="https://www.r-pkg.org/badges/version/czso" alt="CRAN status"></a></li>
 <li><a href="https://CRAN.R-project.org/package=czso"><img src="https://cranlogs.r-pkg.org/badges/grand-total/czso" alt="CRAN downloads"></a></li>
 <li><a href="https://CRAN.R-project.org/package=czso"><img src="https://cranlogs.r-pkg.org/badges/last-month/czso" alt="CRAN monthly downloads"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="http://www.awesomeofficialstatistics.org"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Official Statistics"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://github.com/SNStatComp/awesome-official-statistics-software"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Official Statistics"></a></li>
 <li><a href="https://github.com/petrbouchal/czso/actions"><img src="https://github.com/petrbouchal/czso/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
