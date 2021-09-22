@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.5.9000</span>
       </span>
     </div>
 
@@ -138,10 +138,22 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#czso-development-version" class="anchor"></a>czso (development version)<small> Unreleased </small>
 </h1>
+</div>
+    <div id="czso-035" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.5">
+<a href="#czso-035" class="anchor"></a>czso 0.3.5<small> 2021-09-22 </small>
+</h1>
+<p>NOTE: there has been an unexpected change to the National Open Data Catalogue which caused problems with the dataset IDs returned by <code><a href="../reference/czso_get_catalogue.html">czso_get_catalogue()</a></code>. This release provides a temporary fix based on a patch to the API kindly provided by the Czech Statistical Office.</p>
+<p>Future releases will handle the change in a more robust way once the final form of the catalogue API is determined by the CZSO.</p>
+<div id="fixes-to-code-that-is-currently-not-used-but-may-be-again-as-the-dust-settles" class="section level2">
+<h2 class="hasAnchor">
+<a href="#fixes-to-code-that-is-currently-not-used-but-may-be-again-as-the-dust-settles" class="anchor"></a>Fixes to code that is currently not used but may be again as the dust settles:</h2>
 <ul>
 <li>fix SPARQL query to return all datasets, incl. 2 that were not showing up compared to the official data catalogue web interface</li>
-<li>return label, rather than IRI, for temporal resolution</li>
+<li>return label, rather than IRI, for temporal resolution, in the output of <code><a href="../reference/czso_get_catalogue.html">czso_get_catalogue()</a></code>
+</li>
 </ul>
+</div>
 </div>
     <div id="czso-034" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.4">
