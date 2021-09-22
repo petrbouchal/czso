@@ -23,7 +23,9 @@ In that case, the unit_code will be a code of that unit.
 Retrieves a list of all CZSO's open datasets available from the Czech Open data catalogue.
 }
 \details{
-Use the dataset_id column as an argument to \code{get_czso_table()}.
+Pass the string in the \code{dataset_id} column to \code{get_czso_table()}. \code{dataset_iri}
+is the unique identifier of the dataset in the national catalague and also the URL
+containing all metadata for the dataset.
 }
 \examples{
 \donttest{
