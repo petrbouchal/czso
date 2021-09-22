@@ -1,6 +1,6 @@
 Package: czso
 Title: Use Open Data from the Czech Statistical Office in R
-Version: 0.3.5
+Version: 0.3.5.9000
 Authors@R: 
     c(person(given = "Petr",
              family = "Bouchal",
