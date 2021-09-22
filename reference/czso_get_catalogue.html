@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.5</span>
       </span>
     </div>
 
@@ -114,7 +114,7 @@
 </li>
 <li>
   <a href="https://petrbouchal.xyz">
-    <span class="fas fa-asterisk fa-lg"></span>
+    <span class="fa fa-asterisk fa-lg"></span>
      
   </a>
 </li>
@@ -158,7 +158,9 @@ In that case, the unit_code will be a code of that unit.</p></li>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Use the dataset_id column as an argument to <code>get_czso_table()</code>.</p>
+    <p>Pass the string in the <code>dataset_id</code> column to <code>get_czso_table()</code>. <code>dataset_iri</code>
+is the unique identifier of the dataset in the national catalague and also the URL
+containing all metadata for the dataset.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Core workflow: 
@@ -168,22 +170,22 @@ In that case, the unit_code will be a code of that unit.</p></li>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>czso_get_catalogue</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #BBBB00;'>ℹ</span><span> Reading data from data.gov.cz</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Done downloading and reading data</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>ℹ</span><span> Transforming data</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 702 x 13</span><span>
-#&gt;    dataset_iri    dataset_id  title   provider description   spatial  temporal  
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> https://data.… cis5104     Číseln… Český s… Klasifikace … https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> https://data.… cis5653vaz… Vazba … Český s… Vazba mezi č… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> https://data.… cis5158     Číseln… Český s… Klasifikace … https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> https://data.… kz2020CZ07… Volby … Český s… Otevřená dat… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> https://data.… cis43vaz49  Vazba … Český s… Vazba mezi č… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> https://data.… cis6650vaz… Vazba … Český s… Vazba mezi č… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> https://data.… ps2017CZ02… Volby … Český s… </span><span style='color: #BB0000;'>NA</span><span>            https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> https://data.… kz2016CZ07… Volby … Český s… Otevřená dat… https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> https://data.… ps2017CZ08… Volby … Český s… </span><span style='color: #BB0000;'>NA</span><span>            https:/… https://d…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> https://data.… cis101vaz52 Vazba … Český s… Vazba mezi č… https:/… https://d…
-#&gt; </span><span style='color: #949494;'># … with 692 more rows, and 6 more variables: modified &lt;dttm&gt;, page &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   periodicity &lt;chr&gt;, start &lt;date&gt;, end &lt;date&gt;, keywords &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
-</div></span></pre>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 723 × 12</span>
+#&gt;    dataset_iri  dataset_id title  provider  description spatial modified   page 
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> https://vdb… 170242     Bilan… Český st… Datová sad… https:… 2021-07-27 http…
+#&gt; <span style='color: #BCBCBC;'> 2</span> https://vdb… 290038r05  Cizin… Český st… Datová sad… https:… 2021-07-28 http…
+#&gt; <span style='color: #BCBCBC;'> 3</span> https://vdb… 290038r06  Cizin… Český st… Datová sad… https:… 2021-07-28 http…
+#&gt; <span style='color: #BCBCBC;'> 4</span> https://vdb… 290038r07  Cizin… Český st… Datová sad… https:… 2021-07-28 http…
+#&gt; <span style='color: #BCBCBC;'> 5</span> https://vdb… 290038r08  Cizin… Český st… Datová sad… https:… 2021-07-28 http…
+#&gt; <span style='color: #BCBCBC;'> 6</span> https://vdb… 290038r09  Cizin… Český st… Datová sad… https:… 2021-07-28 http…
+#&gt; <span style='color: #BCBCBC;'> 7</span> https://vdb… 290038r10  Cizin… Český st… Datová sad… https:… 2021-07-28 http…
+#&gt; <span style='color: #BCBCBC;'> 8</span> https://vdb… 290038r11  Cizin… Český st… Datová sad… https:… 2021-07-28 http…
+#&gt; <span style='color: #BCBCBC;'> 9</span> https://vdb… 290038r12  Cizin… Český st… Datová sad… https:… 2021-07-28 http…
+#&gt; <span style='color: #BCBCBC;'>10</span> https://vdb… 290038r13  Cizin… Český st… Datová sad… https:… 2021-07-28 http…
+#&gt; <span style='color: #949494;'># … with 713 more rows, and 4 more variables: periodicity &lt;chr&gt;, start &lt;date&gt;,</span>
+#&gt; <span style='color: #949494;'>#   end &lt;date&gt;, keywords_all &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

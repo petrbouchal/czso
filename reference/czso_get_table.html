@@ -88,7 +88,7 @@ Converts types of columns where known, e.g. value columns to numeric." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.5</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@ Converts types of columns where known, e.g. value columns to numeric." />
 </li>
 <li>
   <a href="https://petrbouchal.xyz">
-    <span class="fas fa-asterisk fa-lg"></span>
+    <span class="fa fa-asterisk fa-lg"></span>
      
   </a>
 </li>
@@ -243,23 +243,23 @@ the link above using a permalink URL.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>czso_get_table</span><span class='op'>(</span><span class='st'>"110080"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 810 x 14</span><span>
-#&gt;    idhod  hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 74595…   </span><span style='text-decoration: underline;'>26</span><span>211 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>         
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 74595…   </span><span style='text-decoration: underline;'>29</span><span>026 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            102         1          
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 74595…   </span><span style='text-decoration: underline;'>22</span><span>729 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            102         2          
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 74595…   </span><span style='text-decoration: underline;'>22</span><span>266 5958       7636          Q5            </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>         
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 74595…   </span><span style='text-decoration: underline;'>23</span><span>955 5958       7636          Q5            102         1          
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 74595…   </span><span style='text-decoration: underline;'>20</span><span>271 5958       7636          Q5            102         2          
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 74595…   </span><span style='text-decoration: underline;'>26</span><span>033 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>         
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 74595…   </span><span style='text-decoration: underline;'>28</span><span>873 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            102         1          
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 74595…   </span><span style='text-decoration: underline;'>22</span><span>496 5958       </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>            102         2          
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 74595…   </span><span style='text-decoration: underline;'>21</span><span>997 5958       7636          Q5            </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>         
-#&gt; </span><span style='color: #949494;'># … with 800 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   POHLAVI_txt &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
-</div></span></pre>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 900 × 14</span>
+#&gt;    idhod     hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
+#&gt; <span style='color: #BCBCBC;'> 1</span> 745958789   <span style='text-decoration: underline;'>26</span>211 5958       <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>          <span style='color: #BB0000;'>NA</span>         
+#&gt; <span style='color: #BCBCBC;'> 2</span> 745958790   <span style='text-decoration: underline;'>29</span>026 5958       <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>            102         1          
+#&gt; <span style='color: #BCBCBC;'> 3</span> 745958791   <span style='text-decoration: underline;'>22</span>729 5958       <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>            102         2          
+#&gt; <span style='color: #BCBCBC;'> 4</span> 745958792   <span style='text-decoration: underline;'>22</span>266 5958       7636          Q5            <span style='color: #BB0000;'>NA</span>          <span style='color: #BB0000;'>NA</span>         
+#&gt; <span style='color: #BCBCBC;'> 5</span> 745958793   <span style='text-decoration: underline;'>23</span>955 5958       7636          Q5            102         1          
+#&gt; <span style='color: #BCBCBC;'> 6</span> 745958794   <span style='text-decoration: underline;'>20</span>271 5958       7636          Q5            102         2          
+#&gt; <span style='color: #BCBCBC;'> 7</span> 745958933   <span style='text-decoration: underline;'>26</span>033 5958       <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>          <span style='color: #BB0000;'>NA</span>         
+#&gt; <span style='color: #BCBCBC;'> 8</span> 745958934   <span style='text-decoration: underline;'>28</span>873 5958       <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>            102         1          
+#&gt; <span style='color: #BCBCBC;'> 9</span> 745958935   <span style='text-decoration: underline;'>22</span>496 5958       <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>            102         2          
+#&gt; <span style='color: #BCBCBC;'>10</span> 745958936   <span style='text-decoration: underline;'>21</span>997 5958       7636          Q5            <span style='color: #BB0000;'>NA</span>          <span style='color: #BB0000;'>NA</span>         
+#&gt; <span style='color: #949494;'># … with 890 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   POHLAVI_txt &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
