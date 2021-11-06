@@ -291,7 +291,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
     flist <- list.files(dirname(dfile), pattern = "(CSV|csv)$")
     if((length(flist) == 1) & (tools::file_ext(flist[1]) %in% c("CSV", "csv"))) {
       action <- "read"
-    } else if (length < 1) {
+    } else if (length > 1) {
       action <- "listmore"
     } else {
       dfile <- flist[1]
@@ -313,7 +313,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
           },
           listmore = {
             usethis::ui_info(c("Multiple files in archive.",
-                               "They are saved in {usethis::ui_path(dfile)}"))
+                               "They are saved in {usethis::ui_path(dirname(dfile))}"))
             rtrn <- flist
             invi <- T
 
