@@ -27,20 +27,20 @@
 czso_get_catalogue <- function() {
 
   suppressWarnings(readr::read_csv("https://vdb.czso.cz/pll/eweb/lkod_ld.seznam",
-                  col_types = readr::cols(
-                    dataset_iri = readr::col_character(),
-                    dataset_id = readr::col_character(),
-                    title = readr::col_character(),
-                    provider = readr::col_character(),
-                    description = readr::col_character(),
-                    spatial = readr::col_character(),
-                    modified = readr::col_date(format = ""),
-                    page = readr::col_character(),
-                    periodicity = readr::col_character(),
-                    start = readr::col_date(format = ""),
-                    end = readr::col_date(format = ""),
-                    keywords_all = readr::col_character()
-                  ))) %>%
+                                   col_types = readr::cols(
+                                     dataset_iri = readr::col_character(),
+                                     dataset_id = readr::col_character(),
+                                     title = readr::col_character(),
+                                     provider = readr::col_character(),
+                                     description = readr::col_character(),
+                                     spatial = readr::col_character(),
+                                     modified = readr::col_date(format = ""),
+                                     page = readr::col_character(),
+                                     periodicity = readr::col_character(),
+                                     start = readr::col_date(format = ""),
+                                     end = readr::col_date(format = ""),
+                                     keywords_all = readr::col_character()
+                                   ))) %>%
     dplyr::mutate(periodicity = dplyr::recode(.data$periodicity, nikdy = "NEVER"))
 
 }
@@ -503,7 +503,7 @@ czso_get_table_schema <- function(dataset_id, resource_num = 1) {
   is_json <- schema_type == "application/json"
   if(is_json) {
     suppressMessages(suppressWarnings(schema_result <- httr::GET(schema_url, httr::user_agent(ua_string)) %>%
-      httr::content(as = "text")))
+                                        httr::content(as = "text")))
     ds <- suppressMessages(suppressWarnings(jsonlite::fromJSON(schema_result)[["tableSchema"]][["columns"]]))
     rslt <- tibble::as_tibble(ds)
   } else {
@@ -555,9 +555,9 @@ czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
   frmt <- match.arg(format)
   url_orig <- metadata$schema
   doc_url <- switch (frmt,
-    html = url_orig,
-    word = stringr::str_replace(url_orig, "\\.html?", ".docx"),
-    pdf = stringr::str_replace(url_orig, "\\.html?", ".pdf")
+                     html = url_orig,
+                     word = stringr::str_replace(url_orig, "\\.html?", ".docx"),
+                     pdf = stringr::str_replace(url_orig, "\\.html?", ".pdf")
   )
   act <- match.arg(action)
   if(is.null(destfile)) {dest <- basename(doc_url)} else {dest <- destfile}
