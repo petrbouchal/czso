@@ -157,14 +157,20 @@ read_czso_csv <- function(dfile) {
                                                           locale = readr::locale(encoding = guessed_enc))))
 }
 
+download_file <- function(url, dfile) {
+  curl_handle <- curl::new_handle() %>%
+    curl::handle_setheaders(.list = ua_header)
+  curl::curl_download(url, dfile, handle = curl_handle)
+  return(dfile)
+}
+
 download_if_needed <- function(url, dfile, force_redownload) {
   if(file.exists(dfile) & !force_redownload) {
     usethis::ui_info(c("File already in {usethis::ui_path(dirname(dfile))}, not downloading.",
                        "Set {usethis::ui_code('force_redownload = TRUE')} if needed."))
+    return(dfile)
   } else {
-    curl_handle <- curl::new_handle() %>%
-      curl::handle_setheaders(.list = ua_header)
-    curl::curl_download(url, dfile, handle = curl_handle)
+    download_file(url, dfile)
   }
 }
 
