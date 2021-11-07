@@ -1,15 +1,11 @@
 Package: czso
 Title: Use Open Data from the Czech Statistical Office in R
-Version: 0.3.5.9000
-Authors@R: 
-    c(person(given = "Petr",
-             family = "Bouchal",
-             role = c("aut", "cre"),
-             email = "pbouchal@gmail.com",
-             comment = c(ORCID = "0000-0002-0471-716X")),
-      person(given = "Jindra",
-             family = "Lacko",
-             role = "ctb"))
+Version: 0.3.6
+Authors@R: c(
+    person("Petr", "Bouchal", , "pbouchal@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0471-716X")),
+    person("Jindra", "Lacko", role = "ctb")
+  )
 Description: Get programmatic access to the open data provided by the
     Czech Statistical Office (CZSO, <https://czso.cz>).
 License: MIT + file LICENSE

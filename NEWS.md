@@ -1,4 +1,4 @@
-# czso (development version)
+# czso 0.3.6
 
 * update tests to fix CRAN failure due to unreachable provider server
 * fixed minor bug in how multi-file archives are handled
