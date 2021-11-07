@@ -174,7 +174,15 @@ download_if_needed <- function(url, dfile, force_redownload) {
   }
 }
 
-get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
+get_dl_path <- function(resource_pointer, dir = tempdir()) {
+
+  dataset_id <- resource_pointer$dataset_id[1]
+
+  url <- resource_pointer$url[1]
+  type <- resource_pointer$format
+  ext <- tools::file_ext(url)
+  if(ext == "" | is.null(ext)) ext <- stringr::str_extract(type, "(?<=\\/).*$")
+
   td <- file.path(dir, dataset_id)
   dir.create(td, showWarnings = FALSE, recursive = TRUE)
   dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
@@ -183,8 +191,35 @@ get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
 
 get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
   rsrc <- get_czso_resources(dataset_id)[resource_num,] %>%
-    dplyr::select(.data$url, .data$format, meta_link = .data$describedBy, meta_format = .data$describedByType)
+    dplyr::select(.data$url, .data$format, meta_link = .data$describedBy, meta_format = .data$describedByType) %>%
+    dplyr::mutate(dataset_id = dataset_id)
   return(rsrc)
+}
+
+inspect_download <- function(ptr, dfile) {
+  type <- ptr$format
+  if(type == "text/csv") {
+    action <- "read"
+    flist <- c()
+  } else if(type == "application/zip") {
+    utils::unzip(dfile, exdir = dirname(dfile))
+    flist <- list.files(dirname(dfile), pattern = "(CSV|csv)$")
+    if((length(flist) == 1) & (tools::file_ext(flist[1]) %in% c("CSV", "csv"))) {
+      action <- "read"
+    } else if (length > 1) {
+      action <- "listmore"
+    } else {
+      dfile <- flist[1]
+      action <- "listone"
+    }
+  } else {
+    action <- "listone"
+  }
+
+  return(list(action = action,
+              dfile = dfile,
+              flist = flist))
+
 }
 
 
@@ -275,52 +310,34 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
     usethis::ui_todo("Use {usethis::ui_code(x = stringr::str_glue('czso_get_codelist(\"{dataset_id}\")'))} to load it using a dedicated function.")
   }
 
-  ptr <- get_czso_resource_pointer(dataset_id, resource_num = resource_num)
-  url <- ptr$url
-  type <- ptr$format
-  ext <- tools::file_ext(url)
-  if(ext == "" | is.null(ext)) ext <- stringr::str_extract(type, "(?<=\\/).*$")
-
   if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
                                               default = tempdir())
 
-  dfile <- get_dl_path(dataset_id, dest_dir, ext)
+  ptr <- get_czso_resource_pointer(dataset_id, resource_num = resource_num)
+  url <- ptr[["url"]]
 
-  download_if_needed(url, dfile, force_redownload)
+  dfile <- get_dl_path(ptr, dest_dir)
+  dfile <- download_if_needed(url, dfile, force_redownload)
 
   # print(dfile)
 
-  if(type == "text/csv") {
-    action <- "read"
-  } else if(type == "application/zip") {
-    utils::unzip(dfile, exdir = dirname(dfile))
-    flist <- list.files(dirname(dfile), pattern = "(CSV|csv)$")
-    if((length(flist) == 1) & (tools::file_ext(flist[1]) %in% c("CSV", "csv"))) {
-      action <- "read"
-    } else if (length > 1) {
-      action <- "listmore"
-    } else {
-      dfile <- flist[1]
-      action <- "listone"
-    }
-  } else {
-    action <- "listone"
-  }
-  switch (action,
+  download_inspected <- inspect_download(ptr, dfile)
+
+  switch (download_inspected$action,
           read = {
-            rtrn <- read_czso_csv(dfile)
+            rtrn <- read_czso_csv(download_inspected$dfile)
             invi <- F
           },
           listone = {
             usethis::ui_info(c("Unable to read this kind of file ({type}) automatically.",
                                "It is saved in {usethis::ui_path(dfile)}."))
-            rtrn <- dfile
+            rtrn <- download_inspected$dfile
             invi <- T
           },
           listmore = {
             usethis::ui_info(c("Multiple files in archive.",
                                "They are saved in {usethis::ui_path(dirname(dfile))}"))
-            rtrn <- flist
+            rtrn <- download_inspected$flist
             invi <- T
 
           }
@@ -444,8 +461,10 @@ czso_get_codelist <- function(codelist_id,
                        "This may cause unexpected results."))
   }
 
-  cis_meta <- get_czso_resources(codelist_id)
+  cis_meta_orig <- get_czso_resources(codelist_id)
+  cis_meta_orig$dataset_id <- codelist_id
 
+  cis_meta <- cis_meta_orig[cis_meta_orig$format == "text/csv",]
   cis_url <- cis_meta[cis_meta$format == "text/csv", "url"]
 
   if(length(cis_url) < 1) {
@@ -457,15 +476,18 @@ czso_get_codelist <- function(codelist_id,
 
     usethis::ui_info("No documented CSV distribution found for this codelist. Using workaround.")
 
-    cis_url <- get_czso_resource_pointer(codelist_id, 1)[["url"]]
+    cis_meta <- cis_meta_orig[1,]
+    cis_url <- cis_meta[["url"]]
     cis_url <- stringr::str_replace(cis_url, "format\\=0$", "format=2&separator=,")
+    cis_meta$format <- "text/csv"
+    cis_meta$url <- cis_url
   }
 
   if(lng == "en") cis_url <- stringr::str_replace(cis_url, "cisjaz=203", "cisjaz=8260")
 
   if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
                                               default = tempdir())
-  dfile <- get_dl_path(codelist_id, dest_dir, "csv")
+  dfile <- get_dl_path(cis_meta, dest_dir)
 
   download_if_needed(cis_url, dfile, force_redownload)
 
