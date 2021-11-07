@@ -1,3 +1,9 @@
+# czso (development version)
+
+## New features
+
+* new target factory to be used in {targets} pipelines, see [dev background](https://wlandau.github.io/targetopia/contributing.html)
+
 # czso 0.3.6
 
 * update tests to fix CRAN failure due to unreachable provider server
