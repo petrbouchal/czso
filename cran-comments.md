@@ -7,4 +7,5 @@ No WARNINGs or consistently occurring NOTEs were issued by any of the systems I 
 - win-builder devel and release
 - local MacOS Intel
 
-* This is a patch release resolving a test failure that occurred on CRAN due to the inaccessibility of a remote resource
+* 0.3.6 was a patch release resolving a test failure that occurred on CRAN due to the inaccessibility of a remote resource
+* 0.3.7 additionally removes an unused dependency which caused a check NOTE

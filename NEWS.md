@@ -1,3 +1,7 @@
+# czso 0.3.7
+
+* remove the unnecessary {stringi} dependency
+
 # czso 0.3.6
 
 * update tests to fix CRAN failure due to unreachable provider server
