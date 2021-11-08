@@ -2,7 +2,7 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-11-07T22:51Z
+last_built: 2021-11-08T00:00Z
 urls:
   reference: https://petrbouchal.xyz/czso/reference
   article: https://petrbouchal.xyz/czso/articles
