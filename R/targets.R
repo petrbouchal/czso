@@ -33,7 +33,7 @@ czso_target_table <- function(name, dataset_id, dest_dir, resource_num = 1, free
   name_d <- deparse(substitute(name))
   name_url <- paste0(name_d, "_url")
   name_file <- paste0(name_d, "_file")
-  name_data <- paste0(name_d, "_data")
+  name_data <- paste0(name_d)
   sym_file <- as.symbol(name_file)
   sym_url <- as.symbol(name_url)
   sym_data <- as.symbol(name_data)
