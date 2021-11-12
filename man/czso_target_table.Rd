@@ -7,21 +7,49 @@
 czso_target_table(name, dataset_id, dest_dir, resource_num = 1, freeze = FALSE)
 }
 \arguments{
-\item{name}{DESCRIPTION.}
+\item{name}{Unquoted name to be used as the base for naming targets produced by the target factory.}
 
-\item{dataset_id}{DESCRIPTION.}
+\item{dataset_id}{Dataset ID as listed in the \code{dataset_id} column in the output of \code{czso_get_catalogue()}.}
 
-\item{dest_dir}{DESCRIPTION.}
+\item{dest_dir}{The directory in which to save the file downloaded from the data provider. Because the file is tracked as a target,
+this cannot be left blank.}
 
-\item{resource_num}{DESCRIPTION.}
+\item{resource_num}{Resource number, defaults to 1. Usually does not need to be set manually. Set this to >1 if the default returns an unparsable format.}
 
-\item{freeze}{Whether to track the}
+\item{freeze}{Whether to track the upstream URL and rerun target when the file is updated on the data provider's server.}
 }
 \value{
-a list of three targets, named \verb{\{name\}_url}, \verb{\{name\}_file} and \verb{\{name\}_data}.
+a list of three targets, named \verb{\{name\}_url}, \verb{\{name\}_file} and \code{{name}}.
 }
 \description{
-FUNCTION_DESCRIPTION
+The resulting targets will allow you to track as targets the data file, the data, and by
+default also the upstream URL from which the data file was updated. This ensures
+traceability and reproducibility: it is clear from which URL the data came, it is
+clear from which file it was read. The data is only redownloaded if
+(a) it changes on the server (unless \code{freeze} is \code{TRUE}, in which case you have
+complete reproducibility regardless of what happend on the data provider's server),
+or if (b) the downloaded data file is deleted.
+}
+\details{
+As a baseline, all steps of the data pipeline are tracked via a set of targets:
+\enumerate{
+\item the URL from which a CZSO data file was downloaded
+\item the file where it is saved on disk
+\item the data object created by loading the data file
+}
+
+By default, (2) and (3) update if change is detected in (1).
+
+There are two modes: automation with updates and reproducibility
+\enumerate{
+\item Automatio with updates as needed (the default): if you leave \code{freeze} at its default of \code{FALSE}, the file and data targets will rerun when the file changes on the CZSO server.
+This means you get new data as it updated, but you are only downloading a file from CZSO when CZSO updated the data.
+\item Reproducibility: if you set \code{freeze} to \code{TRUE}, the upstream URL will be tracked as a target, but will not be checked for updates,
+i.e. if the upstream #' file changes, it will not be redownloaded and the on-disk file and data target will not be updated. The \verb{*_url} target only serves to
+document the URL from which the data was uploaded, as well as the timestamp.
+(Note that if you delete the file, the file target will rerun, also causing the data to update if
+the upstream file on the server has changed.)
+}
 }
 \examples{
 # ADD_EXAMPLES_HERE
