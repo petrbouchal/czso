@@ -19,10 +19,14 @@ reference:
   desc:  Functions for executing the core workflow.
   contents:
   - has_concept("Core workflow")
-- title: Additional tools
+- title: Reproducibility
   desc:  Functions for retrieving documentation and metadata.
   contents:
   - has_concept("Additional tools")
+- title: Additional tools
+  desc:  Functions for using CZSO data in reproducible pipelines.
+  contents:
+  - has_concept("Reproducibility")
 
 navbar:
   structure:

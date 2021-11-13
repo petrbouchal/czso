@@ -47,8 +47,7 @@ get_file_for_targets <- function(url, resource_pointer, dfile) {
 #' @param freeze Whether to track the upstream URL and rerun target when the file is updated on the data provider's server.
 #'
 #' @return a list of three targets, named `{name}_url`, `{name}_file` and `{name}`.
-#' @examples
-#' # ADD_EXAMPLES_HERE
+#' @family Reproducibility
 czso_target_table <- function(name, dataset_id, dest_dir, resource_num = 1, freeze = FALSE) {
   if(!requireNamespace("targets", quietly = TRUE)) {
     usethis::ui_stop("This function requires the targets package.")
