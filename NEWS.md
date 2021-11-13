@@ -2,7 +2,7 @@
 
 ## New features
 
-* new target factory to be used in {targets} pipelines, see [dev background](https://wlandau.github.io/targetopia/contributing.html)
+* new target factory to be used in [{targets}](https://books.ropensci.org/targets/) pipelines.
 
 # czso 0.3.7
 
