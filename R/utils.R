@@ -4,7 +4,7 @@ ua_string <- "github.com/petrbouchal/czso"
 is_above_bigsur <- function() {
 
   sy <- Sys.info()
-  si <- sessionInfo()
+  si <- utils::sessionInfo()
 
   if(is.null(si)) return(FALSE)
 
@@ -42,4 +42,24 @@ get_os <- function(){
       os <- "linux"
   }
   tolower(os)
+}
+
+curl_has_securetrans <- function(variables) {
+  grepl("Secure\\s?Transpo", curl::curl_version()$ssl_version)
+}
+
+curl_runs_securetrans <- function(variables) {
+  !grepl("\\(Secure\\s?Transport\\)", curl::curl_version()$ssl_version)
+}
+
+stop_on_openssl <- function(variables) {
+  if(curl_has_securetrans() & !curl_runs_securetrans()) {
+    cli::cli_abort(c("On MacOS Monterey, R cannot reach the CZSO server with default settings.",
+                     "You need to get R to use MacOS's curl utility with the Apple-native SSL backend.",
+                     "Please put `CURL_SSL_BACKEND=SecureTransport` in your .Renviron file (and don't forget to add a linebreak after the last line in the file.)"))
+  } else if(!curl_has_securetrans() & !curl_runs_securetrans()) {
+    invisible(TRUE)
+  } else {
+    invisible(TRUE)
+  }
 }

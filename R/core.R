@@ -25,10 +25,9 @@
 #' czso_get_catalogue()
 #' }
 czso_get_catalogue <- function() {
-
   url <- "https://vdb.czso.cz/pll/eweb/lkod_ld.seznam"
 
-  if(is_above_bigsur()) url <- drop_https(url)
+  if(is_above_bigsur()) stop_on_openssl()
 
   suppressWarnings(readr::read_csv(url,
                                    col_types = readr::cols(
@@ -162,7 +161,7 @@ read_czso_csv <- function(dfile) {
 }
 
 download_file <- function(url, dfile) {
-  if(is_above_bigsur()) url <- drop_https(url)
+  if(is_above_bigsur()) stop_on_openssl()
   curl_handle <- curl::new_handle() %>%
     curl::handle_setheaders(.list = ua_header)
   curl::curl_download(url, dfile, handle = curl_handle)
@@ -170,7 +169,7 @@ download_file <- function(url, dfile) {
 }
 
 download_if_needed <- function(url, dfile, force_redownload) {
-  if(is_above_bigsur()) url <- drop_https(url)
+  if(is_above_bigsur()) stop_on_openssl()
   if(file.exists(dfile) & !force_redownload) {
     usethis::ui_info(c("File already in {usethis::ui_path(dirname(dfile))}, not downloading.",
                        "Set {usethis::ui_code('force_redownload = TRUE')} if needed."))
