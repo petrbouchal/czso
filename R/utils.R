@@ -9,7 +9,7 @@ is_above_bigsur <- function() {
   if(is.null(si)) return(FALSE)
 
   if(sy[["sysname"]] == "Darwin") {
-    is_above_12 <- stringr::str_detect(si$running, "\\b1[2-9]\\.")
+    is_above_12 <- stringr::str_detect(sy['release'], "^[2-9]{2}\\.")
 
     if (is_above_12) {
       rslt <- TRUE
