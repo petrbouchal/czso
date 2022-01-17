@@ -9,7 +9,7 @@ is_above_bigsur <- function() {
   if(is.null(si)) return(FALSE)
 
   if(sy[["sysname"]] == "Darwin") {
-    is_above_12 <- stringr::str_detect(sy['release'], "^[2-9][1-9]\\.")
+    is_above_12 <- grepl("^[2-9][1-9]\\.", sy['release'])
 
     if (is_above_12) {
       rslt <- TRUE
@@ -22,10 +22,6 @@ is_above_bigsur <- function() {
 
   return(rslt)
 
-}
-
-drop_https <- function(url) {
-  stringr::str_replace(url, "^https", "http")
 }
 
 get_os <- function(){
@@ -54,12 +50,23 @@ curl_runs_securetrans <- function(variables) {
 
 stop_on_openssl <- function(variables) {
   if(curl_has_securetrans() & !curl_runs_securetrans()) {
-    cli::cli_abort(c("On MacOS Monterey, R cannot reach the CZSO server with default settings.",
-                     "You need to get R to use MacOS's curl utility with the Apple-native SSL backend.",
-                     "Please put `CURL_SSL_BACKEND=SecureTransport` in your .Renviron file (and don't forget to add a linebreak after the last line in the file.)"))
+    cli::cli_abort(c("On MacOS Monterey, R cannot reach the CZSO server using default settings.",
+                     "You need to get R to use MacOS's {.code curl} utility with the Apple-native SSL backend.",
+                     "Please set {.envvar CURL_SSL_BACKEND} by putting {.code CURL_SSL_BACKEND=SecureTransport} in your {.file .Renviron} file and don't forget to add a linebreak after the last line in the file.",
+                     "See {.code ?czso::monterey} for details."))
   } else if(!curl_has_securetrans() & !curl_runs_securetrans()) {
     invisible(TRUE)
   } else {
     invisible(TRUE)
   }
 }
+
+#' \{czso\} on MacOS Monterey
+#'
+#' Explanation of how and why extra setup steps are needed to use \{czso\} on MacOS Monterey
+#'
+#' TO DO
+#'
+#' @name monterey
+
+NULL
