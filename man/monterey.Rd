@@ -7,5 +7,16 @@
 Explanation of how and why extra setup steps are needed to use \{czso\} on MacOS Monterey
 }
 \details{
-TO DO
+Some early versions of MacOS Monterey ship with an old version of Libre SSL. This causes an otherwise rare bug where`
+the certificates on CZSO servers cannot be decrypted, so R cannot communicate with the server. Because R relies on the
+default system SSL library, this in fact affects even curl on the system command line.
+
+The solution in R is to put
+
+\code{CURL_SSL_BACKEND=SecureTransport} into .Renviron. (Don't forget to add a newline if this is the last line in the file).
+Setting this anywhere after R startup may not work, hence the .Renviron solution is recommended.
+
+You can also put this in your system environent e.g. by setting the system variable in the .profile file.
+
+The issue no longer exists on MacOS Monterey 12.3 Beta, so presumably will also not exist on Monterey 12.3.
 }
