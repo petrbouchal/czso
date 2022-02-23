@@ -48,8 +48,12 @@ curl_runs_securetrans <- function(variables) {
   !grepl("\\(Secure\\s?Transport\\)", curl::curl_version()$ssl_version)
 }
 
+ssl_is_old <- function() {
+  grepl("SSL/2", curl::curl_version()$ssl_version)
+}
+
 stop_on_openssl <- function(variables) {
-  if(curl_has_securetrans() & !curl_runs_securetrans()) {
+  if(curl_has_securetrans() & !curl_runs_securetrans() & ssl_is_old()) {
     cli::cli_abort(c("On MacOS Monterey, R cannot reach the CZSO server using default settings.",
                      "You need to get R to use MacOS's {.code curl} utility with the Apple-native SSL backend.",
                      "Please set {.envvar CURL_SSL_BACKEND} by putting {.code CURL_SSL_BACKEND=SecureTransport} in your {.file .Renviron} file and don't forget to add a linebreak after the last line in the file.",
