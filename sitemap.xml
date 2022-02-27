@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://petrbouchal.xyz/czso/404.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.xyz/czso/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.xyz/czso/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.xyz/czso/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.xyz/czso/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.xyz/czso/authors.html</loc>
+  </url>
+  <url>
     <loc>https://petrbouchal.xyz/czso/index.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.xyz/czso/news/index.html</loc>
   </url>
   <url>
     <loc>https://petrbouchal.xyz/czso/reference/czso-package.html</loc>
@@ -41,6 +62,12 @@
   </url>
   <url>
     <loc>https://petrbouchal.xyz/czso/reference/get_table.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.xyz/czso/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://petrbouchal.xyz/czso/reference/monterey.html</loc>
   </url>
   <url>
     <loc>https://petrbouchal.xyz/czso/reference/pipe.html</loc>
