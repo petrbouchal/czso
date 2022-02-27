@@ -78,9 +78,6 @@ suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
 
 catalogue <- czso_get_catalogue()
-#> ℹ Reading data from data.gov.cz
-#> ✓ Done downloading and reading data
-#> ℹ Transforming data
 ```
 
 Now search for your terms of interest in the dataset titles:
@@ -104,9 +101,7 @@ the dataset:
 
 ``` r
 czso_get_table("110080")
-#> ℹ File already in '/Users/petr/czso_data/110080/', not downloading.
-#>   Set `force_redownload = TRUE` if needed.
-#> # A tibble: 810 x 14
+#> # A tibble: 900 x 14
 #>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
 #>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
 #>  1 7459…   26211 5958       <NA>          <NA>          <NA>        <NA>       
@@ -119,7 +114,7 @@ czso_get_table("110080")
 #>  8 7459…   28873 5958       <NA>          <NA>          102         1          
 #>  9 7459…   22496 5958       <NA>          <NA>          102         2          
 #> 10 7459…   21997 5958       7636          Q5            <NA>        <NA>       
-#> # … with 800 more rows, and 7 more variables: rok <int>, uzemi_cis <chr>,
+#> # … with 890 more rows, and 7 more variables: rok <int>, uzemi_cis <chr>,
 #> #   uzemi_kod <chr>, STAPRO_TXT <chr>, uzemi_txt <chr>, SPKVANTIL_txt <chr>,
 #> #   POHLAVI_txt <chr>
 ```
@@ -161,8 +156,6 @@ breakdown list `uzemi_cis` as `"100"`, you can get that codelist
 
 ``` r
 czso_get_codelist(100)
-#> ℹ File already in '/Users/petr/czso_data/cis100/', not downloading.
-#>   Set `force_redownload = TRUE` if needed.
 #> # A tibble: 15 x 11
 #>    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
 #>    <chr>  <chr>  <chr>  <chr>    <chr>   <chr> <date>     <date>     <chr> 
@@ -258,7 +251,8 @@ For Czech fiscal data, see
 [statnipokladna](https://github.com/petrbouchal/statnipokladna).
 
 For various transparency disclosures, see [Hlídač
-státu](https://www.hlidacstatu.cz/).
+státu](https://www.hlidacstatu.cz/) and the
+[{hlidacr}](https://cran.r-project.org/package=hlidacr) package.
 
 For access to some of Prague’s open geospatial data in R, see
 [pragr](https://github.com/petrbouchal/pragr).
