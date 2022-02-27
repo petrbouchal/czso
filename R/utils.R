@@ -54,7 +54,7 @@ ssl_is_old <- function() {
 
 stop_on_openssl <- function(variables) {
   if(curl_has_securetrans() & !curl_runs_securetrans() & ssl_is_old()) {
-    cli::cli_abort(c("On MacOS Monterey, R cannot reach the CZSO server using default settings.",
+    cli::cli_abort(c("On MacOS Monterey <= 12.2, R cannot reach the CZSO server using default settings.",
                      "You need to get R to use MacOS's {.code curl} utility with the Apple-native SSL backend.",
                      "Please set {.envvar CURL_SSL_BACKEND} by putting {.code CURL_SSL_BACKEND=SecureTransport} in your {.file .Renviron} file and don't forget to add a linebreak after the last line in the file.",
                      "See {.code ?czso::monterey} for details."))
