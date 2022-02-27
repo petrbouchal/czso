@@ -23,6 +23,7 @@ reference:
   desc:  Functions for retrieving documentation and metadata.
   contents:
   - has_concept("Additional tools")
+  - monterey
 
 navbar:
   structure:

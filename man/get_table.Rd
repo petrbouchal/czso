@@ -25,6 +25,7 @@ a \link[tibble:tibble-package]{tibble}
 \seealso{
 Other Core workflow: 
 \code{\link{czso_get_catalogue}()},
+\code{\link{czso_get_codelist}()},
 \code{\link{czso_get_table}()}
 }
 \concept{Core workflow}

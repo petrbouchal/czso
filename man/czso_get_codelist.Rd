@@ -93,3 +93,10 @@ czso_get_codelist(c(100, 43))
 czso_get_codelist("cis100vaz43")
 }
 }
+\seealso{
+Other Core workflow: 
+\code{\link{czso_get_catalogue}()},
+\code{\link{czso_get_table}()},
+\code{\link{get_table}()}
+}
+\concept{Core workflow}

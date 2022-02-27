@@ -15,3 +15,4 @@ a tibble
 \examples{
 # see `czso_get_catalogue()`
 }
+\keyword{internal}

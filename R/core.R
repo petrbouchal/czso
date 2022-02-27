@@ -53,6 +53,7 @@ czso_get_catalogue <- function() {
 #' \lifecycle{deprecated}
 #'
 #' @return a tibble
+#' @keywords internal
 #' @examples
 #' # see `czso_get_catalogue()`
 #' @export
@@ -66,6 +67,7 @@ get_catalogue <- function() {
 #' \lifecycle{deprecated}
 #'
 #' @return a tibble
+#' @keywords internal
 #' @examples
 #' # see `czso_get_catalogue()`
 #' @export
@@ -423,6 +425,7 @@ get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
 #' czso_get_codelist("cis100vaz43")
 #' }
 #' @export
+#' @family Core workflow
 czso_get_codelist <- function(codelist_id,
                               language = c("cs", "en"),
                               dest_dir = NULL,
