@@ -328,7 +328,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   type <- ptr$format
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) {
-    extm <- regexpr("(?<=\\/).*$", type)
+    extm <- regexpr("(?<=\\/).*$", type, perl = TRUE)
     ext <- regmatches(type, extm)
   }
 
