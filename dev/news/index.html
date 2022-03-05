@@ -55,7 +55,10 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="czso-development-version">czso (development version)<a class="anchor" aria-label="anchor" href="#czso-development-version"></a></h2>
-</div>
+<ul><li>removed usethis dependency; messages now done by {cli}</li>
+<li>removed stringr dependency</li>
+<li>readded stringi dependency</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.8" id="czso-038">czso 0.3.8<small>2022-02-27</small><a class="anchor" aria-label="anchor" href="#czso-038"></a></h2>
 <ul><li>On MacOS Monterey, native <code>curl</code> cannot reach <a href="https://www.czso.cz/" class="external-link uri">https://www.czso.cz/</a>, making it impossible for R to reach it. So on Monterey machines with the default <code>curl</code> configuration, all functions accessing the server will fail with a message instructing the user to set an option in .Renviron to resolve this issue. This is a temporary situation until the bug is fixed in MacOS or a fix is found in R that does not require the user to set environment variables.</li>
