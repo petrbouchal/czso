@@ -189,7 +189,7 @@ get_dl_path <- function(resource_pointer, dir = tempdir()) {
   type <- resource_pointer$format
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) {
-    extm <- regexpr("(?<=\\/).*$", type)
+    extm <- regexpr("(?<=\\/).*$", type, perl = TRUE)
     ext <- regmatches(type, extm)
   }
 
