@@ -278,7 +278,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #' @export
 czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE, resource_num = 1) {
 
-  if(stringr::str_detect(dataset_id, "^cis")) {
+  if(grepl("^cis", dataset_id)) {
 
     cd <- paste0('czso_get_codelist(', "\"", dataset_id ,"\")")
 
@@ -290,7 +290,10 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   url <- ptr$url
   type <- ptr$format
   ext <- tools::file_ext(url)
-  if(ext == "" | is.null(ext)) ext <- stringr::str_extract(type, "(?<=\\/).*$")
+  if(ext == "" | is.null(ext)) {
+    extm <- regexpr("(?<=\\/).*$", type)
+    ext <- regmatches(type, extm)
+  }
 
   if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
                                               default = tempdir())
@@ -440,18 +443,16 @@ czso_get_codelist <- function(codelist_id,
   stopifnot(length(codelist_id) <= 2)
 
   if(length(codelist_id) == 1) {
-    if(is.numeric(codelist_id) | stringr::str_detect(codelist_id,
-                                                     "^[0-9]{2,4}$")) {
+    if(is.numeric(codelist_id) | grepl("^[0-9]{2,4}$", codelist_id)) {
       codelist_id <- paste0("cis", codelist_id)
     }
   } else if(length(codelist_id) == 2) {
-    if(is.numeric(codelist_id) | all(stringr::str_detect(codelist_id,
-                                                         "^[0-9]{2,4}$"))) {
+    if(is.numeric(codelist_id) | all(grepl("^[0-9]{2,4}$", codelist_id))) {
       codelist_id <- paste0("cis", codelist_id[1], "vaz", codelist_id[2])
     }
   }
 
-  if(!stringr::str_detect(codelist_id, "^cis")) {
+  if(!grepl("^cis", codelist_id)) {
     cli::cli_alert_warning(c("The value you passed to {.var codelist_id} does not seem to indicate a codelist.",
                              "This may cause unexpected results."))
   }
@@ -470,10 +471,10 @@ czso_get_codelist <- function(codelist_id,
     cli::cli_inform("No documented CSV distribution found for this codelist. Using workaround.")
 
     cis_url <- get_czso_resource_pointer(codelist_id, 1)[["url"]]
-    cis_url <- stringr::str_replace(cis_url, "format\\=0$", "format=2&separator=,")
+    cis_url <- sub("format\\=0$", "format=2&separator=,", cis_url)
   }
 
-  if(lng == "en") cis_url <- stringr::str_replace(cis_url, "cisjaz=203", "cisjaz=8260")
+  if(lng == "en") cis_url <- sub("cisjaz=203", "cisjaz=8260", cis_url)
 
   if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
                                               default = tempdir())
@@ -574,8 +575,8 @@ czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
   url_orig <- metadata$schema
   doc_url <- switch (frmt,
                      html = url_orig,
-                     word = stringr::str_replace(url_orig, "\\.html?", ".docx"),
-                     pdf = stringr::str_replace(url_orig, "\\.html?", ".pdf")
+                     word = sub("\\.html?", ".docx", url_orig),
+                     pdf = sub("\\.html?", ".pdf", url_orig)
   )
   act <- match.arg(action)
   if(is.null(destfile)) {dest <- basename(doc_url)} else {dest <- destfile}
