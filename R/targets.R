@@ -50,7 +50,7 @@ get_file_for_targets <- function(url, resource_pointer, dfile) {
 #' @family Reproducibility
 czso_target_table <- function(name, dataset_id, dest_dir, resource_num = 1, freeze = FALSE) {
   if(!requireNamespace("targets", quietly = TRUE)) {
-    usethis::ui_stop("This function requires the targets package.")
+    cli::cli_abort("This function requires the {.pkg targets} package.")
   }
 
   name_d <- deparse(substitute(name))
