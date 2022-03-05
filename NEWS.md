@@ -1,6 +1,9 @@
 # czso (development version)
 
+* removed usethis dependency; messages now done by {cli}
+* removed stringr dependency
 * readded stringi dependency
+
 # czso 0.3.8
 
 * On MacOS Monterey, native `curl` cannot reach https://www.czso.cz/, making it impossible for R to reach it. So on Monterey machines with the default `curl` configuration, all functions accessing the server will fail with a message instructing the user to set an option in .Renviron to resolve this issue. This is a temporary situation until the bug is fixed in MacOS or a fix is found in R that does not require the user to set environment variables.
