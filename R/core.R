@@ -188,7 +188,10 @@ get_dl_path <- function(resource_pointer, dir = tempdir()) {
   url <- resource_pointer$url[1]
   type <- resource_pointer$format
   ext <- tools::file_ext(url)
-  if(ext == "" | is.null(ext)) ext <- stringr::str_extract(type, "(?<=\\/).*$")
+  if(ext == "" | is.null(ext)) {
+    extm <- regexpr("(?<=\\/).*$", type)
+    ext <- regmatches(type, extm)
+  }
 
   td <- file.path(dir, dataset_id)
   dir.create(td, showWarnings = FALSE, recursive = TRUE)
