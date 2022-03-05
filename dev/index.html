@@ -32,6 +32,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,18 +46,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.5.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.8.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -65,13 +61,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/petrbouchal/czso/">
+  <a href="https://github.com/petrbouchal/czso/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://petrbouchal.xyz">
+  <a href="https://petrbouchal.xyz" class="external-link">
     <span class="fa fa-asterisk fa-lg"></span>
      
   </a>
@@ -88,53 +84,49 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="czso-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#czso-" class="anchor"></a>czso <img src="reference/figures/logo.png" align="right" height="138">
+<div class="section level1">
+<div class="page-header"><h1 id="czso-">czso <img src="reference/figures/logo.png" align="right" height="138"><a class="anchor" aria-label="anchor" href="#czso-"></a>
 </h1></div>
 <!-- badges: start -->
 
 <p>The goal of czso is to provide direct, programmatic, hassle-free access from R to open data provided by the Czech Statistical Office (CZSO).</p>
 <p>This is done by</p>
-<ol>
-<li><p><strong>providing direct access from R to the catalogue of open CZSO datasets</strong>, eliminating the hassle from data discovery. Normally this is done done through <a href="https://www.czso.cz/csu/czso/otevrena-data-v-katalogu-produktu-csu">the CZSO’s product catalogue</a> which is unfortunately a bit clunky, or <a href="https://data.gov.cz">data.gov.cz</a>, which is not a natural starting point for many.</p></li>
+<ol style="list-style-type: decimal">
+<li><p><strong>providing direct access from R to the catalogue of open CZSO datasets</strong>, eliminating the hassle from data discovery. Normally this is done done through <a href="https://www.czso.cz/csu/czso/otevrena-data-v-katalogu-produktu-csu" class="external-link">the CZSO’s product catalogue</a> which is unfortunately a bit clunky, or <a href="https://data.gov.cz" class="external-link">data.gov.cz</a>, which is not a natural starting point for many.</p></li>
 <li><p><strong>providing a function to load a specific dataset to R</strong> directly from the CZSO’s datastore, eliminating the friction of copying a URL, downloading, unzipping etc.</p></li>
 </ol>
 <p>Additionally, the package provides access to metadata on datasets and to codelists (číselníky) as a special case of datasets listed in the catalogue.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the package from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"czso"</span><span class="op">)</span></code></pre></div>
-<p>You can install the latest in-development release from <a href="https://github.com/petrbouchal/czso">github</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"czso"</span><span class="op">)</span></code></pre></div>
+<p>You can install the latest in-development release from <a href="https://github.com/petrbouchal/czso" class="external-link">github</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/czso"</span>, ref <span class="op">=</span> <span class="fu">github_release</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/czso"</span>, ref <span class="op">=</span> <span class="fu">github_release</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>or the latest version with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/czso"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/czso"</span><span class="op">)</span></code></pre></div>
 <p>I also keep binaries in a <code>drat</code> repo, which you can access by</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">install.packages</span>(<span class="st">"czso"</span>, <span class="dt">repos =</span> <span class="st">"https://petrbouchal.xyz/drat"</span>)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
 <p>Say you are looking for a dataset whose title refers to wages (mzda/mzdy):</p>
 <p>First, retrieve the list of available CZSO datasets:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/petrbouchal/czso">czso</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/petrbouchal/czso" class="external-link">czso</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">catalogue</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/czso_get_catalogue.html">czso_get_catalogue</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; ℹ Reading data from data.gov.cz</span>
-<span class="co">#&gt; ✓ Done downloading and reading data</span>
-<span class="co">#&gt; ℹ Transforming data</span></code></pre></div>
+<span class="va">catalogue</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/czso_get_catalogue.html">czso_get_catalogue</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Now search for your terms of interest in the dataset titles:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">catalogue</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">title</span>, <span class="st">"[Mm]zd[ay]"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dataset_id</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">catalogue</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">title</span>, <span class="st">"[Mm]zd[ay]"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dataset_id</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 2 x 3</span>
 <span class="co">#&gt;   dataset_id title                       description                            </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                       &lt;chr&gt;                                  </span>
@@ -144,9 +136,7 @@
 <p>We can see the <code>dataset_id</code> for the required dataset - now use it to get the dataset:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/czso_get_table.html">czso_get_table</a></span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span>
-<span class="co">#&gt; ℹ File already in '/Users/petr/czso_data/110080/', not downloading.</span>
-<span class="co">#&gt;   Set `force_redownload = TRUE` if needed.</span>
-<span class="co">#&gt; # A tibble: 810 x 14</span>
+<span class="co">#&gt; # A tibble: 900 x 14</span>
 <span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span>
 <span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span>
 <span class="co">#&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span>
@@ -159,7 +149,7 @@
 <span class="co">#&gt;  8 7459…   28873 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span>
 <span class="co">#&gt;  9 7459…   22496 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span>
 <span class="co">#&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span>
-<span class="co">#&gt; # … with 800 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span>
+<span class="co">#&gt; # … with 890 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span>
 <span class="co">#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span>
 <span class="co">#&gt; #   POHLAVI_txt &lt;chr&gt;</span></code></pre></div>
 <p>You can retrieve the schema for the dataset:</p>
@@ -189,8 +179,6 @@
 <p>If you are interested in linking this data to different data, you might need the NUTS codes for regions. Seeing that the lines with regional breakdown list <code>uzemi_cis</code> as <code>"100"</code>, you can get that codelist (číselník):</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/czso_get_codelist.html">czso_get_codelist</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
-<span class="co">#&gt; ℹ File already in '/Users/petr/czso_data/cis100/', not downloading.</span>
-<span class="co">#&gt;   Set `force_redownload = TRUE` if needed.</span>
 <span class="co">#&gt; # A tibble: 15 x 11</span>
 <span class="co">#&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; </span>
@@ -211,56 +199,56 @@
 <span class="co">#&gt; 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 </span>
 <span class="co">#&gt; # … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</span></code></pre></div>
 <p>You would then need to do a bit of manual work to join this codelist onto the data.</p>
-<div id="a-note-about-tables-and-datasets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#a-note-about-tables-and-datasets" class="anchor"></a>A note about “tables” and “datasets”</h3>
+<div class="section level3">
+<h3 id="a-note-about-tables-and-datasets">A note about “tables” and “datasets”<a class="anchor" aria-label="anchor" href="#a-note-about-tables-and-datasets"></a>
+</h3>
 <p>In the parlance of the official open data catalogue, a <code>dataset</code> can have multiple distributions (typically multiple formats of the same data). These are called resources in the internals, and manifest as tables in this package. Some metainformation is the property of a dataset (the documentation), while other - the schema - is the property of a table. Hence the function names in this package. This is to keep things organised even if the CZSO almost always provides only one table per dataset and appends new data to it over time.</p>
 </div>
 </div>
-<div id="data-sources" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-sources" class="anchor"></a>Data sources</h2>
-<p>The catalogue is drawn from <a href="https://data.gov.cz" class="uri">https://data.gov.cz</a> through the <a href="https://data.gov.cz/sparql">SPARQL endpoint</a>.</p>
-<p>The data and specific metadata is then accessed via the <code>package_show</code> endpoint of the CZSO API at (example) <a href="https://vdb.czso.cz/pll/eweb/package_show?id=290038r19" class="uri">https://vdb.czso.cz/pll/eweb/package_show?id=290038r19</a>.</p>
+<div class="section level2">
+<h2 id="data-sources">Data sources<a class="anchor" aria-label="anchor" href="#data-sources"></a>
+</h2>
+<p>The catalogue is drawn from <a href="https://data.gov.cz" class="external-link uri">https://data.gov.cz</a> through the <a href="https://data.gov.cz/sparql" class="external-link">SPARQL endpoint</a>.</p>
+<p>The data and specific metadata is then accessed via the <code>package_show</code> endpoint of the CZSO API at (example) <a href="https://vdb.czso.cz/pll/eweb/package_show?id=290038r19" class="external-link uri">https://vdb.czso.cz/pll/eweb/package_show?id=290038r19</a>.</p>
 </div>
-<div id="credit-and-notes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#credit-and-notes" class="anchor"></a>Credit and notes</h2>
+<div class="section level2">
+<h2 id="credit-and-notes">Credit and notes<a class="anchor" aria-label="anchor" href="#credit-and-notes"></a>
+</h2>
 <ul>
-<li>not created or endorsed by the Czech Statistical Office, though they, as well as <a href="https://data.gov.cz/">the open data team at the Ministry of Interior</a> deserve credit for getting the data out there.</li>
+<li>not created or endorsed by the Czech Statistical Office, though they, as well as <a href="https://data.gov.cz/" class="external-link">the open data team at the Ministry of Interior</a> deserve credit for getting the data out there.</li>
 <li>the package relies on the data.gov.cz catalogue of open data and on the CZSO’s local catalogue</li>
 <li>NB: The robots.txt at the domain hosting the CZSO’s catalogue prohibits robots from accessing it; while this may be an inappropriate/erroneous setting for what is in essence a data API, this package tries to honor the spirit of that setting by only accessing the API once per <code><a href="reference/czso_get_table.html">czso_get_table()</a></code> call, relying on a different system for <code><a href="reference/czso_get_catalogue.html">czso_get_catalogue()</a></code>. Hence, <em>do not use this package for harvesting large numbers of datasets from the CZSO.</em>
 </li>
 </ul>
-<div id="acknowledgments" class="section level3">
-<h3 class="hasAnchor">
-<a href="#acknowledgments" class="anchor"></a>Acknowledgments</h3>
-<p>Thanks to @jakubklimek and @martinnecasky for <a href="https://github.com/opendata-mvcr/nkod/issues/19">helping me figure out</a> the <a href="https://data.gov.cz/sparql">SPARQL endpoint</a> on the Czech National Open Data Catalogue.</p>
+<div class="section level3">
+<h3 id="acknowledgments">Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"></a>
+</h3>
+<p>Thanks to @jakubklimek and @martinnecasky for <a href="https://github.com/opendata-mvcr/nkod/issues/19" class="external-link">helping me figure out</a> the <a href="https://data.gov.cz/sparql" class="external-link">SPARQL endpoint</a> on the Czech National Open Data Catalogue.</p>
 </div>
-<div id="the-logo" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-logo" class="anchor"></a>The logo</h3>
+<div class="section level3">
+<h3 id="the-logo">The logo<a class="anchor" aria-label="anchor" href="#the-logo"></a>
+</h3>
 <p>An homage to the CZSO’s work in releasing its data in an open format, something that is not necessarily in its DNA.</p>
 <p>It alludes to the shades of the country reflected in the tabular data provided, By interspersing the comma symbol into the name of the package, it refers to both integration between statistics and open data and the slight disruption that the world of statistics undergoes when that integration happens.</p>
 </div>
 </div>
-<div id="see-also" class="section level2">
-<h2 class="hasAnchor">
-<a href="#see-also" class="anchor"></a>See also</h2>
+<div class="section level2">
+<h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a>
+</h2>
 <p>This package takes inspiration from the packages</p>
 <ul>
-<li><a href="https://github.com/rOpenGov/eurostat/">eurostat</a></li>
-<li><a href="https://github.com/expersso/OECD">OECD</a></li>
+<li><a href="https://github.com/rOpenGov/eurostat/" class="external-link">eurostat</a></li>
+<li><a href="https://github.com/expersso/OECD" class="external-link">OECD</a></li>
 </ul>
 <p>which are very useful in their own right - much recommended.</p>
-<p>For Czech geospatial data, see <a href="https://github.com/JanCaha/CzechData/">CzechData</a> by <a href="https://github.com/JanCaha/">JanCaha</a>.</p>
-<p>For Czech fiscal data, see <a href="https://github.com/petrbouchal/statnipokladna">statnipokladna</a>.</p>
-<p>For various transparency disclosures, see <a href="https://www.hlidacstatu.cz/">Hlídač státu</a>.</p>
-<p>For access to some of Prague’s open geospatial data in R, see <a href="https://github.com/petrbouchal/pragr">pragr</a>.</p>
+<p>For Czech geospatial data, see <a href="https://github.com/JanCaha/CzechData/" class="external-link">CzechData</a> by <a href="https://github.com/JanCaha/" class="external-link">JanCaha</a>.</p>
+<p>For Czech fiscal data, see <a href="https://github.com/petrbouchal/statnipokladna" class="external-link">statnipokladna</a>.</p>
+<p>For various transparency disclosures, see <a href="https://www.hlidacstatu.cz/" class="external-link">Hlídač státu</a> and the <a href="https://cran.r-project.org/package=hlidacr" class="external-link">{hlidacr}</a> package.</p>
+<p>For access to some of Prague’s open geospatial data in R, see <a href="https://github.com/petrbouchal/pragr" class="external-link">pragr</a>.</p>
 </div>
-<div id="contributing--code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contributing--code-of-conduct" class="anchor"></a>Contributing / code of conduct</h2>
+<div class="section level2">
+<h2 id="contributing--code-of-conduct">Contributing / code of conduct<a class="anchor" aria-label="anchor" href="#contributing--code-of-conduct"></a>
+</h2>
 <p>Please note that the ‘czso’ project is released with a <a href="https://petrbouchal.xyz/czso/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
@@ -268,60 +256,70 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=czso">https://​cloud.r-project.org/​package=czso</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/petrbouchal/czso/">https://​github.com/​petrbouchal/​czso/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/petrbouchal/czso/issues">https://​github.com/​petrbouchal/​czso/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=czso" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/petrbouchal/czso/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/petrbouchal/czso/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://petrbouchal.xyz">Petr Bouchal</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0471-716X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html#citation">Citing czso</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=czso"><img src="https://www.r-pkg.org/badges/version/czso" alt="CRAN status"></a></li>
-<li><a href="https://CRAN.R-project.org/package=czso"><img src="https://cranlogs.r-pkg.org/badges/grand-total/czso" alt="CRAN downloads"></a></li>
-<li><a href="https://CRAN.R-project.org/package=czso"><img src="https://cranlogs.r-pkg.org/badges/last-month/czso" alt="CRAN monthly downloads"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://github.com/SNStatComp/awesome-official-statistics-software"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Official Statistics"></a></li>
-<li><a href="https://github.com/petrbouchal/czso/actions"><img src="https://github.com/petrbouchal/czso/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li>
+<a href="https://petrbouchal.xyz" class="external-link">Petr Bouchal</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0471-716X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://CRAN.R-project.org/package=czso" class="external-link"><img src="https://www.r-pkg.org/badges/version/czso" alt="CRAN status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=czso" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/czso" alt="CRAN downloads"></a></li>
+<li><a href="https://CRAN.R-project.org/package=czso" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/last-month/czso" alt="CRAN monthly downloads"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://github.com/SNStatComp/awesome-official-statistics-software" class="external-link"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Official Statistics"></a></li>
+<li><a href="https://github.com/petrbouchal/czso/actions" class="external-link"><img src="https://github.com/petrbouchal/czso/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://petrbouchal.xyz">Petr Bouchal</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://petrbouchal.xyz" class="external-link">Petr Bouchal</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -329,6 +327,8 @@
 
   
 
+
+  
 
   </body>
 </html>
