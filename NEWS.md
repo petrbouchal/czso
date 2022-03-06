@@ -1,4 +1,4 @@
-# czso (development version)
+# czso 0.3.9
 
 * removed usethis dependency; messages now done by {cli}
 * removed stringr dependency
