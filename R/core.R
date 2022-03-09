@@ -4,7 +4,7 @@
 #' Retrieves a list of all CZSO's open datasets available from the Czech Open data catalogue.
 #'
 #' Pass the string in the `dataset_id` column to `get_czso_table()`. `dataset_iri`
-#' is the unique identifier of the dataset in the national catalague and also the URL
+#' is the unique identifier of the dataset in the national catalogue and also the URL
 #' containing all metadata for the dataset.
 #'
 #' @return a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
@@ -83,7 +83,7 @@ get_czso_catalogue <- function() {
 #' what is provided in the dataset's entry in the output of `czso_get_dataset()`.
 #'
 #' As far as I can tell there is no way to get the metadata in English, though
-#' some key datasets, such as codelists, do have English-languge documentation.
+#' some key datasets, such as codelists, do have English-language documentation.
 #' See `czso_get_table()` for how to access English-language codelists (registers).
 #'
 #' @param dataset_id Dataset ID
@@ -226,7 +226,7 @@ get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
 #'
 #' Instead, here is a guide to some of the common column names you will encounter:
 #'
-#' - `idhod`: a unique ID of the value in the CZSO databse. This does not allow
+#' - `idhod`: a unique ID of the value in the CZSO database. This does not allow
 #' you to link to any other (meta)data as far as I know, but it does provide unique
 #' identification should you need it.
 #' - `hodnota`: the value.

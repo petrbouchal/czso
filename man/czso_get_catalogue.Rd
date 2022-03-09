@@ -24,7 +24,7 @@ Retrieves a list of all CZSO's open datasets available from the Czech Open data 
 }
 \details{
 Pass the string in the \code{dataset_id} column to \code{get_czso_table()}. \code{dataset_iri}
-is the unique identifier of the dataset in the national catalague and also the URL
+is the unique identifier of the dataset in the national catalogue and also the URL
 containing all metadata for the dataset.
 }
 \examples{

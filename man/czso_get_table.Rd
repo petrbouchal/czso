@@ -52,7 +52,7 @@ the known subset, as that would result in a jumble of Czenglish.
 
 Instead, here is a guide to some of the common column names you will encounter:
 \itemize{
-\item \code{idhod}: a unique ID of the value in the CZSO databse. This does not allow
+\item \code{idhod}: a unique ID of the value in the CZSO database. This does not allow
 you to link to any other (meta)data as far as I know, but it does provide unique
 identification should you need it.
 \item \code{hodnota}: the value.

@@ -30,7 +30,7 @@ what is provided in the dataset's entry in the output of \code{czso_get_dataset(
 }
 \details{
 As far as I can tell there is no way to get the metadata in English, though
-some key datasets, such as codelists, do have English-languge documentation.
+some key datasets, such as codelists, do have English-language documentation.
 See \code{czso_get_table()} for how to access English-language codelists (registers).
 }
 \examples{
