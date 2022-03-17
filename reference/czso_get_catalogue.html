@@ -76,7 +76,7 @@ In that case, the unit_code will be a code of that unit.</p></li>
     <div id="details">
     <h2>Details</h2>
     <p>Pass the string in the <code>dataset_id</code> column to <code>get_czso_table()</code>. <code>dataset_iri</code>
-is the unique identifier of the dataset in the national catalague and also the URL
+is the unique identifier of the dataset in the national catalogue and also the URL
 containing all metadata for the dataset.</p>
     </div>
     <div id="see-also">
@@ -91,7 +91,7 @@ containing all metadata for the dataset.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
 <span class="r-in"><span class="fu">czso_get_catalogue</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 724 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 726 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    dataset_iri    dataset_id title provider description spatial modified   page </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> https://vdb.c… 170242     Bila… Český s… Datová sad… https:… 2021-07-27 http…</span>
@@ -104,7 +104,7 @@ containing all metadata for the dataset.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> https://vdb.c… 290038r11  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> https://vdb.c… 290038r12  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> https://vdb.c… 290038r13  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 714 more rows, and 4 more variables: periodicity &lt;chr&gt;, start &lt;date&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 716 more rows, and 4 more variables: periodicity &lt;chr&gt;, start &lt;date&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   end &lt;date&gt;, keywords_all &lt;chr&gt;</span></span>
 <span class="r-in"><span class="co"># }</span></span>
 </code></pre></div>
