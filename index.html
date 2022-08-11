@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.10</span>
       </span>
     </div>
 
@@ -87,7 +87,6 @@
 <div class="page-header"><h1 id="czso-">czso <img src="reference/figures/logo.png" align="right" height="138"><a class="anchor" aria-label="anchor" href="#czso-"></a>
 </h1></div>
 <!-- badges: start -->
-
 <p>The goal of czso is to provide direct, programmatic, hassle-free access from R to open data provided by the Czech Statistical Office (CZSO).</p>
 <p>This is done by</p>
 <ol style="list-style-type: decimal">
@@ -100,13 +99,13 @@
 </h2>
 <p>You can install the package from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"czso"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"czso"</span><span class="op">)</span></span></code></pre></div>
 <p>You can install the latest in-development release from <a href="https://github.com/petrbouchal/czso" class="external-link">github</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/czso"</span>, ref <span class="op">=</span> <span class="fu">github_release</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/czso"</span>, ref <span class="op">=</span> <span class="fu">github_release</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>or the latest version with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/czso"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/czso"</span><span class="op">)</span></span></code></pre></div>
 <p>I also keep binaries in a <code>drat</code> repo, which you can access by</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">install.packages</span>(<span class="st">"czso"</span>, <span class="dt">repos =</span> <span class="st">"https://petrbouchal.xyz/drat"</span>)</span></code></pre></div>
 </div>
@@ -116,87 +115,87 @@
 <p>Say you are looking for a dataset whose title refers to wages (mzda/mzdy):</p>
 <p>First, retrieve the list of available CZSO datasets:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/petrbouchal/czso" class="external-link">czso</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">catalogue</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/czso_get_catalogue.html">czso_get_catalogue</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/petrbouchal/czso" class="external-link">czso</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">catalogue</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/czso_get_catalogue.html">czso_get_catalogue</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Now search for your terms of interest in the dataset titles:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">catalogue</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">title</span>, <span class="st">"[Mm]zd[ay]"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dataset_id</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 3</span>
-<span class="co">#&gt;   dataset_id title                       description                            </span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                       &lt;chr&gt;                                  </span>
-<span class="co">#&gt; 1 110080     Průměrná hrubá měsíční mzd… Datová sada obsahuje časovou řadu prům…</span>
-<span class="co">#&gt; 2 110079     Zaměstnanci a průměrné hru… Datová sada obsahuje časovou řadu počt…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">catalogue</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">title</span>, <span class="st">"[Mm]zd[ay]"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dataset_id</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 x 3</span></span>
+<span><span class="co">#&gt;   dataset_id title                       description                            </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                       &lt;chr&gt;                                  </span></span>
+<span><span class="co">#&gt; 1 110080     Průměrná hrubá měsíční mzd… Datová sada obsahuje časovou řadu prům…</span></span>
+<span><span class="co">#&gt; 2 110079     Zaměstnanci a průměrné hru… Datová sada obsahuje časovou řadu počt…</span></span></code></pre></div>
 <p>You could also search in descriptions or keywords which are also retrieved into the catalogue.</p>
 <p>We can see the <code>dataset_id</code> for the required dataset - now use it to get the dataset:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/czso_get_table.html">czso_get_table</a></span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 900 x 14</span>
-<span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span>
-<span class="co">#&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span>
-<span class="co">#&gt;  2 7459…   29026 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span>
-<span class="co">#&gt;  3 7459…   22729 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span>
-<span class="co">#&gt;  4 7459…   22266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span>
-<span class="co">#&gt;  5 7459…   23955 5958       7636          Q5            102         1          </span>
-<span class="co">#&gt;  6 7459…   20271 5958       7636          Q5            102         2          </span>
-<span class="co">#&gt;  7 7459…   26033 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span>
-<span class="co">#&gt;  8 7459…   28873 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span>
-<span class="co">#&gt;  9 7459…   22496 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span>
-<span class="co">#&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span>
-<span class="co">#&gt; # … with 890 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span>
-<span class="co">#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span>
-<span class="co">#&gt; #   POHLAVI_txt &lt;chr&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/czso_get_table.html">czso_get_table</a></span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 900 x 14</span></span>
+<span><span class="co">#&gt;    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt;  1 7459…   26211 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span></span>
+<span><span class="co">#&gt;  2 7459…   29026 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span></span>
+<span><span class="co">#&gt;  3 7459…   22729 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span></span>
+<span><span class="co">#&gt;  4 7459…   22266 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></span>
+<span><span class="co">#&gt;  5 7459…   23955 5958       7636          Q5            102         1          </span></span>
+<span><span class="co">#&gt;  6 7459…   20271 5958       7636          Q5            102         2          </span></span>
+<span><span class="co">#&gt;  7 7459…   26033 5958       &lt;NA&gt;          &lt;NA&gt;          &lt;NA&gt;        &lt;NA&gt;       </span></span>
+<span><span class="co">#&gt;  8 7459…   28873 5958       &lt;NA&gt;          &lt;NA&gt;          102         1          </span></span>
+<span><span class="co">#&gt;  9 7459…   22496 5958       &lt;NA&gt;          &lt;NA&gt;          102         2          </span></span>
+<span><span class="co">#&gt; 10 7459…   21997 5958       7636          Q5            &lt;NA&gt;        &lt;NA&gt;       </span></span>
+<span><span class="co">#&gt; # … with 890 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   POHLAVI_txt &lt;chr&gt;</span></span></code></pre></div>
 <p>You can retrieve the schema for the dataset:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/czso_get_table_schema.html">czso_get_table_schema</a></span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 14 x 5</span>
-<span class="co">#&gt;    name       titles     `dc:description`                      required datatype</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;                                 &lt;lgl&gt;    &lt;chr&gt;   </span>
-<span class="co">#&gt;  1 idhod      idhod      "unikátní identifikátor údaje Veřejn… TRUE     string  </span>
-<span class="co">#&gt;  2 hodnota    hodnota    "zjištěná hodnota"                    TRUE     number  </span>
-<span class="co">#&gt;  3 stapro_kod stapro_kod "kód statistické proměnné ze systému… TRUE     string  </span>
-<span class="co">#&gt;  4 spkvantil… spkvantil… "kód číselníku pro kvantil"           TRUE     string  </span>
-<span class="co">#&gt;  5 spkvantil… spkvantil… "kód položky z číselníku pro kvantil" TRUE     string  </span>
-<span class="co">#&gt;  6 pohlavi_c… pohlavi_c… "kód číselníku pro pohlaví"           TRUE     string  </span>
-<span class="co">#&gt;  7 pohlavi_k… pohlavi_k… "kód položky číselníku pro pohlaví"   TRUE     string  </span>
-<span class="co">#&gt;  8 rok        rok        "rok referenčního období ve formátu … TRUE     number  </span>
-<span class="co">#&gt;  9 uzemi_cis  uzemi_cis  "kód číselníku pro referenční území " TRUE     string  </span>
-<span class="co">#&gt; 10 uzemi_kod  uzemi_kod  "kód položky číselníku pro referenčn… TRUE     string  </span>
-<span class="co">#&gt; 11 uzemi_txt  uzemi_txt  "text položky z číselníku pro refere… TRUE     string  </span>
-<span class="co">#&gt; 12 stapro_txt stapro_txt "text statistické proměnné"           TRUE     string  </span>
-<span class="co">#&gt; 13 spkvantil… spkvantil… "text položky číselníku pro kvantil"  TRUE     string  </span>
-<span class="co">#&gt; 14 pohlavi_t… pohlavi_t… "text položky číselníku pro pohlaví"  TRUE     string</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/czso_get_table_schema.html">czso_get_table_schema</a></span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 14 x 5</span></span>
+<span><span class="co">#&gt;    name       titles     `dc:description`                      required datatype</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;                                 &lt;lgl&gt;    &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt;  1 idhod      idhod      "unikátní identifikátor údaje Veřejn… TRUE     string  </span></span>
+<span><span class="co">#&gt;  2 hodnota    hodnota    "zjištěná hodnota"                    TRUE     number  </span></span>
+<span><span class="co">#&gt;  3 stapro_kod stapro_kod "kód statistické proměnné ze systému… TRUE     string  </span></span>
+<span><span class="co">#&gt;  4 spkvantil… spkvantil… "kód číselníku pro kvantil"           TRUE     string  </span></span>
+<span><span class="co">#&gt;  5 spkvantil… spkvantil… "kód položky z číselníku pro kvantil" TRUE     string  </span></span>
+<span><span class="co">#&gt;  6 pohlavi_c… pohlavi_c… "kód číselníku pro pohlaví"           TRUE     string  </span></span>
+<span><span class="co">#&gt;  7 pohlavi_k… pohlavi_k… "kód položky číselníku pro pohlaví"   TRUE     string  </span></span>
+<span><span class="co">#&gt;  8 rok        rok        "rok referenčního období ve formátu … TRUE     number  </span></span>
+<span><span class="co">#&gt;  9 uzemi_cis  uzemi_cis  "kód číselníku pro referenční území " TRUE     string  </span></span>
+<span><span class="co">#&gt; 10 uzemi_kod  uzemi_kod  "kód položky číselníku pro referenčn… TRUE     string  </span></span>
+<span><span class="co">#&gt; 11 uzemi_txt  uzemi_txt  "text položky z číselníku pro refere… TRUE     string  </span></span>
+<span><span class="co">#&gt; 12 stapro_txt stapro_txt "text statistické proměnné"           TRUE     string  </span></span>
+<span><span class="co">#&gt; 13 spkvantil… spkvantil… "text položky číselníku pro kvantil"  TRUE     string  </span></span>
+<span><span class="co">#&gt; 14 pohlavi_t… pohlavi_t… "text položky číselníku pro pohlaví"  TRUE     string</span></span></code></pre></div>
 <p>and download the documentation in PDF:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/czso_get_dataset_doc.html">czso_get_dataset_doc</a></span><span class="op">(</span><span class="st">"110080"</span>, action <span class="op">=</span> <span class="st">"download"</span>, format <span class="op">=</span> <span class="st">"pdf"</span><span class="op">)</span>
-<span class="co">#&gt; ✓ Downloaded 'https:/www.czso.cz/documents/62353418/109720808/110080-19dds.pdf' to '110080-19dds.pdf'</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/czso_get_dataset_doc.html">czso_get_dataset_doc</a></span><span class="op">(</span><span class="st">"110080"</span>, action <span class="op">=</span> <span class="st">"download"</span>, format <span class="op">=</span> <span class="st">"pdf"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✓ Downloaded 'https:/www.czso.cz/documents/62353418/109720808/110080-19dds.pdf' to '110080-19dds.pdf'</span></span></code></pre></div>
 <p>If you are interested in linking this data to different data, you might need the NUTS codes for regions. Seeing that the lines with regional breakdown list <code>uzemi_cis</code> as <code>"100"</code>, you can get that codelist (číselník):</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/czso_get_codelist.html">czso_get_codelist</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 15 x 11</span>
-<span class="co">#&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS</span>
-<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; </span>
-<span class="co">#&gt;  1 CS     KRAJ_… 100    3000     Extra-… Extr… 2004-05-01 9999-09-09 CZZZZ </span>
-<span class="co">#&gt;  2 CS     KRAJ_… 100    3018     Hl. m.… Hlav… 2001-03-01 9999-09-09 CZ010 </span>
-<span class="co">#&gt;  3 CS     KRAJ_… 100    3026     Středo… Stře… 2001-03-01 9999-09-09 CZ020 </span>
-<span class="co">#&gt;  4 CS     KRAJ_… 100    3034     Jihoče… Jiho… 2001-03-01 9999-09-09 CZ031 </span>
-<span class="co">#&gt;  5 CS     KRAJ_… 100    3042     Plzeňs… Plze… 2001-03-01 9999-09-09 CZ032 </span>
-<span class="co">#&gt;  6 CS     KRAJ_… 100    3051     Karlov… Karl… 2001-03-01 9999-09-09 CZ041 </span>
-<span class="co">#&gt;  7 CS     KRAJ_… 100    3069     Ústeck… Úste… 2001-03-01 9999-09-09 CZ042 </span>
-<span class="co">#&gt;  8 CS     KRAJ_… 100    3077     Libere… Libe… 2001-03-01 9999-09-09 CZ051 </span>
-<span class="co">#&gt;  9 CS     KRAJ_… 100    3085     Králov… Král… 2001-03-01 9999-09-09 CZ052 </span>
-<span class="co">#&gt; 10 CS     KRAJ_… 100    3093     Pardub… Pard… 2001-03-01 9999-09-09 CZ053 </span>
-<span class="co">#&gt; 11 CS     KRAJ_… 100    3107     Kraj V… Kraj… 2001-03-01 9999-09-09 CZ063 </span>
-<span class="co">#&gt; 12 CS     KRAJ_… 100    3115     Jihomo… Jiho… 2001-03-01 9999-09-09 CZ064 </span>
-<span class="co">#&gt; 13 CS     KRAJ_… 100    3123     Olomou… Olom… 2001-03-01 9999-09-09 CZ071 </span>
-<span class="co">#&gt; 14 CS     KRAJ_… 100    3131     Zlínsk… Zlín… 2001-03-01 9999-09-09 CZ072 </span>
-<span class="co">#&gt; 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 </span>
-<span class="co">#&gt; # … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/czso_get_codelist.html">czso_get_codelist</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 15 x 11</span></span>
+<span><span class="co">#&gt;    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; </span></span>
+<span><span class="co">#&gt;  1 CS     KRAJ_… 100    3000     Extra-… Extr… 2004-05-01 9999-09-09 CZZZZ </span></span>
+<span><span class="co">#&gt;  2 CS     KRAJ_… 100    3018     Hl. m.… Hlav… 2001-03-01 9999-09-09 CZ010 </span></span>
+<span><span class="co">#&gt;  3 CS     KRAJ_… 100    3026     Středo… Stře… 2001-03-01 9999-09-09 CZ020 </span></span>
+<span><span class="co">#&gt;  4 CS     KRAJ_… 100    3034     Jihoče… Jiho… 2001-03-01 9999-09-09 CZ031 </span></span>
+<span><span class="co">#&gt;  5 CS     KRAJ_… 100    3042     Plzeňs… Plze… 2001-03-01 9999-09-09 CZ032 </span></span>
+<span><span class="co">#&gt;  6 CS     KRAJ_… 100    3051     Karlov… Karl… 2001-03-01 9999-09-09 CZ041 </span></span>
+<span><span class="co">#&gt;  7 CS     KRAJ_… 100    3069     Ústeck… Úste… 2001-03-01 9999-09-09 CZ042 </span></span>
+<span><span class="co">#&gt;  8 CS     KRAJ_… 100    3077     Libere… Libe… 2001-03-01 9999-09-09 CZ051 </span></span>
+<span><span class="co">#&gt;  9 CS     KRAJ_… 100    3085     Králov… Král… 2001-03-01 9999-09-09 CZ052 </span></span>
+<span><span class="co">#&gt; 10 CS     KRAJ_… 100    3093     Pardub… Pard… 2001-03-01 9999-09-09 CZ053 </span></span>
+<span><span class="co">#&gt; 11 CS     KRAJ_… 100    3107     Kraj V… Kraj… 2001-03-01 9999-09-09 CZ063 </span></span>
+<span><span class="co">#&gt; 12 CS     KRAJ_… 100    3115     Jihomo… Jiho… 2001-03-01 9999-09-09 CZ064 </span></span>
+<span><span class="co">#&gt; 13 CS     KRAJ_… 100    3123     Olomou… Olom… 2001-03-01 9999-09-09 CZ071 </span></span>
+<span><span class="co">#&gt; 14 CS     KRAJ_… 100    3131     Zlínsk… Zlín… 2001-03-01 9999-09-09 CZ072 </span></span>
+<span><span class="co">#&gt; 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 </span></span>
+<span><span class="co">#&gt; # … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</span></span></code></pre></div>
 <p>You would then need to do a bit of manual work to join this codelist onto the data.</p>
 <div class="section level3">
 <h3 id="a-note-about-tables-and-datasets">A note about “tables” and “datasets”<a class="anchor" aria-label="anchor" href="#a-note-about-tables-and-datasets"></a>
@@ -295,17 +294,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=czso" class="external-link"><img src="https://www.r-pkg.org/badges/version/czso" alt="CRAN status"></a></li>
-<li><a href="https://CRAN.R-project.org/package=czso" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/czso" alt="CRAN downloads"></a></li>
-<li><a href="https://CRAN.R-project.org/package=czso" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/last-month/czso" alt="CRAN monthly downloads"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://github.com/SNStatComp/awesome-official-statistics-software" class="external-link"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Official Statistics"></a></li>
-<li><a href="https://github.com/petrbouchal/czso/actions" class="external-link"><img src="https://github.com/petrbouchal/czso/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-</ul>
-</div>
+
 
   </div>
 </div>
@@ -318,7 +307,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

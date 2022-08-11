@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.10</span>
       </span>
     </div>
 
@@ -61,21 +61,30 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_table</span><span class="op">(</span><span class="va">dataset_id</span>, resource_num <span class="op">=</span> <span class="fl">1</span>, force_redownload <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_table</span><span class="op">(</span><span class="va">dataset_id</span>, resource_num <span class="op">=</span> <span class="fl">1</span>, force_redownload <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset_id</dt>
 <dd><p>a character. Found in the czso_id column of data frame returned by <code><a href="get_catalogue.html">get_catalogue()</a></code>.</p></dd>
+
+
 <dt>resource_num</dt>
 <dd><p>integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.</p></dd>
+
+
 <dt>force_redownload</dt>
 <dd><p>integer. Whether to redownload data source file even if already cached. Defaults to FALSE.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a <a href="https://tibble.tidyverse.org/reference/tibble-package.html" class="external-link">tibble</a></p>
+    
+
+<p>a <a href="https://tibble.tidyverse.org/reference/tibble-package.html" class="external-link">tibble</a></p>
+
+
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -87,7 +96,7 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># see `czso_get_table()`</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># see `czso_get_table()`</span></span></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
@@ -103,7 +112,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
