@@ -6,9 +6,9 @@
 \alias{czso-package}
 \title{czso: Use Open Data from the Czech Statistical Office in R}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Get programmatic access to the open data provided by the Czech Statistical Office (CZSO, <https://czso.cz>).
+Get programmatic access to the open data provided by the Czech Statistical Office (CZSO, \url{https://czso.cz}).
 }
 \seealso{
 Useful links:
