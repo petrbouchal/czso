@@ -1,3 +1,7 @@
+# czso (development version)
+
+* update Roxygen2 version and rebuild documentation to handle CRAN validation of HTML manual
+
 # czso 0.3.9
 
 * removed usethis dependency; messages now done by {cli}
