@@ -19,7 +19,7 @@ Converts types of columns where known, e.g. value columns to numeric."><meta pro
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.8.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.10.9000</span>
       </span>
     </div>
 
@@ -63,29 +63,38 @@ Converts types of columns where known, e.g. value columns to numeric.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">czso_get_table</span><span class="op">(</span>
-  <span class="va">dataset_id</span>,
-  dest_dir <span class="op">=</span> <span class="cn">NULL</span>,
-  force_redownload <span class="op">=</span> <span class="cn">FALSE</span>,
-  resource_num <span class="op">=</span> <span class="fl">1</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">czso_get_table</span><span class="op">(</span></span>
+<span>  <span class="va">dataset_id</span>,</span>
+<span>  dest_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  force_redownload <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  resource_num <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset_id</dt>
 <dd><p>a character. Found in the czso_id column of data frame returned by <code><a href="get_catalogue.html">get_catalogue()</a></code>.</p></dd>
+
+
 <dt>dest_dir</dt>
 <dd><p>character. Directory in which downloaded files will be stored.
 If left unset, will use the <code>czso.dest_dir</code> option if the option is set, and <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> otherwise. Will be created if it does not exist.</p></dd>
+
+
 <dt>force_redownload</dt>
 <dd><p>integer. Whether to redownload data source file even if already cached. Defaults to FALSE.</p></dd>
+
+
 <dt>resource_num</dt>
 <dd><p>integer. Order of resource in resource list for the given dataset. Defaults to 1, the normal value for CZSO datasets.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a <a href="https://tibble.tidyverse.org/reference/tibble-package.html" class="external-link">tibble</a>, or vector of file paths if file is not CSV or if
+    
+
+<p>a <a href="https://tibble.tidyverse.org/reference/tibble-package.html" class="external-link">tibble</a>, or vector of file paths if file is not CSV or if
 there are multiple files in the dataset.
 See Details on the columns contained in the tibble</p>
     </div>
@@ -115,7 +124,7 @@ that value is defined. See "Included columns" below on how these work.</p>
 <p>The range of columns present in the output varies from one dataset to another,
 so the package does not attempt to provide English-language names for
 the known subset, as that would result in a jumble of Czenglish.</p>
-<p>Instead, here is a guide to some of the common column names you will encounter:</p><ul><li><p><code>idhod</code>: a unique ID of the value in the CZSO databse. This does not allow
+<p>Instead, here is a guide to some of the common column names you will encounter:</p><ul><li><p><code>idhod</code>: a unique ID of the value in the CZSO database. This does not allow
 you to link to any other (meta)data as far as I know, but it does provide unique
 identification should you need it.</p></li>
 <li><p><code>hodnota</code>: the value.</p></li>
@@ -157,25 +166,26 @@ the link above using a permalink URL.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="fu">czso_get_table</span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 900 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    idhod  hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 74595…   <span style="text-decoration: underline;">26</span>211 5958       <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 74595…   <span style="text-decoration: underline;">29</span>026 5958       <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            102         1          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 74595…   <span style="text-decoration: underline;">22</span>729 5958       <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            102         2          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 74595…   <span style="text-decoration: underline;">22</span>266 5958       7636          Q5            <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 74595…   <span style="text-decoration: underline;">23</span>955 5958       7636          Q5            102         1          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 74595…   <span style="text-decoration: underline;">20</span>271 5958       7636          Q5            102         2          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 74595…   <span style="text-decoration: underline;">26</span>033 5958       <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 74595…   <span style="text-decoration: underline;">28</span>873 5958       <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            102         1          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 74595…   <span style="text-decoration: underline;">22</span>496 5958       <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            102         2          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 74595…   <span style="text-decoration: underline;">21</span>997 5958       7636          Q5            <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 890 more rows, and 7 more variables: rok &lt;int&gt;, uzemi_cis &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   uzemi_kod &lt;chr&gt;, STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;, SPKVANTIL_txt &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   POHLAVI_txt &lt;chr&gt;</span></span>
-<span class="r-in"><span class="co"># }</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="fu">czso_get_table</span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 990 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    idhod   hodnota stapr…¹ SPKVA…² SPKVA…³ POHLA…⁴ POHLA…⁵   rok uzemi…⁶ uzemi…⁷</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 736622…   <span style="text-decoration: underline;">21</span>782 5958    7636    Q5      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">2</span>011 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 736622…   <span style="text-decoration: underline;">25</span>625 5958    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">2</span>011 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 736622…   <span style="text-decoration: underline;">28</span>431 5958    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      102     1        <span style="text-decoration: underline;">2</span>011 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 736622…   <span style="text-decoration: underline;">22</span>133 5958    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      102     2        <span style="text-decoration: underline;">2</span>011 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 736622…   <span style="text-decoration: underline;">23</span>533 5958    7636    Q5      102     1        <span style="text-decoration: underline;">2</span>011 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 736622…   <span style="text-decoration: underline;">19</span>731 5958    7636    Q5      102     2        <span style="text-decoration: underline;">2</span>011 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 745958…   <span style="text-decoration: underline;">26</span>033 5958    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">2</span>012 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 745958…   <span style="text-decoration: underline;">28</span>873 5958    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      102     1        <span style="text-decoration: underline;">2</span>012 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 745958…   <span style="text-decoration: underline;">22</span>496 5958    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      102     2        <span style="text-decoration: underline;">2</span>012 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 745958…   <span style="text-decoration: underline;">21</span>997 5958    7636    Q5      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">2</span>012 97      19     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 980 more rows, 4 more variables: STAPRO_TXT &lt;chr&gt;, uzemi_txt &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   SPKVANTIL_txt &lt;chr&gt;, POHLAVI_txt &lt;chr&gt;, and abbreviated variable names</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​stapro_kod, ²​SPKVANTIL_cis, ³​SPKVANTIL_kod, ⁴​POHLAVI_cis, ⁵​POHLAVI_kod,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁶​uzemi_cis, ⁷​uzemi_kod</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -190,7 +200,7 @@ the link above using a permalink URL.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

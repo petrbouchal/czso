@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.8.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.10.9000</span>
       </span>
     </div>
 
@@ -59,19 +59,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">czso_get_table_schema</span><span class="op">(</span><span class="va">dataset_id</span>, resource_num <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">czso_get_table_schema</span><span class="op">(</span><span class="va">dataset_id</span>, resource_num <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset_id</dt>
 <dd><p>Dataset ID</p></dd>
+
+
 <dt>resource_num</dt>
 <dd><p>Resource number, typically 1 in CZSO (the default)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a tibble with a description of the table columns, with the following items:</p><ul><li><p><code>name</code>: the column name.</p></li>
+    
+
+<p>a tibble with a description of the table columns, with the following items:</p><ul><li><p><code>name</code>: the column name.</p></li>
 <li><p><code>titles</code>: usually the duplicate of <code>name</code></p></li>
 <li><p><code>dc:description</code>: a Czech-language description of the column</p></li>
 <li><p><code>required</code>: whether the column is required</p></li>
@@ -94,26 +99,27 @@ If the schema is a different format, an error is returned pointing the user to t
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="fu">czso_get_table_schema</span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="fu">czso_get_table_schema</span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name          titles        `dc:description`                required datatype</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> idhod         idhod         <span style="color: #949494;">"</span>unikátní identifikátor údaje … TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> hodnota       hodnota       <span style="color: #949494;">"</span>zjištěná hodnota<span style="color: #949494;">"</span>              TRUE     number  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> stapro_kod    stapro_kod    <span style="color: #949494;">"</span>kód statistické proměnné ze s… TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> spkvantil_cis spkvantil_cis <span style="color: #949494;">"</span>kód číselníku pro kvantil<span style="color: #949494;">"</span>     TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> spkvantil_kod spkvantil_kod <span style="color: #949494;">"</span>kód položky z číselníku pro k… TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> pohlavi_cis   pohlavi_cis   <span style="color: #949494;">"</span>kód číselníku pro pohlaví<span style="color: #949494;">"</span>     TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> pohlavi_kod   pohlavi_kod   <span style="color: #949494;">"</span>kód položky číselníku pro poh… TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> rok           rok           <span style="color: #949494;">"</span>rok referenčního období ve fo… TRUE     number  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> uzemi_cis     uzemi_cis     <span style="color: #949494;">"</span>kód číselníku pro referenční … TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> uzemi_kod     uzemi_kod     <span style="color: #949494;">"</span>kód položky číselníku pro ref… TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> uzemi_txt     uzemi_txt     <span style="color: #949494;">"</span>text položky z číselníku pro … TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> stapro_txt    stapro_txt    <span style="color: #949494;">"</span>text statistické proměnné<span style="color: #949494;">"</span>     TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> spkvantil_txt spkvantil_txt <span style="color: #949494;">"</span>text položky číselníku pro kv… TRUE     string  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> pohlavi_txt   pohlavi_txt   <span style="color: #949494;">"</span>text položky číselníku pro po… TRUE     string  </span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name          titles        `dc:description`                  requi…¹ datat…²</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> idhod         idhod         <span style="color: #949494;">"</span>unikátní identifikátor údaje Ve… TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> hodnota       hodnota       <span style="color: #949494;">"</span>zjištěná hodnota<span style="color: #949494;">"</span>                TRUE    number </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> stapro_kod    stapro_kod    <span style="color: #949494;">"</span>kód statistické proměnné ze sys… TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> spkvantil_cis spkvantil_cis <span style="color: #949494;">"</span>kód číselníku pro kvantil<span style="color: #949494;">"</span>       TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> spkvantil_kod spkvantil_kod <span style="color: #949494;">"</span>kód položky z číselníku pro kva… TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> pohlavi_cis   pohlavi_cis   <span style="color: #949494;">"</span>kód číselníku pro pohlaví<span style="color: #949494;">"</span>       TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> pohlavi_kod   pohlavi_kod   <span style="color: #949494;">"</span>kód položky číselníku pro pohla… TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> rok           rok           <span style="color: #949494;">"</span>rok referenčního období ve form… TRUE    number </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> uzemi_cis     uzemi_cis     <span style="color: #949494;">"</span>kód číselníku pro referenční úz… TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> uzemi_kod     uzemi_kod     <span style="color: #949494;">"</span>kód položky číselníku pro refer… TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> uzemi_txt     uzemi_txt     <span style="color: #949494;">"</span>text položky z číselníku pro re… TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> stapro_txt    stapro_txt    <span style="color: #949494;">"</span>text statistické proměnné<span style="color: #949494;">"</span>       TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> spkvantil_txt spkvantil_txt <span style="color: #949494;">"</span>text položky číselníku pro kvan… TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> pohlavi_txt   pohlavi_txt   <span style="color: #949494;">"</span>text položky číselníku pro pohl… TRUE    string </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​required, ²​datatype</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -128,7 +134,7 @@ If the schema is a different format, an error is returned pointing the user to t
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

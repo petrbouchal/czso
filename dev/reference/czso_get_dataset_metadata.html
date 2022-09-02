@@ -18,7 +18,7 @@ what is provided in the dataset's entry in the output of czso_get_dataset()."><m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.8.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.10.9000</span>
       </span>
     </div>
 
@@ -61,17 +61,20 @@ what is provided in the dataset's entry in the output of <code>czso_get_dataset(
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">czso_get_dataset_metadata</span><span class="op">(</span><span class="va">dataset_id</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">czso_get_dataset_metadata</span><span class="op">(</span><span class="va">dataset_id</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset_id</dt>
 <dd><p>Dataset ID</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a list with elements named in English, where the names are mostly self-explanatory.
+    
+
+<p>a list with elements named in English, where the names are mostly self-explanatory.
 So are the contents where these are dates; title, description, notes and tags only exist in Czech as far as I know.
 Some fields merit explanation:</p><ul><li><p><code>resources</code>: a list of files available to download in this dataset</p></li>
 <li><p><code>frequency</code>: see https://project-open-data.cio.gov/iso8601_guidance/ for a key</p></li>
@@ -85,7 +88,7 @@ Some fields merit explanation:</p><ul><li><p><code>resources</code>: a list of f
     <div id="details">
     <h2>Details</h2>
     <p>As far as I can tell there is no way to get the metadata in English, though
-some key datasets, such as codelists, do have English-languge documentation.
+some key datasets, such as codelists, do have English-language documentation.
 See <code><a href="czso_get_table.html">czso_get_table()</a></code> for how to access English-language codelists (registers).</p>
     </div>
     <div id="see-also">
@@ -100,8 +103,8 @@ See <code><a href="czso_get_table.html">czso_get_table()</a></code> for how to a
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="fu">czso_get_dataset_metadata</span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="fu">czso_get_dataset_metadata</span><span class="op">(</span><span class="st">"110080"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $name</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110080"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -139,7 +142,7 @@ See <code><a href="czso_get_table.html">czso_get_table()</a></code> for how to a
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2011-01-01"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $temporal_end</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2020-12-31"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-12-31"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $tags</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          display_name                name</span>
@@ -150,19 +153,19 @@ See <code><a href="czso_get_table.html">czso_get_table()</a></code> for how to a
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $resources</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                        url</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://www.czso.cz/documents/62353418/143522174/110080-21data052421.csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://www.czso.cz/documents/62353418/171419376/110080-22data052322.csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     format                                                 license_link</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 text/csv https://portal.gov.cz/portal/ostatni/volny-pristup-k-ds.html</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Data do roku 2020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Data do roku 2021</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                     description</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 Datová sada obsahuje časovou řadu průměrných měsíčních mezd a mediánu mezd v krajích České republiky od roku 2011 včetně údajů podle pohlaví.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                   describedBy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://www.czso.cz/documents/62353418/143522174/110080-21schema052421.json</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://www.czso.cz/documents/62353418/171419376/110080-22schema052322.json</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    describedByType temporal_start temporal_end</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 application/json     2011-01-01   2020-12-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 application/json     2011-01-01   2021-12-31</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -177,7 +180,7 @@ See <code><a href="czso_get_table.html">czso_get_table()</a></code> for how to a
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

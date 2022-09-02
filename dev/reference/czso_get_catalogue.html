@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.8.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.10.9000</span>
       </span>
     </div>
 
@@ -59,12 +59,14 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">czso_get_catalogue</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">czso_get_catalogue</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="value">
     <h2>Value</h2>
-    <p>a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
+    
+
+<p>a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
 The columns are fairly well described by their names, except:</p><ul><li><p>some columns contain IRIs instead of human readable text; still you can deduce the content from the IRI.</p></li>
 <li><p>the <code>spatial</code> columns contains an IRI ending in the pattern unit_type/unit_code.
 The unit_type denotes what unit the data covers (scope/domain not granularity) and the second identifies the unit covered.
@@ -76,7 +78,7 @@ In that case, the unit_code will be a code of that unit.</p></li>
     <div id="details">
     <h2>Details</h2>
     <p>Pass the string in the <code>dataset_id</code> column to <code>get_czso_table()</code>. <code>dataset_iri</code>
-is the unique identifier of the dataset in the national catalague and also the URL
+is the unique identifier of the dataset in the national catalogue and also the URL
 containing all metadata for the dataset.</p>
     </div>
     <div id="see-also">
@@ -89,24 +91,25 @@ containing all metadata for the dataset.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="fu">czso_get_catalogue</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 724 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    dataset_iri    dataset_id title provider description spatial modified   page </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> https://vdb.c… 170242     Bila… Český s… Datová sad… https:… 2021-07-27 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> https://vdb.c… 290038r05  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> https://vdb.c… 290038r06  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> https://vdb.c… 290038r07  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> https://vdb.c… 290038r08  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> https://vdb.c… 290038r09  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> https://vdb.c… 290038r10  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> https://vdb.c… 290038r11  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> https://vdb.c… 290038r12  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> https://vdb.c… 290038r13  Cizi… Český s… Datová sad… https:… 2021-07-28 http…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 714 more rows, and 4 more variables: periodicity &lt;chr&gt;, start &lt;date&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   end &lt;date&gt;, keywords_all &lt;chr&gt;</span></span>
-<span class="r-in"><span class="co"># }</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="fu">czso_get_catalogue</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 815 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    dataset_iri    datas…¹ title provi…² descr…³ spatial modified   page  perio…⁴</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> https://vdb.c… 170242  Bila… Český … Datová… https:… 2021-07-27 http… NEVER  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> https://vdb.c… 290038… Cizi… Český … Datová… https:… 2021-07-28 http… R/P1Y  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> https://vdb.c… 290038… Cizi… Český … Datová… https:… 2021-07-28 http… R/P1Y  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> https://vdb.c… 290038… Cizi… Český … Datová… https:… 2021-07-28 http… R/P1Y  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> https://vdb.c… 290038… Cizi… Český … Datová… https:… 2021-07-28 http… R/P1Y  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> https://vdb.c… 290038… Cizi… Český … Datová… https:… 2021-07-28 http… R/P1Y  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> https://vdb.c… 290038… Cizi… Český … Datová… https:… 2021-07-28 http… R/P1Y  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> https://vdb.c… 290038… Cizi… Český … Datová… https:… 2021-07-28 http… R/P1Y  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> https://vdb.c… 290038… Cizi… Český … Datová… https:… 2021-07-28 http… R/P1Y  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> https://vdb.c… 290038… Cizi… Český … Datová… https:… 2021-07-28 http… R/P1Y  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 805 more rows, 3 more variables: start &lt;date&gt;, end &lt;date&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   keywords_all &lt;chr&gt;, and abbreviated variable names ¹​dataset_id, ²​provider,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ³​description, ⁴​periodicity</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -121,7 +124,7 @@ containing all metadata for the dataset.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
