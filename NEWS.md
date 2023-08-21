@@ -1,7 +1,5 @@
 # czso (development version)
 
-* fix (hopefully temporary) to handle invalid JSON from e.g. https://vdb.czso.cz/pll/eweb/package_show?id=150196 (newlines, issue reported as #52)
-
 # czso 0.3.10
 
 * update Roxygen2 version and rebuild documentation to handle CRAN validation of HTML manual

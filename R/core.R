@@ -115,8 +115,7 @@ czso_get_dataset_metadata <- function(dataset_id) {
                       httr::user_agent(ua_string)) %>%
     httr::stop_for_status() %>%
     httr::content(as = "text")
-  mtdt_clean <- stringi::stri_replace_all_regex(mtdt_c, "\\n", "")
-  mtdt <- jsonlite::fromJSON(mtdt_clean)[["result"]]
+  mtdt <- jsonlite::fromJSON(mtdt_c)[["result"]]
   if(is.null(mtdt)) cli::cli_abort("No dataset found with this ID.")
   return(mtdt)
 }
