@@ -1,6 +1,8 @@
 # czso (development version)
 
 * fix documentation to avoid CRAN NOTEs
+* hard-deprecate old functions; they will be removed in the next version
+
 # czso 0.3.10
 
 * update Roxygen2 version and rebuild documentation to handle CRAN validation of HTML manual
