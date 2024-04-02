@@ -11,7 +11,7 @@
 #' The columns are fairly well described by their names, except:
 #'
 #' - some columns contain IRIs instead of human readable text; still you can deduce the content from the IRI.
-#' - the `spatial` columns contains an IRI ending in the pattern {unit_type}/{unit_code}.
+#' - the `spatial` columns contains an IRI ending in the pattern `{unit_type}`/`{unit_code}`.
 #' The unit_type denotes what unit the data covers (scope/domain not granularity) and the second identifies the unit covered.
 #' The unit_type will usually be `"stat"` for "state" and the unit_code will be 1.
 #' The unit_type can also be `"KR"` for region or `"OB"` for municipality, or `"OK"` for district.
