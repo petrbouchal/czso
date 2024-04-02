@@ -110,13 +110,14 @@ get_czso_catalogue <- function() {
 #' @family Additional tools
 czso_get_dataset_metadata <- function(dataset_id) {
   if(!curl::has_internet()) cli::cli_abort(c("No internet connection. Cannot continue. Retry when connected."))
-  url <- paste0("https://vdb.czso.cz/pll/eweb/package_show?id=", dataset_id)
+  url <- paste0("https://vdb.czso.cz/pll/eweb/lkod_ld.datova_sada?id=", dataset_id)
   mtdt_c <- httr::GET(url,
                       httr::user_agent(ua_string)) %>%
     httr::stop_for_status() %>%
     httr::content(as = "text")
-  mtdt_c_sanitised <- gsub("\\t", "\\s", mtdt_c)
-  mtdt <- jsonlite::fromJSON(mtdt_c_sanitised)[["result"]]
+  # mtdt_c_sanitised <- gsub("\\t", "\\s", mtdt_c)
+  mtdt <- jsonlite::fromJSON(mtdt_c)
+  # print(mtdt)
   if(is.null(mtdt)) cli::cli_abort("No dataset found with this ID.")
   return(mtdt)
 }
@@ -137,7 +138,7 @@ get_czso_dataset_metadata <- function(dataset_id) {
 }
 get_czso_resources <- function(dataset_id) {
   mtdt <- czso_get_dataset_metadata(dataset_id)
-  return(mtdt$resources)
+  return(mtdt[["distribuce"]])
 }
 
 
@@ -192,7 +193,7 @@ get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
 
 get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
   rsrc <- get_czso_resources(dataset_id)[resource_num,] %>%
-    dplyr::select(.data$url, .data$format, meta_link = .data$describedBy, meta_format = .data$describedByType)
+    dplyr::select(.data$přístupové_url, .data$formát, meta_link = .data$schéma)
   return(rsrc)
 }
 
@@ -288,12 +289,12 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   }
 
   ptr <- get_czso_resource_pointer(dataset_id, resource_num = resource_num)
-  url <- ptr$url
-  type <- ptr$format
+  url <- ptr$přístupové_url
+  type <- ptr$formát
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) {
     extm <- regexpr("(?<=\\/).*$", type, perl = TRUE)
-    ext <- regmatches(type, extm)
+    ext <- tolower(regmatches(type, extm))
   }
 
   if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
@@ -305,7 +306,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
 
   # print(dfile)
 
-  if(type == "text/csv") {
+  if(type == "http://publications.europa.eu/resource/authority/file-type/CSV") {
     action <- "read"
   } else if(type == "application/zip") {
     utils::unzip(dfile, exdir = dirname(dfile))
@@ -460,7 +461,8 @@ czso_get_codelist <- function(codelist_id,
 
   cis_meta <- get_czso_resources(codelist_id)
 
-  cis_url <- cis_meta[cis_meta$format == "text/csv", "url"]
+  cis_url <- cis_meta[cis_meta$formát == "http://publications.europa.eu/resource/authority/file-type/CSV",
+                      "přístupové_url"]
 
   if(length(cis_url) < 1) {
     # usethis::ui_stop(c("No CSV distribution for this codelist found.",
