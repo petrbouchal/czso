@@ -1,6 +1,7 @@
 # czso (development version)
 
 * fix documentation to avoid CRAN NOTEs
+* handle invalid JSON in old CZSO API
 * hard-deprecate old functions; they will be removed in the next version
 
 # czso 0.3.10
