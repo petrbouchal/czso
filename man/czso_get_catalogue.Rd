@@ -11,7 +11,7 @@ a data frame with details on all CZSO datasets available in the Czech National O
 The columns are fairly well described by their names, except:
 \itemize{
 \item some columns contain IRIs instead of human readable text; still you can deduce the content from the IRI.
-\item the \code{spatial} columns contains an IRI ending in the pattern {unit_type}/{unit_code}.
+\item the \code{spatial} columns contains an IRI ending in the pattern \code{{unit_type}}/\code{{unit_code}}.
 The unit_type denotes what unit the data covers (scope/domain not granularity) and the second identifies the unit covered.
 The unit_type will usually be \code{"stat"} for "state" and the unit_code will be 1.
 The unit_type can also be \code{"KR"} for region or \code{"OB"} for municipality, or \code{"OK"} for district.
