@@ -20,7 +20,7 @@ Their IDs start with "cis" followed by a two- to three-digit number.'><meta prop
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">czso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.12</span>
       </span>
     </div>
 
@@ -165,88 +165,84 @@ For relational tables, you will see each column twice, each time with a suffix o
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="fu">czso_get_codelist</span><span class="op">(</span><span class="st">"cis100"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    KODJAZ AKRCIS    KODCIS CHODNOTA ZKRTEXT   TEXT  ADMPLOD    ADMNEPO    CZNUTS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CS     KRAJ_NUTS 100    3000     Extra-Re… Extr… 2004-05-01 9999-09-09 CZZZZ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> CS     KRAJ_NUTS 100    3018     Hl. m. P… Hlav… 2001-03-01 9999-09-09 CZ010 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CS     KRAJ_NUTS 100    3026     Středoče… Stře… 2001-03-01 9999-09-09 CZ020 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> CS     KRAJ_NUTS 100    3034     Jihočesk… Jiho… 2001-03-01 9999-09-09 CZ031 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CS     KRAJ_NUTS 100    3042     Plzeňský… Plze… 2001-03-01 9999-09-09 CZ032 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> CS     KRAJ_NUTS 100    3051     Karlovar… Karl… 2001-03-01 9999-09-09 CZ041 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> CS     KRAJ_NUTS 100    3069     Ústecký … Úste… 2001-03-01 9999-09-09 CZ042 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> CS     KRAJ_NUTS 100    3077     Libereck… Libe… 2001-03-01 9999-09-09 CZ051 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> CS     KRAJ_NUTS 100    3085     Královéh… Král… 2001-03-01 9999-09-09 CZ052 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> CS     KRAJ_NUTS 100    3093     Pardubic… Pard… 2001-03-01 9999-09-09 CZ053 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> CS     KRAJ_NUTS 100    3107     Kraj Vys… Kraj… 2001-03-01 9999-09-09 CZ063 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> CS     KRAJ_NUTS 100    3115     Jihomora… Jiho… 2001-03-01 9999-09-09 CZ064 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> CS     KRAJ_NUTS 100    3123     Olomouck… Olom… 2001-03-01 9999-09-09 CZ071 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> CS     KRAJ_NUTS 100    3131     Zlínský … Zlín… 2001-03-01 9999-09-09 CZ072 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> CS     KRAJ_NUTS 100    3140     Moravsko… Mora… 2001-03-01 9999-09-09 CZ080 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    kodjaz akrcis  kodcis chodnota zkrtext text  admplod admnepo cznuts kod_ruian</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CS     KRAJ_N… 100    3000     Extra-… Extr… 2004-0… 9999-0… CZZZZ  <span style="color: #BB0000;">NA</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> CS     KRAJ_N… 100    3018     Hl. m.… Hlav… 2001-0… 9999-0… CZ010  19       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CS     KRAJ_N… 100    3026     Středo… Stře… 2001-0… 9999-0… CZ020  27       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> CS     KRAJ_N… 100    3034     Jihoče… Jiho… 2001-0… 9999-0… CZ031  35       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CS     KRAJ_N… 100    3042     Plzeňs… Plze… 2001-0… 9999-0… CZ032  43       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> CS     KRAJ_N… 100    3051     Karlov… Karl… 2001-0… 9999-0… CZ041  51       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> CS     KRAJ_N… 100    3069     Ústeck… Úste… 2001-0… 9999-0… CZ042  60       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> CS     KRAJ_N… 100    3077     Libere… Libe… 2001-0… 9999-0… CZ051  78       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> CS     KRAJ_N… 100    3085     Králov… Král… 2001-0… 9999-0… CZ052  86       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> CS     KRAJ_N… 100    3093     Pardub… Pard… 2001-0… 9999-0… CZ053  94       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> CS     KRAJ_N… 100    3107     Kraj V… Kraj… 2001-0… 9999-0… CZ063  108      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> CS     KRAJ_N… 100    3115     Jihomo… Jiho… 2001-0… 9999-0… CZ064  116      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> CS     KRAJ_N… 100    3123     Olomou… Olom… 2001-0… 9999-0… CZ071  124      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> CS     KRAJ_N… 100    3131     Zlínsk… Zlín… 2001-0… 9999-0… CZ072  141      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> CS     KRAJ_N… 100    3140     Moravs… Mora… 2001-0… 9999-0… CZ080  132      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: zkrkraj &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># equivalent</span></span></span>
 <span class="r-in"><span><span class="fu">czso_get_codelist</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> File already in</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB;">/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpbLmYvF/cis100</span>, not</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   downloading.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> File already in <span style="color: #0000BB;">/tmp/RtmpfLl94x/cis100</span>, not downloading.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Set `force_redownload = TRUE` if needed.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    KODJAZ AKRCIS    KODCIS CHODNOTA ZKRTEXT   TEXT  ADMPLOD    ADMNEPO    CZNUTS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CS     KRAJ_NUTS 100    3000     Extra-Re… Extr… 2004-05-01 9999-09-09 CZZZZ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> CS     KRAJ_NUTS 100    3018     Hl. m. P… Hlav… 2001-03-01 9999-09-09 CZ010 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CS     KRAJ_NUTS 100    3026     Středoče… Stře… 2001-03-01 9999-09-09 CZ020 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> CS     KRAJ_NUTS 100    3034     Jihočesk… Jiho… 2001-03-01 9999-09-09 CZ031 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CS     KRAJ_NUTS 100    3042     Plzeňský… Plze… 2001-03-01 9999-09-09 CZ032 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> CS     KRAJ_NUTS 100    3051     Karlovar… Karl… 2001-03-01 9999-09-09 CZ041 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> CS     KRAJ_NUTS 100    3069     Ústecký … Úste… 2001-03-01 9999-09-09 CZ042 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> CS     KRAJ_NUTS 100    3077     Libereck… Libe… 2001-03-01 9999-09-09 CZ051 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> CS     KRAJ_NUTS 100    3085     Královéh… Král… 2001-03-01 9999-09-09 CZ052 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> CS     KRAJ_NUTS 100    3093     Pardubic… Pard… 2001-03-01 9999-09-09 CZ053 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> CS     KRAJ_NUTS 100    3107     Kraj Vys… Kraj… 2001-03-01 9999-09-09 CZ063 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> CS     KRAJ_NUTS 100    3115     Jihomora… Jiho… 2001-03-01 9999-09-09 CZ064 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> CS     KRAJ_NUTS 100    3123     Olomouck… Olom… 2001-03-01 9999-09-09 CZ071 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> CS     KRAJ_NUTS 100    3131     Zlínský … Zlín… 2001-03-01 9999-09-09 CZ072 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> CS     KRAJ_NUTS 100    3140     Moravsko… Mora… 2001-03-01 9999-09-09 CZ080 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2 more variables: KOD_RUIAN &lt;chr&gt;, ZKRKRAJ &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    kodjaz akrcis  kodcis chodnota zkrtext text  admplod admnepo cznuts kod_ruian</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CS     KRAJ_N… 100    3000     Extra-… Extr… 2004-0… 9999-0… CZZZZ  <span style="color: #BB0000;">NA</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> CS     KRAJ_N… 100    3018     Hl. m.… Hlav… 2001-0… 9999-0… CZ010  19       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CS     KRAJ_N… 100    3026     Středo… Stře… 2001-0… 9999-0… CZ020  27       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> CS     KRAJ_N… 100    3034     Jihoče… Jiho… 2001-0… 9999-0… CZ031  35       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CS     KRAJ_N… 100    3042     Plzeňs… Plze… 2001-0… 9999-0… CZ032  43       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> CS     KRAJ_N… 100    3051     Karlov… Karl… 2001-0… 9999-0… CZ041  51       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> CS     KRAJ_N… 100    3069     Ústeck… Úste… 2001-0… 9999-0… CZ042  60       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> CS     KRAJ_N… 100    3077     Libere… Libe… 2001-0… 9999-0… CZ051  78       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> CS     KRAJ_N… 100    3085     Králov… Král… 2001-0… 9999-0… CZ052  86       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> CS     KRAJ_N… 100    3093     Pardub… Pard… 2001-0… 9999-0… CZ053  94       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> CS     KRAJ_N… 100    3107     Kraj V… Kraj… 2001-0… 9999-0… CZ063  108      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> CS     KRAJ_N… 100    3115     Jihomo… Jiho… 2001-0… 9999-0… CZ064  116      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> CS     KRAJ_N… 100    3123     Olomou… Olom… 2001-0… 9999-0… CZ071  124      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> CS     KRAJ_N… 100    3131     Zlínsk… Zlín… 2001-0… 9999-0… CZ072  141      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> CS     KRAJ_N… 100    3140     Moravs… Mora… 2001-0… 9999-0… CZ080  132      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: zkrkraj &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># get a table of relations between two codelists</span></span></span>
 <span class="r-in"><span><span class="fu">czso_get_codelist</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">43</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6,258 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    KODJAZ TYPVAZ     AKRCIS1 KODCIS1 CHODN…¹ TEXT1 AKRCIS2 KODCIS2 CHODN…² TEXT2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CS     Odvozená … KRAJ_N… 100     3018    Hlav… CISOB   43      554782  Praha</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      503410  Žito…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      505781  Zápy </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      512991  Drnek</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513032  Kame…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513041  Lhota</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513075  Hobš…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513113  Malé…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513130  Dola…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513148  Poln…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 6,248 more rows, and abbreviated variable names ¹​CHODNOTA1, ²​CHODNOTA2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    kodjaz typvaz akrcis1 kodcis1 chodnota1 text1 akrcis2 kodcis2 chodnota2 text2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CS     Odvoz… KRAJ_N… 100     3018      Hlav… CISOB   43      554782    Praha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      503410    Žito…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      505781    Zápy </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      512991    Drnek</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513032    Kame…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513041    Lhota</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513075    Hobš…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513113    Malé…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513130    Dola…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513148    Poln…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6,248 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># equivalent</span></span></span>
 <span class="r-in"><span><span class="fu">czso_get_codelist</span><span class="op">(</span><span class="st">"cis100vaz43"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> File already in</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB;">/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpbLmYvF/cis100vaz43</span>, not</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   downloading.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> File already in <span style="color: #0000BB;">/tmp/RtmpfLl94x/cis100vaz43</span>, not downloading.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Set `force_redownload = TRUE` if needed.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6,258 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    KODJAZ TYPVAZ     AKRCIS1 KODCIS1 CHODN…¹ TEXT1 AKRCIS2 KODCIS2 CHODN…² TEXT2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CS     Odvozená … KRAJ_N… 100     3018    Hlav… CISOB   43      554782  Praha</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      503410  Žito…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      505781  Zápy </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      512991  Drnek</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513032  Kame…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513041  Lhota</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513075  Hobš…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513113  Malé…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513130  Dola…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> CS     Odvozená … KRAJ_N… 100     3026    Stře… CISOB   43      513148  Poln…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 6,248 more rows, and abbreviated variable names ¹​CHODNOTA1, ²​CHODNOTA2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    kodjaz typvaz akrcis1 kodcis1 chodnota1 text1 akrcis2 kodcis2 chodnota2 text2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CS     Odvoz… KRAJ_N… 100     3018      Hlav… CISOB   43      554782    Praha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      503410    Žito…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      505781    Zápy </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      512991    Drnek</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513032    Kame…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513041    Lhota</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513075    Hobš…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513113    Malé…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513130    Dola…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> CS     Odvoz… KRAJ_N… 100     3026      Stře… CISOB   43      513148    Poln…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6,248 more rows</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
@@ -262,7 +258,7 @@ For relational tables, you will see each column twice, each time with a suffix o
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
