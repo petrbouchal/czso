@@ -85,11 +85,11 @@ Now search for your terms of interest in the dataset titles:
 catalogue %>% 
   filter(str_detect(title, "[Mm]zd[ay]")) %>% 
   select(dataset_id, title, description)
-#> # A tibble: 2 x 3
-#>   dataset_id title                       description                            
-#>   <chr>      <chr>                       <chr>                                  
-#> 1 110080     Průměrná hrubá měsíční mzd… Datová sada obsahuje časovou řadu prům…
-#> 2 110079     Zaměstnanci a průměrné hru… Datová sada obsahuje časovou řadu počt…
+#> # A tibble: 2 × 3
+#>   dataset_id title                                                   description
+#>   <chr>      <chr>                                                   <chr>      
+#> 1 110080     Průměrná hrubá měsíční mzda a medián mezd v krajích     Datová sad…
+#> 2 110079     Zaměstnanci a průměrné hrubé měsíční mzdy podle odvětví Datová sad…
 ```
 
 You could also search in descriptions or keywords which are also
@@ -100,52 +100,52 @@ the dataset:
 
 ``` r
 czso_get_table("110080")
-#> # A tibble: 900 x 14
-#>    idhod hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
-#>    <chr>   <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
-#>  1 7459…   26211 5958       <NA>          <NA>          <NA>        <NA>       
-#>  2 7459…   29026 5958       <NA>          <NA>          102         1          
-#>  3 7459…   22729 5958       <NA>          <NA>          102         2          
-#>  4 7459…   22266 5958       7636          Q5            <NA>        <NA>       
-#>  5 7459…   23955 5958       7636          Q5            102         1          
-#>  6 7459…   20271 5958       7636          Q5            102         2          
-#>  7 7459…   26033 5958       <NA>          <NA>          <NA>        <NA>       
-#>  8 7459…   28873 5958       <NA>          <NA>          102         1          
-#>  9 7459…   22496 5958       <NA>          <NA>          102         2          
-#> 10 7459…   21997 5958       7636          Q5            <NA>        <NA>       
-#> # … with 890 more rows, and 7 more variables: rok <int>, uzemi_cis <chr>,
-#> #   uzemi_kod <chr>, STAPRO_TXT <chr>, uzemi_txt <chr>, SPKVANTIL_txt <chr>,
-#> #   POHLAVI_txt <chr>
+#> # A tibble: 1,080 × 14
+#>    idhod  hodnota stapro_kod SPKVANTIL_cis SPKVANTIL_kod POHLAVI_cis POHLAVI_kod
+#>    <chr>    <dbl> <chr>      <chr>         <chr>         <chr>       <chr>      
+#>  1 73662…   21782 5958       7636          Q5            <NA>        <NA>       
+#>  2 73662…   25625 5958       <NA>          <NA>          <NA>        <NA>       
+#>  3 73662…   28431 5958       <NA>          <NA>          102         1          
+#>  4 73662…   22133 5958       <NA>          <NA>          102         2          
+#>  5 73662…   23533 5958       7636          Q5            102         1          
+#>  6 73662…   19731 5958       7636          Q5            102         2          
+#>  7 74595…   26033 5958       <NA>          <NA>          <NA>        <NA>       
+#>  8 74595…   28873 5958       <NA>          <NA>          102         1          
+#>  9 74595…   22496 5958       <NA>          <NA>          102         2          
+#> 10 74595…   21997 5958       7636          Q5            <NA>        <NA>       
+#> # ℹ 1,070 more rows
+#> # ℹ 7 more variables: rok <int>, uzemi_cis <chr>, uzemi_kod <chr>,
+#> #   STAPRO_TXT <chr>, uzemi_txt <chr>, SPKVANTIL_txt <chr>, POHLAVI_txt <chr>
 ```
 
 You can retrieve the schema for the dataset:
 
 ``` r
 czso_get_table_schema("110080")
-#> # A tibble: 14 x 5
-#>    name       titles     `dc:description`                      required datatype
-#>    <chr>      <chr>      <chr>                                 <lgl>    <chr>   
-#>  1 idhod      idhod      "unikátní identifikátor údaje Veřejn… TRUE     string  
-#>  2 hodnota    hodnota    "zjištěná hodnota"                    TRUE     number  
-#>  3 stapro_kod stapro_kod "kód statistické proměnné ze systému… TRUE     string  
-#>  4 spkvantil… spkvantil… "kód číselníku pro kvantil"           TRUE     string  
-#>  5 spkvantil… spkvantil… "kód položky z číselníku pro kvantil" TRUE     string  
-#>  6 pohlavi_c… pohlavi_c… "kód číselníku pro pohlaví"           TRUE     string  
-#>  7 pohlavi_k… pohlavi_k… "kód položky číselníku pro pohlaví"   TRUE     string  
-#>  8 rok        rok        "rok referenčního období ve formátu … TRUE     number  
-#>  9 uzemi_cis  uzemi_cis  "kód číselníku pro referenční území " TRUE     string  
-#> 10 uzemi_kod  uzemi_kod  "kód položky číselníku pro referenčn… TRUE     string  
-#> 11 uzemi_txt  uzemi_txt  "text položky z číselníku pro refere… TRUE     string  
-#> 12 stapro_txt stapro_txt "text statistické proměnné"           TRUE     string  
-#> 13 spkvantil… spkvantil… "text položky číselníku pro kvantil"  TRUE     string  
-#> 14 pohlavi_t… pohlavi_t… "text položky číselníku pro pohlaví"  TRUE     string
+#> # A tibble: 14 × 5
+#>    name          titles        `dc:description`                required datatype
+#>    <chr>         <chr>         <chr>                           <lgl>    <chr>   
+#>  1 idhod         idhod         "unikátní identifikátor údaje … TRUE     string  
+#>  2 hodnota       hodnota       "zjištěná hodnota"              TRUE     number  
+#>  3 stapro_kod    stapro_kod    "kód statistické proměnné ze s… TRUE     string  
+#>  4 spkvantil_cis spkvantil_cis "kód číselníku pro kvantil"     TRUE     string  
+#>  5 spkvantil_kod spkvantil_kod "kód položky z číselníku pro k… TRUE     string  
+#>  6 pohlavi_cis   pohlavi_cis   "kód číselníku pro pohlaví"     TRUE     string  
+#>  7 pohlavi_kod   pohlavi_kod   "kód položky číselníku pro poh… TRUE     string  
+#>  8 rok           rok           "rok referenčního období ve fo… TRUE     number  
+#>  9 uzemi_cis     uzemi_cis     "kód číselníku pro referenční … TRUE     string  
+#> 10 uzemi_kod     uzemi_kod     "kód položky číselníku pro ref… TRUE     string  
+#> 11 uzemi_txt     uzemi_txt     "text položky z číselníku pro … TRUE     string  
+#> 12 stapro_txt    stapro_txt    "text statistické proměnné"     TRUE     string  
+#> 13 spkvantil_txt spkvantil_txt "text položky číselníku pro kv… TRUE     string  
+#> 14 pohlavi_txt   pohlavi_txt   "text položky číselníku pro po… TRUE     string
 ```
 
 and download the documentation in PDF:
 
 ``` r
 czso_get_dataset_doc("110080", action = "download", format = "pdf")
-#> ✓ Downloaded 'https:/www.czso.cz/documents/62353418/109720808/110080-19dds.pdf' to '110080-19dds.pdf'
+#> ✔ Downloaded <https://www.czso.cz/documents/62353418/171419376/110080-22dds.pdf> to '110080-22dds.pdf'
 ```
 
 If you are interested in linking this data to different data, you might
@@ -155,25 +155,25 @@ breakdown list `uzemi_cis` as `"100"`, you can get that codelist
 
 ``` r
 czso_get_codelist(100)
-#> # A tibble: 15 x 11
-#>    KODJAZ AKRCIS KODCIS CHODNOTA ZKRTEXT TEXT  ADMPLOD    ADMNEPO    CZNUTS
-#>    <chr>  <chr>  <chr>  <chr>    <chr>   <chr> <date>     <date>     <chr> 
-#>  1 CS     KRAJ_… 100    3000     Extra-… Extr… 2004-05-01 9999-09-09 CZZZZ 
-#>  2 CS     KRAJ_… 100    3018     Hl. m.… Hlav… 2001-03-01 9999-09-09 CZ010 
-#>  3 CS     KRAJ_… 100    3026     Středo… Stře… 2001-03-01 9999-09-09 CZ020 
-#>  4 CS     KRAJ_… 100    3034     Jihoče… Jiho… 2001-03-01 9999-09-09 CZ031 
-#>  5 CS     KRAJ_… 100    3042     Plzeňs… Plze… 2001-03-01 9999-09-09 CZ032 
-#>  6 CS     KRAJ_… 100    3051     Karlov… Karl… 2001-03-01 9999-09-09 CZ041 
-#>  7 CS     KRAJ_… 100    3069     Ústeck… Úste… 2001-03-01 9999-09-09 CZ042 
-#>  8 CS     KRAJ_… 100    3077     Libere… Libe… 2001-03-01 9999-09-09 CZ051 
-#>  9 CS     KRAJ_… 100    3085     Králov… Král… 2001-03-01 9999-09-09 CZ052 
-#> 10 CS     KRAJ_… 100    3093     Pardub… Pard… 2001-03-01 9999-09-09 CZ053 
-#> 11 CS     KRAJ_… 100    3107     Kraj V… Kraj… 2001-03-01 9999-09-09 CZ063 
-#> 12 CS     KRAJ_… 100    3115     Jihomo… Jiho… 2001-03-01 9999-09-09 CZ064 
-#> 13 CS     KRAJ_… 100    3123     Olomou… Olom… 2001-03-01 9999-09-09 CZ071 
-#> 14 CS     KRAJ_… 100    3131     Zlínsk… Zlín… 2001-03-01 9999-09-09 CZ072 
-#> 15 CS     KRAJ_… 100    3140     Moravs… Mora… 2001-03-01 9999-09-09 CZ080 
-#> # … with 2 more variables: KOD_RUIAN <chr>, ZKRKRAJ <chr>
+#> # A tibble: 15 × 11
+#>    kodjaz akrcis  kodcis chodnota zkrtext text  admplod admnepo cznuts kod_ruian
+#>    <chr>  <chr>   <chr>  <chr>    <chr>   <chr> <chr>   <chr>   <chr>  <chr>    
+#>  1 CS     KRAJ_N… 100    3000     Extra-… Extr… 2004-0… 9999-0… CZZZZ  <NA>     
+#>  2 CS     KRAJ_N… 100    3018     Hl. m.… Hlav… 2001-0… 9999-0… CZ010  19       
+#>  3 CS     KRAJ_N… 100    3026     Středo… Stře… 2001-0… 9999-0… CZ020  27       
+#>  4 CS     KRAJ_N… 100    3034     Jihoče… Jiho… 2001-0… 9999-0… CZ031  35       
+#>  5 CS     KRAJ_N… 100    3042     Plzeňs… Plze… 2001-0… 9999-0… CZ032  43       
+#>  6 CS     KRAJ_N… 100    3051     Karlov… Karl… 2001-0… 9999-0… CZ041  51       
+#>  7 CS     KRAJ_N… 100    3069     Ústeck… Úste… 2001-0… 9999-0… CZ042  60       
+#>  8 CS     KRAJ_N… 100    3077     Libere… Libe… 2001-0… 9999-0… CZ051  78       
+#>  9 CS     KRAJ_N… 100    3085     Králov… Král… 2001-0… 9999-0… CZ052  86       
+#> 10 CS     KRAJ_N… 100    3093     Pardub… Pard… 2001-0… 9999-0… CZ053  94       
+#> 11 CS     KRAJ_N… 100    3107     Kraj V… Kraj… 2001-0… 9999-0… CZ063  108      
+#> 12 CS     KRAJ_N… 100    3115     Jihomo… Jiho… 2001-0… 9999-0… CZ064  116      
+#> 13 CS     KRAJ_N… 100    3123     Olomou… Olom… 2001-0… 9999-0… CZ071  124      
+#> 14 CS     KRAJ_N… 100    3131     Zlínsk… Zlín… 2001-0… 9999-0… CZ072  141      
+#> 15 CS     KRAJ_N… 100    3140     Moravs… Mora… 2001-0… 9999-0… CZ080  132      
+#> # ℹ 1 more variable: zkrkraj <chr>
 ```
 
 You would then need to do a bit of manual work to join this codelist
@@ -201,24 +201,24 @@ endpoint of the CZSO API at (example)
 
 ## Credit and notes
 
--   not created or endorsed by the Czech Statistical Office, though
-    they, as well as [the open data team at the Ministry of
-    Interior](https://data.gov.cz/) deserve credit for getting the data
-    out there.
--   the package relies on the data.gov.cz catalogue of open data and on
-    the CZSO’s local catalogue
--   NB: The robots.txt at the domain hosting the CZSO’s catalogue
-    prohibits robots from accessing it; while this may be an
-    inappropriate/erroneous setting for what is in essence a data API,
-    this package tries to honor the spirit of that setting by only
-    accessing the API once per `czso_get_table()` call, relying on a
-    different system for `czso_get_catalogue()`. Hence, *do not use this
-    package for harvesting large numbers of datasets from the CZSO.*
+- not created or endorsed by the Czech Statistical Office, though they,
+  as well as [the open data team at the Ministry of
+  Interior](https://data.gov.cz/) deserve credit for getting the data
+  out there.
+- the package relies on the data.gov.cz catalogue of open data and on
+  the CZSO’s local catalogue
+- NB: The robots.txt at the domain hosting the CZSO’s catalogue
+  prohibits robots from accessing it; while this may be an
+  inappropriate/erroneous setting for what is in essence a data API,
+  this package tries to honor the spirit of that setting by only
+  accessing the API once per `czso_get_table()` call, relying on a
+  different system for `czso_get_catalogue()`. Hence, *do not use this
+  package for harvesting large numbers of datasets from the CZSO.*
 
 ### Acknowledgments
 
 Thanks to @jakubklimek and @martinnecasky for [helping me figure
-out](https://github.com/opendata-mvcr/nkod/issues/19) the [SPARQL
+out](https://github.com/datagov-cz/nkod/issues/19) the [SPARQL
 endpoint](https://data.gov.cz/sparql) on the Czech National Open Data
 Catalogue.
 
@@ -237,8 +237,8 @@ that integration happens.
 
 This package takes inspiration from the packages
 
--   [eurostat](https://github.com/rOpenGov/eurostat/)
--   [OECD](https://github.com/expersso/OECD)
+- [eurostat](https://github.com/rOpenGov/eurostat/)
+- [OECD](https://github.com/expersso/OECD)
 
 which are very useful in their own right - much recommended.
 

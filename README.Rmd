@@ -131,7 +131,7 @@ The data and specific metadata is then accessed via the `package_show` endpoint 
 
 ### Acknowledgments
 
-Thanks to @jakubklimek and @martinnecasky for [helping me figure out](https://github.com/opendata-mvcr/nkod/issues/19) the [SPARQL endpoint](https://data.gov.cz/sparql) on the Czech National Open Data Catalogue.
+Thanks to @jakubklimek and @martinnecasky for [helping me figure out](https://github.com/datagov-cz/nkod/issues/19) the [SPARQL endpoint](https://data.gov.cz/sparql) on the Czech National Open Data Catalogue.
 
 ### The logo
 
