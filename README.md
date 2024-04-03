@@ -15,7 +15,7 @@ downloads](https://cranlogs.r-pkg.org/badges/last-month/czso)](https://CRAN.R-pr
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Mentioned in Awesome Official
 Statistics](https://awesome.re/mentioned-badge.svg)](https://github.com/SNStatComp/awesome-official-statistics-software)
-[![R-CMD-check](https://github.com/petrbouchal/czso/workflows/R-CMD-check/badge.svg)](https://github.com/petrbouchal/czso/actions)
+[![R-CMD-check](https://github.com/petrbouchal/czso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/petrbouchal/czso/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of czso is to provide direct, programmatic, hassle-free access
