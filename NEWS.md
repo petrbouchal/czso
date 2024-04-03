@@ -1,4 +1,6 @@
-# czso (development version)
+# czso 0.3.12
+
+* fix link with 302 code for CRAN checks
 
 # czso 0.3.11
 
