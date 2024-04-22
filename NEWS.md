@@ -1,5 +1,7 @@
 # czso (development version)
 
+* remove deprecated functions (all exported functions no starting with `czso_`)
+
 # czso 0.3.12
 
 * fix link with 302 code for CRAN checks

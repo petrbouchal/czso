@@ -48,33 +48,6 @@ czso_get_catalogue <- function() {
 
 }
 
-#' Deprecated: use `czso_get_catalogue()` instead
-#'
-#' \lifecycle{deprecated}
-#'
-#' @return a tibble
-#' @keywords internal
-#' @examples
-#' # see `czso_get_catalogue()`
-#' @export
-get_catalogue <- function() {
-  lifecycle::deprecate_stop("0.2.0", "czso::get_catalogue()", "czso_get_catalogue()")
-  czso_get_catalogue()
-}
-
-#' Deprecated, use `czso_get_catalogue()` instead.
-#'
-#' \lifecycle{deprecated}
-#'
-#' @return a tibble
-#' @keywords internal
-#' @examples
-#' # see `czso_get_catalogue()`
-#' @export
-get_czso_catalogue <- function() {
-  lifecycle::deprecate_stop("0.2.1", "czso::get_czso_catalogue()", "czso_get_catalogue()")
-  czso_get_catalogue()
-}
 
 
 #' Get dataset metadata
@@ -122,20 +95,6 @@ czso_get_dataset_metadata <- function(dataset_id) {
   return(mtdt)
 }
 
-#' Deprecated, use `czso_get_catalogue()` instead.
-#'
-#' \lifecycle{deprecated}
-#'
-#' @inheritParams czso_get_dataset_metadata
-#'
-#' @return a list
-#' @export
-#' @family Additional tools
-get_czso_dataset_metadata <- function(dataset_id) {
-  lifecycle::deprecate_stop("0.2.1", "czso::get_czso_dataset_metadata()",
-                            "czso_get_dataset_metadata()")
-  czso_get_dataset_metadata(dataset_id = dataset_id)
-}
 get_czso_resources <- function(dataset_id) {
   mtdt <- czso_get_dataset_metadata(dataset_id)
   return(mtdt[["distribuce"]])
@@ -344,25 +303,6 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   if(invi) invisible(rtrn) else return(rtrn)
 }
 
-
-#' Deprecated: use `czso_get_table()` instead.
-#'
-#' \lifecycle{deprecated}.
-#'
-#' @inheritParams czso_get_table
-#'
-#' @return a [tibble][tibble::tibble-package]
-#' @family Core workflow
-#' @examples
-#' # see `czso_get_table()`
-#' @export
-get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
-  lifecycle::deprecate_stop("0.2.0", "czso::get_table()", "czso_get_table()")
-  czso_get_table(dataset_id = dataset_id,
-                 resource_num = resource_num,
-                 force_redownload = force_redownload)
-}
-
 #' Get CZSO codelist (registry / číselník)
 #'
 #' Downloads codelist (registry table) and returns it in a tibble.
@@ -536,22 +476,6 @@ czso_get_table_schema <- function(dataset_id, resource_num = 1) {
   return(rslt)
 }
 
-#' Deprecated: use `czso_get_table_schema()` instead
-#'
-#' \lifecycle{deprecated}
-#'
-#' @inheritParams czso_get_table_schema
-#'
-#' @return a list
-#' @export
-#' @family Additional tools
-get_czso_table_schema <- function(dataset_id, resource_num) {
-  lifecycle::deprecate_stop("0.2.1", "czso::get_czso_table_schema()",
-                            "czso_get_table_schema()")
-  czso_get_table_schema(dataset_id = dataset_id, resource_num = resource_num)
-}
-
-
 #' Get documentation for CZSO dataset
 #'
 #' Retrieves the URL/downloads the file containing the documentation of the dataset, in the required format.
@@ -592,20 +516,3 @@ czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
   if(act == "download") rslt <- dest else rslt <- doc_url
   if(act == "return") rslt else invisible(rslt)
 }
-
-#' Deprecated: use `czso_get_dataset_doc()` instead
-#'
-#' \lifecycle{deprecated}
-#'
-#' @inheritParams czso_get_dataset_doc
-#'
-#' @return a list
-#' @export
-#' @family Additional tools
-get_czso_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
-  lifecycle::deprecate_stop("0.2.1", "czso::get_czso_dataset_doc()",
-                            "czso_get_dataset_doc()")
-  czso_get_dataset_doc(dataset_id = dataset_id, action = action, destfile = destfile, format = format)
-}
-
-

@@ -35,7 +35,6 @@ czso_get_catalogue()
 \seealso{
 Other Core workflow: 
 \code{\link{czso_get_codelist}()},
-\code{\link{czso_get_table}()},
-\code{\link{get_table}()}
+\code{\link{czso_get_table}()}
 }
 \concept{Core workflow}
