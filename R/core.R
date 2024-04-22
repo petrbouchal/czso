@@ -150,9 +150,14 @@ get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
   return(dfile)
 }
 
+slova <- c(url = stringi::stri_unescape_unicode("p\\u0159\\u00edstupov\\u00e9_url"),
+           schema = stringi::stri_unescape_unicode("sch\\u00e9ma"),
+           format = stringi::stri_unescape_unicode("form\\u00e1t"))
+
 get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
-  rsrc <- get_czso_resources(dataset_id)[resource_num,] %>%
-    dplyr::select(.data$přístupové_url, .data$formát, meta_link = .data$schéma)
+  rsrc0 <- get_czso_resources(dataset_id)[resource_num,]
+  rsrc <- rsrc0[,c(slova['url'], slova['format'], slova['schema'])]
+  names(rsrc)[3] <- 'meta_link'
   return(rsrc)
 }
 
@@ -248,8 +253,8 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   }
 
   ptr <- get_czso_resource_pointer(dataset_id, resource_num = resource_num)
-  url <- ptr$přístupové_url
-  type <- ptr$formát
+  url <- ptr[[slova['url']]]
+  type <- ptr[[slova['format']]]
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) {
     extm <- regexpr("(?<=\\/).*$", type, perl = TRUE)
@@ -401,8 +406,8 @@ czso_get_codelist <- function(codelist_id,
 
   cis_meta <- get_czso_resources(codelist_id)
 
-  cis_url <- cis_meta[cis_meta$formát == "http://publications.europa.eu/resource/authority/file-type/CSV",
-                      "přístupové_url"]
+  cis_url <- cis_meta[cis_meta[slova['format']] == "http://publications.europa.eu/resource/authority/file-type/CSV",
+                      slova['url']]
 
   if(length(cis_url) < 1) {
     # usethis::ui_stop(c("No CSV distribution for this codelist found.",
@@ -461,8 +466,7 @@ czso_get_codelist <- function(codelist_id,
 czso_get_table_schema <- function(dataset_id, resource_num = 1) {
   urls <- get_czso_resource_pointer(dataset_id, resource_num)
   schema_url <- urls$meta_link
-  schema_type <- urls$meta_format
-  is_json <- schema_type == "application/json"
+  is_json <- grepl(pattern = "json$", x = schema_url)
   if(is_json) {
     suppressMessages(suppressWarnings(schema_result <- httr::GET(schema_url, httr::user_agent(ua_string)) %>%
                                         httr::content(as = "text")))
@@ -470,7 +474,7 @@ czso_get_table_schema <- function(dataset_id, resource_num = 1) {
     rslt <- tibble::as_tibble(ds)
   } else {
     cli::cli_abort(c("Cannot parse this type of file type.",
-                   i = "You can get it yourself from {.path{schema_url}}."))
+                   i = "You can get it yourself from {.url {schema_url}}."))
     rslt <- schema_url
   }
   return(rslt)
@@ -499,7 +503,7 @@ czso_get_table_schema <- function(dataset_id, resource_num = 1) {
 czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
   metadata <- czso_get_dataset_metadata(dataset_id)
   frmt <- match.arg(format)
-  url_orig <- metadata$schema
+  url_orig <- metadata[['distribuce']][[slova['schema']]]
   doc_url <- switch (frmt,
                      html = url_orig,
                      word = sub("\\.html?", ".docx", url_orig),
