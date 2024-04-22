@@ -1,11 +1,7 @@
-# czso 0.3.12
-
-* fix link with 302 code for CRAN checks
-
-# czso 0.3.11
+# czso 0.3.12.9000
 
 * move to new CZSO API
-* remove deprecated functions (all exported functions no starting with `czso_`)
+* remove deprecated functions (all exported functions not starting with `czso_`)
 
 # czso 0.3.12
 
