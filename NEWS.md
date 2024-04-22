@@ -1,5 +1,6 @@
 # czso (development version)
 
+* move to new CZSO API
 * remove deprecated functions (all exported functions no starting with `czso_`)
 
 # czso 0.3.12

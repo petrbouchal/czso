@@ -8,6 +8,7 @@
 ## usethis namespace: start
 #' @importFrom tibble tibble
 #' @importFrom stringi stri_c
+#' @importFrom lifecycle deprecated
 ## usethis namespace: end
 NULL
 
