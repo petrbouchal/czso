@@ -48,33 +48,6 @@ czso_get_catalogue <- function() {
 
 }
 
-#' Deprecated: use `czso_get_catalogue()` instead
-#'
-#' \lifecycle{deprecated}
-#'
-#' @return a tibble
-#' @keywords internal
-#' @examples
-#' # see `czso_get_catalogue()`
-#' @export
-get_catalogue <- function() {
-  lifecycle::deprecate_stop("0.2.0", "czso::get_catalogue()", "czso_get_catalogue()")
-  czso_get_catalogue()
-}
-
-#' Deprecated, use `czso_get_catalogue()` instead.
-#'
-#' \lifecycle{deprecated}
-#'
-#' @return a tibble
-#' @keywords internal
-#' @examples
-#' # see `czso_get_catalogue()`
-#' @export
-get_czso_catalogue <- function() {
-  lifecycle::deprecate_stop("0.2.1", "czso::get_czso_catalogue()", "czso_get_catalogue()")
-  czso_get_catalogue()
-}
 
 
 #' Get dataset metadata
@@ -110,34 +83,21 @@ get_czso_catalogue <- function() {
 #' @family Additional tools
 czso_get_dataset_metadata <- function(dataset_id) {
   if(!curl::has_internet()) cli::cli_abort(c("No internet connection. Cannot continue. Retry when connected."))
-  url <- paste0("https://vdb.czso.cz/pll/eweb/package_show?id=", dataset_id)
+  url <- paste0("https://vdb.czso.cz/pll/eweb/lkod_ld.datova_sada?id=", dataset_id)
   mtdt_c <- httr::GET(url,
                       httr::user_agent(ua_string)) %>%
     httr::stop_for_status() %>%
     httr::content(as = "text")
-  mtdt_c_sanitised <- gsub("\\t", "\\s", mtdt_c)
-  mtdt <- jsonlite::fromJSON(mtdt_c_sanitised)[["result"]]
+  # mtdt_c_sanitised <- gsub("\\t", "\\s", mtdt_c)
+  mtdt <- jsonlite::fromJSON(mtdt_c)
+  # print(mtdt)
   if(is.null(mtdt)) cli::cli_abort("No dataset found with this ID.")
   return(mtdt)
 }
 
-#' Deprecated, use `czso_get_catalogue()` instead.
-#'
-#' \lifecycle{deprecated}
-#'
-#' @inheritParams czso_get_dataset_metadata
-#'
-#' @return a list
-#' @export
-#' @family Additional tools
-get_czso_dataset_metadata <- function(dataset_id) {
-  lifecycle::deprecate_stop("0.2.1", "czso::get_czso_dataset_metadata()",
-                            "czso_get_dataset_metadata()")
-  czso_get_dataset_metadata(dataset_id = dataset_id)
-}
 get_czso_resources <- function(dataset_id) {
   mtdt <- czso_get_dataset_metadata(dataset_id)
-  return(mtdt$resources)
+  return(mtdt[["distribuce"]])
 }
 
 
@@ -190,9 +150,14 @@ get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
   return(dfile)
 }
 
+slova <- c(url = stringi::stri_unescape_unicode("p\\u0159\\u00edstupov\\u00e9_url"),
+           schema = stringi::stri_unescape_unicode("sch\\u00e9ma"),
+           format = stringi::stri_unescape_unicode("form\\u00e1t"))
+
 get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
-  rsrc <- get_czso_resources(dataset_id)[resource_num,] %>%
-    dplyr::select(.data$url, .data$format, meta_link = .data$describedBy, meta_format = .data$describedByType)
+  rsrc0 <- get_czso_resources(dataset_id)[resource_num,]
+  rsrc <- rsrc0[,c(slova['url'], slova['format'], slova['schema'])]
+  names(rsrc)[3] <- 'meta_link'
   return(rsrc)
 }
 
@@ -288,12 +253,12 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   }
 
   ptr <- get_czso_resource_pointer(dataset_id, resource_num = resource_num)
-  url <- ptr$url
-  type <- ptr$format
+  url <- ptr[[slova['url']]]
+  type <- ptr[[slova['format']]]
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) {
     extm <- regexpr("(?<=\\/).*$", type, perl = TRUE)
-    ext <- regmatches(type, extm)
+    ext <- tolower(regmatches(type, extm))
   }
 
   if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
@@ -305,7 +270,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
 
   # print(dfile)
 
-  if(type == "text/csv") {
+  if(type == "http://publications.europa.eu/resource/authority/file-type/CSV") {
     action <- "read"
   } else if(type == "application/zip") {
     utils::unzip(dfile, exdir = dirname(dfile))
@@ -341,25 +306,6 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
           }
   )
   if(invi) invisible(rtrn) else return(rtrn)
-}
-
-
-#' Deprecated: use `czso_get_table()` instead.
-#'
-#' \lifecycle{deprecated}.
-#'
-#' @inheritParams czso_get_table
-#'
-#' @return a [tibble][tibble::tibble-package]
-#' @family Core workflow
-#' @examples
-#' # see `czso_get_table()`
-#' @export
-get_table <- function(dataset_id, resource_num = 1, force_redownload = FALSE) {
-  lifecycle::deprecate_stop("0.2.0", "czso::get_table()", "czso_get_table()")
-  czso_get_table(dataset_id = dataset_id,
-                 resource_num = resource_num,
-                 force_redownload = force_redownload)
 }
 
 #' Get CZSO codelist (registry / číselník)
@@ -460,7 +406,8 @@ czso_get_codelist <- function(codelist_id,
 
   cis_meta <- get_czso_resources(codelist_id)
 
-  cis_url <- cis_meta[cis_meta$format == "text/csv", "url"]
+  cis_url <- cis_meta[cis_meta[slova['format']] == "http://publications.europa.eu/resource/authority/file-type/CSV",
+                      slova['url']]
 
   if(length(cis_url) < 1) {
     # usethis::ui_stop(c("No CSV distribution for this codelist found.",
@@ -519,8 +466,7 @@ czso_get_codelist <- function(codelist_id,
 czso_get_table_schema <- function(dataset_id, resource_num = 1) {
   urls <- get_czso_resource_pointer(dataset_id, resource_num)
   schema_url <- urls$meta_link
-  schema_type <- urls$meta_format
-  is_json <- schema_type == "application/json"
+  is_json <- grepl(pattern = "json$", x = schema_url)
   if(is_json) {
     suppressMessages(suppressWarnings(schema_result <- httr::GET(schema_url, httr::user_agent(ua_string)) %>%
                                         httr::content(as = "text")))
@@ -528,27 +474,11 @@ czso_get_table_schema <- function(dataset_id, resource_num = 1) {
     rslt <- tibble::as_tibble(ds)
   } else {
     cli::cli_abort(c("Cannot parse this type of file type.",
-                   i = "You can get it yourself from {.path{schema_url}}."))
+                   i = "You can get it yourself from {.url {schema_url}}."))
     rslt <- schema_url
   }
   return(rslt)
 }
-
-#' Deprecated: use `czso_get_table_schema()` instead
-#'
-#' \lifecycle{deprecated}
-#'
-#' @inheritParams czso_get_table_schema
-#'
-#' @return a list
-#' @export
-#' @family Additional tools
-get_czso_table_schema <- function(dataset_id, resource_num) {
-  lifecycle::deprecate_stop("0.2.1", "czso::get_czso_table_schema()",
-                            "czso_get_table_schema()")
-  czso_get_table_schema(dataset_id = dataset_id, resource_num = resource_num)
-}
-
 
 #' Get documentation for CZSO dataset
 #'
@@ -573,7 +503,7 @@ get_czso_table_schema <- function(dataset_id, resource_num) {
 czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
   metadata <- czso_get_dataset_metadata(dataset_id)
   frmt <- match.arg(format)
-  url_orig <- metadata$schema
+  url_orig <- metadata[['distribuce']][[slova['schema']]]
   doc_url <- switch (frmt,
                      html = url_orig,
                      word = sub("\\.html?", ".docx", url_orig),
@@ -590,20 +520,3 @@ czso_get_dataset_doc <- function(dataset_id,  action = c("return", "open", "down
   if(act == "download") rslt <- dest else rslt <- doc_url
   if(act == "return") rslt else invisible(rslt)
 }
-
-#' Deprecated: use `czso_get_dataset_doc()` instead
-#'
-#' \lifecycle{deprecated}
-#'
-#' @inheritParams czso_get_dataset_doc
-#'
-#' @return a list
-#' @export
-#' @family Additional tools
-get_czso_dataset_doc <- function(dataset_id,  action = c("return", "open", "download"), destfile = NULL, format = c("html", "pdf", "word")) {
-  lifecycle::deprecate_stop("0.2.1", "czso::get_czso_dataset_doc()",
-                            "czso_get_dataset_doc()")
-  czso_get_dataset_doc(dataset_id = dataset_id, action = action, destfile = destfile, format = format)
-}
-
-

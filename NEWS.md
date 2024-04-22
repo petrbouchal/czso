@@ -4,6 +4,15 @@
 
 # czso 0.3.11
 
+* move to new CZSO API
+* remove deprecated functions (all exported functions no starting with `czso_`)
+
+# czso 0.3.12
+
+* fix link with 302 code for CRAN checks
+
+# czso 0.3.11
+
 * fix documentation to avoid CRAN NOTEs
 * handle invalid JSON in old CZSO API
 * hard-deprecate old functions; they will be removed in the next version

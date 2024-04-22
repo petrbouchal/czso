@@ -41,9 +41,6 @@ czso_get_dataset_metadata("110080")
 \seealso{
 Other Additional tools: 
 \code{\link{czso_get_dataset_doc}()},
-\code{\link{czso_get_table_schema}()},
-\code{\link{get_czso_dataset_doc}()},
-\code{\link{get_czso_dataset_metadata}()},
-\code{\link{get_czso_table_schema}()}
+\code{\link{czso_get_table_schema}()}
 }
 \concept{Additional tools}
