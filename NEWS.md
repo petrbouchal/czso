@@ -1,4 +1,4 @@
-# czso 0.3.12.9000
+# czso 0.4.0
 
 * move to new CZSO API
 * remove deprecated functions (all exported functions not starting with `czso_`)
