@@ -1,6 +1,6 @@
 Package: czso
 Title: Use Open Data from the Czech Statistical Office in R
-Version: 0.4.0
+Version: 0.4.0.9000
 Authors@R: c(
     person("Petr", "Bouchal", , "pbouchal@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0471-716X")),
