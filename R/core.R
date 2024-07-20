@@ -6,7 +6,9 @@
 #' Pass the string in the `dataset_id` column to `get_czso_table()`. `dataset_iri`
 #' is the unique identifier of the dataset in the national catalogue and also the URL
 #' containing all metadata for the dataset.
-#'
+#' @param search_terms a regex pattern, or a vector of regex patterns, to filter the catalogue by.
+#' A case-insensitive filter is performed on the title, description and keywords.
+#' The search returns only catalogue entries where all the patterns are matched anywhere within the title, description or keywords.
 #' @return a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
 #' The columns are fairly well described by their names, except:
 #'
@@ -23,13 +25,14 @@
 #' @examples
 #' \donttest{
 #' czso_get_catalogue()
+#' czso_get_catalogue(search_terms = c("kraj", "me?zd"))
 #' }
-czso_get_catalogue <- function() {
+czso_get_catalogue <- function(search_terms = NULL) {
   url <- "https://vdb.czso.cz/pll/eweb/lkod_ld.seznam"
 
   if(is_above_bigsur()) stop_on_openssl()
 
-  suppressWarnings(readr::read_csv(url,
+  ctlg <- suppressWarnings(readr::read_csv(url,
                                    col_types = readr::cols(
                                      dataset_iri = readr::col_character(),
                                      dataset_id = readr::col_character(),
@@ -46,6 +49,48 @@ czso_get_catalogue <- function() {
                                    ))) %>%
     dplyr::mutate(periodicity = dplyr::recode(.data$periodicity, nikdy = "NEVER"))
 
+  if(!is.null(search_terms)) {
+    czso_filter_catalogue(ctlg, search_terms)
+  } else {
+    ctlg
+  }
+
+}
+
+#' Filter the catalogue using a set of keywords
+#'
+#' @param catalogue a catalogue as returned by `czso_get_catalogue()`
+#' @param search_terms #' A regex pattern (incl. plain text), or a vector of regex patterns, to filter the catalogue by.
+#' A case-insensitive filter is performed on the title, description and keywords.
+#' The search returns only catalogue entries where all the patterns are matched anywhere within the title, description or keywords.
+#'
+#' @return A tibble with the filtered catalogue.
+#' @export
+#'
+#' @examples
+#' ctlg <- czso_get_catalogue()
+#' czso_filter_catalogue(ctlg, search_terms = c("kraj", "me?zd"))
+#' czso_filter_catalogue(ctlg, search_terms = c("úmrt", "orp"))
+#' czso_filter_catalogue(ctlg, search_terms = c("kraj", "vazba", "orp"))
+#' czso_filter_catalogue(ctlg, search_terms = c("ISCO", "číselník"))
+#' czso_filter_catalogue(ctlg, search_terms = c("zaměstnání", "číselník"))
+czso_filter_catalogue <- function(catalogue, search_terms) {
+  # Initialize an empty vector to store IDs of the relevant catalogue entries
+  relevant_ids <- c()
+
+  # Iterate over each row in the input data frame
+  for (i in 1:nrow(catalogue)) {
+    row <- catalogue[i, c("dataset_id", "title", "description", "keywords_all")]
+    # Check if any of the patterns match in any of the three text columns
+    if (all(sapply(search_terms, function(pattern) any(grepl(pattern, row,
+                                                             ignore.case = TRUE))))){
+      # Append the row to the filtered data frame
+      relevant_ids <- c(relevant_ids, row[["dataset_id"]])
+    }
+  }
+  filtered_catalogue <- catalogue[catalogue$dataset_id %in% relevant_ids, ]
+
+  filtered_catalogue
 }
 
 

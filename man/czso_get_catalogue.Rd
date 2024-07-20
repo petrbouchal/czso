@@ -4,7 +4,12 @@
 \alias{czso_get_catalogue}
 \title{Get catalogue of open CZSO datasets}
 \usage{
-czso_get_catalogue()
+czso_get_catalogue(search_terms = NULL)
+}
+\arguments{
+\item{search_terms}{a regex pattern, or a vector of regex patterns, to filter the catalogue by.
+A case-insensitive filter is performed on the title, description and keywords.
+The search returns only catalogue entries where all the patterns are matched anywhere within the title, description or keywords.}
 }
 \value{
 a data frame with details on all CZSO datasets available in the Czech National Open Data Catalogue.
@@ -30,6 +35,7 @@ containing all metadata for the dataset.
 \examples{
 \donttest{
 czso_get_catalogue()
+czso_get_catalogue(search_terms = c("kraj", "me?zd"))
 }
 }
 \seealso{
