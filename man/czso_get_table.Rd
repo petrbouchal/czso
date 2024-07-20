@@ -98,6 +98,7 @@ czso_get_table("110080")
 }
 \seealso{
 Other Core workflow: 
+\code{\link{czso_filter_catalogue}()},
 \code{\link{czso_get_catalogue}()},
 \code{\link{czso_get_codelist}()}
 }

@@ -95,6 +95,7 @@ czso_get_codelist("cis100vaz43")
 }
 \seealso{
 Other Core workflow: 
+\code{\link{czso_filter_catalogue}()},
 \code{\link{czso_get_catalogue}()},
 \code{\link{czso_get_table}()}
 }

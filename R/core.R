@@ -67,6 +67,7 @@ czso_get_catalogue <- function(search_terms = NULL) {
 #' @return A tibble with the filtered catalogue.
 #' @export
 #'
+#' @family Core workflow
 #' @examples
 #' ctlg <- czso_get_catalogue()
 #' czso_filter_catalogue(ctlg, search_terms = c("kraj", "me?zd"))

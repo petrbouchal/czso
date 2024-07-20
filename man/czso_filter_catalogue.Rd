@@ -27,3 +27,10 @@ czso_filter_catalogue(ctlg, search_terms = c("kraj", "vazba", "orp"))
 czso_filter_catalogue(ctlg, search_terms = c("ISCO", "číselník"))
 czso_filter_catalogue(ctlg, search_terms = c("zaměstnání", "číselník"))
 }
+\seealso{
+Other Core workflow: 
+\code{\link{czso_get_catalogue}()},
+\code{\link{czso_get_codelist}()},
+\code{\link{czso_get_table}()}
+}
+\concept{Core workflow}

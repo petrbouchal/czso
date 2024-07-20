@@ -40,6 +40,7 @@ czso_get_catalogue(search_terms = c("kraj", "me?zd"))
 }
 \seealso{
 Other Core workflow: 
+\code{\link{czso_filter_catalogue}()},
 \code{\link{czso_get_codelist}()},
 \code{\link{czso_get_table}()}
 }
