@@ -1,4 +1,4 @@
-# czso (development version)
+# czso 0.4.1
 
 * add new function `czso_filter_catalogue()` which provides an ergonomic search of the catalogue, searching relevant fields of the catalogue for a union of the search terms.
 * related to above, `czso_get_catalogue()` has a new `search_terms` parameter, which filters the catalogue inline.
