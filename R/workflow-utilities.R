@@ -27,7 +27,7 @@
 #' @export
 #' @family Additional tools
 czso_get_table_schema <- function(dataset_id, resource_num = 1) {
-  urls <- get_czso_resource_pointer(dataset_id, resource_num)
+  urls <- czso_get_resource_pointer(dataset_id, resource_num)
   schema_url <- urls$meta_link
   is_json <- grepl(pattern = "json$", x = schema_url)
   if(is_json) {

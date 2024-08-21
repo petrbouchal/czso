@@ -44,15 +44,15 @@ czso_get_dataset_metadata <- function(dataset_id) {
   return(mtdt)
 }
 
-get_czso_resources <- function(dataset_id) {
+czso_get_resources <- function(dataset_id) {
   mtdt <- czso_get_dataset_metadata(dataset_id)
   return(mtdt[["distribuce"]])
 }
 
 
-# Internal utilities ------------------------------------------------------
+# Lower-level functions ------------------------------------------------------
 
-read_czso_csv <- function(dfile) {
+czso_read_csv <- function(dfile) {
   guessed_enc <- readr::guess_encoding(dfile)
   guessed_enc <- ifelse(length(guessed_enc$encoding) == 0 || guessed_enc$encoding[[1]] == "windows-1252",
                         "windows-1250", # a sensible default, considering...
@@ -72,7 +72,7 @@ read_czso_csv <- function(dfile) {
                                                           locale = readr::locale(encoding = guessed_enc))))
 }
 
-download_file <- function(url, dfile) {
+czso_download_file <- function(url, dfile) {
   if(is_above_bigsur()) stop_on_openssl()
   curl_handle <- curl::new_handle() %>%
     curl::handle_setheaders(.list = ua_header)
@@ -80,19 +80,21 @@ download_file <- function(url, dfile) {
   return(dfile)
 }
 
-download_if_needed <- function(url, dfile, force_redownload) {
+czso_download_if_needed <- function(url, dfile, force_redownload) {
   if(is_above_bigsur()) stop_on_openssl()
   if(file.exists(dfile) & !force_redownload) {
     cli::cli_inform(c(i = "File already in {.path {dirname(dfile)}}, not downloading.",
                      "Set {.code force_redownload = TRUE} if needed."))
+    return(dfile)
   } else {
     curl_handle <- curl::new_handle() %>%
       curl::handle_setheaders(.list = ua_header)
     curl::curl_download(url, dfile, handle = curl_handle)
+    return(dfile)
   }
 }
 
-get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
+czso_get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
   td <- file.path(dir, dataset_id)
   dir.create(td, showWarnings = FALSE, recursive = TRUE)
   dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
@@ -103,11 +105,16 @@ slova <- c(url = stringi::stri_unescape_unicode("p\\u0159\\u00edstupov\\u00e9_ur
            schema = stringi::stri_unescape_unicode("sch\\u00e9ma"),
            format = stringi::stri_unescape_unicode("form\\u00e1t"))
 
-get_czso_resource_pointer <- function(dataset_id, resource_num = 1) {
-  rsrc0 <- get_czso_resources(dataset_id)[resource_num,]
+czso_get_resource_pointer <- function(dataset_id, resource_num = 1) {
+  rsrc0 <- czso_get_resources(dataset_id)[resource_num,]
   rsrc <- rsrc0[,c(slova['url'], slova['format'], slova['schema'])]
   names(rsrc)[3] <- 'meta_link'
   return(rsrc)
+}
+
+czso_get_url <- function(dataset_id = NULL, resource_num = 1) {
+  pntr <- czso_get_resource_pointer(dataset_id = dataset_id, resource_num = resource_num)
+  return(pntr[[slova['url']]])
 }
 
 
@@ -199,7 +206,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
     cli::cli_inform("Use {.code {cd}} to load it using a dedicated function.")
   }
 
-  ptr <- get_czso_resource_pointer(dataset_id, resource_num = resource_num)
+  ptr <- czso_get_resource_pointer(dataset_id, resource_num = resource_num)
   url <- ptr[[slova['url']]]
   type <- ptr[[slova['format']]]
   ext <- tools::file_ext(url)
@@ -211,9 +218,9 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
                                               default = tempdir())
 
-  dfile <- get_dl_path(dataset_id, dest_dir, ext)
+  dfile <- czso_get_dl_path(dataset_id, dest_dir, ext)
 
-  download_if_needed(url, dfile, force_redownload)
+  czso_download_if_needed(url, dfile, force_redownload)
 
   # print(dfile)
 
@@ -235,7 +242,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   }
   switch (action,
           read = {
-            rtrn <- read_czso_csv(dfile)
+            rtrn <- czso_read_csv(dfile)
             invi <- F
           },
           listone = {
@@ -351,7 +358,7 @@ czso_get_codelist <- function(codelist_id,
                              "This may cause unexpected results."))
   }
 
-  cis_meta <- get_czso_resources(codelist_id)
+  cis_meta <- czso_get_resources(codelist_id)
 
   cis_url <- cis_meta[cis_meta[slova['format']] == "http://publications.europa.eu/resource/authority/file-type/CSV",
                       slova['url']]
@@ -365,7 +372,7 @@ czso_get_codelist <- function(codelist_id,
 
     cli::cli_inform("No documented CSV distribution found for this codelist. Using workaround.")
 
-    cis_url <- get_czso_resource_pointer(codelist_id, 1)[["url"]]
+    cis_url <- czso_get_resource_pointer(codelist_id, 1)[["url"]]
     cis_url <- sub("format\\=0$", "format=2&separator=,", cis_url)
   }
 
@@ -373,11 +380,11 @@ czso_get_codelist <- function(codelist_id,
 
   if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
                                               default = tempdir())
-  dfile <- get_dl_path(codelist_id, dest_dir, "csv")
+  dfile <- czso_get_dl_path(codelist_id, dest_dir, "csv")
 
-  download_if_needed(cis_url, dfile, force_redownload)
+  czso_download_if_needed(cis_url, dfile, force_redownload)
 
-  dt <- read_czso_csv(dfile)
+  dt <- czso_read_csv(dfile)
 
   return(dt)
 }
