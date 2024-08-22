@@ -9,7 +9,7 @@ czso_get_codelist(
   language = c("cs", "en"),
   dest_dir = NULL,
   resource_num = NULL,
-  force_redownload = F
+  force_redownload = FALSE
 )
 }
 \arguments{

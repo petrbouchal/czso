@@ -337,7 +337,7 @@ czso_get_codelist <- function(codelist_id,
                               language = c("cs", "en"),
                               dest_dir = NULL,
                               resource_num = NULL,
-                              force_redownload = F) {
+                              force_redownload = FALSE) {
 
   lng <- match.arg(language)
 
