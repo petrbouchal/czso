@@ -211,7 +211,7 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   type <- ptr[[slova['format']]]
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) {
-    extm <- regexpr("(?<=\\/).*$", type, perl = TRUE)
+    extm <- regexpr("(?<=\\/)[a-zA-Z0-9]{2,5}$", type, perl = TRUE)
     ext <- tolower(regmatches(type, extm))
   }
 
