@@ -112,7 +112,7 @@ czso_get_resource_pointer <- function(dataset_id, resource_num = 1) {
   return(rsrc)
 }
 
-czso_get_url <- function(dataset_id = NULL, resource_num = 1) {
+czso_get_resource_url <- function(dataset_id = NULL, resource_num = 1) {
   pntr <- czso_get_resource_pointer(dataset_id = dataset_id, resource_num = resource_num)
   return(pntr[[slova['url']]])
 }
