@@ -501,11 +501,6 @@
       ],
       "Hash": "698ece7ba5a4fa4559e3d537e7ec3d31"
     },
-    "docopt": {
-      "Package": "docopt",
-      "Version": "0.7.1",
-      "Source": "Repository"
-    },
     "downlit": {
       "Package": "downlit",
       "Version": "0.4.4",
@@ -601,14 +596,14 @@
     },
     "evaluate": {
       "Package": "evaluate",
-      "Version": "0.23",
+      "Version": "0.24.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
       ],
-      "Hash": "daf4a1246be12c1fa8c7705a0935c1a0"
+      "Hash": "a1066cbc05caee9a4bf6d90f194ff4da"
     },
     "extrafont": {
       "Package": "extrafont",
@@ -1622,13 +1617,10 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "1.0.5",
-      "Source": "Repository",
+      "Version": "1.0.7",
+      "OS_type": null,
       "Repository": "CRAN",
-      "Requirements": [
-        "utils"
-      ],
-      "Hash": "32c3f93e8360f667ca5863272ec8ba6a"
+      "Source": "Repository"
     },
     "reprex": {
       "Package": "reprex",
@@ -1665,7 +1657,7 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.27",
+      "Version": "2.28",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1684,7 +1676,7 @@
         "xfun",
         "yaml"
       ],
-      "Hash": "27f9502e1cdbfa195f94e03b0f517484"
+      "Hash": "062470668513dcda416927085ee9bdc7"
     },
     "rnaturalearth": {
       "Package": "rnaturalearth",
@@ -2306,10 +2298,10 @@
     },
     "yaml": {
       "Package": "yaml",
-      "Version": "2.3.5",
+      "Version": "2.3.10",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "458bb38374d73bf83b1bb85e353da200"
+      "Hash": "51dab85c6c98e50a18d7551e9d49f76c"
     },
     "zip": {
       "Package": "zip",
