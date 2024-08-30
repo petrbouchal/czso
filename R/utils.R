@@ -85,3 +85,34 @@ stop_on_openssl <- function(variables) {
 #' @name monterey
 
 NULL
+
+filename_from_url <- function(url) {
+  type <- if(grepl("volby\\.cz", url)) {
+    "volby"
+  } else if (grepl("kodcis", url)) {
+    "ciselnik"
+  } else {
+    "dataset"
+  }
+
+  basename_full <- basename(url)
+  basename_cleaned <- gsub("\\?version.*$", "", basename_full)
+  version <- regmatches(basename_full, regexpr("[0-9]{1,2}\\.[0-9]{1,2}", basename_full))
+  basename_noext <- tools::file_path_sans_ext(basename_cleaned)
+  file_ext <- tools::file_ext(basename_cleaned)
+  has_ext <- file_ext != ""
+
+}
+
+filename_from_url_volby <- function(variables) {
+
+}
+
+filename_from_url_ciselnik <- function(variables) {
+
+}
+
+filename_from_url_dataset <- function(variables) {
+
+}
+

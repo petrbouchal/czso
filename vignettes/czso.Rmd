@@ -1,0 +1,19 @@
+---
+title: "Get started with czso"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get started with czso}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(czso)
+```

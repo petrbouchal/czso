@@ -18,7 +18,18 @@ reference:
 - title: Core workflow
   desc:  Functions for executing the core workflow.
   contents:
-  - has_concept("Core workflow")
+  - czso_get_catalogue()
+  - czso_filter_catalogue()
+  - czso_get_table()
+  - czso_get_codelist()
+- title: Fine-tuned control workflow
+  desc:  Functions for executing the workflow step by step for reproducibility.
+  contents:
+  - czso_get_url
+  - czso_get_dl_path
+  - czso_download_file
+  - czso_download_if_needed
+  - czso_read_csv
 - title: Additional tools
   desc:  Functions for retrieving documentation and metadata.
   contents:

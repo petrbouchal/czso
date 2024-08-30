@@ -49,41 +49,93 @@ czso_get_resources <- function(dataset_id) {
   return(mtdt[["distribuce"]])
 }
 
+czso_get_resource_pointer <- function(dataset_id, resource_num = 1) {
+  rsrc0 <- czso_get_resources(dataset_id)[resource_num,]
+  rsrc <- rsrc0[,c(slova['url'], slova['format'], slova['schema'])]
+  names(rsrc)[3] <- 'meta_link'
+  return(rsrc)
+}
 
 # Lower-level functions ------------------------------------------------------
 
-czso_read_csv <- function(dfile) {
-  guessed_enc <- readr::guess_encoding(dfile)
-  guessed_enc <- ifelse(length(guessed_enc$encoding) == 0 || guessed_enc$encoding[[1]] == "windows-1252",
-                        "windows-1250", # a sensible default, considering...
-                        guessed_enc$encoding[1])
-  dt <- suppressWarnings(suppressMessages(readr::read_csv(dfile, col_types = readr::cols(.default = "c",
-                                                                                         rok = "i",
-                                                                                         ADMPLOD = readr::col_date("%d.%m.%Y"),
-                                                                                         ADMNEPO = readr::col_date("%d.%m.%Y"),
-                                                                                         casref_od = "T",
-                                                                                         casref_do = "T",
-                                                                                         obdobiod = "T",
-                                                                                         obdobido = "T",
-                                                                                         bazobdobiod = "T",
-                                                                                         bazobdobido = "T",
-                                                                                         ctvrtleti = "i",
-                                                                                         hodnota = "d"),
-                                                          locale = readr::locale(encoding = guessed_enc))))
+#' Title
+#'
+#' @inheritParams czso_get_table
+#'
+#' @return Thing
+#' @export
+#'
+#' @examples
+#' print("Blah")
+czso_get_url <- function(dataset_id = NULL, resource_num = 1) {
+  pntr <- czso_get_resource_pointer(dataset_id = dataset_id, resource_num = resource_num)
+  return(pntr[[slova['url']]])
 }
 
-czso_download_file <- function(url, dfile) {
+#' Title
+#'
+#' @inheritParams czso_download_if_needed
+#'
+#' @return Thing
+#' @export
+#'
+#' @examples
+#' print("blah")
+czso_get_dl_path <- function(url, dest_dir = NULL) {
+
+  if(is.null(dest_dir)) dest_dir <- getOption("statnipokladna.dest_dir",
+                                              default = tempdir())
+
+
+  dfile <- filename_from_url(url)
+
+  dfile_full <- file.path(dest_dir, dfile)
+  dir.create(dirname(dfile_full), showWarnings = FALSE, recursive = TRUE)
+  return(dfile_full)
+}
+
+#' Download file from blah
+#'
+#' @param url URL to download from. Must be character of length one. A result of `czso_get_dataset_url()`.
+#' @inheritParams czso_get_table
+#'
+#' @return Path to downloaded file (character of length one)
+#' @family Fine-grained control workflow
+#' @export
+#'
+#' @examples
+#' print("blah")
+czso_download_file <- function(url, dest_dir = NULL) {
   if(is_above_bigsur()) stop_on_openssl()
+
+  dfile <- czso_get_dl_path(url, dest_dir = dest_dir)
+
   curl_handle <- curl::new_handle() %>%
     curl::handle_setheaders(.list = ua_header)
   curl::curl_download(url, dfile, handle = curl_handle)
   return(dfile)
 }
 
-czso_download_if_needed <- function(url, dfile, force_redownload) {
+#' Title
+#'
+#' @param url Blah
+#' @param dest_dir Blah
+#' @param force_redownload Blah
+#'
+#' @return Blah
+#' @family Fine-grained control workflow
+#' @export
+#'
+#' @examples
+#' "blah"
+czso_download_if_needed <- function(url, dest_dir = NULL, force_redownload) {
+  print(url)
   if(is_above_bigsur()) stop_on_openssl()
+
+  dfile <- czso_get_dl_path(url, dest_dir = dest_dir)
+
   if(file.exists(dfile) & !force_redownload) {
-    cli::cli_inform(c(i = "File already in {.path {dirname(dfile)}}, not downloading.",
+    cli::cli_inform(c(i = "File {.path {basename(dfile)}} already in {.path {dirname(dfile)}}, not downloading.",
                      "Set {.code force_redownload = TRUE} if needed."))
     return(dfile)
   } else {
@@ -94,28 +146,39 @@ czso_download_if_needed <- function(url, dfile, force_redownload) {
   }
 }
 
-czso_get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
-  td <- file.path(dir, dataset_id)
-  dir.create(td, showWarnings = FALSE, recursive = TRUE)
-  dfile <- paste0(td, "/ds_", dataset_id, ".", ext)
-  return(dfile)
-}
-
 slova <- c(url = stringi::stri_unescape_unicode("p\\u0159\\u00edstupov\\u00e9_url"),
            schema = stringi::stri_unescape_unicode("sch\\u00e9ma"),
            format = stringi::stri_unescape_unicode("form\\u00e1t"))
-
-czso_get_resource_pointer <- function(dataset_id, resource_num = 1) {
-  rsrc0 <- czso_get_resources(dataset_id)[resource_num,]
-  rsrc <- rsrc0[,c(slova['url'], slova['format'], slova['schema'])]
-  names(rsrc)[3] <- 'meta_link'
-  return(rsrc)
+#' Title
+#'
+#' @param path
+#'
+#' @return Blah
+#' @export
+#' @family Fine-grained control workflow
+#'
+#' @examples
+#' print("blah")
+czso_read_csv <- function(path) {
+  guessed_enc <- readr::guess_encoding(path)
+  guessed_enc <- ifelse(length(guessed_enc$encoding) == 0 || guessed_enc$encoding[[1]] == "windows-1252",
+                        "windows-1250", # a sensible default, considering...
+                        guessed_enc$encoding[1])
+  dt <- suppressWarnings(suppressMessages(readr::read_csv(path, col_types = readr::cols(.default = "c",
+                                                                                        rok = "i",
+                                                                                        ADMPLOD = readr::col_date("%d.%m.%Y"),
+                                                                                        ADMNEPO = readr::col_date("%d.%m.%Y"),
+                                                                                        casref_od = "T",
+                                                                                        casref_do = "T",
+                                                                                        obdobiod = "T",
+                                                                                        obdobido = "T",
+                                                                                        bazobdobiod = "T",
+                                                                                        bazobdobido = "T",
+                                                                                        ctvrtleti = "i",
+                                                                                        hodnota = "d"),
+                                                          locale = readr::locale(encoding = guessed_enc))))
 }
 
-czso_get_url <- function(dataset_id = NULL, resource_num = 1) {
-  pntr <- czso_get_resource_pointer(dataset_id = dataset_id, resource_num = resource_num)
-  return(pntr[[slova['url']]])
-}
 
 
 # Top-level workflow functions ------------------------------------------------------------
@@ -211,9 +274,12 @@ czso_get_table <- function(dataset_id, dest_dir = NULL, force_redownload = FALSE
   type <- ptr[[slova['format']]]
   ext <- tools::file_ext(url)
   if(ext == "" | is.null(ext)) {
-    extm <- regexpr("(?<=\\/).*$", type, perl = TRUE)
+    extm <- regexpr("(?<=\\/file\\-type\\/)[a-zA-Z]{2,}$", type, perl = TRUE)
     ext <- tolower(regmatches(type, extm))
   }
+
+  print("ext")
+  print(ext)
 
   if(is.null(dest_dir)) dest_dir <- getOption("czso.dest_dir",
                                               default = tempdir())
