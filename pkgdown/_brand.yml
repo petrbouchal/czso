@@ -1,0 +1,69 @@
+meta:
+  name: brand.yml
+  link: https://posit-dev.github.io/brand-yml
+
+color:
+  palette:
+    blue: "#0000ff"
+    lightblue: "#e3f1ff"
+    darkblue: "#001F3F"
+  primary: blue
+  secondary: lightblue
+  tertiary: "red"
+  light: lightblue
+  dark: darkblue
+
+typography:
+  fonts:
+    - family: IBM Plex Sans
+      source: bunny
+    - family: IBM Plex Code
+      source: bunny
+  base: IBM Plex Sans
+  monospace: JetBrains Mono
+  headings:
+    color: primary
+  monospace-inline:
+    color: darkblue
+    background-color: lightblue
+  monospace-block:
+    color: darkblue
+    background-color: lightblue
+
+defaults:
+  bootstrap:
+    defaults:
+      enable-rounded: false
+      navbar-light-bg: $brand-blue
+      navbar-dark-bg: $brand-darkblue
+      navbar-light-color: "white"
+      navbar-dark-color: lightblue
+      # code-bg: $brand-lightblue !important
+      # pre-bg: $brand-lightblue !important
+      # code-bg-dark: $brand-lightblue !important
+      # code-color: $brand-darkblue
+      # code-color-dark: $brand-darkblue
+    rules: |
+      [data-bs-theme="light"] pre {
+      	border: 0px;
+      	background: $brand-lightblue;
+      }
+
+      [data-bs-theme="dark"] pre {
+      	border: 0px;
+      	background: $brand-darkblue;
+      	color: $brand-lightblue;
+      }
+
+      [data-bs-theme="light"] code {
+      	border: 0px;
+      	background: $brand-lightblue;
+      }
+
+      [data-bs-theme="dark"] code {
+      	border: 0px;
+      	background: $brand-darkblue;
+      	color: $brand-lightblue;
+      }
+
+

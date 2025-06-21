@@ -7,6 +7,7 @@ url: https://petrbouchal.xyz/czso
 development:
   mode: auto
 template:
+  light-switch: true
   opengraph:
     image:
       src: man/figures/card.png
@@ -14,6 +15,10 @@ template:
     twitter:
       creator: "@petrbouchal"
       card: summary_large_image
+  bslib:
+    version: 5
+    brand: pkgdown/_brand.yml
+
 reference:
 - title: Core workflow
   desc:  Functions for executing the core workflow.
@@ -31,7 +36,7 @@ reference:
 navbar:
   structure:
     left:  [home, intro, reference, articles, news]
-    right: [github, pbhome]
+    right: [lightswitch, github, pbhome]
   components:
     pbhome:
       icon: "fa-asterisk fa-lg"

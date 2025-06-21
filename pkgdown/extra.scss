@@ -1,0 +1,21 @@
+[data-bs-theme="light"] pre {
+	border: 0px;
+	background: $brand-lightblue;
+}
+
+[data-bs-theme="dark"] pre {
+	border: 0px;
+	background: $brand-darkblue;
+	color: $brand-lightblue;
+}
+
+[data-bs-theme="light"] code {
+	border: 0px;
+	background: $brand-lightblue;
+}
+
+[data-bs-theme="dark"] code {
+	border: 0px;
+	background: $brand-darkblue;
+	color: $brand-lightblue;
+}
