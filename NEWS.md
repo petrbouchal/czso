@@ -1,5 +1,7 @@
 # czso (development version)
 
+* fix issue in `czso_get_table_schema()` detecting JSON format in schema URL
+
 # czso 0.4.1
 
 * add new function `czso_filter_catalogue()` which provides an ergonomic search of the catalogue, searching relevant fields of the catalogue for a union of the search terms.

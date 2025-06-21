@@ -29,7 +29,7 @@
 czso_get_table_schema <- function(dataset_id, resource_num = 1) {
   urls <- czso_get_resource_pointer(dataset_id, resource_num)
   schema_url <- urls$meta_link
-  is_json <- grepl(pattern = "json$", x = schema_url)
+  is_json <- grepl(pattern = "json[$?]", x = schema_url)
   if(is_json) {
     suppressMessages(suppressWarnings(schema_result <- httr::GET(schema_url, httr::user_agent(ua_string)) %>%
                                         httr::content(as = "text")))
