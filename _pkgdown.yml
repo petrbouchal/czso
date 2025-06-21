@@ -23,10 +23,10 @@ reference:
 - title: Core workflow
   desc:  Functions for executing the core workflow.
   contents:
-  - czso_get_catalogue()
-  - czso_filter_catalogue()
-  - czso_get_table()
-  - czso_get_codelist()
+  - czso_get_catalogue
+  - czso_filter_catalogue
+  - czso_get_table
+  - czso_get_codelist
 - title: Additional tools
   desc:  Functions for retrieving documentation and metadata.
   contents:
