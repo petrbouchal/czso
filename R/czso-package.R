@@ -7,8 +7,8 @@
 # roxygen namespace tags. Modify with care!
 ## usethis namespace: start
 #' @importFrom tibble tibble
-#' @importFrom stringi stri_c
 #' @importFrom lifecycle deprecated
+#' @importFrom stringi stri_c
 ## usethis namespace: end
 NULL
 

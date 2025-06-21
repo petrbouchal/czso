@@ -101,9 +101,34 @@ czso_get_dl_path <- function(dataset_id, dir = tempdir(), ext) {
   return(dfile)
 }
 
-slova <- c(url = stringi::stri_unescape_unicode("p\\u0159\\u00edstupov\\u00e9_url"),
-           schema = stringi::stri_unescape_unicode("sch\\u00e9ma"),
-           format = stringi::stri_unescape_unicode("form\\u00e1t"))
+unescape_unicode <- function(x) {
+  # Extract all unicode escape sequences
+  matches <- gregexpr("\\\\u([0-9a-fA-F]{4})", x, perl = TRUE)
+
+  if (matches[[1]][1] == -1) {
+    return(x)  # No matches found
+  }
+
+  # Get the matched strings
+  matched_strings <- regmatches(x, matches)[[1]]
+
+  # Convert each match to its unicode character
+  replacements <- sapply(matched_strings, function(match) {
+    hex_code <- sub("\\\\u", "", match)
+    intToUtf8(strtoi(hex_code, 16))
+  })
+
+  # Replace all matches
+  for (i in seq_along(matched_strings)) {
+    x <- gsub(matched_strings[i], replacements[i], x, fixed = TRUE)
+  }
+
+  return(x)
+}
+
+slova <- c(url = unescape_unicode("p\\u0159\\u00edstupov\\u00e9_url"),
+           schema = unescape_unicode("sch\\u00e9ma"),
+           format = unescape_unicode("form\\u00e1t"))
 
 czso_get_resource_pointer <- function(dataset_id, resource_num = 1) {
   rsrc0 <- czso_get_resources(dataset_id)[resource_num,]

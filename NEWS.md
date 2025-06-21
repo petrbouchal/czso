@@ -1,6 +1,7 @@
 # czso (development version)
 
 * fix issue in `czso_get_table_schema()` detecting JSON format in schema URL
+* make less use of the stringi dependency
 
 # czso 0.4.1
 
