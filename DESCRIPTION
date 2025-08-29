@@ -7,7 +7,7 @@ Authors@R: c(
     person("Jindra", "Lacko", role = "ctb")
   )
 Description: Get programmatic access to the open data provided by the
-    Czech Statistical Office (CZSO, <https://czso.cz>).
+    Czech Statistical Office (CZSO, <https://csu.gov.cz>).
 License: MIT + file LICENSE
 URL: https://github.com/petrbouchal/czso, https://petrbouchal.xyz/czso/
 BugReports: https://github.com/petrbouchal/czso/issues
