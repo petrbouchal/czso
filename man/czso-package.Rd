@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Get programmatic access to the open data provided by the Czech Statistical Office (CZSO, \url{https://czso.cz}).
+Get programmatic access to the open data provided by the Czech Statistical Office (CZSO, \url{https://csu.gov.cz}).
 }
 \seealso{
 Useful links:

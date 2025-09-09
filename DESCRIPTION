@@ -1,6 +1,6 @@
 Package: czso
 Title: Use Open Data from the Czech Statistical Office in R
-Version: 0.4.2.9000
+Version: 0.4.3
 Authors@R: c(
     person("Petr", "Bouchal", , "pbouchal@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0471-716X")),
@@ -33,4 +33,4 @@ RdMacros:
 Encoding: UTF-8
 Language: en
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
