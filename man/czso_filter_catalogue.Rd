@@ -20,12 +20,14 @@ A tibble with the filtered catalogue.
 Filter the catalogue using a set of keywords
 }
 \examples{
+\donttest{
 ctlg <- czso_get_catalogue()
 czso_filter_catalogue(ctlg, search_terms = c("kraj", "me?zd"))
 czso_filter_catalogue(ctlg, search_terms = c("úmrt", "orp"))
 czso_filter_catalogue(ctlg, search_terms = c("kraj", "vazba", "orp"))
 czso_filter_catalogue(ctlg, search_terms = c("ISCO", "číselník"))
 czso_filter_catalogue(ctlg, search_terms = c("zaměstnání", "číselník"))
+}
 }
 \seealso{
 Other Core workflow: 

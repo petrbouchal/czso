@@ -1,4 +1,5 @@
 test_that("catalogue and filter works", {
+  skip_on_cran()
 
   ctlg <- czso_get_catalogue()
   expect_gte(nrow(ctlg), 900)
