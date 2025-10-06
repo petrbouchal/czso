@@ -1,4 +1,4 @@
-# czso (development version)
+# czso 0.4.4
 
 * skip examples and tests on CRAN to avoid CRAN failures on server downtime
 
